@@ -1,11 +1,11 @@
 import { Routes } from "nest-router";
 
-import { UnitTypeCodeModule } from "./unit-type-code/unit-type-code.module";
+import { UnitTypesModule } from "./unit-types/unit-types.module";
 
 const routes: Routes = [
   {
-    path: '/unit-type-code',
-    module: UnitTypeCodeModule,
+    path: '/unit-types',
+    module: UnitTypesModule,
   },
 ];
 export default routes;

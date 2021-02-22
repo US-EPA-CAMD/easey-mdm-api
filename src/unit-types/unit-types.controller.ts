@@ -6,13 +6,13 @@ import {
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
-import { UnitTypeCodeDTO } from '../dto/unit-type-code.dto';
-import { UnitTypeCodeService } from './unit-type-code.service';
+import { UnitTypeDTO } from '../dto/unit-type.dto';
+import { UnitTypesService } from './unit-types.service';
 
-@ApiTags('Unit Type Code')
+@ApiTags('Unit Types')
 @Controller()
-export class UnitTypeCodeController {
-  constructor(private unitTypeCodeService: UnitTypeCodeService) {}
+export class UnitTypesController {
+  constructor(private unitTypesService: UnitTypesService) {}
 
   @Get()
   @ApiOkResponse({
@@ -24,7 +24,7 @@ export class UnitTypeCodeController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
-  getAllUnitTypes(): Promise<UnitTypeCodeDTO[]> {
-    return this.unitTypeCodeService.getAllUnitTypes();
+  getAllUnitTypes(): Promise<UnitTypeDTO[]> {
+    return this.unitTypesService.getAllUnitTypes();
   }
 }

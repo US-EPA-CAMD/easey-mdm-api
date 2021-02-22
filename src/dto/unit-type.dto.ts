@@ -1,4 +1,4 @@
-export class UnitTypeCodeDTO {
+export class UnitTypeDTO {
   unitTypeCode: string;
   unitTypeDescription: string;
   sortOrder: string;

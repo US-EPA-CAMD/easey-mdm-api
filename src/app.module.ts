@@ -7,7 +7,7 @@ import { TypeOrmConfigService } from './config/typeorm.config';
 import routes from './routes';
 import dbConfig from './config/db.config';
 import appConfig from './config/app.config';
-import { UnitTypeCodeModule } from './unit-type-code/unit-type-code.module';
+import { UnitTypesModule } from './unit-types/unit-types.module';
 @Module({
   imports: [
     RouterModule.forRoutes(routes),
@@ -18,7 +18,7 @@ import { UnitTypeCodeModule } from './unit-type-code/unit-type-code.module';
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
-    UnitTypeCodeModule,
+    UnitTypesModule,
   ],
 })
 export class AppModule {}
