@@ -7,8 +7,10 @@ const routes: Routes = [
   {
     path: '/fuel-types',
     module: FuelTypesModule,
+  },
+  {
     path: '/unit-types',
     module: UnitTypesModule,
-  },
+  }
 ];
 export default routes;
