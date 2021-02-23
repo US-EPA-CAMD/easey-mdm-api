@@ -2,12 +2,14 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RouterModule } from 'nest-router';
-import { TypeOrmConfigService } from './config/typeorm.config';
 
-import routes from './routes';
 import dbConfig from './config/db.config';
 import appConfig from './config/app.config';
 import { UnitTypesModule } from './unit-types/unit-types.module';
+import { TypeOrmConfigService } from './config/typeorm.config';
+import { FuelTypesModule } from './fuel-types/fuel-types.module';
+import routes from './routes';
+
 @Module({
   imports: [
     RouterModule.forRoutes(routes),
@@ -19,6 +21,7 @@ import { UnitTypesModule } from './unit-types/unit-types.module';
       useClass: TypeOrmConfigService,
     }),
     UnitTypesModule,
+    FuelTypesModule,
   ],
 })
 export class AppModule {}
