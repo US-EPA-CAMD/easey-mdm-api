@@ -5,6 +5,7 @@ import { RouterModule } from 'nest-router';
 
 import dbConfig from './config/db.config';
 import appConfig from './config/app.config';
+import { UnitTypesModule } from './unit-types/unit-types.module';
 import { TypeOrmConfigService } from './config/typeorm.config';
 import { FuelTypesModule } from './fuel-types/fuel-types.module';
 import routes from './routes';
@@ -19,6 +20,7 @@ import routes from './routes';
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
+    UnitTypesModule,
     FuelTypesModule,
   ],
 })
