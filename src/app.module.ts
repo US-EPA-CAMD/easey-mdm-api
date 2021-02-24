@@ -4,11 +4,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RouterModule } from 'nest-router';
 import { TypeOrmConfigService } from './config/typeorm.config';
 
-import routes from './routes';
 import dbConfig from './config/db.config';
 import appConfig from './config/app.config';
+import routes from './routes';
 import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
+import { FuelTypesModule } from './fuel-types/fuel-types.module';
+
 @Module({
   imports: [
     RouterModule.forRoutes(routes),
@@ -21,6 +23,7 @@ import { ControlTechnologiesModule } from './control-technologies/control-techno
     }),
     UnitTypesModule,
     ControlTechnologiesModule,
+    FuelTypesModule,
   ],
 })
 export class AppModule {}
