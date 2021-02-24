@@ -21,9 +21,9 @@ import { FuelTypesModule } from './fuel-types/fuel-types.module';
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
-    UnitTypesModule,
     ControlTechnologiesModule,
     FuelTypesModule,
+    UnitTypesModule,
   ],
 })
 export class AppModule {}
