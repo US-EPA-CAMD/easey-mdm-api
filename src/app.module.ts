@@ -8,6 +8,7 @@ import routes from './routes';
 import dbConfig from './config/db.config';
 import appConfig from './config/app.config';
 import { UnitTypesModule } from './unit-types/unit-types.module';
+import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
 @Module({
   imports: [
     RouterModule.forRoutes(routes),
@@ -19,6 +20,7 @@ import { UnitTypesModule } from './unit-types/unit-types.module';
       useClass: TypeOrmConfigService,
     }),
     UnitTypesModule,
+    ControlTechnologiesModule,
   ],
 })
 export class AppModule {}
