@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
+import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
@@ -11,6 +12,15 @@ async function bootstrap() {
   const appTitle = configService.get<string>('app.title');
   const appPath = configService.get<string>('app.path');
 
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      validationError: {
+        target: false,
+        value: true,
+      },
+    }),
+  );
   app.setGlobalPrefix(appPath);
   app.enableCors();
 
@@ -24,7 +34,9 @@ async function bootstrap() {
   SwaggerModule.setup(`${appPath}/swagger`, app, document);
 
   await app.listen(configService.get<number>('app.port'));
-  console.log(`Application is running on: ${await app.getUrl()}/${appPath}`);
+  console.log(
+    `Application is running on: ${await app.getUrl()}/${appPath}/swagger`,
+  );
 }
 
 bootstrap();
