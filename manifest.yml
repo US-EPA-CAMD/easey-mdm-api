@@ -1,12 +1,15 @@
 applications:
-  - name: mdm-api
+  - name: ((name))
     path: .
     command: npm run start
-    memory: 512M
+    memory: ((memory))
     env:
-      EASEY_API_HOST: ((host))
       OPTIMIZE_MEMORY: true
+      EASEY_MDM_API_TITLE: ((title))
+      EASEY_MDM_API_HOST: ((host))
+      EASEY_MDM_API_PATH: ((path))
+      EASEY_MDM_API_ENV: ((environment))
     routes:
-      - route: ((host))/api/master-data-mgmt
+      - route: ((host))/((path))
     services:
       - camd-pg-db
