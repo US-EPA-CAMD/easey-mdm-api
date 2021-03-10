@@ -10,6 +10,7 @@ import routes from './routes';
 import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
 import { FuelTypesModule } from './fuel-types/fuel-types.module';
+import { ProgramsModule } from './programs/programs.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { FuelTypesModule } from './fuel-types/fuel-types.module';
     ControlTechnologiesModule,
     FuelTypesModule,
     UnitTypesModule,
+    ProgramsModule,
   ],
 })
 export class AppModule {}
