@@ -1,5 +1,6 @@
 import { Transform } from 'class-transformer';
 import { IsOptional } from 'class-validator';
+
 import { Program } from '../enums/program.enum';
 
 export class ProgramParamsDTO {
