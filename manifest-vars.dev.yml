@@ -1,6 +1,0 @@
-name: mdm-api
-title: Master Data Management
-path: api/master-data-mgmt
-environment: development
-host: easey-dev.app.cloud.gov
-memory: 512M
