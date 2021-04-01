@@ -11,6 +11,7 @@ import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
 import { FuelTypesModule } from './fuel-types/fuel-types.module';
 import { ProgramsModule } from './programs/programs.module';
+import { StatesModule } from './states/states.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ProgramsModule } from './programs/programs.module';
     FuelTypesModule,
     UnitTypesModule,
     ProgramsModule,
+    StatesModule
   ],
 })
 export class AppModule {}
