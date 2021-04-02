@@ -13,17 +13,7 @@ export class State extends BaseEntity {
   stateName: string;
 
   @Column({
-    name: 'domestic_ind',
-  })
-  domesticInd: number;
-
-  @Column({
-    name: 'indian_country_ind',
-  })
-  indianCountryInd: number;
-
-  @Column({
-    name: 'epa_region'
+    name: 'epa_region',
   })
   epaRegion: number;
 }

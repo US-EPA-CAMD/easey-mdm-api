@@ -10,8 +10,6 @@ export class StateMap extends BaseMap<State, StateDTO> {
     return {
       stateCode: entity.stateCode,
       stateName: entity.stateName,
-      domesticInd: !!+entity.domesticInd,
-      indianCountryInd: !!+entity.indianCountryInd,
       epaRegion: entity.epaRegion,
     };
   }
