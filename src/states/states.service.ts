@@ -10,8 +10,8 @@ import { StateDTO } from '../dto/state.dto';
 export class StatesService {
   constructor(
     @InjectRepository(StatesRepository)
-    private stateRepository: StatesRepository,
-    private stateMap: StateMap,
+    private readonly stateRepository: StatesRepository,
+    private readonly stateMap: StateMap,
   ) {}
 
   async getAllStates(): Promise<StateDTO[]> {

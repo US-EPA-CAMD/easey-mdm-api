@@ -12,7 +12,7 @@ import { StateDTO } from '../dto/state.dto';
 @ApiTags('States')
 @Controller()
 export class StatesController {
-  constructor(private statesService: StatesService) {}
+  constructor(private readonly statesService: StatesService) {}
 
   @Get()
   @ApiOkResponse({
