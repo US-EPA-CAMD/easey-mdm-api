@@ -7,4 +7,12 @@ export class ProgramParamsDTO {
   @IsOptional()
   @Transform(({ value }) => value.split('|').map(item => item.trim()))
   exclude?: Program[];
+
+  @IsOptional()
+  allowanceOnly?: boolean;
+
+  @IsOptional()
+  activeOnly?: boolean;
+
+  
 }

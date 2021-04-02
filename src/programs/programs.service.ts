@@ -18,27 +18,7 @@ export class ProgramsService {
   async getAllPrograms(
     programParamsDTO: ProgramParamsDTO,
   ): Promise<ProgramDTO[]> {
-    const { exclude } = programParamsDTO;
-
-    let excludeProgram = [];
-    if (exclude) {
-      excludeProgram = exclude.map(value => {
-        return value.toUpperCase();
-      });
-    }
-
-    let findOpts: FindManyOptions = {
-      select: [
-        'programCode',
-        'programDescription',
-        'compParameterCode',
-        'programGroupCode',
-      ],
-      where: { programCode: Not(In(excludeProgram)) },
-      order: { programCode: 'ASC' },
-    };
-
-    const query = await this.repository.find(findOpts);
+    const query = await this.repository.getAllPrograms(programParamsDTO);
     return this.map.many(query);
   }
 }

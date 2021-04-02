@@ -12,6 +12,12 @@ export class ProgramMap extends BaseMap<Program, ProgramDTO> {
       programDescription: entity.programDescription,
       compParameterCode: entity.compParameterCode,
       programGroupCode: entity.programGroupCode,
+      programGroupDescription: entity.programGroup?.programGroupDescription || null,
+      ozoneIndicator: !!+entity.ozoneIndicator,
+      annualIndicator: !+entity.ozoneIndicator,
+      allowanceIndicator: !!+entity.allowCompInd,
+      retiredIndicator: !!entity.tradingEndDate,
+      tradingEndDate: entity.tradingEndDate && entity.tradingEndDate.toISOString().split('T')[0]
     };
   }
 }
