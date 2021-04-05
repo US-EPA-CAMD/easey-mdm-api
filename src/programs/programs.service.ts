@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions, In, Not } from 'typeorm';
 
-import { ProgramsRepository } from './programs.repository';
+import { ProgramRepository } from './program-code.repository';
 import { ProgramMap } from '../maps/program.map';
 import { ProgramDTO } from '../dto/program.dto';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
@@ -10,8 +9,8 @@ import { ProgramParamsDTO } from '../dto/program.params.dto';
 @Injectable()
 export class ProgramsService {
   constructor(
-    @InjectRepository(ProgramsRepository)
-    private repository: ProgramsRepository,
+    @InjectRepository(ProgramRepository)
+    private repository: ProgramRepository,
     private map: ProgramMap,
   ) {}
 
