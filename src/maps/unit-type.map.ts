@@ -11,6 +11,8 @@ export class UnitTypeMap extends BaseMap<UnitType, UnitTypeDTO> {
       unitTypeCode: entity.unitTypeCode,
       unitTypeDescription: entity.unitTypeDescription,
       sortOrder: entity.sortOrder,
+      unitTypeGroupCode: entity.unitTypeGroupCode,
+      unitTypeGroupDescription: entity.unitTypeGroup.unitTypeGroupDescription,
     };
   }
 }
