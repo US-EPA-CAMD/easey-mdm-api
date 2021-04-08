@@ -5,7 +5,7 @@ import { UnitType } from '../entities/unit-type-code.entity';
 @EntityRepository(UnitType)
 export class UnitTypeRepository extends Repository<UnitType> {
   async getAllUnitTypes(): Promise<UnitType[]> {
-    let query = this.createQueryBuilder('ut')
+    const query = this.createQueryBuilder('ut')
       .select([
         'ut.unitTypeCode',
         'ut.unitTypeDescription',
