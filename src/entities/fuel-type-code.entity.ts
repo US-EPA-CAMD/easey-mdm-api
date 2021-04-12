@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryColumn,
+  JoinColumn,
+} from 'typeorm';
+import { FuelGroup } from './fuel-group-code.entity';
 
 @Entity({ name: 'camdecmpsmd.fuel_type_code' })
 export class FuelType extends BaseEntity {
@@ -16,4 +24,16 @@ export class FuelType extends BaseEntity {
     name: 'fuel_group_cd',
   })
   fuelGroupCode: string;
+
+  @ManyToOne(
+    () => FuelGroup,
+    fg => fg.fuelType,
+  )
+  @JoinColumn([
+    {
+      name: 'fuel_group_cd',
+      referencedColumnName: 'fuelGroupCode',
+    },
+  ])
+  fuelGroup: FuelGroup;
 }

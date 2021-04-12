@@ -1,11 +1,11 @@
 import { Test } from '@nestjs/testing';
 
 import { FuelTypesService } from './fuel-types.service';
-import { FuelTypesRepository } from './fuel-types.repository';
+import { FuelTypeRepository } from './fuel-type-code.repository';
 import { FuelTypeMap } from '../maps/fuel-type.map';
 
-const mockFuelTypesRepository = () => ({
-  find: jest.fn(),
+const mockFuelTypeRepository = () => ({
+  getAllFuelTypes: jest.fn(),
 });
 
 const mockMap = () => ({
@@ -14,7 +14,7 @@ const mockMap = () => ({
 
 describe('-- Fuel Types Service --', () => {
   let fuelTypesService;
-  let fuelTypesRepository;
+  let fuelTypeRepository;
   let fuelTypesMap;
 
   beforeEach(async () => {
@@ -22,26 +22,28 @@ describe('-- Fuel Types Service --', () => {
       providers: [
         FuelTypesService,
         {
-          provide: FuelTypesRepository,
-          useFactory: mockFuelTypesRepository,
+          provide: FuelTypeRepository,
+          useFactory: mockFuelTypeRepository,
         },
         { provide: FuelTypeMap, useFactory: mockMap },
       ],
     }).compile();
 
     fuelTypesService = module.get(FuelTypesService);
-    fuelTypesRepository = module.get(FuelTypesRepository);
+    fuelTypeRepository = module.get(FuelTypeRepository);
     fuelTypesMap = module.get(FuelTypeMap);
   });
 
   describe('getAllFuelTypes', () => {
-    it('calls repository.find() and returns all valid fuel types', async () => {
-      fuelTypesRepository.find.mockResolvedValue('list of fuel types');
+    it('calls repository.getAllFuelTypes() and returns all valid fuel types', async () => {
+      fuelTypeRepository.getAllFuelTypes.mockResolvedValue(
+        'list of fuel types',
+      );
       fuelTypesMap.many.mockReturnValue('mapped DTOs');
 
       let result = await fuelTypesService.getAllFuelTypes();
 
-      expect(fuelTypesRepository.find).toHaveBeenCalled();
+      expect(fuelTypeRepository.getAllFuelTypes).toHaveBeenCalled();
       expect(fuelTypesMap.many).toHaveBeenCalled();
       expect(result).toEqual('mapped DTOs');
     });

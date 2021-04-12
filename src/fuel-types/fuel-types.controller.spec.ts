@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
 import { FuelTypeMap } from '../maps/fuel-type.map';
 import { FuelTypesController } from './fuel-types.controller';
-import { FuelTypesRepository } from './fuel-types.repository';
+import { FuelTypeRepository } from './fuel-type-code.repository';
 import { FuelTypesService } from './fuel-types.service';
 
 describe('-- Fuel Types Controller --', () => {
@@ -13,7 +13,7 @@ describe('-- Fuel Types Controller --', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       controllers: [FuelTypesController],
-      providers: [FuelTypesService, FuelTypeMap, FuelTypesRepository],
+      providers: [FuelTypesService, FuelTypeMap, FuelTypeRepository],
     }).compile();
 
     fuelTypesController = module.get(FuelTypesController);

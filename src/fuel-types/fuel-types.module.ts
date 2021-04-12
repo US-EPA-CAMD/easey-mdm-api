@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FuelTypeMap } from 'src/maps/fuel-type.map';
 import { FuelTypesController } from './fuel-types.controller';
 import { FuelTypesService } from './fuel-types.service';
-import { FuelTypesRepository } from './fuel-types.repository';
+import { FuelTypeRepository } from './fuel-type-code.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([FuelTypesRepository])],
+  imports: [TypeOrmModule.forFeature([FuelTypeRepository])],
   controllers: [FuelTypesController],
   providers: [FuelTypeMap, FuelTypesService],
 })
