@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { ProgramsController } from './programs.controller';
 import { ProgramsService } from './programs.service';
 import { ProgramMap } from '../maps/program.map';
-import { ProgramsRepository } from './programs.repository';
+import { ProgramRepository } from './program-code.repository';
 import { ProgramDTO } from '../dto/program.dto';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
 
@@ -14,7 +14,7 @@ describe('-- Programs Controller --', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       controllers: [ProgramsController],
-      providers: [ProgramsService, ProgramMap, ProgramsRepository],
+      providers: [ProgramsService, ProgramMap, ProgramRepository],
     }).compile();
 
     programsController = module.get(ProgramsController);

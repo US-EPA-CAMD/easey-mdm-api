@@ -1,4 +1,4 @@
-export enum Program {
+export enum Programs {
   ARP = 'ARP',
   CAIRNOX = 'CAIRNOX',
   CAIROS = 'CAIROS',

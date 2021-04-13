@@ -1,25 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions } from 'typeorm';
 
 import { UnitTypeDTO } from '../dto/unit-type.dto';
 import { UnitTypeMap } from '../maps/unit-type.map';
-import { UnitTypesRepository } from './unit-types.repository';
+import { UnitTypeRepository } from './unit-type-code.repository';
 
 @Injectable()
 export class UnitTypesService {
   constructor(
-    @InjectRepository(UnitTypesRepository)
-    private repository: UnitTypesRepository,
+    @InjectRepository(UnitTypeRepository)
+    private readonly repository: UnitTypeRepository,
     private map: UnitTypeMap,
   ) {}
 
   async getAllUnitTypes(): Promise<UnitTypeDTO[]> {
-    const findOpts: FindManyOptions = {
-      select: ['unitTypeCode', 'unitTypeDescription', 'sortOrder'],
-    };
-
-    const query = await this.repository.find(findOpts);
+    const query = await this.repository.getAllUnitTypes();
     return this.map.many(query);
   }
 }

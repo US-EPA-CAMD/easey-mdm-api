@@ -11,6 +11,7 @@ export class FuelTypeMap extends BaseMap<FuelType, FuelTypeDTO> {
       fuelTypeCode: entity.fuelTypeCode,
       fuelTypeDescription: entity.fuelTypeDescription,
       fuelGroupCode: entity.fuelGroupCode,
+      fuelGroupDescription: entity.fuelGroup.fuelGroupDescription,
     };
   }
 }

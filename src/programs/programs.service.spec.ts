@@ -1,13 +1,13 @@
 import { Test } from '@nestjs/testing';
 
 import { ProgramsService } from './programs.service';
-import { ProgramsRepository } from './programs.repository';
+import { ProgramRepository } from './program-code.repository';
 import { ProgramMap } from '../maps/program.map';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
-import { Program } from '../enums/program.enum';
+import { Programs } from '../enums/program.enum';
 
-const mockFuelTypesRepository = () => ({
-  find: jest.fn(),
+const mockProgramRepository = () => ({
+  getAllPrograms: jest.fn(),
 });
 
 const mockMap = () => ({
@@ -16,7 +16,7 @@ const mockMap = () => ({
 
 describe('-- Programs Service --', () => {
   let programsService;
-  let programsRepository;
+  let programRepository;
   let programMap;
 
   beforeEach(async () => {
@@ -24,41 +24,41 @@ describe('-- Programs Service --', () => {
       providers: [
         ProgramsService,
         {
-          provide: ProgramsRepository,
-          useFactory: mockFuelTypesRepository,
+          provide: ProgramRepository,
+          useFactory: mockProgramRepository,
         },
         { provide: ProgramMap, useFactory: mockMap },
       ],
     }).compile();
 
     programsService = module.get(ProgramsService);
-    programsRepository = module.get(ProgramsRepository);
+    programRepository = module.get(ProgramRepository);
     programMap = module.get(ProgramMap);
   });
 
   describe('getAllPrograms', () => {
-    it('calls repository.find() and returns all programs except MATS', async () => {
-      programsRepository.find.mockResolvedValue('list of programs');
-      programMap.many.mockReturnValue('mapped DTOs');
-
-      let filters: ProgramParamsDTO = {
-        exclude: [Program.MATS],
-      };
-      let result = await programsService.getAllPrograms(filters);
-
-      expect(programsRepository.find).toHaveBeenCalled();
-      expect(programMap.many).toHaveBeenCalled();
-      expect(result).toEqual('mapped DTOs');
-    });
-
-    it('calls repository.find() and returns all programs', async () => {
-      programsRepository.find.mockResolvedValue('list of programs');
+    it('calls repository.getAllPrograms() and returns all programs', async () => {
+      programRepository.getAllPrograms.mockResolvedValue('list of programs');
       programMap.many.mockReturnValue('mapped DTOs');
 
       let filters = new ProgramParamsDTO();
       let result = await programsService.getAllPrograms(filters);
 
-      expect(programsRepository.find).toHaveBeenCalled();
+      expect(programMap.many).toHaveBeenCalled();
+      expect(result).toEqual('mapped DTOs');
+    });
+
+    it('calls repository.find() and returns all active allowance programs excluding ARP', async () => {
+      programRepository.getAllPrograms.mockResolvedValue('list of programs');
+      programMap.many.mockReturnValue('mapped DTOs');
+
+      let filters: ProgramParamsDTO = {
+        exclude: [Programs.ARP],
+        isActive: true,
+        allowanceOnly: true,
+      };
+      let result = await programsService.getAllPrograms(filters);
+
       expect(programMap.many).toHaveBeenCalled();
       expect(result).toEqual('mapped DTOs');
     });

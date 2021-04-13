@@ -3,8 +3,8 @@ name: Develop Branch Workflow
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
+    paths-ignore:
+    - '.github/**'
 
 jobs:
   Build-Test-Deploy:
@@ -43,3 +43,5 @@ jobs:
           CF_PASSWORD: ${{ secrets.CF_DEV_DEPLOYMENT_SVC_PWD }}
       - name: Deploy
         run: devops/scripts/deploy.sh
+        
+        
