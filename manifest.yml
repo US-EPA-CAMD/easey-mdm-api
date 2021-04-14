@@ -1,7 +1,7 @@
 applications:
   - name: ((name))
     path: .
-    command: npm run start
+    command: ls -l
     memory: ((memory))
     env:
       OPTIMIZE_MEMORY: true
