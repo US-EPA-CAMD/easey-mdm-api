@@ -1,11 +1,11 @@
 import { Test } from '@nestjs/testing';
 
 import { ControlTechnologiesService } from './control-technologies.service';
-import { ControlTechnologiesRepository } from './control-code.repository';
+import { ControlTechnologyRepository } from './control-code.repository';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
 
 const mockControlTechnologiesRepository = () => ({
-  find: jest.fn(),
+  getAllControlTechnologies: jest.fn(),
 });
 
 const mockMap = () => ({
@@ -14,7 +14,7 @@ const mockMap = () => ({
 
 describe('-- Control Technologies Service --', () => {
   let controlTechnologiesService;
-  let controlTechnologiesRepository;
+  let controlTechnologyRepository;
   let controlTechnologiesMap;
 
   beforeEach(async () => {
@@ -22,7 +22,7 @@ describe('-- Control Technologies Service --', () => {
       providers: [
         ControlTechnologiesService,
         {
-          provide: ControlTechnologiesRepository,
+          provide: ControlTechnologyRepository,
           useFactory: mockControlTechnologiesRepository,
         },
         { provide: ControlTechnologyMap, useFactory: mockMap },
@@ -30,18 +30,18 @@ describe('-- Control Technologies Service --', () => {
     }).compile();
 
     controlTechnologiesService = module.get(ControlTechnologiesService);
-    controlTechnologiesRepository = module.get(ControlTechnologiesRepository);
+    controlTechnologyRepository = module.get(ControlTechnologyRepository);
     controlTechnologiesMap = module.get(ControlTechnologyMap);
   });
 
   describe('getAllControlTechnologies', () => {
-    it('calls repository.find() and returns all valid control technologies', async () => {
-        controlTechnologiesRepository.find.mockResolvedValue('list of control technologies');
+    it('calls repository.getAllControlTechnologies() and returns all valid control technologies', async () => {
+      controlTechnologyRepository.getAllControlTechnologies.mockResolvedValue('list of control technologies');
         controlTechnologiesMap.many.mockReturnValue('mapped DTOs');
 
       let result = await controlTechnologiesService.getAllControlTechnologies();
 
-      expect(controlTechnologiesRepository.find).toHaveBeenCalled();
+      expect(controlTechnologyRepository.getAllControlTechnologies).toHaveBeenCalled();
       expect(controlTechnologiesMap.many).toHaveBeenCalled();
       expect(result).toEqual('mapped DTOs');
     });
