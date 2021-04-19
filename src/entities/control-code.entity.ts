@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { ControlEquipParam } from './control-equip-param-code.entity';
 
 @Entity({ name: 'camdecmpsmd.control_code' })
 export class ControlTechnology extends BaseEntity {
@@ -16,4 +24,16 @@ export class ControlTechnology extends BaseEntity {
     name: 'control_equip_param_cd',
   })
   controlEquipParamCode: string;
+
+  @ManyToOne(
+    () => ControlEquipParam,
+    cep => cep.controlTechnology,
+  )
+  @JoinColumn([
+    {
+      name: 'control_equip_param_cd',
+      referencedColumnName: 'controlEquipParamCode',
+    },
+  ])
+  controlEquipParam: ControlEquipParam;
 }

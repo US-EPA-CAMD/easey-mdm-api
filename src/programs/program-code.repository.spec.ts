@@ -18,6 +18,7 @@ const mockQueryBuilder = () => ({
 describe('ProgramRepository', () => {
   let programRepository;
   let queryBuilder;
+  const programDTO = new ProgramDTO();
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -38,7 +39,7 @@ describe('ProgramRepository', () => {
     queryBuilder.leftJoin.mockReturnValue(queryBuilder);
     queryBuilder.andWhere.mockReturnValue(queryBuilder);
     queryBuilder.orderBy.mockReturnValue(queryBuilder);
-    queryBuilder.getMany.mockReturnValue('mockPrograms');
+    queryBuilder.getMany.mockReturnValue(programDTO);
   });
 
   describe('getAllPrograms', () => {
@@ -53,7 +54,7 @@ describe('ProgramRepository', () => {
       result = await programRepository.getAllPrograms(filters);
 
       expect(queryBuilder.getMany).toHaveBeenCalled();
-      expect(result).toEqual('mockPrograms');
+      expect(result).toEqual(programDTO);
     });
     it('calls createQueryBuilder and gets all active allowance programs from the repository', async () => {
       let filters: ProgramParamsDTO = {
@@ -64,7 +65,7 @@ describe('ProgramRepository', () => {
       let result = await programRepository.getAllPrograms(filters);
 
       expect(queryBuilder.getMany).toHaveBeenCalled();
-      expect(result).toEqual('mockPrograms');
+      expect(result).toEqual(programDTO);
     });
   });
 });

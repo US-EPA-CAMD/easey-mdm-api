@@ -14,7 +14,7 @@ import { ProgramParamsDTO } from '../dto/program.params.dto';
 @ApiTags('Programs')
 @Controller()
 export class ProgramsController {
-  constructor(private programsService: ProgramsService) {}
+  constructor(private readonly programsService: ProgramsService) {}
 
   @Get()
   @ApiOkResponse({

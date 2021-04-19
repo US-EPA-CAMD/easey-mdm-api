@@ -12,7 +12,7 @@ import { UnitTypesService } from './unit-types.service';
 @ApiTags('Unit Types')
 @Controller()
 export class UnitTypesController {
-  constructor(private unitTypesService: UnitTypesService) {}
+  constructor(private readonly unitTypesService: UnitTypesService) {}
 
   @Get()
   @ApiOkResponse({

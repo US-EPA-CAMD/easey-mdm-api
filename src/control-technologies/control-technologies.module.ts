@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ControlTechnologiesController } from './control-technologies.controller';
 import { ControlTechnologiesService } from './control-technologies.service';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
-import { ControlTechnologiesRepository } from './control-technologies.repository';
+import { ControlTechnologyRepository } from './control-code.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ControlTechnologiesRepository])],
+  imports: [TypeOrmModule.forFeature([ControlTechnologyRepository])],
   controllers: [ControlTechnologiesController],
   providers: [ControlTechnologyMap, ControlTechnologiesService],
 })

@@ -12,7 +12,7 @@ import { ControlTechnologiesService } from './control-technologies.service';
 @ApiTags('Control Technologies')
 @Controller()
 export class ControlTechnologiesController {
-  constructor(private controlTechnologiesService: ControlTechnologiesService) {}
+  constructor(private readonly controlTechnologiesService: ControlTechnologiesService) {}
 
   @Get()
   @ApiOkResponse({

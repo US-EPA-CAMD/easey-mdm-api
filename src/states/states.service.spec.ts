@@ -3,6 +3,7 @@ import { Test } from '@nestjs/testing';
 import { StatesService } from './states.service';
 import { StatesRepository } from './states.repository';
 import { StateMap } from '../maps/state.map';
+import { StateDTO } from '../dto/state.dto';
 
 const mockStatesRepository = () => ({
   find: jest.fn(),
@@ -36,14 +37,15 @@ describe('-- States Service --', () => {
 
   describe('getAllStates', () => {
     it('repository.find() and returns all states', async () => {
+      const stateDto = new StateDTO();
       statesRepository.find.mockResolvedValue('list of states');
-      stateMap.many.mockReturnValue('mapped DTOs');
+      stateMap.many.mockReturnValue(stateDto);
 
       let result = await statesService.getAllStates();
 
       expect(statesRepository.find).toHaveBeenCalled();
       expect(stateMap.many).toHaveBeenCalled();
-      expect(result).toEqual('mapped DTOs');
+      expect(result).toEqual(stateDto);
     });
   });
 });

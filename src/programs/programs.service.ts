@@ -10,8 +10,8 @@ import { ProgramParamsDTO } from '../dto/program.params.dto';
 export class ProgramsService {
   constructor(
     @InjectRepository(ProgramRepository)
-    private repository: ProgramRepository,
-    private map: ProgramMap,
+    private readonly repository: ProgramRepository,
+    private readonly map: ProgramMap,
   ) {}
 
   async getAllPrograms(
