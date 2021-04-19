@@ -1,25 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions } from 'typeorm';
 
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
-import { ControlTechnologiesRepository } from './control-technologies.repository';
+import { ControlTechnologyRepository } from './control-code.repository';
 
 @Injectable()
 export class ControlTechnologiesService {
   constructor(
-    @InjectRepository(ControlTechnologiesRepository)
-    private repository: ControlTechnologiesRepository,
-    private map: ControlTechnologyMap,
+    @InjectRepository(ControlTechnologyRepository)
+    private readonly repository: ControlTechnologyRepository,
+    private readonly map: ControlTechnologyMap,
   ) {}
 
   async getAllControlTechnologies(): Promise<ControlTechnologyDTO[]> {
-    const findOpts: FindManyOptions = {
-      select: ['controlCode', 'controlDescription', 'controlEquipParamCode'],
-    };
-
-    const query = await this.repository.find(findOpts);
+    const query = await this.repository.getAllControlTechnologies();
     return this.map.many(query);
   }
 }

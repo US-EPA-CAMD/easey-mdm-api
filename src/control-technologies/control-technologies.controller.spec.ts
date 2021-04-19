@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 
 import { ControlTechnologiesService } from './control-technologies.service';
 import { ControlTechnologiesController } from './control-technologies.controller';
-import { ControlTechnologiesRepository } from './control-technologies.repository';
+import { ControlTechnologiesRepository } from './control-code.repository';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
 import { ControlTechnologyDTO } from 'src/dto/control-technology.dto';
 

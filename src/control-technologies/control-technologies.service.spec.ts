@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 
 import { ControlTechnologiesService } from './control-technologies.service';
-import { ControlTechnologiesRepository } from './control-technologies.repository';
+import { ControlTechnologiesRepository } from './control-code.repository';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
 
 const mockControlTechnologiesRepository = () => ({
