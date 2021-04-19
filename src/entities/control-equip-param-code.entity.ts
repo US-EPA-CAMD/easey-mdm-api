@@ -12,7 +12,7 @@ export class ControlEquipParam extends BaseEntity {
   @Column({
     name: 'control_equip_param_desc',
   })
-  controlEquipParamDesc: string;
+  controlEquipParamDescription: string;
 
   @OneToMany(
     () => ControlTechnology,

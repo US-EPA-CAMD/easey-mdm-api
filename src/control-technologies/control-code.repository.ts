@@ -10,7 +10,7 @@ export class ControlTechnologyRepository extends Repository<ControlTechnology> {
         'ct.controlCode',
         'ct.controlDescription',
         'ct.controlEquipParamCode',
-        'cep.controlEquipParamDesc',
+        'cep.controlEquipParamDescription',
       ])
       .innerJoin('ct.controlEquipParam', 'cep')
       .orderBy('ct.controlCode');
