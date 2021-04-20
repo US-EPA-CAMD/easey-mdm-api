@@ -8,7 +8,7 @@ import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 const mockQueryBuilder = () => ({
   getMany: jest.fn(),
   select: jest.fn(),
-  innerJoin: jest.fn(),
+  leftJoin: jest.fn(),
   orderBy: jest.fn(),
 });
 
@@ -36,7 +36,7 @@ describe('ControlTechnologyRepository', () => {
       .fn()
       .mockReturnValue(queryBuilder);
     queryBuilder.select.mockReturnValue(queryBuilder);
-    queryBuilder.innerJoin.mockReturnValue(queryBuilder);
+    queryBuilder.leftJoin.mockReturnValue(queryBuilder);
     queryBuilder.orderBy.mockReturnValue(queryBuilder);
     queryBuilder.getMany.mockReturnValue(controlTechnologyDto);
   });
