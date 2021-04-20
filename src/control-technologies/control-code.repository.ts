@@ -12,7 +12,7 @@ export class ControlTechnologyRepository extends Repository<ControlTechnology> {
         'ct.controlEquipParamCode',
         'cep.controlEquipParamDescription',
       ])
-      .innerJoin('ct.controlEquipParam', 'cep')
+      .leftJoin('ct.controlEquipParam', 'cep')
       .orderBy('ct.controlCode');
 
     return query.getMany();
