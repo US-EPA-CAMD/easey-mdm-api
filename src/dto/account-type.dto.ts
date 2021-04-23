@@ -1,7 +1,6 @@
 export class AccountTypeDTO {
-    accountTypeCode: string;
-    accountTypeDescription: string;
-    accountTypeGroupCode: string;
-    accountTypeGroupDescription: string;
-  }
-  
+  accountTypeCode: string;
+  accountTypeDescription: string;
+  accountTypeGroupCode: string;
+  accountTypeGroupDescription: string;
+}
