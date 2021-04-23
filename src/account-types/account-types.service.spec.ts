@@ -3,19 +3,17 @@ import { Test } from '@nestjs/testing';
 import { AccountTypesService } from './account-types.service';
 import { AccountTypeRepository } from './account-type-code.repository';
 import { AccountTypeMap } from '../maps/account-type.map';
+import { AccountType } from '../entities/account-type-code.entity';
+import { AccountTypeGroup } from '../entities/account-type-group-code.entity';
+import { AccountTypeDTO } from '../dto/account-type.dto';
 
 const mockAccountTypeRepository = () => ({
   getAllAccountTypes: jest.fn(),
 });
 
-const mockMap = () => ({
-  many: jest.fn(),
-});
-
 describe('-- Account Type Service --', () => {
   let accountTypesService;
   let accountTypeRepository;
-  let accountTypesMap;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -25,27 +23,39 @@ describe('-- Account Type Service --', () => {
           provide: AccountTypeRepository,
           useFactory: mockAccountTypeRepository,
         },
-        { provide: AccountTypeMap, useFactory: mockMap },
+        AccountTypeMap,
       ],
     }).compile();
 
     accountTypesService = module.get(AccountTypesService);
     accountTypeRepository = module.get(AccountTypeRepository);
-    accountTypesMap = module.get(AccountTypeMap);
   });
 
   describe('getAllAccountTypes', () => {
     it('repository.getAllAccountTypes() and returns all valid account types', async () => {
-      accountTypeRepository.getAllAccountTypes.mockResolvedValue(
-        'list of account types',
-      );
-      accountTypesMap.many.mockReturnValue('mapped DTOs');
+      let accountTypeEntity: AccountType = new AccountType();
+      let accountTypeGroupEntity: AccountTypeGroup = new AccountTypeGroup();
+      accountTypeEntity.accountTypeCode = '';
+      accountTypeEntity.accountTypeDescription = '';
+      accountTypeEntity.accountTypeGroupCode = '';
+      accountTypeGroupEntity.accountTypeGroupDescription = '';
+      accountTypeEntity.accountTypeGroup = accountTypeGroupEntity;
+
+      const accountTypeDTO: AccountTypeDTO = {
+        accountTypeCode: '',
+        accountTypeDescription: '',
+        accountTypeGroupCode: '',
+        accountTypeGroupDescription: '',
+      };
+
+      accountTypeRepository.getAllAccountTypes.mockResolvedValue([
+        accountTypeEntity,
+      ]);
 
       let result = await accountTypesService.getAllAccountTypes();
 
       expect(accountTypeRepository.getAllAccountTypes).toHaveBeenCalled();
-      expect(accountTypesMap.many).toHaveBeenCalled();
-      expect(result).toEqual('mapped DTOs');
+      expect(result).toEqual([accountTypeDTO]);
     });
   });
 });
