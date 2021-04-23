@@ -8,7 +8,7 @@ export class ProgramRepository extends Repository<Program> {
   async getAllPrograms(programParamsDTO: ProgramParamsDTO): Promise<Program[]> {
     const { exclude, allowanceOnly, isActive } = programParamsDTO;
 
-    let query = this.createQueryBuilder('prg')
+    const query = this.createQueryBuilder('prg')
       .select([
         'prg.programCode',
         'prg.programDescription',
