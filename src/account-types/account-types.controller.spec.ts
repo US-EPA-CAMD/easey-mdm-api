@@ -5,6 +5,7 @@ import { AccountTypesController } from './account-types.controller';
 import { AccountTypeRepository } from './account-type-code.repository';
 import { AccountTypeMap } from '../maps/account-type.map';
 import { AccountTypeDTO } from '../dto/account-type.dto';
+import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
 
 describe('-- Account Types Controller --', () => {
   let accountTypesController;
@@ -24,13 +25,14 @@ describe('-- Account Types Controller --', () => {
     jest.resetAllMocks();
   });
 
-  describe('getAllAccountTypes', () => {
+  describe('* getAllAccountTypes', () => {
     it('should call the service and return a list of valid account types', async () => {
       const expectedResult: AccountTypeDTO[] = [];
+      const accountTypeParamsDto = new AccountTypeParamsDTO();
       jest
         .spyOn(accountTypesService, 'getAllAccountTypes')
         .mockResolvedValue(expectedResult);
-      expect(await accountTypesController.getAllAccountTypes()).toBe(
+      expect(await accountTypesController.getAllAccountTypes(accountTypeParamsDto)).toBe(
         expectedResult,
       );
     });

@@ -3,11 +3,13 @@ import {
   ApiOkResponse,
   ApiBadRequestResponse,
   ApiNotFoundResponse,
+  ApiQuery,
 } from '@nestjs/swagger';
-import { Get, Controller } from '@nestjs/common';
+import { Get, Controller, Query } from '@nestjs/common';
 
 import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypesService } from './account-types.service';
+import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
 
 @ApiTags('Account Types')
 @Controller()
@@ -24,7 +26,15 @@ export class AccountTypesController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
-  getAllAccountTypes(): Promise<AccountTypeDTO[]> {
-    return this.accountTypesService.getAllAccountTypes();
+  @ApiQuery({
+    style: 'pipeDelimited',
+    name: 'exclude',
+    required: false,
+    explode: false,
+  })
+  getAllAccountTypes(
+    @Query() accountTypeParamsDTO: AccountTypeParamsDTO,
+  ): Promise<AccountTypeDTO[]> {
+    return this.accountTypesService.getAllAccountTypes(accountTypeParamsDTO);
   }
 }
