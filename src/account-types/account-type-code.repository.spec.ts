@@ -4,8 +4,11 @@ import { SelectQueryBuilder } from 'typeorm';
 import { AccountTypeRepository } from './account-type-code.repository';
 import { AccountType } from '../entities/account-type-code.entity';
 import { AccountTypeDTO } from '../dto/account-type.dto';
+import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
+import { AccountTypes } from '../enums/account-type.enum';
 
 const mockQueryBuilder = () => ({
+  andWhere: jest.fn(),
   getMany: jest.fn(),
   select: jest.fn(),
   innerJoin: jest.fn(),
@@ -44,7 +47,10 @@ describe('AccountTypeRepository', () => {
 
   describe('getAllAccountTypes', () => {
     it('calls createQueryBuilder and gets all accountTypes from the repository', async () => {
-      let result = await accountTypeRepository.getAllAccountTypes();
+      let filters: AccountTypeParamsDTO = {
+        exclude: [AccountTypes.CASURR],
+      };
+      let result = await accountTypeRepository.getAllAccountTypes(filters);
       expect(queryBuilder.getMany).toHaveBeenCalled();
       expect(result).toEqual(accountTypeDTO);
     });
