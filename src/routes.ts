@@ -6,6 +6,7 @@ import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ProgramsModule } from './programs/programs.module';
 import { AccountTypesModule } from './account-types/account-types.module';
 import { StatesModule } from './states/states.module';
+import { AccountNumbersModule } from './account-numbers/account-numbers.module';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: '/states',
     module: StatesModule,
+  },
+  {
+    path: '/account-numbers',
+    module: AccountNumbersModule,
   },
 ];
 export default routes;
