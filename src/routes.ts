@@ -4,6 +4,7 @@ import { ControlTechnologiesModule } from './control-technologies/control-techno
 import { FuelTypesModule } from './fuel-types/fuel-types.module';
 import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ProgramsModule } from './programs/programs.module';
+import { AccountTypesModule } from './account-types/account-types.module';
 import { StatesModule } from './states/states.module';
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: '/programs',
     module: ProgramsModule,
+  },
+  {
+    path: '/account-types',
+    module: AccountTypesModule,
   },
   {
     path: '/states',

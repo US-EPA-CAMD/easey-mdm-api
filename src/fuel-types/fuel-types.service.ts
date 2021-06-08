@@ -10,7 +10,7 @@ export class FuelTypesService {
   constructor(
     @InjectRepository(FuelTypeRepository)
     private readonly repository: FuelTypeRepository,
-    private map: FuelTypeMap,
+    private readonly map: FuelTypeMap,
   ) {}
 
   async getAllFuelTypes(): Promise<FuelTypeDTO[]> {

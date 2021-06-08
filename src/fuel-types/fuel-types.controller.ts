@@ -12,7 +12,7 @@ import { FuelTypesService } from './fuel-types.service';
 @ApiTags('Fuel Types')
 @Controller()
 export class FuelTypesController {
-  constructor(private fuelTypesService: FuelTypesService) {}
+  constructor(private readonly fuelTypesService: FuelTypesService) {}
 
   @Get()
   @ApiOkResponse({

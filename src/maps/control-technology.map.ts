@@ -14,6 +14,8 @@ export class ControlTechnologyMap extends BaseMap<
       controlCode: entity.controlCode,
       controlDescription: entity.controlDescription,
       controlEquipParamCode: entity.controlEquipParamCode,
+      controlEquipParamDescription:
+        entity.controlEquipParam?.controlEquipParamDescription || null,
     };
   }
 }

@@ -10,7 +10,7 @@ export class UnitTypesService {
   constructor(
     @InjectRepository(UnitTypeRepository)
     private readonly repository: UnitTypeRepository,
-    private map: UnitTypeMap,
+    private readonly map: UnitTypeMap,
   ) {}
 
   async getAllUnitTypes(): Promise<UnitTypeDTO[]> {
