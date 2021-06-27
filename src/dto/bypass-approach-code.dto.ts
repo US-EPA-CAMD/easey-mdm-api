@@ -1,4 +1,4 @@
 export class BypassApproachCodeDTO {
-  bypassApproachCd: string;
-  description: string;
+  bypassApproachCode: string;
+  bypassApproachCodeDescription: string;
 }

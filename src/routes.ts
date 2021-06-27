@@ -6,7 +6,7 @@ import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ProgramsModule } from './programs/programs.module';
 import { AccountTypesModule } from './account-types/account-types.module';
 import { StatesModule } from './states/states.module';
-import { BypassApproachCodesModule } from './bypass-approach-codes/bypass-approach-codes.module';
+import { BypassApproachCodeModule } from './bypass-approach-code/bypass-approach-code.module';
 
 const routes: Routes = [
   {
@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: '/bypass-approach-codes',
-    module: BypassApproachCodesModule,
+    module: BypassApproachCodeModule,
   },
 ];
 export default routes;
