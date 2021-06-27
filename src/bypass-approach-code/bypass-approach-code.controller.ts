@@ -10,6 +10,8 @@ export class BypassApproachCodesController {
 
   @Get()
   @ApiOkResponse({
+    isArray: true,
+    type: BypassApproachCodeDTO,
     description: 'Retrieves all Bypass-Approach Codes',
   })
   @ApiBadRequestResponse({
@@ -21,6 +23,7 @@ export class BypassApproachCodesController {
 
   @Put('/:id')
   @ApiOkResponse({
+    type: BypassApproachCodeDTO,
     description: 'Updates Bypass-Approach Code',
   })
   @ApiBadRequestResponse({
