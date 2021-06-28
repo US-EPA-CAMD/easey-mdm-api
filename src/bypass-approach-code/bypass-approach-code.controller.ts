@@ -20,19 +20,4 @@ export class BypassApproachCodesController {
   getBypassApproachCodes(): Promise<BypassApproachCodeDTO[]> {
     return this.service.getBypassApproachCodes();
   }
-
-  @Put('/:id')
-  @ApiOkResponse({
-    type: BypassApproachCodeDTO,
-    description: 'Updates Bypass-Approach Code',
-  })
-  @ApiBadRequestResponse({
-    description: 'Invalid Request',
-  })
-  updateBypassApproachCode(
-    @Param('id') id: string,
-    @Body() payload: BypassApproachCodeDTO,
-  ): Promise<BypassApproachCodeDTO> {
-    return this.service.updateBypassApproachCode(id, payload);
-  }
 }
