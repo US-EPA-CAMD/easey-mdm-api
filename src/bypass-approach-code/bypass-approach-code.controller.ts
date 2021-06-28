@@ -17,8 +17,8 @@ export class BypassApproachCodesController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  getAllBypassApproachCodes(): Promise<BypassApproachCodeDTO[]> {
-    return this.service.getAllBypassApproachCodes();
+  getBypassApproachCodes(): Promise<BypassApproachCodeDTO[]> {
+    return this.service.getBypassApproachCodes();
   }
 
   @Put('/:id')

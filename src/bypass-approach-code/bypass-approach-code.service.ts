@@ -10,31 +10,31 @@ export class BypassApproachCodeService {
     private readonly repository: BypassApproachCodeRepository,
   ) {}
 
-  async getAllBypassApproachCodes(): Promise<BypassApproachCodeDTO[]> {
+  async getBypassApproachCodes(): Promise<BypassApproachCodeDTO[]> {
     const result = await this.repository.getAllBypassApproachCodes();
 
     return result;
   }
 
   async getBypassApproachCode(id: string): Promise<BypassApproachCodeDTO> {
-    const result = this.repository.findOne(id)
+    const result = this.repository.findOne(id);
 
     if (!result) {
-      throw new NotFoundException('Invalid Request')
+      throw new NotFoundException('Invalid Request');
     }
 
-    return result
+    return result;
   }
 
   async updateBypassApproachCode(
     id: string,
     payload: BypassApproachCodeDTO,
   ): Promise<BypassApproachCodeDTO> {
-    const result = await this.getBypassApproachCode(id)
-    
-    result.bypassApproachCode = id,
-    result.bypassApproachCodeDescription = payload.bypassApproachCode
+    const result = await this.getBypassApproachCode(id);
 
-    return await this.repository.save(result)
+    (result.bypassApproachCode = id),
+      (result.bypassApproachCodeDescription = payload.bypassApproachCode);
+
+    return await this.repository.save(result);
   }
 }
