@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { SubDataCodeService } from './sub-data-code.service';
 import { SubDataCodeDto } from '../dto/sub-data-code.dto';
-import { ApiBadRequestResponse, ApiOkResponse } from '@nestjs/swagger';
-
+import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+@ApiTags('Substitute Data Codes')
 @Controller('sub-data-code')
 export class SubDataCodeController {
   constructor(private readonly subDataCodeService: SubDataCodeService) {}
