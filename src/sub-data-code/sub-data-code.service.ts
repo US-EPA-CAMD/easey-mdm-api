@@ -10,17 +10,17 @@ export class SubDataCodeService {
     private readonly repository: SubDataCodeRepository,
   ) {}
 
-  create(createSubDataCodeDto: SubDataCodeDto) {
+  createSubDataCode(createSubDataCodeDto: SubDataCodeDto) {
     return 'This action adds a new subDataCode';
   }
 
-  async findAllSubDataCode(): Promise<SubDataCodeDto[]> {
+  async getSubDataCodes(): Promise<SubDataCodeDto[]> {
     const result = await this.repository.findAllSubDataCodes();
 
     return result;
   }
 
-  findOneSubDataCode(id: string): Promise<SubDataCodeDto> {
+  getSubDataCode(id: string): Promise<SubDataCodeDto> {
     const result = this.repository.findOne(id);
 
     if (!result) {
@@ -34,7 +34,7 @@ export class SubDataCodeService {
     id: string,
     payload: SubDataCodeDto,
   ): Promise<SubDataCodeDto> {
-    const result = await this.findOneSubDataCode(id);
+    const result = await this.getSubDataCode(id);
 
     (result.subDataCode = payload.subDataCode),
       (result.subDataCodeDescription = payload.subDataCode);

@@ -29,8 +29,8 @@ export class SubDataCodeController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  findAllSubDataCode() {
-    return this.subDataCodeService.findAllSubDataCode();
+  getSubDataCodes(): Promise<SubDataCodeDto[]> {
+    return this.subDataCodeService.getSubDataCodes();
   }
 
   @Put(':id')
@@ -44,7 +44,7 @@ export class SubDataCodeController {
   updateSubDataCode(
     @Param('id') id: string,
     @Body() updateSubDataCodeDto: SubDataCodeDto,
-  ) {
+  ): Promise<SubDataCodeDto> {
     return this.subDataCodeService.updateSubDataCode(id, updateSubDataCodeDto);
   }
 
