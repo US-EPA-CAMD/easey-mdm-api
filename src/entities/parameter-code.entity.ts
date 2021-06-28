@@ -1,20 +1,21 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({ name: 'camdecmpsmd.substitute_data_code' })
-export class SubDataCode extends BaseEntity {
+@Entity('camdecmpsmd.parameter_code')
+export class ParameterCode extends BaseEntity {
   @PrimaryColumn({
     type: 'varchar',
     length: 7,
     nullable: false,
-    name: 'sub_data_cd',
+    name: 'parameter_cd',
   })
-  subDataCode: string;
+  parameterCode: string;
 
   @Column({
     type: 'varchar',
     length: 1000,
     nullable: false,
-    name: 'sub_data_cd_description',
+    unique: true,
+    name: 'parameter_cd_description',
   })
-  subDataCodeDescription: string;
+  parameterCodeDescription: string;
 }

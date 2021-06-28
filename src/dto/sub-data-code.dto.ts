@@ -1,4 +1,4 @@
-export class SubDataCodeDto {
+export class SubDataCodeDTO {
   subDataCode: string;
   subDataCodeDescription: string;
 }

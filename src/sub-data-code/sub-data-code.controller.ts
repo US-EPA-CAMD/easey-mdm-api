@@ -8,7 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { SubDataCodeService } from './sub-data-code.service';
-import { SubDataCodeDto } from '../dto/sub-data-code.dto';
+import { SubDataCodeDTO } from '../dto/sub-data-code.dto';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 @ApiTags('Substitute Data Codes')
 @Controller()
@@ -18,13 +18,13 @@ export class SubDataCodeController {
   @Get()
   @ApiOkResponse({
     isArray: true,
-    type: SubDataCodeDto,
+    type: SubDataCodeDTO,
     description: 'Retrieves all Substitue Data Codes',
   })
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  getSubDataCodes(): Promise<SubDataCodeDto[]> {
+  getSubDataCodes(): Promise<SubDataCodeDTO[]> {
     return this.subDataCodeService.getSubDataCodes();
   }
 }
