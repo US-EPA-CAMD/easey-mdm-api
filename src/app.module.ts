@@ -13,6 +13,7 @@ import { FuelTypesModule } from './fuel-types/fuel-types.module';
 import { ProgramsModule } from './programs/programs.module';
 import { AccountTypesModule } from './account-types/account-types.module';
 import { StatesModule } from './states/states.module';
+import { BypassApproachCodeModule } from './bypass-approach-code/bypass-approach-code.module';
 import { SubDataCodeModule } from './sub-data-code/sub-data-code.module';
 
 @Module({
@@ -31,7 +32,8 @@ import { SubDataCodeModule } from './sub-data-code/sub-data-code.module';
     ProgramsModule,
     AccountTypesModule,
     StatesModule,
-    SubDataCodeModule
+    BypassApproachCodeModule,
+    SubDataCodeModule,
   ],
 })
 export class AppModule {}
