@@ -14,7 +14,7 @@ export class SubDataCode extends BaseEntity {
     type: 'varchar',
     length: 1000,
     nullable: false,
-    name: 'bypass_approach_cd_description',
+    name: 'sub_data_cd_description',
   })
   subDataCodeDescription: string;
 }
