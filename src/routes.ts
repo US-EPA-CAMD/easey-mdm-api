@@ -35,7 +35,7 @@ const routes: Routes = [
     module: StatesModule,
   },
   {
-    path: './sub-data-codes',
+    path: '/sub-data-codes',
     module: SubDataCodeModule,
   },
   {
