@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SubDataCodeDto } from '../dto/sub-data-code.dto';
+import { SubDataCodeDTO } from '../dto/sub-data-code.dto';
 import { SubDataCodeRepository } from './sub-data-code.repository';
 
 @Injectable()
@@ -10,17 +10,17 @@ export class SubDataCodeService {
     private readonly repository: SubDataCodeRepository,
   ) {}
 
-  createSubDataCode(createSubDataCodeDto: SubDataCodeDto) {
+  createSubDataCode(createSubDataCodeDto: SubDataCodeDTO) {
     return 'This action adds a new subDataCode';
   }
 
-  async getSubDataCodes(): Promise<SubDataCodeDto[]> {
+  async getSubDataCodes(): Promise<SubDataCodeDTO[]> {
     const result = await this.repository.findAllSubDataCodes();
 
     return result;
   }
 
-  getSubDataCode(id: string): Promise<SubDataCodeDto> {
+  getSubDataCode(id: string): Promise<SubDataCodeDTO> {
     const result = this.repository.findOne(id);
 
     if (!result) {
@@ -32,8 +32,8 @@ export class SubDataCodeService {
 
   async updateSubDataCode(
     id: string,
-    payload: SubDataCodeDto,
-  ): Promise<SubDataCodeDto> {
+    payload: SubDataCodeDTO,
+  ): Promise<SubDataCodeDTO> {
     const result = await this.getSubDataCode(id);
 
     (result.subDataCode = payload.subDataCode),
