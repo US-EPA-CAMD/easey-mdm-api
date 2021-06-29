@@ -9,6 +9,7 @@ import { StatesModule } from './states/states.module';
 import { SubDataCodeModule } from './sub-data-code/sub-data-code.module';
 import { BypassApproachCodeModule } from './bypass-approach-code/bypass-approach-code.module';
 import { ParameterCodeModule } from './parameter-code/parameter-code.module';
+import { MethodCodeModule } from './method-code/method-code.module';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: '/parameter-codes',
     module: ParameterCodeModule,
+  },
+  {
+    path: '/method-codes',
+    module: MethodCodeModule,
   },
 ];
 export default routes;
