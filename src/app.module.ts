@@ -15,6 +15,7 @@ import { AccountTypesModule } from './account-types/account-types.module';
 import { StatesModule } from './states/states.module';
 import { BypassApproachCodeModule } from './bypass-approach-code/bypass-approach-code.module';
 import { SubDataCodeModule } from './sub-data-code/sub-data-code.module';
+import { MethodCodeModule } from './method-code/method-code.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { SubDataCodeModule } from './sub-data-code/sub-data-code.module';
     StatesModule,
     BypassApproachCodeModule,
     SubDataCodeModule,
+    MethodCodeModule,
   ],
 })
 export class AppModule {}
