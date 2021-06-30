@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BypassApproachCodeDTO } from 'src/dto/bypass-approach-code.dto';
+
+import { BypassApproachCodeDTO } from '../dto/bypass-approach-code.dto';
 import { BypassApproachCodeRepository } from './bypass-approach-code.repository';
 
 @Injectable()

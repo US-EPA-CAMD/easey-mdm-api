@@ -1,5 +1,6 @@
-import { SubDataCode } from 'src/entities/sub-data-code.entity';
 import { EntityRepository, Repository } from 'typeorm';
+
+import { SubDataCode } from '../entities/sub-data-code.entity';
 
 @EntityRepository(SubDataCode)
 export class SubDataCodeRepository extends Repository<SubDataCode> {

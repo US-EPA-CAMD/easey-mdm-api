@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Param, Put } from '@nestjs/common';
+import { Controller, Get, Param, Put } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { BypassApproachCodeDTO } from 'src/dto/bypass-approach-code.dto';
+import { BypassApproachCodeDTO } from '../dto/bypass-approach-code.dto';
 import { BypassApproachCodeService } from './bypass-approach-code.service';
 
 @ApiTags('Bypass Approach Codes')
