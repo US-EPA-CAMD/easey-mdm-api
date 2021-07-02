@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { ParameterCodeService } from './parameter-code.service';
-import { ParameterCodeController } from './parameter-code.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ParameterCodeController } from './parameter-code.controller';
+import { ParameterCodeService } from './parameter-code.service';
 import { ParameterCodeRepository } from './parameter-code.repository';
 
 @Module({

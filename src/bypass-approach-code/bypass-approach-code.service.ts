@@ -12,30 +12,30 @@ export class BypassApproachCodeService {
   ) {}
 
   async getBypassApproachCodes(): Promise<BypassApproachCodeDTO[]> {
-    const result = await this.repository.getAllBypassApproachCodes();
+    const result = await this.repository.getBypassApproachCodes();
 
     return result;
   }
 
-  async getBypassApproachCode(id: string): Promise<BypassApproachCodeDTO> {
-    const result = this.repository.findOne(id);
+  // async getBypassApproachCode(id: string): Promise<BypassApproachCodeDTO> {
+  //   const result = this.repository.findOne(id);
 
-    if (!result) {
-      throw new NotFoundException('Invalid Request');
-    }
+  //   if (!result) {
+  //     throw new NotFoundException('Invalid Request');
+  //   }
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  async updateBypassApproachCode(
-    id: string,
-    payload: BypassApproachCodeDTO,
-  ): Promise<BypassApproachCodeDTO> {
-    const result = await this.getBypassApproachCode(id);
+  // async updateBypassApproachCode(
+  //   id: string,
+  //   payload: BypassApproachCodeDTO,
+  // ): Promise<BypassApproachCodeDTO> {
+  //   const result = await this.getBypassApproachCode(id);
 
-    (result.bypassApproachCode = id),
-      (result.bypassApproachCodeDescription = payload.bypassApproachCode);
+  //   (result.bypassApproachCode = id),
+  //     (result.bypassApproachCodeDescription = payload.bypassApproachCode);
 
-    return await this.repository.save(result);
-  }
+  //   return await this.repository.save(result);
+  // }
 }

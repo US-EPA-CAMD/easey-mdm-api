@@ -1,18 +1,54 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { SubDataCodeRepository } from './sub-data-code.repository';
 import { SubDataCodeService } from './sub-data-code.service';
 
+const mockSubDataCodeRepository = () => ({
+  getSubDataCodes: jest.fn(() => []),
+  findOne: jest.fn(),
+});
+
 describe('SubDataCodeService', () => {
-  let service: SubDataCodeService;
+  let subDataCodeService: SubDataCodeService;
+  let subDataCodeRepository: SubDataCodeRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [SubDataCodeService],
+      providers: [
+        SubDataCodeService,
+        {
+          provide: SubDataCodeRepository,
+          useFactory: mockSubDataCodeRepository,
+        },
+      ],
     }).compile();
 
-    service = module.get<SubDataCodeService>(SubDataCodeService);
+    subDataCodeService = module.get<SubDataCodeService>(SubDataCodeService);
+    subDataCodeRepository = module.get<SubDataCodeRepository>(
+      SubDataCodeRepository,
+    );
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  describe('getSubDataCodes', () => {
+    it('calls the SubDataCodeRepository.getSubDataCodes and returns a result', async () => {
+      const result = await subDataCodeService.getSubDataCodes();
+      expect(result).toEqual([]);
+      expect(subDataCodeRepository.getSubDataCodes).toHaveBeenCalled();
+    });
   });
+
+  // describe('getSubDataCode', () => {
+  //   it('calls the SubDataCodeRepository.findOne and return a result', async () => {
+  //     subDataCodeRepository.findOne.mockResolvedValue('someValue');
+  //     const result = await subDataCodeService.getSubDataCode('id');
+  //     expect(result).toEqual('someValue');
+  //   });
+  // });
+
+  // describe('updateSubDataCode', () => {
+  //   it('calls the SubDataCodeService.getSubDataCode and return a result', async () => {
+  //     subDataCodeRepository.findOne.mockResolvedValue('someValue');
+  //     const result = await subDataCodeService.getSubDataCode('id');
+  //     expect(result).toEqual('someValue');
+  //   });
+  // });
 });

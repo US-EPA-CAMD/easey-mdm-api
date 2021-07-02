@@ -6,7 +6,7 @@ import { BypassApproachCode } from '../entities/bypass-approach-code.entity';
 export class BypassApproachCodeRepository extends Repository<
   BypassApproachCode
 > {
-  async getAllBypassApproachCodes(): Promise<BypassApproachCode[]> {
+  async getBypassApproachCodes(): Promise<BypassApproachCode[]> {
     const query = await this.createQueryBuilder('bac').select([
       'bac.bypassApproachCode',
       'bac.bypassApproachCodeDescription',

@@ -10,39 +10,39 @@ export class SubDataCodeService {
     private readonly repository: SubDataCodeRepository,
   ) {}
 
-  createSubDataCode(createSubDataCodeDto: SubDataCodeDTO) {
-    return 'This action adds a new subDataCode';
-  }
+  // createSubDataCode(createSubDataCodeDto: SubDataCodeDTO) {
+  //   return 'This action adds a new subDataCode';
+  // }
 
   async getSubDataCodes(): Promise<SubDataCodeDTO[]> {
-    const result = await this.repository.findAllSubDataCodes();
+    const result = await this.repository.getSubDataCodes();
 
     return result;
   }
 
-  getSubDataCode(id: string): Promise<SubDataCodeDTO> {
-    const result = this.repository.findOne(id);
+  // getSubDataCode(id: string): Promise<SubDataCodeDTO> {
+  //   const result = this.repository.findOne(id);
 
-    if (!result) {
-      throw new Error('Invalid Request');
-    }
+  //   if (!result) {
+  //     throw new Error('Invalid Request');
+  //   }
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  async updateSubDataCode(
-    id: string,
-    payload: SubDataCodeDTO,
-  ): Promise<SubDataCodeDTO> {
-    const result = await this.getSubDataCode(id);
+  // async updateSubDataCode(
+  //   id: string,
+  //   payload: SubDataCodeDTO,
+  // ): Promise<SubDataCodeDTO> {
+  //   const result = await this.getSubDataCode(id);
 
-    (result.subDataCode = payload.subDataCode),
-      (result.subDataCodeDescription = payload.subDataCode);
+  //   (result.subDataCode = payload.subDataCode),
+  //     (result.subDataCodeDescription = payload.subDataCode);
 
-    return await this.repository.save(result);
-  }
+  //   return await this.repository.save(result);
+  // }
 
-  removeSubDataCode(id: string) {
-    return `This action removes a #${id} subDataCode`;
-  }
+  // removeSubDataCode(id: string) {
+  //   return `This action removes a #${id} subDataCode`;
+  // }
 }
