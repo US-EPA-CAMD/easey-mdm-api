@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { ParameterCodeDTO } from 'src/dto/parameter-code.dto';
+import { ParameterCodeDTO } from '../dto/parameter-code.dto';
 import { ParameterCodeService } from './parameter-code.service';
 
 @ApiTags('Parameter Codes')

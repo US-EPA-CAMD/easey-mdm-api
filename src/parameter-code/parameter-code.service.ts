@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ParameterCodeDTO } from 'src/dto/parameter-code.dto';
+import { ParameterCodeDTO } from '../dto/parameter-code.dto';
 import { ParameterCodeRepository } from './parameter-code.repository';
 
 @Injectable()
