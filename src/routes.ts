@@ -10,6 +10,8 @@ import { SubDataCodeModule } from './sub-data-code/sub-data-code.module';
 import { BypassApproachCodeModule } from './bypass-approach-code/bypass-approach-code.module';
 import { ParameterCodeModule } from './parameter-code/parameter-code.module';
 import { MethodCodeModule } from './method-code/method-code.module';
+import { MatsMethodCodeModule } from './mats-method-code/mats-method-code.module';
+import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-param-code.module';
 
 const routes: Routes = [
   {
@@ -51,6 +53,14 @@ const routes: Routes = [
   {
     path: '/method-codes',
     module: MethodCodeModule,
+  },
+  {
+    path: '/mats-method-codes',
+    module: MatsMethodCodeModule,
+  },
+  {
+    path: '/mats-method-parameter-codes',
+    module: MatsMethodParamCodeModule,
   },
 ];
 export default routes;
