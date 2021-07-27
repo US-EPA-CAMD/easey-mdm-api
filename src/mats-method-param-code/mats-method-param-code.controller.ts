@@ -4,7 +4,7 @@ import { MatsMethodParamCodeDTO } from 'src/dto/mats-method-param-code.dto';
 import { MatsMethodParamCodeService } from './mats-method-param-code.service';
 
 @ApiTags('MATS Method Parameter Codes')
-@Controller('mats-method-param-code')
+@Controller()
 export class MatsMethodParamCodeController {
   constructor(private readonly service: MatsMethodParamCodeService) {}
 
