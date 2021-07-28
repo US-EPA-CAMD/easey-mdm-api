@@ -17,6 +17,8 @@ import { BypassApproachCodeModule } from './bypass-approach-code/bypass-approach
 import { SubDataCodeModule } from './sub-data-code/sub-data-code.module';
 import { ParameterCodeModule } from './parameter-code/parameter-code.module';
 import { MethodCodeModule } from './method-code/method-code.module';
+import { MatsMethodCodeModule } from './mats-method-code/mats-method-code.module';
+import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-param-code.module';
 
 @Module({
   imports: [
@@ -38,6 +40,8 @@ import { MethodCodeModule } from './method-code/method-code.module';
     SubDataCodeModule,
     ParameterCodeModule,
     MethodCodeModule,
+    MatsMethodCodeModule,
+    MatsMethodParamCodeModule,
   ],
 })
 export class AppModule {}
