@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+} from 'typeorm';
 import { ProgramGroup } from './program-group-code.entity';
 
 @Entity({ name: 'camdmd.program_code' })
@@ -29,12 +36,22 @@ export class Program extends BaseEntity {
   ozoneIndicator: number;
 
   @Column({
-    name: 'allow_comp_ind'
+    name: 'emissions_ui_filter',
   })
-  allowCompInd: number;
+  emissionsUIFilter: number;
 
   @Column({
-    name: 'trading_end_date'
+    name: 'allowance_ui_filter',
+  })
+  allowanceUIFilter: number;
+
+  @Column({
+    name: 'compliance_ui_filter',
+  })
+  complianceUIFilter: number;
+
+  @Column({
+    name: 'trading_end_date',
   })
   tradingEndDate: Date;
 

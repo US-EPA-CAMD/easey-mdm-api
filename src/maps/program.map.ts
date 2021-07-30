@@ -16,7 +16,9 @@ export class ProgramMap extends BaseMap<Program, ProgramDTO> {
         entity.programGroup?.programGroupDescription || null,
       ozoneIndicator: !!+entity.ozoneIndicator,
       annualIndicator: !+entity.ozoneIndicator,
-      allowanceIndicator: !!+entity.allowCompInd,
+      emissionsUIFilter: !!+entity.emissionsUIFilter,
+      allowanceUIFilter: !!+entity.allowanceUIFilter,
+      complianceUIFilter: !!+entity.complianceUIFilter,
       retiredIndicator:
         !!entity.tradingEndDate && entity.tradingEndDate <= new Date(),
       tradingEndDate:

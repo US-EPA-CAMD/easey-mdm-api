@@ -6,7 +6,13 @@ import { ProgramParamsDTO } from '../dto/program.params.dto';
 @EntityRepository(Program)
 export class ProgramRepository extends Repository<Program> {
   async getAllPrograms(programParamsDTO: ProgramParamsDTO): Promise<Program[]> {
-    const { exclude, allowanceOnly, isActive } = programParamsDTO;
+    const {
+      exclude,
+      isActive,
+      emissionsUIFilter,
+      allowanceUIFilter,
+      complianceUIFilter,
+    } = programParamsDTO;
 
     const query = this.createQueryBuilder('prg')
       .select([
@@ -17,13 +23,23 @@ export class ProgramRepository extends Repository<Program> {
         'grp.programGroupDescription',
         'prg.ozoneIndicator',
         'prg.tradingEndDate',
-        'prg.allowCompInd',
+        'prg.emissionsUIFilter',
+        'prg.allowanceUIFilter',
+        'prg.complianceUIFilter',
       ])
       .leftJoin('prg.programGroup', 'grp')
       .orderBy('prg.programCode');
 
-    if (String(allowanceOnly) === String(true)) {
-      query.andWhere('prg.allowCompInd = 1');
+    if (String(emissionsUIFilter) === String(true)) {
+      query.andWhere('prg.emissions_ui_filter = 1');
+    }
+
+    if (String(allowanceUIFilter) === String(true)) {
+      query.andWhere('prg.allowance_ui_filter = 1');
+    }
+
+    if (String(complianceUIFilter) === String(true)) {
+      query.andWhere('prg.compliance_ui_filter = 1');
     }
 
     if (String(isActive) === String(true)) {

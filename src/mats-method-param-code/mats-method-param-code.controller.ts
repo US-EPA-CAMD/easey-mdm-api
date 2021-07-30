@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { MatsMethodParamCodeDTO } from 'src/dto/mats-method-param-code.dto';
+import { MatsMethodParamCodeDTO } from '../dto/mats-method-param-code.dto';
 import { MatsMethodParamCodeService } from './mats-method-param-code.service';
 
 @ApiTags('MATS Method Parameter Codes')

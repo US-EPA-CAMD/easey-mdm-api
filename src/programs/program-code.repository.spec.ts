@@ -49,7 +49,9 @@ describe('ProgramRepository', () => {
       let filters: ProgramParamsDTO = {
         exclude: [Programs.ARP],
         isActive: false,
-        allowanceOnly: true,
+        emissionsUIFilter: true,
+        allowanceUIFilter: true,
+        complianceUIFilter: true,
       };
       result = await programRepository.getAllPrograms(filters);
 
@@ -60,7 +62,9 @@ describe('ProgramRepository', () => {
       let filters: ProgramParamsDTO = {
         exclude: [Programs.ARP],
         isActive: true,
-        allowanceOnly: true,
+        emissionsUIFilter: true,
+        allowanceUIFilter: true,
+        complianceUIFilter: true,
       };
       let result = await programRepository.getAllPrograms(filters);
 

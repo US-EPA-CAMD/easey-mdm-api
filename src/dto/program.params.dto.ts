@@ -11,9 +11,17 @@ export class ProgramParamsDTO {
 
   @IsOptional()
   @ApiPropertyOptional({ nullable: true })
-  allowanceOnly?: boolean;
+  isActive?: boolean;
 
   @IsOptional()
   @ApiPropertyOptional({ nullable: true })
-  isActive?: boolean;
+  emissionsUIFilter?: boolean;
+
+  @IsOptional()
+  @ApiPropertyOptional({ nullable: true })
+  allowanceUIFilter?: boolean;
+
+  @IsOptional()
+  @ApiPropertyOptional({ nullable: true })
+  complianceUIFilter?: boolean;
 }
