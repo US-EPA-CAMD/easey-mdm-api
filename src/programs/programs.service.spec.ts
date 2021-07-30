@@ -55,7 +55,9 @@ describe('-- Programs Service --', () => {
       let filters: ProgramParamsDTO = {
         exclude: [Programs.ARP],
         isActive: true,
-        allowanceOnly: true,
+        emissionsUIFilter: true,
+        allowanceUIFilter: true,
+        complianceUIFilter: true,
       };
       let result = await programsService.getAllPrograms(filters);
 

@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
-import { MethodCodeDTO } from 'src/dto/method-code.dto';
+import { MethodCodeDTO } from '../dto/method-code.dto';
 import { MethodCodeService } from './method-code.service';
 
 @ApiTags('Method Codes')

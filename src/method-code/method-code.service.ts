@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MethodCodeDTO } from 'src/dto/method-code.dto';
+import { MethodCodeDTO } from '../dto/method-code.dto';
 import { MethodCodeRepository } from './method-code.repository';
 
 @Injectable()

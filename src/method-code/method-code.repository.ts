@@ -1,4 +1,4 @@
-import { MethodCode } from 'src/entities/method-code.entity';
+import { MethodCode } from '../entities/method-code.entity';
 import { EntityRepository, Repository } from 'typeorm';
 
 @EntityRepository(MethodCode)
