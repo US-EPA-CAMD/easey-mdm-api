@@ -19,6 +19,7 @@ import { ParameterCodeModule } from './parameter-code/parameter-code.module';
 import { MethodCodeModule } from './method-code/method-code.module';
 import { MatsMethodCodeModule } from './mats-method-code/mats-method-code.module';
 import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-param-code.module';
+import { TransactionTypesModule } from './transaction-types/transaction-types.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-
     MethodCodeModule,
     MatsMethodCodeModule,
     MatsMethodParamCodeModule,
+    TransactionTypesModule,
   ],
 })
 export class AppModule {}
