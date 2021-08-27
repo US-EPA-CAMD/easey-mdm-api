@@ -17,7 +17,7 @@ export class MaximumFuelFlowRateCodeController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  getMethodCodes(): Promise<MaximumFuelFlowRateCodeDTO[]> {
+  getMaximumFuelFlowRateCodes(): Promise<MaximumFuelFlowRateCodeDTO[]> {
     return this.service.getMaximumFuelFlowRateCodes();
   }
 }

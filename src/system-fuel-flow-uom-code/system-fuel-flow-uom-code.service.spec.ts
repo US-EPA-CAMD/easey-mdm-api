@@ -1,18 +1,42 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SystemFuelFlowUomCodeService } from './system-fuel-flow-uom-code.service';
+import { SystemFuelFlowUOMCodeRepository } from './system-fuel-flow-uom-code.repository';
+import { SystemFuelFlowUOMCodeService } from './system-fuel-flow-uom-code.service';
 
-describe('SystemFuelFlowUomCodeService', () => {
-  let service: SystemFuelFlowUomCodeService;
+const mockSystemFuelFlowUOMCodeRepository = () => ({
+  getSystemFuelFlowUOMCodes: jest.fn(() => []),
+  findOne: jest.fn(),
+});
+
+describe('SystemFuelFlowUOMCodeService', () => {
+  let systemFuelFlowUOMCodeService: SystemFuelFlowUOMCodeService;
+  let systemFuelFlowUOMCodeRepository: SystemFuelFlowUOMCodeRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [SystemFuelFlowUomCodeService],
+      providers: [
+        SystemFuelFlowUOMCodeService,
+        {
+          provide: SystemFuelFlowUOMCodeRepository,
+          useFactory: mockSystemFuelFlowUOMCodeRepository,
+        },
+      ],
     }).compile();
 
-    service = module.get<SystemFuelFlowUomCodeService>(SystemFuelFlowUomCodeService);
+    systemFuelFlowUOMCodeService = module.get<SystemFuelFlowUOMCodeService>(
+      SystemFuelFlowUOMCodeService,
+    );
+    systemFuelFlowUOMCodeRepository = module.get<
+      SystemFuelFlowUOMCodeRepository
+    >(SystemFuelFlowUOMCodeRepository);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  describe('getSystemFuelFlowUOMCodes', () => {
+    it('calls the SystemFuelFlowUOMCodeRepository and returns a system fuel flow uom codes', async () => {
+      const result = await systemFuelFlowUOMCodeService.getSystemFuelFlowUOMCodes();
+      expect(result).toEqual([]);
+      expect(
+        systemFuelFlowUOMCodeRepository.getSystemFuelFlowUOMCodes,
+      ).toHaveBeenCalled();
+    });
   });
 });
