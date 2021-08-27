@@ -11,6 +11,6 @@ export class MaximumFuelFlowRateCodeService {
   ) {}
 
   async getMaximumFuelFlowRateCodes(): Promise<MaximumFuelFlowRateCodeDTO[]> {
-    return await this.repository.getMaximumFuelFlowRateCodes();
+    return this.repository.getMaximumFuelFlowRateCodes();
   }
 }

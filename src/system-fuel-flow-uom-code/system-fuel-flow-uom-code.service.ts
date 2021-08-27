@@ -11,6 +11,6 @@ export class SystemFuelFlowUOMCodeService {
   ) {}
 
   async getSystemFuelFlowUOMCodes(): Promise<SystemFuelFlowUOMCodeDTO[]> {
-    return await this.repository.getSystemFuelFlowUOMCodes();
+    return this.repository.getSystemFuelFlowUOMCodes();
   }
 }
