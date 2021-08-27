@@ -22,6 +22,7 @@ import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-
 import { TransactionTypesModule } from './transaction-types/transaction-types.module';
 import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-code.module';
 import { MaximumFuelFlowRateCodeModule } from './maximum-fuel-flow-rate-code/maximum-fuel-flow-rate-code.module';
+import { SystemFuelFlowUomCodeModule } from './system-fuel-flow-uom-code/system-fuel-flow-uom-code.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { MaximumFuelFlowRateCodeModule } from './maximum-fuel-flow-rate-code/max
     TransactionTypesModule,
     AnalyzerRangeCodeModule,
     MaximumFuelFlowRateCodeModule,
+    SystemFuelFlowUomCodeModule,
   ],
 })
 export class AppModule {}
