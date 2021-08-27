@@ -29,7 +29,7 @@ describe('SubDataCodeService', () => {
   });
 
   describe('getSubDataCodes', () => {
-    it('calls the SubDataCodeRepository.getSubDataCodes and returns a result', async () => {
+    it('calls the SubDataCodeRepository and returns sub data codes', async () => {
       const result = await subDataCodeService.getSubDataCodes();
       expect(result).toEqual([]);
       expect(subDataCodeRepository.getSubDataCodes).toHaveBeenCalled();

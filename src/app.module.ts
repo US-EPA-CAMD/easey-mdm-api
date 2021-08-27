@@ -21,6 +21,8 @@ import { MatsMethodCodeModule } from './mats-method-code/mats-method-code.module
 import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-param-code.module';
 import { TransactionTypesModule } from './transaction-types/transaction-types.module';
 import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-code.module';
+import { MaxRateSourceCodeModule } from './max-rate-source-code/max-rate-source-code.module';
+import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
 
 @Module({
   imports: [
@@ -46,6 +48,8 @@ import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-co
     MatsMethodParamCodeModule,
     TransactionTypesModule,
     AnalyzerRangeCodeModule,
+    MaxRateSourceCodeModule,
+    UnitsOfMeasureCodeModule,
   ],
 })
 export class AppModule {}

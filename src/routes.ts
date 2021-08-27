@@ -14,6 +14,8 @@ import { MatsMethodCodeModule } from './mats-method-code/mats-method-code.module
 import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-param-code.module';
 import { TransactionTypesModule } from './transaction-types/transaction-types.module';
 import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-code.module';
+import { MaxRateSourceCodeModule } from './max-rate-source-code/max-rate-source-code.module';
+import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
 
 const routes: Routes = [
   {
@@ -71,6 +73,14 @@ const routes: Routes = [
   {
     path: '/analyzer-range-codes',
     module: AnalyzerRangeCodeModule,
+  },
+  {
+    path: '/max-rate-source-code',
+    module: MaxRateSourceCodeModule,
+  },
+  {
+    path: '/units-of-measure',
+    module: UnitsOfMeasureCodeModule,
   },
 ];
 export default routes;

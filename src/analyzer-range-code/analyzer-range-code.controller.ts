@@ -17,7 +17,7 @@ export class AnalyzerRangeCodeController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  getMethodCodes(): Promise<AnalyzerRangeCodeDTO[]> {
+  getAnalyzerRangeCodes(): Promise<AnalyzerRangeCodeDTO[]> {
     return this.service.getAnalyzerRangeCodes();
   }
 }
