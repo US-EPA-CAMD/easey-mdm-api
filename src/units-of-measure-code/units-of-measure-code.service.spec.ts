@@ -1,42 +1,38 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SystemFuelFlowUOMCodeRepository } from './units-of-measure-code.repository';
-import { SystemFuelFlowUOMCodeService } from './units-of-measure-code.service';
+import { UnitsOfMeasureCodeRepository } from './units-of-measure-code.repository';
+import { UnitsOfMeasureCodeService } from './units-of-measure-code.service';
 
-const mockSystemFuelFlowUOMCodeRepository = () => ({
-  getSystemFuelFlowUOMCodes: jest.fn(() => []),
+const mockUnitsOfMeasureCodeRepository = () => ({
+  getUnitsOfMeasureCodes: jest.fn(() => []),
   findOne: jest.fn(),
 });
 
-describe('SystemFuelFlowUOMCodeService', () => {
-  let systemFuelFlowUOMCodeService: SystemFuelFlowUOMCodeService;
-  let systemFuelFlowUOMCodeRepository: SystemFuelFlowUOMCodeRepository;
+describe('UnitsOfMeasureCodeService', () => {
+  let service: UnitsOfMeasureCodeService;
+  let repository: UnitsOfMeasureCodeRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        SystemFuelFlowUOMCodeService,
+        UnitsOfMeasureCodeService,
         {
-          provide: SystemFuelFlowUOMCodeRepository,
-          useFactory: mockSystemFuelFlowUOMCodeRepository,
+          provide: UnitsOfMeasureCodeRepository,
+          useFactory: mockUnitsOfMeasureCodeRepository,
         },
       ],
     }).compile();
 
-    systemFuelFlowUOMCodeService = module.get<SystemFuelFlowUOMCodeService>(
-      SystemFuelFlowUOMCodeService,
+    service = module.get<UnitsOfMeasureCodeService>(UnitsOfMeasureCodeService);
+    repository = module.get<UnitsOfMeasureCodeRepository>(
+      UnitsOfMeasureCodeRepository,
     );
-    systemFuelFlowUOMCodeRepository = module.get<
-      SystemFuelFlowUOMCodeRepository
-    >(SystemFuelFlowUOMCodeRepository);
   });
 
-  describe('getSystemFuelFlowUOMCodes', () => {
-    it('calls the SystemFuelFlowUOMCodeRepository and returns a system fuel flow uom codes', async () => {
-      const result = await systemFuelFlowUOMCodeService.getSystemFuelFlowUOMCodes();
+  describe('getUnitsOfMeasureCodes', () => {
+    it('calls the UnitsOfMeasureCodeRepository and return units of measure codes', async () => {
+      const result = await service.getUnitsOfMeasureCodes();
       expect(result).toEqual([]);
-      expect(
-        systemFuelFlowUOMCodeRepository.getSystemFuelFlowUOMCodes,
-      ).toHaveBeenCalled();
+      expect(repository.getUnitsOfMeasureCodes).toHaveBeenCalled();
     });
   });
 });

@@ -17,7 +17,7 @@ export class UnitsOfMeasureCodeController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  getMethodCodes(): Promise<UnitsOfMeasureCodeDTO[]> {
+  getUnitofMeasureCodes(): Promise<UnitsOfMeasureCodeDTO[]> {
     return this.service.getUnitsOfMeasureCodes();
   }
 }

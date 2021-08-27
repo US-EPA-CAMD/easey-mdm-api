@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { BaseMap } from './base.map';
-import { UnitsOfMeasureCode } from '../entities/system-fuel-flow-uom-code.entity';
+import { UnitsOfMeasureCode } from '../entities/units-of-measure-code.entity';
 import { UnitsOfMeasureCodeDTO } from '../dto/units-of-measure-code.dto';
 
 @Injectable()

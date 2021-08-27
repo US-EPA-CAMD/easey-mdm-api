@@ -1,40 +1,36 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SystemFuelFlowUOMCodeController } from './units-of-measure-code.controller';
-import { SystemFuelFlowUOMCodeService } from './units-of-measure-code.service';
+import { UnitsOfMeasureCodeController } from './units-of-measure-code.controller';
+import { UnitsOfMeasureCodeService } from './units-of-measure-code.service';
 
-const mockSystemFuelFlowUOMCodeService = () => ({
-  getSystemFuelFlowUOMCodes: jest.fn(() => []),
+const mockUnitsOfMeasureCodeService = () => ({
+  getUnitsOfMeasureCodes: jest.fn(() => []),
 });
 
-describe('SystemFuelFlowUOMCodeController', () => {
-  let controller: SystemFuelFlowUOMCodeController;
-  let systemFuelFlowUOMCodeService: SystemFuelFlowUOMCodeService;
+describe('UnitsOfMeasureCodeController', () => {
+  let controller: UnitsOfMeasureCodeController;
+  let service: UnitsOfMeasureCodeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [SystemFuelFlowUOMCodeController],
+      controllers: [UnitsOfMeasureCodeController],
       providers: [
         {
-          provide: SystemFuelFlowUOMCodeService,
-          useFactory: mockSystemFuelFlowUOMCodeService,
+          provide: UnitsOfMeasureCodeService,
+          useFactory: mockUnitsOfMeasureCodeService,
         },
       ],
     }).compile();
 
-    controller = module.get<SystemFuelFlowUOMCodeController>(
-      SystemFuelFlowUOMCodeController,
+    controller = module.get<UnitsOfMeasureCodeController>(
+      UnitsOfMeasureCodeController,
     );
-    systemFuelFlowUOMCodeService = module.get<SystemFuelFlowUOMCodeService>(
-      SystemFuelFlowUOMCodeService,
-    );
+    service = module.get<UnitsOfMeasureCodeService>(UnitsOfMeasureCodeService);
   });
 
-  describe('getMethodCodes', () => {
-    it('should call the SystemFuelFlowUOMCodeService and return a list of system flow uom codes', () => {
-      expect(controller.getMethodCodes()).toEqual([]);
-      expect(
-        systemFuelFlowUOMCodeService.getSystemFuelFlowUOMCodes,
-      ).toHaveBeenCalled();
+  describe('getUnitofMeasureCodes', () => {
+    it('should call the UnitsOfMeasureCodeService and return a list of unit of measure codes', () => {
+      expect(controller.getUnitofMeasureCodes()).toEqual([]);
+      expect(service.getUnitsOfMeasureCodes).toHaveBeenCalled();
     });
   });
 });

@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { UnitsOfMeasureCode } from '../entities/system-fuel-flow-uom-code.entity';
+import { UnitsOfMeasureCode } from '../entities/units-of-measure-code.entity';
 
 @EntityRepository(UnitsOfMeasureCode)
 export class UnitsOfMeasureCodeRepository extends Repository<

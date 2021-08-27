@@ -1,14 +1,14 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'camdecmpsmd.max_rate_source_code' })
-export class MaximumFuelFlowRateCode extends BaseEntity {
+export class MaxRateSourceCode extends BaseEntity {
   @PrimaryColumn({
     type: 'varchar',
     length: 7,
     nullable: false,
     name: 'max_rate_source_cd',
   })
-  maximumFuelFlowRateSourceCode: string;
+  maxRateSourceCode: string;
 
   @Column({
     type: 'varchar',
@@ -16,5 +16,5 @@ export class MaximumFuelFlowRateCode extends BaseEntity {
     nullable: false,
     name: 'max_rate_source_cd_description',
   })
-  maximumFuelFlowRateSourceCodeDescription: string;
+  maxRateSourceCodeDescription: string;
 }
