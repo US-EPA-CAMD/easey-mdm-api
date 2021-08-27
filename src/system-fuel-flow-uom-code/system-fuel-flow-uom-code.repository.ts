@@ -6,7 +6,7 @@ export class SystemFuelFlowUOMCodeRepository extends Repository<
   SystemFuelFlowUOMCode
 > {
   async getSystemFuelFlowUOMCodes(): Promise<SystemFuelFlowUOMCode[]> {
-    const query = await this.createQueryBuilder('sffuomc').select([
+    const query = this.createQueryBuilder('sffuomc').select([
       'sffuomc.systemFuelFlowUOMCode',
       'sffuomc.systemFuelFlowUOMCodeDescription',
     ]);

@@ -6,7 +6,7 @@ export class MaximumFuelFlowRateCodeRepository extends Repository<
   MaximumFuelFlowRateCode
 > {
   async getMaximumFuelFlowRateCodes(): Promise<MaximumFuelFlowRateCode[]> {
-    const query = await this.createQueryBuilder('mffrc').select([
+    const query = this.createQueryBuilder('mffrc').select([
       'mffrc.maximumFuelFlowRateSourceCode',
       'mffrc.maximumFuelFlowRateSourceCodeDescription',
     ]);
