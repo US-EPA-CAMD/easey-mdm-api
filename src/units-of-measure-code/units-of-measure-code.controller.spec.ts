@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SystemFuelFlowUOMCodeController } from './system-fuel-flow-uom-code.controller';
-import { SystemFuelFlowUOMCodeService } from './system-fuel-flow-uom-code.service';
+import { SystemFuelFlowUOMCodeController } from './units-of-measure-code.controller';
+import { SystemFuelFlowUOMCodeService } from './units-of-measure-code.service';
 
 const mockSystemFuelFlowUOMCodeService = () => ({
   getSystemFuelFlowUOMCodes: jest.fn(() => []),

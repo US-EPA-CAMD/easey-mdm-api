@@ -15,7 +15,7 @@ import { MatsMethodParamCodeModule } from './mats-method-param-code/mats-method-
 import { TransactionTypesModule } from './transaction-types/transaction-types.module';
 import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-code.module';
 import { MaximumFuelFlowRateCodeModule } from './maximum-fuel-flow-rate-code/maximum-fuel-flow-rate-code.module';
-import { SystemFuelFlowUomCodeModule } from './system-fuel-flow-uom-code/system-fuel-flow-uom-code.module';
+import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
 
 const routes: Routes = [
   {
@@ -79,8 +79,8 @@ const routes: Routes = [
     module: MaximumFuelFlowRateCodeModule,
   },
   {
-    path: '/system-fuel-flow-uom-code',
-    module: SystemFuelFlowUomCodeModule,
+    path: '/units-of-measure',
+    module: UnitsOfMeasureCodeModule,
   },
 ];
 export default routes;

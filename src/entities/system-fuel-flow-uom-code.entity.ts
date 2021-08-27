@@ -1,14 +1,14 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'camdecmpsmd.units_of_measure_code' })
-export class SystemFuelFlowUOMCode extends BaseEntity {
+export class UnitsOfMeasureCode extends BaseEntity {
   @PrimaryColumn({
     type: 'varchar',
     length: 7,
     nullable: false,
     name: 'uom_cd',
   })
-  systemFuelFlowUOMCode: string;
+  unitsOfMeasureCode: string;
 
   @Column({
     type: 'varchar',
@@ -16,5 +16,5 @@ export class SystemFuelFlowUOMCode extends BaseEntity {
     nullable: false,
     name: 'uom_cd_description',
   })
-  systemFuelFlowUOMCodeDescription: string;
+  unitsOfMeasureCodeDescription: string;
 }

@@ -1,19 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { BaseMap } from './base.map';
-import { SystemFuelFlowUOMCode } from '../entities/system-fuel-flow-uom-code.entity';
-import { SystemFuelFlowUOMCodeDTO } from '../dto/system-fuel-flow-uom-code.dto';
+import { UnitsOfMeasureCode } from '../entities/system-fuel-flow-uom-code.entity';
+import { UnitsOfMeasureCodeDTO } from '../dto/units-of-measure-code.dto';
 
 @Injectable()
-export class SystemFuelFlowUOMCodeMap extends BaseMap<
-  SystemFuelFlowUOMCode,
-  SystemFuelFlowUOMCodeDTO
+export class UnitsOfMeasureCodeMap extends BaseMap<
+  UnitsOfMeasureCode,
+  UnitsOfMeasureCodeDTO
 > {
-  public async one(
-    entity: SystemFuelFlowUOMCode,
-  ): Promise<SystemFuelFlowUOMCodeDTO> {
+  public async one(entity: UnitsOfMeasureCode): Promise<UnitsOfMeasureCodeDTO> {
     return {
-      systemFuelFlowUOMCode: entity.systemFuelFlowUOMCode,
-      systemFuelFlowUOMCodeDescription: entity.systemFuelFlowUOMCodeDescription,
+      unitsOfMeasureCode: entity.unitsOfMeasureCode,
+      unitsOfMeasureCodeDescription: entity.unitsOfMeasureCodeDescription,
     };
   }
 }
