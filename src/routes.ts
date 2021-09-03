@@ -18,6 +18,7 @@ import { MaxRateSourceCodeModule } from './max-rate-source-code/max-rate-source-
 import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
 import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisition-method-code.module';
 import { ComponentTypeCodeModule } from './component-type-code/component-type-code.module';
+import { SystemDesignationCodeModule } from './system-designation-code/system-designation-code.module';
 
 const routes: Routes = [
   {
@@ -91,6 +92,10 @@ const routes: Routes = [
   {
     path: '/component-type-codes',
     module: ComponentTypeCodeModule,
+  },
+  {
+    path: '/system-designation-codes',
+    module: SystemDesignationCodeModule,
   },
 ];
 export default routes;
