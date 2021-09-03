@@ -19,6 +19,7 @@ import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measu
 import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisition-method-code.module';
 import { ComponentTypeCodeModule } from './component-type-code/component-type-code.module';
 import { SystemDesignationCodeModule } from './system-designation-code/system-designation-code.module';
+import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: '/system-designation-codes',
     module: SystemDesignationCodeModule,
+  },
+  {
+    path: '/system-type-codes',
+    module: SystemTypeCodeModule,
   },
 ];
 export default routes;
