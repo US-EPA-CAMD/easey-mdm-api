@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { SystemTypeCodeDTO } from 'src/dto/system-type-code.dto';
+import { SystemTypeCodeDTO } from '../dto/system-type-code.dto';
 import { SystemTypeCodeService } from './system-type-code.service';
 
 @ApiTags('System Type Codes')

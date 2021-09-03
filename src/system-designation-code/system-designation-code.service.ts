@@ -11,6 +11,6 @@ export class SystemDesignationCodeService {
   ) {}
 
   async getSystemDesignationCodes(): Promise<SystemDesignationCodeDTO[]> {
-    return await this.repository.getSystemDesignationCodes();
+    return this.repository.getSystemDesignationCodes();
   }
 }

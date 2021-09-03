@@ -11,6 +11,6 @@ export class ComponentTypeCodeService {
   ) {}
 
   async getComponentTypeCodes(): Promise<ComponentTypeCodeDTO[]> {
-    return await this.repository.getComponentTypeCodes();
+    return this.repository.getComponentTypeCodes();
   }
 }

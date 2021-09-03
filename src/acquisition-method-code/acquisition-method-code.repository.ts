@@ -6,7 +6,7 @@ export class AcquisitionMethodCodeRepository extends Repository<
   AcquisitionMethodCode
 > {
   async getAcquisitionMethodCodes(): Promise<AcquisitionMethodCode[]> {
-    const query = await this.createQueryBuilder('amc').select([
+    const query = this.createQueryBuilder('amc').select([
       'amc.acquisitionMethodCode',
       'amc.acquisitionMethodCodeDescription',
     ]);

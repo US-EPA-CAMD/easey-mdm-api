@@ -11,6 +11,6 @@ export class AcquisitionMethodCodeService {
   ) {}
 
   async getAcquisitionMethodCodes(): Promise<AcquisitionMethodCodeDTO[]> {
-    return await this.repository.getAcquisitionMethodCodes();
+    return this.repository.getAcquisitionMethodCodes();
   }
 }

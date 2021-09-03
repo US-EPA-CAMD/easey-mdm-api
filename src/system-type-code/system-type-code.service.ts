@@ -11,6 +11,6 @@ export class SystemTypeCodeService {
   ) {}
 
   async getSystemTypeCodes(): Promise<SystemTypeCodeDTO[]> {
-    return await this.repository.getSystemTypeCodes();
+    return this.repository.getSystemTypeCodes();
   }
 }
