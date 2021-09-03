@@ -16,6 +16,7 @@ import { TransactionTypesModule } from './transaction-types/transaction-types.mo
 import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-code.module';
 import { MaxRateSourceCodeModule } from './max-rate-source-code/max-rate-source-code.module';
 import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
+import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisition-method-code.module';
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: '/units-of-measure',
     module: UnitsOfMeasureCodeModule,
+  },
+  {
+    path: '/acquisiton-method-codes',
+    module: AcquisitionMethodCodeModule,
   },
 ];
 export default routes;
