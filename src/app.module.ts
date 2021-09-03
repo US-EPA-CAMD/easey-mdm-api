@@ -24,6 +24,7 @@ import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-co
 import { MaxRateSourceCodeModule } from './max-rate-source-code/max-rate-source-code.module';
 import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
 import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisition-method-code.module';
+import { ComponentTypeCodeModule } from './component-type-code/component-type-code.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisiti
     MaxRateSourceCodeModule,
     UnitsOfMeasureCodeModule,
     AcquisitionMethodCodeModule,
+    ComponentTypeCodeModule,
   ],
 })
 export class AppModule {}

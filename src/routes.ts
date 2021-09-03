@@ -17,6 +17,7 @@ import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-co
 import { MaxRateSourceCodeModule } from './max-rate-source-code/max-rate-source-code.module';
 import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
 import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisition-method-code.module';
+import { ComponentTypeCodeModule } from './component-type-code/component-type-code.module';
 
 const routes: Routes = [
   {
@@ -86,6 +87,10 @@ const routes: Routes = [
   {
     path: '/acquisiton-method-codes',
     module: AcquisitionMethodCodeModule,
+  },
+  {
+    path: '/component-type-codes',
+    module: ComponentTypeCodeModule,
   },
 ];
 export default routes;
