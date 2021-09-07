@@ -16,6 +16,10 @@ import { TransactionTypesModule } from './transaction-types/transaction-types.mo
 import { AnalyzerRangeCodeModule } from './analyzer-range-code/analyzer-range-code.module';
 import { MaxRateSourceCodeModule } from './max-rate-source-code/max-rate-source-code.module';
 import { UnitsOfMeasureCodeModule } from './units-of-measure-code/units-of-measure-code.module';
+import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisition-method-code.module';
+import { ComponentTypeCodeModule } from './component-type-code/component-type-code.module';
+import { SystemDesignationCodeModule } from './system-designation-code/system-designation-code.module';
+import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
 
 const routes: Routes = [
   {
@@ -81,6 +85,22 @@ const routes: Routes = [
   {
     path: '/units-of-measure',
     module: UnitsOfMeasureCodeModule,
+  },
+  {
+    path: '/acquisiton-method-codes',
+    module: AcquisitionMethodCodeModule,
+  },
+  {
+    path: '/component-type-codes',
+    module: ComponentTypeCodeModule,
+  },
+  {
+    path: '/system-designation-codes',
+    module: SystemDesignationCodeModule,
+  },
+  {
+    path: '/system-type-codes',
+    module: SystemTypeCodeModule,
   },
 ];
 export default routes;
