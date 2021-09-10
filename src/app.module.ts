@@ -27,6 +27,7 @@ import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisiti
 import { ComponentTypeCodeModule } from './component-type-code/component-type-code.module';
 import { SystemDesignationCodeModule } from './system-designation-code/system-designation-code.module';
 import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
+import { BasisCodeModule } from './basis-code/basis-code.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { SystemTypeCodeModule } from './system-type-code/system-type-code.module
     ComponentTypeCodeModule,
     SystemDesignationCodeModule,
     SystemTypeCodeModule,
+    BasisCodeModule,
   ],
 })
 export class AppModule {}

@@ -20,6 +20,7 @@ import { AcquisitionMethodCodeModule } from './acquisition-method-code/acquisiti
 import { ComponentTypeCodeModule } from './component-type-code/component-type-code.module';
 import { SystemDesignationCodeModule } from './system-designation-code/system-designation-code.module';
 import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
+import { BasisCodeModule } from './basis-code/basis-code.module';
 
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: '/system-type-codes',
     module: SystemTypeCodeModule,
+  },
+  {
+    path: '/basis-codes',
+    module: BasisCodeModule,
   },
 ];
 export default routes;
