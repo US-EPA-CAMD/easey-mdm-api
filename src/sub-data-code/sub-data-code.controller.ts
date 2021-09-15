@@ -1,7 +1,4 @@
-import {
-  Controller,
-  Get,
-} from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { SubDataCodeService } from './sub-data-code.service';
@@ -9,7 +6,7 @@ import { SubDataCodeDTO } from '../dto/sub-data-code.dto';
 @ApiTags('Substitute Data Codes')
 @Controller()
 export class SubDataCodeController {
-  constructor(private readonly subDataCodeService: SubDataCodeService) {}
+  constructor(private readonly service: SubDataCodeService) {}
 
   @Get()
   @ApiOkResponse({
@@ -21,6 +18,6 @@ export class SubDataCodeController {
     description: 'Invalid Request',
   })
   getSubDataCodes(): Promise<SubDataCodeDTO[]> {
-    return this.subDataCodeService.getSubDataCodes();
+    return this.service.getSubDataCodes();
   }
 }

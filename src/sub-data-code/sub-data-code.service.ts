@@ -15,9 +15,7 @@ export class SubDataCodeService {
   // }
 
   async getSubDataCodes(): Promise<SubDataCodeDTO[]> {
-    const result = await this.repository.getSubDataCodes();
-
-    return result;
+    return await this.repository.getSubDataCodes();
   }
 
   // getSubDataCode(id: string): Promise<SubDataCodeDTO> {
