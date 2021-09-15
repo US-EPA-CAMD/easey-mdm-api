@@ -29,6 +29,7 @@ import { SystemDesignationCodeModule } from './system-designation-code/system-de
 import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
 import { BasisCodeModule } from './basis-code/basis-code.module';
 import { SpanScaleCodeModule } from './span-scale-code/span-scale-code.module';
+import { SpanMethodCodeModule } from './span-method-code/span-method-code.module';
 
 @Module({
   imports: [
@@ -62,6 +63,7 @@ import { SpanScaleCodeModule } from './span-scale-code/span-scale-code.module';
     SystemTypeCodeModule,
     BasisCodeModule,
     SpanScaleCodeModule,
+    SpanMethodCodeModule,
   ],
 })
 export class AppModule {}
