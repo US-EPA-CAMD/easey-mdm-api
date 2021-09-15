@@ -11,6 +11,6 @@ export class SpanMethodCodeService {
   ) {}
 
   async getSpanMethodCodes(): Promise<SpanMethodCodeDTO[]> {
-    return await this.repository.getSpanMethodCodes();
+    return this.repository.getSpanMethodCodes();
   }
 }

@@ -11,6 +11,6 @@ export class SpanScaleCodeService {
   ) {}
 
   async getSpanScaleCodes(): Promise<SpanScaleCodeDTO[]> {
-    return await this.repository.getSpanScaleCodes();
+    return this.repository.getSpanScaleCodes();
   }
 }
