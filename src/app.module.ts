@@ -28,6 +28,7 @@ import { ComponentTypeCodeModule } from './component-type-code/component-type-co
 import { SystemDesignationCodeModule } from './system-designation-code/system-designation-code.module';
 import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
 import { BasisCodeModule } from './basis-code/basis-code.module';
+import { SourceCategoriesModule } from './source-categories/source-categories.module';
 import { SpanScaleCodeModule } from './span-scale-code/span-scale-code.module';
 import { SpanMethodCodeModule } from './span-method-code/span-method-code.module';
 
@@ -62,6 +63,7 @@ import { SpanMethodCodeModule } from './span-method-code/span-method-code.module
     SystemDesignationCodeModule,
     SystemTypeCodeModule,
     BasisCodeModule,
+    SourceCategoriesModule,
     SpanScaleCodeModule,
     SpanMethodCodeModule,
   ],
