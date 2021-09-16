@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { AcquisitionMethodCodeController } from './acquisition-method-code.controller';
 import { AcquisitionMethodCodeService } from './acquisition-method-code.service';
+import { AcquisitionMethodCodeRepository } from './acquisition-method-code.repository';
+import { AcquisitionMethodCodeMap } from '../maps/acquistion-method-code.map';
 
 describe('AcquisitionMethodCodeController', () => {
   let controller: AcquisitionMethodCodeController;
@@ -8,10 +11,16 @@ describe('AcquisitionMethodCodeController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AcquisitionMethodCodeController],
-      providers: [AcquisitionMethodCodeService],
+      providers: [
+        AcquisitionMethodCodeService,
+        AcquisitionMethodCodeRepository,
+        AcquisitionMethodCodeMap,
+      ],
     }).compile();
 
-    controller = module.get<AcquisitionMethodCodeController>(AcquisitionMethodCodeController);
+    controller = module.get<AcquisitionMethodCodeController>(
+      AcquisitionMethodCodeController,
+    );
   });
 
   it('should be defined', () => {

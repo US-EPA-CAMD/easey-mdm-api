@@ -21,6 +21,7 @@ import { ComponentTypeCodeModule } from './component-type-code/component-type-co
 import { SystemDesignationCodeModule } from './system-designation-code/system-designation-code.module';
 import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
 import { BasisCodeModule } from './basis-code/basis-code.module';
+import { SourceCategoriesModule } from './source-categories/source-categories.module';
 
 const routes: Routes = [
   {
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path: '/basis-codes',
     module: BasisCodeModule,
+  },
+  {
+    path: '/source-categories',
+    module: SourceCategoriesModule,
   },
 ];
 export default routes;
