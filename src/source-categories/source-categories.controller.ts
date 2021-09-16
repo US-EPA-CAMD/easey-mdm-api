@@ -18,6 +18,7 @@ export class SourceCategoriesController {
 
   @Get()
   @ApiOkResponse({
+    type: SourceCategoryDTO,
     description: 'Retrieved All Valid Source Categories',
   })
   @ApiBadRequestResponse({
