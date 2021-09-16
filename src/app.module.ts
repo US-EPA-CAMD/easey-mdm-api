@@ -29,6 +29,8 @@ import { SystemDesignationCodeModule } from './system-designation-code/system-de
 import { SystemTypeCodeModule } from './system-type-code/system-type-code.module';
 import { BasisCodeModule } from './basis-code/basis-code.module';
 import { SourceCategoriesModule } from './source-categories/source-categories.module';
+import { SpanScaleCodeModule } from './span-scale-code/span-scale-code.module';
+import { SpanMethodCodeModule } from './span-method-code/span-method-code.module';
 
 @Module({
   imports: [
@@ -62,6 +64,8 @@ import { SourceCategoriesModule } from './source-categories/source-categories.mo
     SystemTypeCodeModule,
     BasisCodeModule,
     SourceCategoriesModule,
+    SpanScaleCodeModule,
+    SpanMethodCodeModule,
   ],
 })
 export class AppModule {}
