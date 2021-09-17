@@ -31,7 +31,7 @@ describe('OperatingConditionCodeService', () => {
   });
 
   describe('getOperatingConditionCodes', () => {
-    it('calls the OperatingConditionCodeRepository and returns a span scale codes', async () => {
+    it('calls the OperatingConditionCodeRepository and returns span scale codes', async () => {
       const result = await service.getOperatingConditionCodes();
       expect(result).toEqual([]);
       expect(repository.getOperatingConditionCodes).toHaveBeenCalled();

@@ -25,6 +25,7 @@ import { SourceCategoriesModule } from './source-categories/source-categories.mo
 import { SpanScaleCodeModule } from './span-scale-code/span-scale-code.module';
 import { SpanMethodCodeModule } from './span-method-code/span-method-code.module';
 import { OperatingConditionCodeModule } from './operating-condition-code/operating-condition-code.module';
+import { DefaultSourceCodeModule } from './default-source-code/default-source-code.module';
 
 const routes: Routes = [
   {
@@ -126,6 +127,10 @@ const routes: Routes = [
   {
     path: '/operating-condition-codes',
     module: OperatingConditionCodeModule,
+  },
+  {
+    path: '/default-source-codes',
+    module: DefaultSourceCodeModule,
   },
 ];
 export default routes;
