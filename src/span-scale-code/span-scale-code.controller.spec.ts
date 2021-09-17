@@ -27,7 +27,7 @@ describe('SpanScaleCodeController', () => {
     service = module.get<SpanScaleCodeService>(SpanScaleCodeService);
   });
 
-  describe('getAnalyzerRangeCodes', () => {
+  describe('getSpanScaleCodes', () => {
     it('should call the SpanScaleCodeService and return a list of span scale codes', async () => {
       expect(controller.getSpanScaleCodes()).toEqual([]);
       expect(service.getSpanScaleCodes).toHaveBeenCalled();
