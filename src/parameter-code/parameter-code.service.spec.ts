@@ -7,8 +7,8 @@ const mockParameterCodeRepository = () => ({
 });
 
 describe('ParameterCodeService', () => {
-  let parameterCodeService: ParameterCodeService;
-  let parameterCodeRepository: ParameterCodeRepository;
+  let service: ParameterCodeService;
+  let repository: ParameterCodeRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -21,19 +21,15 @@ describe('ParameterCodeService', () => {
       ],
     }).compile();
 
-    parameterCodeService = module.get<ParameterCodeService>(
-      ParameterCodeService,
-    );
-    parameterCodeRepository = module.get<ParameterCodeRepository>(
-      ParameterCodeRepository,
-    );
+    service = module.get<ParameterCodeService>(ParameterCodeService);
+    repository = module.get<ParameterCodeRepository>(ParameterCodeRepository);
   });
 
   describe('getParameterCodes', () => {
     it('should call the ParameterCodeRepository.getParameterCodes() and return a list of parameter-codes', async () => {
-      const result = await parameterCodeService.getParameterCodes();
+      const result = await service.getParameterCodes();
       expect(result).toEqual([]);
-      expect(parameterCodeRepository.getParameterCodes).toHaveBeenCalled();
+      expect(repository.getParameterCodes).toHaveBeenCalled();
     });
   });
 });

@@ -33,6 +33,7 @@ import { SpanScaleCodeModule } from './span-scale-code/span-scale-code.module';
 import { SpanMethodCodeModule } from './span-method-code/span-method-code.module';
 import { OperatingConditionCodeModule } from './operating-condition-code/operating-condition-code.module';
 import { DefaultSourceCodeModule } from './default-source-code/default-source-code.module';
+import { OperatingLevelCodeModule } from './operating-level-code/operating-level-code.module';
 
 @Module({
   imports: [
@@ -70,6 +71,7 @@ import { DefaultSourceCodeModule } from './default-source-code/default-source-co
     SpanMethodCodeModule,
     OperatingConditionCodeModule,
     DefaultSourceCodeModule,
+    OperatingLevelCodeModule,
   ],
 })
 export class AppModule {}
