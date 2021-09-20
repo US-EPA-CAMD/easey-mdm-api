@@ -8,7 +8,7 @@ const mockParameterCodeService = () => ({
 
 describe('ParameterCodeController', () => {
   let controller: ParameterCodeController;
-  let parameterCodeService: ParameterCodeService;
+  let service: ParameterCodeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -22,15 +22,13 @@ describe('ParameterCodeController', () => {
     }).compile();
 
     controller = module.get<ParameterCodeController>(ParameterCodeController);
-    parameterCodeService = module.get<ParameterCodeService>(
-      ParameterCodeService,
-    );
+    service = module.get<ParameterCodeService>(ParameterCodeService);
   });
 
   describe('getParameterCodes', () => {
     it('should call the ParameterCodeService and return a list of parameter-codes', () => {
       expect(controller.getParameterCodes()).toEqual([]);
-      expect(parameterCodeService.getParameterCodes).toHaveBeenCalled();
+      expect(service.getParameterCodes).toHaveBeenCalled();
     });
   });
 });

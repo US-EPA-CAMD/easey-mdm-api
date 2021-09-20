@@ -12,7 +12,7 @@ export class ParameterCodeController {
   @ApiOkResponse({
     isArray: true,
     type: ParameterCodeDTO,
-    description: 'Retrieves all Parametet Codes',
+    description: 'Retrieves all Parameter Codes',
   })
   @ApiBadRequestResponse({
     description: 'Invalid Request',
