@@ -27,6 +27,7 @@ import { SpanMethodCodeModule } from './span-method-code/span-method-code.module
 import { OperatingConditionCodeModule } from './operating-condition-code/operating-condition-code.module';
 import { DefaultSourceCodeModule } from './default-source-code/default-source-code.module';
 import { OperatingLevelCodeModule } from './operating-level-code/operating-level-code.module';
+import { EquationCodeModule } from './equation-code/equation-code.module';
 
 const routes: Routes = [
   {
@@ -136,6 +137,10 @@ const routes: Routes = [
   {
     path: '/operating-level-codes',
     module: OperatingLevelCodeModule,
+  },
+  {
+    path: '/equation-codes',
+    module: EquationCodeModule,
   },
 ];
 export default routes;
