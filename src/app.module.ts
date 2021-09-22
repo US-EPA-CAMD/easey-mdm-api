@@ -36,6 +36,7 @@ import { DefaultSourceCodeModule } from './default-source-code/default-source-co
 import { OperatingLevelCodeModule } from './operating-level-code/operating-level-code.module';
 import { EquationCodeModule } from './equation-code/equation-code.module';
 import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose-code.module';
+import { FuelCodeModule } from './fuel-code/fuel-code.module';
 
 @Module({
   imports: [
@@ -76,6 +77,7 @@ import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose
     OperatingLevelCodeModule,
     EquationCodeModule,
     DefaultPurposeCodeModule,
+    FuelCodeModule,
   ],
 })
 export class AppModule {}

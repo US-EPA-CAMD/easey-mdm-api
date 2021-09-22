@@ -29,6 +29,7 @@ import { DefaultSourceCodeModule } from './default-source-code/default-source-co
 import { OperatingLevelCodeModule } from './operating-level-code/operating-level-code.module';
 import { EquationCodeModule } from './equation-code/equation-code.module';
 import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose-code.module';
+import { FuelCodeModule } from './fuel-code/fuel-code.module';
 
 const routes: Routes = [
   {
@@ -146,6 +147,10 @@ const routes: Routes = [
   {
     path: '/default-purpose-codes',
     module: DefaultPurposeCodeModule,
+  },
+  {
+    path: '/fuel-codes',
+    module: FuelCodeModule,
   },
 ];
 export default routes;
