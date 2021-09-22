@@ -28,6 +28,7 @@ import { OperatingConditionCodeModule } from './operating-condition-code/operati
 import { DefaultSourceCodeModule } from './default-source-code/default-source-code.module';
 import { OperatingLevelCodeModule } from './operating-level-code/operating-level-code.module';
 import { EquationCodeModule } from './equation-code/equation-code.module';
+import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose-code.module';
 
 const routes: Routes = [
   {
@@ -141,6 +142,10 @@ const routes: Routes = [
   {
     path: '/equation-codes',
     module: EquationCodeModule,
+  },
+  {
+    path: '/default-purpose-codes',
+    module: DefaultPurposeCodeModule,
   },
 ];
 export default routes;
