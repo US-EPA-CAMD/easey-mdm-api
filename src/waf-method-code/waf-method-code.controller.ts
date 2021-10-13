@@ -17,7 +17,7 @@ export class WafMethodCodeController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  getUnitofMeasureCodes(): Promise<WafMethodCodeDTO[]> {
+  getWafMethodCodes(): Promise<WafMethodCodeDTO[]> {
     return this.service.getWafMethodCodes();
   }
 }
