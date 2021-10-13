@@ -25,8 +25,8 @@ describe('WafMethodCodeController', () => {
     service = module.get<WafMethodCodeService>(WafMethodCodeService);
   });
 
-  describe('getUnitofMeasureCodes', () => {
-    it('should call the WafMethodCodeService and return a list of unit of measure codes', () => {
+  describe('getWafMethodCodes', () => {
+    it('should call the WafMethodCodeService and return a list of WAF method codes', () => {
       expect(controller.getWafMethodCodes()).toEqual([]);
       expect(service.getWafMethodCodes).toHaveBeenCalled();
     });

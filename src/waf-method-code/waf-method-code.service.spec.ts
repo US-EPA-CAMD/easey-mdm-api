@@ -27,7 +27,7 @@ describe('WafMethodCodeService', () => {
   });
 
   describe('getWafMethodCodes', () => {
-    it('calls the WafMethodCodeRepository and return units of measure codes', async () => {
+    it('calls the WafMethodCodeRepository and return WAF method codes', async () => {
       const result = await service.getWafMethodCodes();
       expect(result).toEqual([]);
       expect(repository.getWafMethodCodes).toHaveBeenCalled();
