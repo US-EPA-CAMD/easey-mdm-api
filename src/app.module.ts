@@ -39,6 +39,7 @@ import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose
 import { FuelCodeModule } from './fuel-code/fuel-code.module';
 import { WafMethodCodeModule } from './waf-method-code/waf-method-code.module';
 import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-code.module';
+import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 
 @Module({
   imports: [
@@ -82,6 +83,7 @@ import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-co
     FuelCodeModule,
     WafMethodCodeModule,
     FuelIndicatorCodeModule,
+    DemMethodCodeModule,
   ],
 })
 export class AppModule {}
