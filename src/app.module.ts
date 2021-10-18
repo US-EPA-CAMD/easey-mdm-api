@@ -38,6 +38,8 @@ import { EquationCodeModule } from './equation-code/equation-code.module';
 import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose-code.module';
 import { FuelCodeModule } from './fuel-code/fuel-code.module';
 import { WafMethodCodeModule } from './waf-method-code/waf-method-code.module';
+import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-code.module';
+import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 
 @Module({
   imports: [
@@ -80,6 +82,8 @@ import { WafMethodCodeModule } from './waf-method-code/waf-method-code.module';
     DefaultPurposeCodeModule,
     FuelCodeModule,
     WafMethodCodeModule,
+    FuelIndicatorCodeModule,
+    DemMethodCodeModule,
   ],
 })
 export class AppModule {}

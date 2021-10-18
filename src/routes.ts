@@ -30,6 +30,8 @@ import { OperatingLevelCodeModule } from './operating-level-code/operating-level
 import { EquationCodeModule } from './equation-code/equation-code.module';
 import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose-code.module';
 import { FuelCodeModule } from './fuel-code/fuel-code.module';
+import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-code.module';
+import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 
 const routes: Routes = [
   {
@@ -151,6 +153,14 @@ const routes: Routes = [
   {
     path: '/fuel-codes',
     module: FuelCodeModule,
+  },
+  {
+    path: '/fuel-indicator-codes',
+    module: FuelIndicatorCodeModule,
+  },
+  {
+    path: '/dem-method-codes',
+    module: DemMethodCodeModule,
   },
 ];
 export default routes;
