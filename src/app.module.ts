@@ -38,6 +38,9 @@ import { EquationCodeModule } from './equation-code/equation-code.module';
 import { DefaultPurposeCodeModule } from './default-purpose-code/default-purpose-code.module';
 import { FuelCodeModule } from './fuel-code/fuel-code.module';
 
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
+import { CorsOptionsModule } from '@us-epa-camd/easey-common/cors-options';
+
 @Module({
   imports: [
     RouterModule.forRoutes(routes),
@@ -48,6 +51,8 @@ import { FuelCodeModule } from './fuel-code/fuel-code.module';
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
+    LoggerModule,
+    CorsOptionsModule,
     ControlTechnologiesModule,
     FuelTypesModule,
     UnitTypesModule,

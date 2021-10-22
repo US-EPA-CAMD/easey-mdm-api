@@ -24,6 +24,7 @@ import config from './config';
 // }));
 
 export default registerAs('app', () => ({
+  name: 'master-data-api',
   title: config.title,
   path: config.path,
   host: config.host,
