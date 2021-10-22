@@ -1,4 +1,3 @@
-import { query } from 'express';
 import { EntityRepository, Repository } from 'typeorm';
 import { ControlEquipParam } from '../entities/control-equip-param-code.entity';
 
