@@ -33,6 +33,7 @@ import { FuelCodeModule } from './fuel-code/fuel-code.module';
 import { WafMethodCodeModule } from './waf-method-code/waf-method-code.module';
 import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-code.module';
 import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
+import { ControlEquipParamCodeModule } from './control-equip-param-code/control-equip-param-code.module';
 
 const routes: Routes = [
   {
@@ -166,6 +167,10 @@ const routes: Routes = [
   {
     path: '/dem-method-codes',
     module: DemMethodCodeModule,
+  },
+  {
+    path: '/control-equi-param-codes',
+    module: ControlEquipParamCodeModule,
   },
 ];
 export default routes;
