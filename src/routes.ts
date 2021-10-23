@@ -169,7 +169,7 @@ const routes: Routes = [
     module: DemMethodCodeModule,
   },
   {
-    path: '/control-equi-param-codes',
+    path: '/control-equip-param-codes',
     module: ControlEquipParamCodeModule,
   },
 ];
