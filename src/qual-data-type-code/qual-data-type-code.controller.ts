@@ -3,7 +3,7 @@ import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { QualDataTypeCodeService } from './qual-data-type-code.service';
 import { QualDataTypeCodeDTO } from '../dto/qual-data-type-code.dto';
 
-@ApiTags('Qual Data Type Codes')
+@ApiTags('Qualification Data Type Codes')
 @Controller()
 export class QualDataTypeCodeController {
   constructor(private readonly service: QualDataTypeCodeService) {}
