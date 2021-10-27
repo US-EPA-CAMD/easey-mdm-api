@@ -45,16 +45,14 @@ import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-co
 import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 import { ControlEquipParamCodeModule } from './control-equip-param-code/control-equip-param-code.module';
 import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-code.module';
+import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-test-type-code.module';
 
 @Module({
   imports: [
     RouterModule.forRoutes(routes),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [
-        dbConfig,
-        appConfig
-      ],
+      load: [dbConfig, appConfig],
     }),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
@@ -96,6 +94,7 @@ import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-cod
     DemMethodCodeModule,
     ControlEquipParamCodeModule,
     QualDataTypeCodeModule,
+    QualLeeTestTypeCodeModule,
   ],
 })
 export class AppModule {}
