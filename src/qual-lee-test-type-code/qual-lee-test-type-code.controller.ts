@@ -3,7 +3,7 @@ import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { QualLeeTestTypeCodeService } from './qual-lee-test-type-code.service';
 import { QualLeeTestTypeCodeDTO } from '../dto/qual-lee-test-type-code.dto';
 
-@ApiTags('Qual LEE Test Type Codes')
+@ApiTags('Qualification LEE Test Type Codes')
 @Controller()
 export class QualLeeTestTypeCodeController {
   constructor(private readonly service: QualLeeTestTypeCodeService) {}
