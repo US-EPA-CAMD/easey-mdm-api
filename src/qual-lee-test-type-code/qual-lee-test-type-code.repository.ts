@@ -8,7 +8,7 @@ export class QualLeeTestTypeCodeRepository extends Repository<
   async getQualLeeTestTypeCodes(): Promise<QualLeeTestTypeCode[]> {
     const query = this.createQueryBuilder('qltt').select([
       'qltt.qualLeeTestTypeCode',
-      'qltt.qualLeeTestTypeCodeDescription',
+      'qltt.qualLeeTestTypeDescription',
     ]);
 
     return query.getMany();
