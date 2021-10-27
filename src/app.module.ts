@@ -44,6 +44,7 @@ import { WafMethodCodeModule } from './waf-method-code/waf-method-code.module';
 import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-code.module';
 import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 import { ControlEquipParamCodeModule } from './control-equip-param-code/control-equip-param-code.module';
+import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-code.module';
 
 @Module({
   imports: [
@@ -94,6 +95,7 @@ import { ControlEquipParamCodeModule } from './control-equip-param-code/control-
     FuelIndicatorCodeModule,
     DemMethodCodeModule,
     ControlEquipParamCodeModule,
+    QualDataTypeCodeModule,
   ],
 })
 export class AppModule {}
