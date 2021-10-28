@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { WafMethodCode } from '../entities/waf-method-code.entity';
 import { WafMethodCodeDTO } from '../dto/waf-method-code.dto';
 

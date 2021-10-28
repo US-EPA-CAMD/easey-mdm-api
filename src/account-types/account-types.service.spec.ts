@@ -6,6 +6,9 @@ import { AccountTypeMap } from '../maps/account-type.map';
 import { AccountType } from '../entities/account-type-code.entity';
 import { AccountTypeGroup } from '../entities/account-type-group-code.entity';
 import { AccountTypeDTO } from '../dto/account-type.dto';
+import { ConfigService } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
+import { Logger } from '@us-epa-camd/easey-common/logger';
 
 const mockAccountTypeRepository = () => ({
   getAllAccountTypes: jest.fn(),
@@ -17,6 +20,7 @@ describe('-- Account Type Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [HttpModule],
       providers: [
         AccountTypesService,
         {
@@ -24,6 +28,8 @@ describe('-- Account Type Service --', () => {
           useFactory: mockAccountTypeRepository,
         },
         AccountTypeMap,
+        ConfigService,
+        Logger,
       ],
     }).compile();
 

@@ -1,3 +1,5 @@
+import { HttpModule } from '@nestjs/axios';
+import { ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AnalyzerRangeCodeRepository } from './analyzer-range-code.repository';
 import { AnalyzerRangeCodeService } from './analyzer-range-code.service';
@@ -13,12 +15,14 @@ describe('AnalyzerRangeCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [HttpModule],
       providers: [
         AnalyzerRangeCodeService,
         {
           provide: AnalyzerRangeCodeRepository,
           useFactory: mockAnalyzerRangeCodeRepository,
         },
+        ConfigService,
       ],
     }).compile();
 

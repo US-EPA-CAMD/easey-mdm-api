@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { AcquisitionMethodCode } from '../entities/acquisition-method-code.entity';
 import { AcquisitionMethodCodeDTO } from '../dto/acquisition-method-code.dto';
 

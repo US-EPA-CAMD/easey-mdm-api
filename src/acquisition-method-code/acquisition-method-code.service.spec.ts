@@ -3,6 +3,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AcquisitionMethodCodeService } from './acquisition-method-code.service';
 import { AcquisitionMethodCodeRepository } from './acquisition-method-code.repository';
 import { AcquisitionMethodCodeMap } from '../maps/acquistion-method-code.map';
+import { HttpModule } from '@nestjs/axios';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 describe('AcquisitionMethodCodeService', () => {
   let mockAquisitionMethodCodeRepository = () => ({
@@ -14,6 +16,7 @@ describe('AcquisitionMethodCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [HttpModule],
       providers: [
         AcquisitionMethodCodeService,
         {
@@ -21,6 +24,7 @@ describe('AcquisitionMethodCodeService', () => {
           useFactory: mockAquisitionMethodCodeRepository,
         },
         AcquisitionMethodCodeMap,
+        ConfigService,
       ],
     }).compile();
 

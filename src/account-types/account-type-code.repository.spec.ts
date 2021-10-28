@@ -1,6 +1,5 @@
 import { Test } from '@nestjs/testing';
 import { SelectQueryBuilder } from 'typeorm';
-
 import { AccountTypeRepository } from './account-type-code.repository';
 import { AccountType } from '../entities/account-type-code.entity';
 import { AccountTypeDTO } from '../dto/account-type.dto';

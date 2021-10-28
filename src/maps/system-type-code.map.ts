@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { SystemTypeCode } from '../entities/system-type-code.entity';
 import { SystemTypeCodeDTO } from '../dto/system-type-code.dto';
 
