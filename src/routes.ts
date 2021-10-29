@@ -36,6 +36,7 @@ import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 import { ControlEquipParamCodeModule } from './control-equip-param-code/control-equip-param-code.module';
 import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-code.module';
 import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-test-type-code.module';
+import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 
 const routes: Routes = [
   {
@@ -181,6 +182,10 @@ const routes: Routes = [
   {
     path: '/qual-lee-test-type-codes',
     module: QualLeeTestTypeCodeModule,
+  },
+  {
+    path: '/qual-type-codes',
+    module: QualTypeCodeModule,
   },
 ];
 export default routes;
