@@ -96,11 +96,11 @@ const routes: Routes = [
     module: AnalyzerRangeCodeModule,
   },
   {
-    path: '/max-rate-source-code',
+    path: '/max-rate-source-codes',
     module: MaxRateSourceCodeModule,
   },
   {
-    path: '/units-of-measure',
+    path: '/units-of-measure-codes',
     module: UnitsOfMeasureCodeModule,
   },
   {
