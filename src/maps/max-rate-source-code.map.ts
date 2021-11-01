@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { MaxRateSourceCode } from '../entities/max-rate-source-code.entity';
 import { MaxRateSourceCodeDTO } from '../dto/max-rate-source-code.dto';
 

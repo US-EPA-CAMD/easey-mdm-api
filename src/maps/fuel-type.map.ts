@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { FuelType } from '../entities/fuel-type-code.entity';
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
 

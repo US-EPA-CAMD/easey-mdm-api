@@ -4,7 +4,6 @@ import { ControlTechnologiesService } from './control-technologies.service';
 import { ControlTechnologyRepository } from './control-code.repository';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
 import { ControlTechnology } from '../entities/control-code.entity';
-import { ControlEquipParam } from '../entities/control-equip-param-code.entity';
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 
 const mockControlTechnologiesRepository = () => ({

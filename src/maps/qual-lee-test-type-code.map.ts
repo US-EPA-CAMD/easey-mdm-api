@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { QualLeeTestTypeCode } from '../entities/qual-lee-test-type-code.entity';
 import { QualLeeTestTypeCodeDTO } from '../dto/qual-lee-test-type-code.dto';
 
