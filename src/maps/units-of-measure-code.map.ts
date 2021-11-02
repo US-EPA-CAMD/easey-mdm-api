@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { UnitsOfMeasureCode } from '../entities/units-of-measure-code.entity';
 import { UnitsOfMeasureCodeDTO } from '../dto/units-of-measure-code.dto';
 

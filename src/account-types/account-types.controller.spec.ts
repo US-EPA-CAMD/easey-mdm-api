@@ -6,6 +6,8 @@ import { AccountTypeRepository } from './account-type-code.repository';
 import { AccountTypeMap } from '../maps/account-type.map';
 import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
+import { Logger, LoggerModule } from '@us-epa-camd/easey-common/logger';
+import { ConfigService } from '@nestjs/config';
 
 describe('-- Account Types Controller --', () => {
   let accountTypesController;
@@ -13,8 +15,15 @@ describe('-- Account Types Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [AccountTypesController],
-      providers: [AccountTypesService, AccountTypeMap, AccountTypeRepository],
+      providers: [
+        AccountTypesService,
+        AccountTypeMap,
+        AccountTypeRepository,
+        ConfigService,
+        Logger,
+      ],
     }).compile();
 
     accountTypesController = module.get(AccountTypesController);
@@ -32,9 +41,9 @@ describe('-- Account Types Controller --', () => {
       jest
         .spyOn(accountTypesService, 'getAllAccountTypes')
         .mockResolvedValue(expectedResult);
-      expect(await accountTypesController.getAllAccountTypes(accountTypeParamsDto)).toBe(
-        expectedResult,
-      );
+      expect(
+        await accountTypesController.getAllAccountTypes(accountTypeParamsDto),
+      ).toBe(expectedResult);
     });
   });
 });

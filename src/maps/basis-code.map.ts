@@ -1,4 +1,4 @@
-import { BaseMap } from './base.map';
+import { BaseMap } from '@us-epa-camd/easey-common/maps';
 import { BasisCode } from '../entities/basis-code.entity';
 import { BasisCodeDTO } from '../dto/basis-code.dto';
 

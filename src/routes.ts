@@ -34,6 +34,9 @@ import { WafMethodCodeModule } from './waf-method-code/waf-method-code.module';
 import { FuelIndicatorCodeModule } from './fuel-indicator-code/fuel-indicator-code.module';
 import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 import { ControlEquipParamCodeModule } from './control-equip-param-code/control-equip-param-code.module';
+import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-code.module';
+import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-test-type-code.module';
+import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 
 const routes: Routes = [
   {
@@ -93,11 +96,11 @@ const routes: Routes = [
     module: AnalyzerRangeCodeModule,
   },
   {
-    path: '/max-rate-source-code',
+    path: '/max-rate-source-codes',
     module: MaxRateSourceCodeModule,
   },
   {
-    path: '/units-of-measure',
+    path: '/units-of-measure-codes',
     module: UnitsOfMeasureCodeModule,
   },
   {
@@ -171,6 +174,18 @@ const routes: Routes = [
   {
     path: '/control-equip-param-codes',
     module: ControlEquipParamCodeModule,
+  },
+  {
+    path: '/qual-data-type-codes',
+    module: QualDataTypeCodeModule,
+  },
+  {
+    path: '/qual-lee-test-type-codes',
+    module: QualLeeTestTypeCodeModule,
+  },
+  {
+    path: '/qual-type-codes',
+    module: QualTypeCodeModule,
   },
 ];
 export default routes;
