@@ -1,5 +1,9 @@
+# never include npm's package-lock.json when using yarn
+package-lock.json
+
 # dependencies
 /node_modules
+/npm-packages-offline-cache
 
 # production
 /dist
@@ -37,7 +41,7 @@ test-report.xml
 *.launch
 .settings/
 *.sublime-workspace
-#.env
+.env
 
 # IDE - VSCode
 .vscode/*
