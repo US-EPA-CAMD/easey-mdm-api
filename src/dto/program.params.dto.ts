@@ -2,12 +2,12 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsOptional } from 'class-validator';
 
-import { Programs } from '../enums/program.enum';
+import { Program } from '@us-epa-camd/easey-common/enums';
 
 export class ProgramParamsDTO {
   @IsOptional()
   @Transform(({ value }) => value.split('|').map(item => item.trim()))
-  exclude?: Programs[];
+  exclude?: Program[];
 
   @IsOptional()
   @ApiPropertyOptional({ nullable: true })

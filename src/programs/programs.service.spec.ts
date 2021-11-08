@@ -4,7 +4,7 @@ import { ProgramsService } from './programs.service';
 import { ProgramRepository } from './program-code.repository';
 import { ProgramMap } from '../maps/program.map';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
-import { Programs } from '../enums/program.enum';
+import { Program } from '@us-epa-camd/easey-common/enums';
 
 const mockProgramRepository = () => ({
   getAllPrograms: jest.fn(),
@@ -53,7 +53,7 @@ describe('-- Programs Service --', () => {
       programMap.many.mockReturnValue('mapped DTOs');
 
       let filters: ProgramParamsDTO = {
-        exclude: [Programs.ARP],
+        exclude: [Program.ARP],
         isActive: true,
         emissionsUIFilter: true,
         allowanceUIFilter: true,
