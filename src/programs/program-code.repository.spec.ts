@@ -1,11 +1,11 @@
 import { Test } from '@nestjs/testing';
 import { SelectQueryBuilder } from 'typeorm';
 
-import { Program } from '../entities/program-code.entity';
+import { Program as ProgramEntity } from '../entities/program-code.entity';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
 import { ProgramRepository } from './program-code.repository';
 import { ProgramDTO } from '../dto/program.dto';
-import { Programs } from '../enums/program.enum';
+import { Program } from '@us-epa-camd/easey-common/enums';
 
 const mockQueryBuilder = () => ({
   andWhere: jest.fn(),
@@ -30,7 +30,9 @@ describe('ProgramRepository', () => {
 
     programRepository = module.get<ProgramRepository>(ProgramRepository);
 
-    queryBuilder = module.get<SelectQueryBuilder<Program>>(SelectQueryBuilder);
+    queryBuilder = module.get<SelectQueryBuilder<ProgramEntity>>(
+      SelectQueryBuilder,
+    );
 
     programRepository.createQueryBuilder = jest
       .fn()
@@ -47,7 +49,7 @@ describe('ProgramRepository', () => {
       const emptyFilters: ProgramDTO = new ProgramDTO();
       let result = await programRepository.getAllPrograms(emptyFilters);
       let filters: ProgramParamsDTO = {
-        exclude: [Programs.ARP],
+        exclude: [Program.ARP],
         isActive: false,
         emissionsUIFilter: true,
         allowanceUIFilter: true,
@@ -60,7 +62,7 @@ describe('ProgramRepository', () => {
     });
     it('calls createQueryBuilder and gets all active allowance programs from the repository', async () => {
       let filters: ProgramParamsDTO = {
-        exclude: [Programs.ARP],
+        exclude: [Program.ARP],
         isActive: true,
         emissionsUIFilter: true,
         allowanceUIFilter: true,
