@@ -37,6 +37,8 @@ import { ControlEquipParamCodeModule } from './control-equip-param-code/control-
 import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-code.module';
 import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-test-type-code.module';
 import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
+import { MaterialCodeModule } from './material-code/material-code.module';
+import { ShapeCodeModule } from './shape-code/shape-code.module';
 
 const routes: Routes = [
   {
@@ -186,6 +188,14 @@ const routes: Routes = [
   {
     path: '/qual-type-codes',
     module: QualTypeCodeModule,
+  },
+  {
+    path: '/material-codes',
+    module: MaterialCodeModule,
+  },
+  {
+    path: '/shape-codes',
+    module: ShapeCodeModule,
   },
 ];
 export default routes;

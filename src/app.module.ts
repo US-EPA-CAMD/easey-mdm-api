@@ -47,6 +47,8 @@ import { ControlEquipParamCodeModule } from './control-equip-param-code/control-
 import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-code.module';
 import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-test-type-code.module';
 import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
+import { MaterialCodeModule } from './material-code/material-code.module';
+import { ShapeCodeModule } from './shape-code/shape-code.module';
 
 @Module({
   imports: [
@@ -97,6 +99,8 @@ import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
     QualDataTypeCodeModule,
     QualLeeTestTypeCodeModule,
     QualTypeCodeModule,
+    MaterialCodeModule,
+    ShapeCodeModule,
   ],
 })
 export class AppModule {}
