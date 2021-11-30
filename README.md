@@ -65,7 +65,7 @@ cf ssh mdm-api -L <LOCAL_PORT>:<DB_HOST>:5432
 4. Install dependencies 
     
     ```
-    npm install
+    yarn install
     ```
 ### Run the appication 
 
@@ -73,7 +73,7 @@ From within the `easey-mdm-api` project directory, you can run:
 
 ```bash
 # Runs the api in the development mode
-npm run start:dev
+yarn start:dev
 ```
 
 Open [http://localhost:8080/api/master-data-mgmt/swagger/](http://localhost:8080/api/master-data-mgmt/swagger/) to view swagger documentation.
@@ -84,20 +84,20 @@ You will also see any lint errors in the console.
 
 ```bash
 # for production mode
-npm run start
+yarn start
 ```
 
 ### Run the tests
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
 ## API Endpoints
 </br>
@@ -115,4 +115,3 @@ This project is licensed under the MIT License. We encourage you to read this pr
 
 ## Disclaimer
 The United States Environmental Protection Agency (EPA) GitHub project code is provided on an "as is" basis and the user assumes responsibility for its use. EPA has relinquished control of the information and no longer has responsibility to protect the integrity , confidentiality, or availability of the information. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by EPA. The EPA seal and logo shall not be used in any manner to imply endorsement of any commercial product or activity by EPA or the United States Government.
-
