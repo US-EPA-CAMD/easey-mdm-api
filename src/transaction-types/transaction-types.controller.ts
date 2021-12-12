@@ -3,14 +3,16 @@ import {
   ApiOkResponse,
   ApiBadRequestResponse,
   ApiNotFoundResponse,
+  ApiSecurity,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
 import { TransactionTypeDTO } from '../dto/transaction-type.dto';
 import { TransactionTypesService } from './transaction-types.service';
 
-@ApiTags('Transaction Types')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Transaction Types')
 export class TransactionTypesController {
   constructor(
     private readonly transactionTypesService: TransactionTypesService,

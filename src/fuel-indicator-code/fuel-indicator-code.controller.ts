@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { FuelIndicatorCodeDTO } from '../dto/fuel-indicator-code.dto';
 import { FuelIndicatorCodeService } from './fuel-indicator-code.service';
 
-@ApiTags('Fuel Indicator Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Fuel Indicator Codes')
 export class FuelIndicatorCodeController {
   constructor(private readonly service: FuelIndicatorCodeService) {}
 

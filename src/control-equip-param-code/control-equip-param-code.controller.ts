@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags, ApiSecurity } from '@nestjs/swagger';
 import { ControlEquipParamCodeDTO } from '../dto/control-equip-param-code.dto';
 import { ControlEquipParamCodeService } from './control-equip-param-code.service';
 
-@ApiTags('Control Equipment Parameter Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Control Equipment Parameter Codes')
 export class ControlEquipParamCodeController {
   constructor(private readonly service: ControlEquipParamCodeService) {}
 

@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { OperatingLevelCodeDTO } from '../dto/operating-level-code.dto';
 import { OperatingLevelCodeService } from './operating-level-code.service';
 
-@ApiTags('Operating Level Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Operating Level Codes')
 export class OperatingLevelCodeController {
   constructor(private readonly service: OperatingLevelCodeService) {}
 

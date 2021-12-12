@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { WafMethodCodeService } from './waf-method-code.service';
 import { WafMethodCodeDTO } from '../dto/waf-method-code.dto';
 
-@ApiTags('WAF Method Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('WAF Method Codes')
 export class WafMethodCodeController {
   constructor(private readonly service: WafMethodCodeService) {}
 

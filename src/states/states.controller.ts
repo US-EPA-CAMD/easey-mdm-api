@@ -3,14 +3,16 @@ import {
   ApiOkResponse,
   ApiBadRequestResponse,
   ApiNotFoundResponse,
+  ApiSecurity,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
 import { StatesService } from './states.service';
 import { StateDTO } from '../dto/state.dto';
 
-@ApiTags('States')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('States')
 export class StatesController {
   constructor(private readonly statesService: StatesService) {}
 

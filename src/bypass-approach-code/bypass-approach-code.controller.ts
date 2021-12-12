@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiTags, ApiSecurity } from '@nestjs/swagger';
 import { BypassApproachCodeDTO } from '../dto/bypass-approach-code.dto';
 import { BypassApproachCodeService } from './bypass-approach-code.service';
 
-@ApiTags('Bypass Approach Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Bypass Approach Codes')
 export class BypassApproachCodesController {
   constructor(private readonly service: BypassApproachCodeService) {}
 

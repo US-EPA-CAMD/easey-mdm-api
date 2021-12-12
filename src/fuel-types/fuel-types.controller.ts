@@ -2,6 +2,7 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
 import { Controller, Get } from '@nestjs/common';
@@ -9,8 +10,9 @@ import { Controller, Get } from '@nestjs/common';
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
 import { FuelTypesService } from './fuel-types.service';
 
-@ApiTags('Fuel Types')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Fuel Types')
 export class FuelTypesController {
   constructor(private readonly fuelTypesService: FuelTypesService) {}
 

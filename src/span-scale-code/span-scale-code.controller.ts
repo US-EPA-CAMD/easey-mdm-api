@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { SpanScaleCodeDTO } from '../dto/span-scale-code.dto';
 import { SpanScaleCodeService } from './span-scale-code.service';
 
-@ApiTags('Span Scale Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Span Scale Codes')
 export class SpanScaleCodeController {
   constructor(private readonly service: SpanScaleCodeService) {}
 

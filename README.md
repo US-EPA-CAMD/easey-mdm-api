@@ -33,11 +33,11 @@ Please reach out to an EPA tech lead (see Mike Heese or Jason Whitehead) to get 
 
 2. Target the development org (you will need to be granted permission to access this):
 ```bash
-cf target -o epa-easey -s dev
+$ cf target -o epa-easey -s dev
 ```
 3. Open SSH tunnel
 ```bash
-cf ssh mdm-api -L <LOCAL_PORT>:<DB_HOST>:5432
+$ cf ssh mdm-api -L <LOCAL_PORT>:<DB_HOST>:5432
 ```
 4. Keep the SSH tunnel open while running the application
 
@@ -50,22 +50,22 @@ cf ssh mdm-api -L <LOCAL_PORT>:<DB_HOST>:5432
 
     ```shell
     # If using SSH
-    git clone git@github.com:US-EPA-CAMD/easey-mdm-api.git
+    $ git clone git@github.com:US-EPA-CAMD/easey-mdm-api.git
     
     # If using HTTPS
-    git clone https://github.com/US-EPA-CAMD/easey-mdm-api.git
+    $ git clone https://github.com/US-EPA-CAMD/easey-mdm-api.git
     ```
 
 3. Navigate to the root project directory
 
     ```
-    cd easey-mdm-api
+    $ cd easey-mdm-api
     ```
 
 4. Install dependencies 
     
     ```
-    yarn install
+    $ yarn install
     ```
 ### Run the appication 
 
@@ -73,7 +73,7 @@ From within the `easey-mdm-api` project directory, you can run:
 
 ```bash
 # Runs the api in the development mode
-yarn start:dev
+$ yarn start:dev
 ```
 
 Open [http://localhost:8080/api/master-data-mgmt/swagger/](http://localhost:8080/api/master-data-mgmt/swagger/) to view swagger documentation.
@@ -84,7 +84,7 @@ You will also see any lint errors in the console.
 
 ```bash
 # for production mode
-yarn start
+$ yarn start
 ```
 
 ### Run the tests

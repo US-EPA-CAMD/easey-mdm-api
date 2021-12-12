@@ -49,6 +49,7 @@ import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-te
 import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
+import { CrossChecksModule } from './cross-checks/cross-checks.module';
 
 @Module({
   imports: [
@@ -60,6 +61,7 @@ import { ShapeCodeModule } from './shape-code/shape-code.module';
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
+    CrossChecksModule,
     LoggerModule,
     CorsOptionsModule,
     ControlTechnologiesModule,

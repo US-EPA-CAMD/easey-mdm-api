@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiTags, ApiSecurity } from '@nestjs/swagger';
 import { BasisCodeService } from './basis-code.service';
 import { BasisCodeDTO } from '../dto/basis-code.dto';
 
-@ApiTags('Basis Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Basis Codes')
 export class BasisCodeController {
   constructor(private readonly service: BasisCodeService) {}
 

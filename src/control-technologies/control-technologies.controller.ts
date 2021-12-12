@@ -3,14 +3,16 @@ import {
   ApiOkResponse,
   ApiBadRequestResponse,
   ApiNotFoundResponse,
+  ApiSecurity
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 import { ControlTechnologiesService } from './control-technologies.service';
 
-@ApiTags('Control Technologies')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Control Technologies')
 export class ControlTechnologiesController {
   constructor(private readonly controlTechnologiesService: ControlTechnologiesService) {}
 

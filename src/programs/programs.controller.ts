@@ -3,6 +3,7 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiQuery,
+  ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
 import { Controller, Get, Query } from '@nestjs/common';
@@ -11,8 +12,9 @@ import { ProgramsService } from './programs.service';
 import { ProgramDTO } from '../dto/program.dto';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
 
-@ApiTags('Programs')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Programs')
 export class ProgramsController {
   constructor(private readonly programsService: ProgramsService) {}
 

@@ -4,6 +4,7 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiQuery,
+  ApiSecurity
 } from '@nestjs/swagger';
 import { Get, Controller, Query } from '@nestjs/common';
 
@@ -11,8 +12,9 @@ import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypesService } from './account-types.service';
 import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
 
-@ApiTags('Account Types')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Account Types')
 export class AccountTypesController {
   constructor(private readonly accountTypesService: AccountTypesService) {}
 

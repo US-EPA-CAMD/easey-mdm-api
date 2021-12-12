@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { QualLeeTestTypeCodeService } from './qual-lee-test-type-code.service';
 import { QualLeeTestTypeCodeDTO } from '../dto/qual-lee-test-type-code.dto';
 
-@ApiTags('Qualification LEE Test Type Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Qualification LEE Test Type Codes')
 export class QualLeeTestTypeCodeController {
   constructor(private readonly service: QualLeeTestTypeCodeService) {}
 

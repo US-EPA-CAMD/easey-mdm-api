@@ -3,14 +3,16 @@ import {
   ApiOkResponse,
   ApiBadRequestResponse,
   ApiNotFoundResponse,
+  ApiSecurity,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
 import { UnitTypeDTO } from '../dto/unit-type.dto';
 import { UnitTypesService } from './unit-types.service';
 
-@ApiTags('Unit Types')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Unit Types')
 export class UnitTypesController {
   constructor(private readonly unitTypesService: UnitTypesService) {}
 

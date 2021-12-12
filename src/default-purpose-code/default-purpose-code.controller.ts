@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { DefaultPurposeCodeDTO } from '../dto/default-purpose-code.dto';
 import { DefaultPurposeCodeService } from './default-purpose-code.service';
 
-@ApiTags('Default Purpose Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Default Purpose Codes')
 export class DefaultPurposeCodeController {
   constructor(private readonly service: DefaultPurposeCodeService) {}
 

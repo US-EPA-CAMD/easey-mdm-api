@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { DemMethodCodeDTO } from '../dto/dem-method-code.dto';
 import { DemMethodCodeService } from './dem-method-code.service';
 
-@ApiTags('Demonstration Method Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Demonstration Method Codes')
 export class DemMethodCodeController {
   constructor(private readonly service: DemMethodCodeService) {}
 

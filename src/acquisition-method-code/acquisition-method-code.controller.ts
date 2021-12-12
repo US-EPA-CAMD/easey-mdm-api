@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiTags, ApiSecurity } from '@nestjs/swagger';
 import { AcquisitionMethodCodeService } from './acquisition-method-code.service';
 import { AcquisitionMethodCodeDTO } from '../dto/acquisition-method-code.dto';
 
-@ApiTags('Acquisition Method Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Acquisition Method Codes')
 export class AcquisitionMethodCodeController {
   constructor(private readonly service: AcquisitionMethodCodeService) {}
 

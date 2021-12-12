@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { QualDataTypeCodeService } from './qual-data-type-code.service';
 import { QualDataTypeCodeDTO } from '../dto/qual-data-type-code.dto';
 
-@ApiTags('Qualification Data Type Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Qualification Data Type Codes')
 export class QualDataTypeCodeController {
   constructor(private readonly service: QualDataTypeCodeService) {}
 

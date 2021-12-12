@@ -1,10 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiOkResponse, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { MaxRateSourceCodeService } from './max-rate-source-code.service';
 import { MaxRateSourceCodeDTO } from '../dto/max-rate-source-code.dto';
 
-@ApiTags('Max Rate Source Codes')
 @Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Max Rate Source Codes')
 export class MaxRateSourceCodeController {
   constructor(private readonly service: MaxRateSourceCodeService) {}
 

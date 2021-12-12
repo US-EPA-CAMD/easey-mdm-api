@@ -39,8 +39,13 @@ import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-te
 import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
+import { CrossChecksModule } from './cross-checks/cross-checks.module';
 
 const routes: Routes = [
+  {
+    path: '/cross-checks',
+    module: CrossChecksModule,
+  },
   {
     path: '/control-technologies',
     module: ControlTechnologiesModule,
