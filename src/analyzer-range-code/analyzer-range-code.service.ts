@@ -9,7 +9,7 @@ export class AnalyzerRangeCodeService {
   constructor(
     @InjectRepository(AnalyzerRangeCodeRepository)
     private readonly repository: AnalyzerRangeCodeRepository,
-    private logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAnalyzerRangeCodes(): Promise<AnalyzerRangeCodeDTO[]> {

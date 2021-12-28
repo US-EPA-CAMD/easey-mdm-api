@@ -9,7 +9,7 @@ export class SystemDesignationCodeService {
   constructor(
     @InjectRepository(SystemDesignationCodeRepository)
     private readonly repository: SystemDesignationCodeRepository,
-    private logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getSystemDesignationCodes(): Promise<SystemDesignationCodeDTO[]> {

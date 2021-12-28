@@ -13,7 +13,7 @@ export class AccountTypesService {
     @InjectRepository(AccountTypeRepository)
     private readonly repository: AccountTypeRepository,
     private readonly map: AccountTypeMap,
-    private logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAllAccountTypes(
