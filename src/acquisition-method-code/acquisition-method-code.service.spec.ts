@@ -5,6 +5,7 @@ import { AcquisitionMethodCodeRepository } from './acquisition-method-code.repos
 import { AcquisitionMethodCodeMap } from '../maps/acquistion-method-code.map';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('AcquisitionMethodCodeService', () => {
   let mockAquisitionMethodCodeRepository = () => ({
@@ -16,7 +17,7 @@ describe('AcquisitionMethodCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule],
+      imports: [HttpModule, LoggerModule],
       providers: [
         AcquisitionMethodCodeService,
         {

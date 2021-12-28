@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Logger } from '@us-epa-camd/easey-common/logger';
 import { SubDataCodeDTO } from '../dto/sub-data-code.dto';
 import { SubDataCodeRepository } from './sub-data-code.repository';
 
@@ -8,6 +9,7 @@ export class SubDataCodeService {
   constructor(
     @InjectRepository(SubDataCodeRepository)
     private readonly repository: SubDataCodeRepository,
+    private readonly Logger: Logger
   ) {}
 
   // createSubDataCode(createSubDataCodeDto: SubDataCodeDTO) {
@@ -15,7 +17,17 @@ export class SubDataCodeService {
   // }
 
   async getSubDataCodes(): Promise<SubDataCodeDTO[]> {
-    return this.repository.getSubDataCodes();
+
+    this.Logger.info('Getting sub data codes');
+    let query;
+    try {
+      query = await this.repository.getSubDataCodes();
+    } catch (e) {
+      this.Logger.error(InternalServerErrorException, e.message);
+    }
+    this.Logger.info('Got sub data codes');
+
+    return query;
   }
 
   // getSubDataCode(id: string): Promise<SubDataCodeDTO> {

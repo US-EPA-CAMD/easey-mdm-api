@@ -31,7 +31,7 @@ describe('ControlEquipParamCodeController', () => {
 
   describe('getControlEquipParamCodes', () => {
     it('should call the ControlEquipParamCodeService and return a list of control equipment parameter codes', async () => {
-      expect(controller.getControlEquipParamCodes()).toEqual([]);
+      expect(await controller.getControlEquipParamCodes()).toEqual([]);
       expect(
         defaultPurposeCodeService.getControlEquipParamCodes,
       ).toHaveBeenCalled();

@@ -1,16 +1,28 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QualTypeCodeRepository } from './qual-type-code.repository';
 import { QualTypeCodeDTO } from '../dto/qual-type-code.dto';
+import { Logger } from '@us-epa-camd/easey-common/logger';
 
 @Injectable()
 export class QualTypeCodeService {
   constructor(
     @InjectRepository(QualTypeCodeRepository)
     private readonly repository: QualTypeCodeRepository,
+    private readonly Logger: Logger
   ) {}
 
   async getQualTypeCodes(): Promise<QualTypeCodeDTO[]> {
-    return this.repository.getQualTypeCodes();
+
+    this.Logger.info('Getting qual type codes');
+    let query;
+    try {
+      query = await this.repository.getQualTypeCodes();
+    } catch (e) {
+      this.Logger.error(InternalServerErrorException, e.message);
+    }
+    this.Logger.info('Got qual type codes');
+
+    return query;
   }
 }

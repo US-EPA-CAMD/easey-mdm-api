@@ -27,7 +27,7 @@ describe('DemMethodCodeController', () => {
 
   describe('getDemMethodCodes', () => {
     it('should call the DemMethodCodeService and return a list of demonstration method codes', async () => {
-      expect(controller.getDemMethodCodes()).toEqual([]);
+      expect(await controller.getDemMethodCodes()).toEqual([]);
       expect(service.getDemMethodCodes).toHaveBeenCalled();
     });
   });
