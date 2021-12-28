@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MethodCodeService } from './method-code.service';
 import { MethodCodeRepository } from './method-code.repository';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockMethodCodeRepository = () => ({
   getMethodCodes: jest.fn(() => []),
@@ -12,6 +13,7 @@ describe('MethodCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         MethodCodeService,
         {

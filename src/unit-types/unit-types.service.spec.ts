@@ -6,6 +6,7 @@ import { UnitTypeMap } from '../maps/unit-type.map';
 import { UnitType } from '../entities/unit-type-code.entity';
 import { UnitTypeGroup } from '../entities/unit-type-group-code.entity';
 import { UnitTypeDTO } from '../dto/unit-type.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockUnitTypeRepository = () => ({
   getAllUnitTypes: jest.fn(),
@@ -17,6 +18,7 @@ describe('-- Unit Type Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         UnitTypesService,
         {

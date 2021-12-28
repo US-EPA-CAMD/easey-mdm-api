@@ -9,6 +9,6 @@ export class MaterialCodeRepository extends Repository<MaterialCode> {
       'mc.materialCodeDescription',
     ]);
 
-    return query.getMany();
+    return await query.getMany();
   }
 }

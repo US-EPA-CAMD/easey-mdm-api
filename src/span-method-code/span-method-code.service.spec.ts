@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { SpanMethodCodeRepository } from './span-method-code.repository';
 import { SpanMethodCodeService } from './span-method-code.service';
 
@@ -13,6 +14,7 @@ describe('SpanMethodCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         SpanMethodCodeService,
         {

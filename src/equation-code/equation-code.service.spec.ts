@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { EquationCodeRepository } from './equation-code.repository';
 import { EquationCodeService } from './equation-code.service';
 
@@ -12,6 +13,7 @@ describe('EquationCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         EquationCodeService,
         {

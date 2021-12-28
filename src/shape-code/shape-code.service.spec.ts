@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ShapeCodeService } from './shape-code.service';
 import { ShapeCodeRepository } from './shape-code.repository';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockShapeCodeRepository = () => ({
   getShapeCodes: jest.fn(() => []),
@@ -12,6 +13,7 @@ describe('ShapeCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         ShapeCodeService,
         {

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { OperatingLevelCodeRepository } from './operating-level-code.repository';
 import { OperatingLevelCodeService } from './operating-level-code.service';
 
@@ -12,6 +13,7 @@ describe('OperatingLevelCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         OperatingLevelCodeService,
         {

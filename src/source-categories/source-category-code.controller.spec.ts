@@ -5,6 +5,7 @@ import { SourceCategoriesService } from './source-categories.service';
 import { SourceCategoryMap } from '../maps/source-category.map';
 import { SourceCategoryRepository } from './source-category-code.repository';
 import { SourceCategoryDTO } from '../dto/source-category.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- Source Categories Controller --', () => {
   let sourceCategoriesController: SourceCategoriesController;
@@ -12,6 +13,7 @@ describe('-- Source Categories Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [SourceCategoriesController],
       providers: [
         SourceCategoriesService,

@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MaterialCodeService } from './material-code.service';
 import { MaterialCodeRepository } from './material-code.repository';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockMaterialCodeRepository = () => ({
   getMaterialCodes: jest.fn(() => []),
@@ -12,6 +13,7 @@ describe('MaterialCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         MaterialCodeService,
         {

@@ -5,6 +5,7 @@ import { StatesService } from './states.service';
 import { StateMap } from '../maps/state.map';
 import { StatesRepository } from './states.repository';
 import { StateDTO } from '../dto/state.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- States Controller --', () => {
   let statesController;
@@ -12,6 +13,7 @@ describe('-- States Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [StatesController],
       providers: [StatesService, StateMap, StatesRepository],
     }).compile();

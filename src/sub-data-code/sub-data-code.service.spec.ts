@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { SubDataCodeRepository } from './sub-data-code.repository';
 import { SubDataCodeService } from './sub-data-code.service';
 
@@ -13,6 +14,7 @@ describe('SubDataCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         SubDataCodeService,
         {
