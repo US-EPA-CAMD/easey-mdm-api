@@ -5,6 +5,7 @@ import { ProgramRepository } from './program-code.repository';
 import { ProgramMap } from '../maps/program.map';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
 import { Program } from '@us-epa-camd/easey-common/enums';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockProgramRepository = () => ({
   getAllPrograms: jest.fn(),
@@ -21,6 +22,7 @@ describe('-- Programs Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         ProgramsService,
         {

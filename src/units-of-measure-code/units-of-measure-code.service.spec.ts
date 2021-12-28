@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { UnitsOfMeasureCodeRepository } from './units-of-measure-code.repository';
 import { UnitsOfMeasureCodeService } from './units-of-measure-code.service';
 
@@ -13,6 +14,7 @@ describe('UnitsOfMeasureCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         UnitsOfMeasureCodeService,
         {

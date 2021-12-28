@@ -6,6 +6,7 @@ import { FuelTypeMap } from '../maps/fuel-type.map';
 import { FuelType } from '../entities/fuel-type-code.entity';
 import { FuelGroup } from '../entities/fuel-group-code.entity';
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockFuelTypeRepository = () => ({
   getAllFuelTypes: jest.fn(),
@@ -17,6 +18,7 @@ describe('-- Fuel Types Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         FuelTypesService,
         {

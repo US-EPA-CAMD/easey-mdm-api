@@ -5,6 +5,7 @@ import { UnitTypesController } from './unit-types.controller';
 import { UnitTypeRepository } from './unit-type-code.repository';
 import { UnitTypeMap } from '../maps/unit-type.map';
 import { UnitTypeDTO } from '../dto/unit-type.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- Unit Types Controller --', () => {
   let unitTypesController;
@@ -12,6 +13,7 @@ describe('-- Unit Types Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [UnitTypesController],
       providers: [UnitTypesService, UnitTypeMap, UnitTypeRepository],
     }).compile();

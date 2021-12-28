@@ -5,6 +5,7 @@ import { TransactionTypeMap } from '../maps/transaction-type.map';
 import { TransactionTypesController } from './transaction-types.controller';
 import { TransactionTypeRepository } from './transaction-type-code.repository';
 import { TransactionTypesService } from './transaction-types.service';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- Transaction Types Controller --', () => {
   let transactionTypesController: TransactionTypesController;
@@ -12,6 +13,7 @@ describe('-- Transaction Types Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [TransactionTypesController],
       providers: [TransactionTypesService, TransactionTypeMap, TransactionTypeRepository],
     }).compile();

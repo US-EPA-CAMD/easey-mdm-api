@@ -29,7 +29,7 @@ describe('EquationCodeController', () => {
 
   describe('getEquationCodes', () => {
     it('should call the EquationCodeService and return a list of equation codes', async () => {
-      expect(controller.getEquationCodes()).toEqual([]);
+      expect(await controller.getEquationCodes()).toEqual([]);
       expect(service.getEquationCodes).toHaveBeenCalled();
     });
   });

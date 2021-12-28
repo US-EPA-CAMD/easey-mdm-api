@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { QualLeeTestTypeCodeService } from './qual-lee-test-type-code.service';
 import { QualLeeTestTypeCodeRepository } from './qual-lee-test-type-code.repository';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockQualLeeTestTypeCodeRepository = () => ({
   getQualLeeTestTypeCodes: jest.fn(() => []),
@@ -13,6 +14,7 @@ describe('QualLeeTestTypeCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         QualLeeTestTypeCodeService,
         {

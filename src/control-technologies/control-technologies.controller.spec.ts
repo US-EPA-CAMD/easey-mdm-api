@@ -5,6 +5,7 @@ import { ControlTechnologiesController } from './control-technologies.controller
 import { ControlTechnologyRepository } from './control-code.repository';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
 import { ControlTechnologyDTO } from 'src/dto/control-technology.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- Control Technologies Controller --', () => {
   let controlTechnologiesController;
@@ -12,6 +13,7 @@ describe('-- Control Technologies Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [ControlTechnologiesController],
       providers: [
         ControlTechnologiesService,

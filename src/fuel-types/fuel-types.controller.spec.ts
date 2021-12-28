@@ -5,6 +5,7 @@ import { FuelTypeMap } from '../maps/fuel-type.map';
 import { FuelTypesController } from './fuel-types.controller';
 import { FuelTypeRepository } from './fuel-type-code.repository';
 import { FuelTypesService } from './fuel-types.service';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- Fuel Types Controller --', () => {
   let fuelTypesController: FuelTypesController;
@@ -12,6 +13,7 @@ describe('-- Fuel Types Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [FuelTypesController],
       providers: [FuelTypesService, FuelTypeMap, FuelTypeRepository],
     }).compile();

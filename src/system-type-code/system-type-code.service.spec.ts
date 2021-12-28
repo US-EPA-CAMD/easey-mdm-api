@@ -3,6 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { SystemTypeCodeService } from './system-type-code.service';
 import { SystemTypeCodeRepository } from './system-type-code.repository';
 import { SystemTypeCodeMap } from '../maps/system-type-code.map';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('SystemTypeCodeService', () => {
   let mockSystemTypeCodeRepository = () => ({
@@ -13,6 +14,7 @@ describe('SystemTypeCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         SystemTypeCodeService,
         {

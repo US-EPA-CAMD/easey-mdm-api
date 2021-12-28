@@ -5,6 +5,7 @@ import { StatesRepository } from './states.repository';
 import { StateMap } from '../maps/state.map';
 import { StateDTO } from '../dto/state.dto';
 import { State } from '../entities/state-code.entity';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockStatesRepository = () => ({
   find: jest.fn(),
@@ -16,6 +17,7 @@ describe('-- States Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         StatesService,
         {

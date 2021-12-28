@@ -6,6 +6,7 @@ import { ProgramMap } from '../maps/program.map';
 import { ProgramRepository } from './program-code.repository';
 import { ProgramDTO } from '../dto/program.dto';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- Programs Controller --', () => {
   let programsController: ProgramsController;
@@ -13,6 +14,7 @@ describe('-- Programs Controller --', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [ProgramsController],
       providers: [ProgramsService, ProgramMap, ProgramRepository],
     }).compile();

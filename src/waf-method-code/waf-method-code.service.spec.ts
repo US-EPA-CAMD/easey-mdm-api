@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WafMethodCodeService } from './waf-method-code.service';
 import { WafMethodCodeRepository } from './waf-method-code.repository';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockWafMethodCodeRepository = () => ({
   getWafMethodCodes: jest.fn(() => []),
@@ -13,6 +14,7 @@ describe('WafMethodCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         WafMethodCodeService,
         {

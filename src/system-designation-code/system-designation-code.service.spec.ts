@@ -3,6 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { SystemDesignationCodeService } from './system-designation-code.service';
 import { SystemDesignationCodeRepository } from './system-designation-code.repository';
 import { SystemDesignationCodeMap } from '../maps/system-designation-code.map';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('SystemDesignationCodeService', () => {
   let mockSystemDesignationCodeRepository = () => ({
@@ -13,6 +14,7 @@ describe('SystemDesignationCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         SystemDesignationCodeService,
         {
