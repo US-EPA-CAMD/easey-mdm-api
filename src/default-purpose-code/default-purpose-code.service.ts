@@ -9,19 +9,18 @@ export class DefaultPurposeCodeService {
   constructor(
     @InjectRepository(DefaultPurposeCodeRepository)
     private readonly repository: DefaultPurposeCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getDefaultPurposeCodes(): Promise<DefaultPurposeCodeDTO[]> {
-
-    this.Logger.info('Getting default purpose codes');
+    this.logger.info('Getting default purpose codes');
     let query;
     try {
       query = await this.repository.getDefaultPurposeCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got default purpose codes');
+    this.logger.info('Got default purpose codes');
 
     return query;
   }

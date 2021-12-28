@@ -13,7 +13,7 @@ export class SourceCategoriesService {
     @InjectRepository(SourceCategoryRepository)
     private readonly repository: SourceCategoryRepository,
     private readonly map: SourceCategoryMap,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAllSourceCategories(): Promise<SourceCategoryDTO[]> {
@@ -22,14 +22,14 @@ export class SourceCategoriesService {
       order: { sourceCategoryCode: 'ASC' },
     };
 
-    this.Logger.info('Getting all source categories');
+    this.logger.info('Getting all source categories');
     let query;
     try {
       query = await this.repository.find(findOpts);
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all source categories');
+    this.logger.info('Got all source categories');
 
     return this.map.many(query);
   }

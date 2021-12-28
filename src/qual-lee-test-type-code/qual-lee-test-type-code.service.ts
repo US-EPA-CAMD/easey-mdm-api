@@ -9,18 +9,18 @@ export class QualLeeTestTypeCodeService {
   constructor(
     @InjectRepository(QualLeeTestTypeCodeRepository)
     private readonly repository: QualLeeTestTypeCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getQualLeeTestTypeCodes(): Promise<QualLeeTestTypeCodeDTO[]> {
-    this.Logger.info('Getting qual lee test type codes');
+    this.logger.info('Getting qual lee test type codes');
     let query;
     try {
       query = await this.repository.getQualLeeTestTypeCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got qual lee test type codes');
+    this.logger.info('Got qual lee test type codes');
 
     return query;
   }

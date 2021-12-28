@@ -10,19 +10,18 @@ export class MaterialCodeService {
   constructor(
     @InjectRepository(MaterialCodeRepository)
     private readonly repository: MaterialCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getMaterialCodes(): Promise<MaterialCodeDTO[]> {
-
-    this.Logger.info('Getting all material codes');
+    this.logger.info('Getting all material codes');
     let query;
     try {
       query = await this.repository.getMaterialCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all fuel types');
+    this.logger.info('Got all fuel types');
 
     return query;
   }

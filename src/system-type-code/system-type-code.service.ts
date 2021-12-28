@@ -9,18 +9,18 @@ export class SystemTypeCodeService {
   constructor(
     @InjectRepository(SystemTypeCodeRepository)
     private readonly repository: SystemTypeCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getSystemTypeCodes(): Promise<SystemTypeCodeDTO[]> {
-    this.Logger.info('Getting system type codes');
+    this.logger.info('Getting system type codes');
     let query;
     try {
       query = await this.repository.getSystemTypeCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got system type codes');
+    this.logger.info('Got system type codes');
 
     return query;
   }

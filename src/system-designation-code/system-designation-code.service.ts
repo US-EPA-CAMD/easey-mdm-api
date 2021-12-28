@@ -9,18 +9,18 @@ export class SystemDesignationCodeService {
   constructor(
     @InjectRepository(SystemDesignationCodeRepository)
     private readonly repository: SystemDesignationCodeRepository,
-    private Logger: Logger,
+    private logger: Logger,
   ) {}
 
   async getSystemDesignationCodes(): Promise<SystemDesignationCodeDTO[]> {
-    this.Logger.info('Getting system designation codes');
+    this.logger.info('Getting system designation codes');
     let query;
     try {
       query = await this.repository.getSystemDesignationCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got system designation codes');
+    this.logger.info('Got system designation codes');
 
     return query;
   }

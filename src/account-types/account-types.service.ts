@@ -13,20 +13,20 @@ export class AccountTypesService {
     @InjectRepository(AccountTypeRepository)
     private readonly repository: AccountTypeRepository,
     private readonly map: AccountTypeMap,
-    private Logger: Logger,
+    private logger: Logger,
   ) {}
 
   async getAllAccountTypes(
     accountTypeParamsDTO: AccountTypeParamsDTO,
   ): Promise<AccountTypeDTO[]> {
-    this.Logger.info('Getting all account types');
+    this.logger.info('Getting all account types');
     let query;
     try {
       query = await this.repository.getAllAccountTypes(accountTypeParamsDTO);
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all account types');
+    this.logger.info('Got all account types');
     return this.map.many(query);
   }
 }

@@ -9,6 +9,6 @@ export class ShapeCodeRepository extends Repository<ShapeCode> {
       'sc.shapeCodeDescription',
     ]);
 
-    return await query.getMany();
+    return query.getMany();
   }
 }

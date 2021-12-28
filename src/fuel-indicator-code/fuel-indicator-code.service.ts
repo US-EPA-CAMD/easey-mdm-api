@@ -7,18 +7,18 @@ import { FuelIndicatorCodeRepository } from './fuel-indicator-code.repository';
 export class FuelIndicatorCodeService {
   constructor(
     private readonly repository: FuelIndicatorCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getFuelIndicatorCodes(): Promise<FuelIndicatorCode[]> {
-    this.Logger.info('Getting fuel indicator codes');
+    this.logger.info('Getting fuel indicator codes');
     let query;
     try {
       query = await this.repository.getFuelIndicatorCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got fuel indicator codes');
+    this.logger.info('Got fuel indicator codes');
 
     return query;
   }

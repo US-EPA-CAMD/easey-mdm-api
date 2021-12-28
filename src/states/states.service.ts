@@ -13,7 +13,7 @@ export class StatesService {
     @InjectRepository(StatesRepository)
     private readonly stateRepository: StatesRepository,
     private readonly stateMap: StateMap,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAllStates(): Promise<StateDTO[]> {
@@ -22,14 +22,14 @@ export class StatesService {
       order: { stateCode: 'ASC' },
     };
 
-    this.Logger.info('Getting all states');
+    this.logger.info('Getting all states');
     let query;
     try {
       query = await this.stateRepository.find(findOpts);
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got span scale codes');
+    this.logger.info('Got span scale codes');
 
     return query;
   }

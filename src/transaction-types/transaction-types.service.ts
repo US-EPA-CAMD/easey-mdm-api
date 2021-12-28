@@ -13,7 +13,7 @@ export class TransactionTypesService {
     @InjectRepository(TransactionTypeRepository)
     private readonly repository: TransactionTypeRepository,
     private readonly map: TransactionTypeMap,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAllTransactionTypes(): Promise<TransactionTypeDTO[]> {
@@ -22,14 +22,14 @@ export class TransactionTypesService {
       order: { transactionTypeCode: 'ASC' },
     };
 
-    this.Logger.info('Getting all transaction codes');
+    this.logger.info('Getting all transaction codes');
     let query;
     try {
       query = await this.repository.find(findOpts);
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all transaction codes codes');
+    this.logger.info('Got all transaction codes codes');
 
     return this.map.many(query);
   }

@@ -9,18 +9,18 @@ export class AcquisitionMethodCodeService {
   constructor(
     @InjectRepository(AcquisitionMethodCodeRepository)
     private readonly repository: AcquisitionMethodCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAcquisitionMethodCodes(): Promise<AcquisitionMethodCodeDTO[]> {
-    this.Logger.info('Getting acquisition method codes');
+    this.logger.info('Getting acquisition method codes');
     let query;
     try {
       query = await this.repository.getAcquisitionMethodCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got acquisition method codes');
+    this.logger.info('Got acquisition method codes');
     return query;
   }
 }

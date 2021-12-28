@@ -9,18 +9,18 @@ export class EquationCodeService {
   constructor(
     @InjectRepository(EquationCodeRepository)
     private readonly repository: EquationCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getEquationCodes(): Promise<EquationCodeDTO[]> {
-    this.Logger.info('Getting equation codes');
+    this.logger.info('Getting equation codes');
     let query;
     try {
       query = await this.repository.getEquationCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got equation codes');
+    this.logger.info('Got equation codes');
     return query;
   }
 }

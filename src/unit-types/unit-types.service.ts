@@ -12,18 +12,18 @@ export class UnitTypesService {
     @InjectRepository(UnitTypeRepository)
     private readonly repository: UnitTypeRepository,
     private readonly map: UnitTypeMap,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAllUnitTypes(): Promise<UnitTypeDTO[]> {
-    this.Logger.info('Getting system type codes');
+    this.logger.info('Getting system type codes');
     let query;
     try {
       query = await this.repository.getAllUnitTypes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got system type codes');
+    this.logger.info('Got system type codes');
 
     return this.map.many(query);
   }

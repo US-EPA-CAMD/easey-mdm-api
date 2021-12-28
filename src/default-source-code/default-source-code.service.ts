@@ -9,18 +9,18 @@ export class DefaultSourceCodeService {
   constructor(
     @InjectRepository(DefaultSourceCodeRepository)
     private readonly repository: DefaultSourceCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getDefaultSourceCodes(): Promise<DefaultSourceCodeDTO[]> {
-    this.Logger.info('Getting default source codes');
+    this.logger.info('Getting default source codes');
     let query;
     try {
       query = await this.repository.getDefaultSourceCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got default source codes');
+    this.logger.info('Got default source codes');
 
     return query;
   }

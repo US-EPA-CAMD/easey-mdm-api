@@ -10,18 +10,18 @@ export class BypassApproachCodeService {
   constructor(
     @InjectRepository(BypassApproachCodeRepository)
     private readonly repository: BypassApproachCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getBypassApproachCodes(): Promise<BypassApproachCodeDTO[]> {
-    this.Logger.info('Getting bypass approach codes');
+    this.logger.info('Getting bypass approach codes');
     let query;
     try {
       query = await this.repository.getBypassApproachCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got bypass approach codes');
+    this.logger.info('Got bypass approach codes');
 
     return query;
   }

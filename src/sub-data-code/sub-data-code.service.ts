@@ -9,7 +9,7 @@ export class SubDataCodeService {
   constructor(
     @InjectRepository(SubDataCodeRepository)
     private readonly repository: SubDataCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   // createSubDataCode(createSubDataCodeDto: SubDataCodeDTO) {
@@ -17,15 +17,14 @@ export class SubDataCodeService {
   // }
 
   async getSubDataCodes(): Promise<SubDataCodeDTO[]> {
-
-    this.Logger.info('Getting sub data codes');
+    this.logger.info('Getting sub data codes');
     let query;
     try {
       query = await this.repository.getSubDataCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got sub data codes');
+    this.logger.info('Got sub data codes');
 
     return query;
   }

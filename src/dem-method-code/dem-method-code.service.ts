@@ -5,18 +5,20 @@ import { DemMethodCodeRepository } from './dem-method-code.repository';
 
 @Injectable()
 export class DemMethodCodeService {
-  constructor(private readonly repository: DemMethodCodeRepository, private readonly Logger: Logger) {}
+  constructor(
+    private readonly repository: DemMethodCodeRepository,
+    private readonly logger: Logger,
+  ) {}
 
   async getDemMethodCodes(): Promise<DemMethodCodeDTO[]> {
-
-    this.Logger.info('Getting dem method codes');
+    this.logger.info('Getting dem method codes');
     let query;
     try {
       query = await this.repository.getDemMethodCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got dem method codes');
+    this.logger.info('Got dem method codes');
 
     return query;
   }

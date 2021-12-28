@@ -12,20 +12,19 @@ export class ControlTechnologiesService {
     @InjectRepository(ControlTechnologyRepository)
     private readonly repository: ControlTechnologyRepository,
     private readonly map: ControlTechnologyMap,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getAllControlTechnologies(): Promise<ControlTechnologyDTO[]> {
-
-    this.Logger.info('Getting control technologies');
+    this.logger.info('Getting control technologies');
     let query;
     try {
       query = await this.repository.getAllControlTechnologies();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got control technologies');
-    
+    this.logger.info('Got control technologies');
+
     return this.map.many(query);
   }
 }

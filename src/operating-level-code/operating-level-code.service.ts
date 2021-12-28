@@ -9,19 +9,18 @@ export class OperatingLevelCodeService {
   constructor(
     @InjectRepository(OperatingLevelCodeRepository)
     private readonly repository: OperatingLevelCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getOperatingLevelCodes(): Promise<OperatingLevelCodeDTO[]> {
-
-    this.Logger.info('Getting operating level codes');
+    this.logger.info('Getting operating level codes');
     let query;
     try {
       query = await this.repository.getOperatingLevelCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Getting operating level codes');
+    this.logger.info('Getting operating level codes');
 
     return query;
   }

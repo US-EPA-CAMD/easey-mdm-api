@@ -12,18 +12,18 @@ export class FuelTypesService {
     @InjectRepository(FuelTypeRepository)
     private readonly repository: FuelTypeRepository,
     private readonly map: FuelTypeMap,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAllFuelTypes(): Promise<FuelTypeDTO[]> {
-    this.Logger.info('Getting all fuel types');
+    this.logger.info('Getting all fuel types');
     let query;
     try {
       query = await this.repository.getAllFuelTypes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all fuel types');
+    this.logger.info('Got all fuel types');
 
     return this.map.many(query);
   }

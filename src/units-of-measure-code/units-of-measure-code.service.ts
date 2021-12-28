@@ -9,19 +9,18 @@ export class UnitsOfMeasureCodeService {
   constructor(
     @InjectRepository(UnitsOfMeasureCodeRepository)
     private readonly repository: UnitsOfMeasureCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getUnitsOfMeasureCodes(): Promise<UnitsOfMeasureCodeDTO[]> {
-
-    this.Logger.info('Getting units of measure code');
+    this.logger.info('Getting units of measure code');
     let query;
     try {
       query = await this.repository.getUnitsOfMeasureCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got units of measure code');
+    this.logger.info('Got units of measure code');
 
     return query;
   }

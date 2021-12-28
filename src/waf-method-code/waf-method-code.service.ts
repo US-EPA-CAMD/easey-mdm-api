@@ -9,18 +9,18 @@ export class WafMethodCodeService {
   constructor(
     @InjectRepository(WafMethodCodeRepository)
     private readonly repository: WafMethodCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getWafMethodCodes(): Promise<WafMethodCodeDTO[]> {
-    this.Logger.info('Getting waf method codes');
+    this.logger.info('Getting waf method codes');
     let query;
     try {
       query = await this.repository.getWafMethodCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got waf method codes');
+    this.logger.info('Got waf method codes');
     return query;
   }
 }

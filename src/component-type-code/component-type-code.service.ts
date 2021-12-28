@@ -9,18 +9,18 @@ export class ComponentTypeCodeService {
   constructor(
     @InjectRepository(ComponentTypeCodeRepository)
     private readonly repository: ComponentTypeCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getComponentTypeCodes(): Promise<ComponentTypeCodeDTO[]> {
-    this.Logger.info('Getting component type codes');
+    this.logger.info('Getting component type codes');
     let query;
     try {
       query = await this.repository.getComponentTypeCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got component type codes');
+    this.logger.info('Got component type codes');
     return query;
   }
 }

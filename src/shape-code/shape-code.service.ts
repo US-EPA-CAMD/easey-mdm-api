@@ -10,18 +10,18 @@ export class ShapeCodeService {
   constructor(
     @InjectRepository(ShapeCodeRepository)
     private readonly repository: ShapeCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getShapeCodes(): Promise<ShapeCodeDTO[]> {
-    this.Logger.info('Getting shape codes');
+    this.logger.info('Getting shape codes');
     let query;
     try {
       query = await this.repository.getShapeCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got shape codes');
+    this.logger.info('Got shape codes');
 
     return query;
   }

@@ -9,20 +9,18 @@ export class ParameterCodeService {
   constructor(
     @InjectRepository(ParameterCodeRepository)
     private readonly parameterCodeRepository: ParameterCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getParameterCodes(): Promise<ParameterCodeDTO[]> {
-
-
-    this.Logger.info('Getting parameter codes');
+    this.logger.info('Getting parameter codes');
     let result;
     try {
       result = await this.parameterCodeRepository.getParameterCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Getting parameter codes');
+    this.logger.info('Getting parameter codes');
 
     return result;
   }

@@ -9,18 +9,18 @@ export class FuelCodeService {
   constructor(
     @InjectRepository(FuelCodeRepository)
     private readonly repository: FuelCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getFuelCodes(): Promise<FuelCodeDTO[]> {
-    this.Logger.info('Getting fuel codes');
+    this.logger.info('Getting fuel codes');
     let query;
     try {
       query = await this.repository.getFuelCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got fuel codes');
+    this.logger.info('Got fuel codes');
 
     return query;
   }

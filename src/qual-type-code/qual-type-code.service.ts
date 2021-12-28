@@ -9,19 +9,18 @@ export class QualTypeCodeService {
   constructor(
     @InjectRepository(QualTypeCodeRepository)
     private readonly repository: QualTypeCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getQualTypeCodes(): Promise<QualTypeCodeDTO[]> {
-
-    this.Logger.info('Getting qual type codes');
+    this.logger.info('Getting qual type codes');
     let query;
     try {
       query = await this.repository.getQualTypeCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got qual type codes');
+    this.logger.info('Got qual type codes');
 
     return query;
   }

@@ -9,18 +9,18 @@ export class SpanMethodCodeService {
   constructor(
     @InjectRepository(SpanMethodCodeRepository)
     private readonly repository: SpanMethodCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getSpanMethodCodes(): Promise<SpanMethodCodeDTO[]> {
-    this.Logger.info('Getting span method codes');
+    this.logger.info('Getting span method codes');
     let query;
     try {
       query = await this.repository.getSpanMethodCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all source categories');
+    this.logger.info('Got all source categories');
 
     return query;
   }

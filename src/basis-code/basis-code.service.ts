@@ -9,18 +9,18 @@ export class BasisCodeService {
   constructor(
     @InjectRepository(BasisCodeRepository)
     private readonly repository: BasisCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getBasisCodes(): Promise<BasisCodeDTO[]> {
-    this.Logger.info('Getting basis codes');
+    this.logger.info('Getting basis codes');
     let query;
     try {
       query = await this.repository.getBasisCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got basis codes');
+    this.logger.info('Got basis codes');
     return query;
   }
 }

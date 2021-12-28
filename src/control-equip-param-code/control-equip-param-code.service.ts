@@ -7,18 +7,18 @@ import { ControlEquipParamCodeRepository } from './control-equip-param-code.repo
 export class ControlEquipParamCodeService {
   constructor(
     private readonly repository: ControlEquipParamCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getControlEquipParamCodes(): Promise<ControlEquipParamCodeDTO[]> {
-    this.Logger.info('Getting control equip param codes');
+    this.logger.info('Getting control equip param codes');
     let query;
     try {
       query = await this.repository.getControlEquipParamCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Getting control equip param codes');
+    this.logger.info('Getting control equip param codes');
     return query;
   }
 }

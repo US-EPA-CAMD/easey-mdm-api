@@ -9,18 +9,18 @@ export class SpanScaleCodeService {
   constructor(
     @InjectRepository(SpanScaleCodeRepository)
     private readonly repository: SpanScaleCodeRepository,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getSpanScaleCodes(): Promise<SpanScaleCodeDTO[]> {
-    this.Logger.info('Getting span scale codes');
+    this.logger.info('Getting span scale codes');
     let query;
     try {
       query = await this.repository.getSpanScaleCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got span scale codes');
+    this.logger.info('Got span scale codes');
 
     return query;
   }

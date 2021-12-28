@@ -9,19 +9,18 @@ export class MaxRateSourceCodeService {
   constructor(
     @InjectRepository(MaxRateSourceCodeRepository)
     private readonly repository: MaxRateSourceCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getMaxRateSourceCodes(): Promise<MaxRateSourceCodeDTO[]> {
-
-    this.Logger.info('Getting max rate source codes');
+    this.logger.info('Getting max rate source codes');
     let query;
     try {
       query = await this.repository.getMaxRateSourceCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all max rate source codes');
+    this.logger.info('Got all max rate source codes');
 
     return query;
   }

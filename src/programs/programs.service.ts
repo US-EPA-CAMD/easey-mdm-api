@@ -13,20 +13,20 @@ export class ProgramsService {
     @InjectRepository(ProgramRepository)
     private readonly repository: ProgramRepository,
     private readonly map: ProgramMap,
-    private readonly Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAllPrograms(
     programParamsDTO: ProgramParamsDTO,
   ): Promise<ProgramDTO[]> {
-    this.Logger.info('Getting all programs');
+    this.logger.info('Getting all programs');
     let query;
     try {
       query = await this.repository.getAllPrograms(programParamsDTO);
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Getting all programs');
+    this.logger.info('Getting all programs');
 
     return this.map.many(query);
   }

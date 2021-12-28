@@ -9,19 +9,18 @@ export class OperatingConditionCodeService {
   constructor(
     @InjectRepository(OperatingConditionCodeRepository)
     private readonly repository: OperatingConditionCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getOperatingConditionCodes(): Promise<OperatingConditionCodeDTO[]> {
-
-    this.Logger.info('Getting operating condition codes');
+    this.logger.info('Getting operating condition codes');
     let query;
     try {
       query = await this.repository.getOperatingConditionCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Getting operating condition codes');
+    this.logger.info('Getting operating condition codes');
 
     return query;
   }

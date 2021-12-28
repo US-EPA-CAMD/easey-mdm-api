@@ -9,19 +9,18 @@ export class MethodCodeService {
   constructor(
     @InjectRepository(MethodCodeRepository)
     private readonly methodCodeRepository: MethodCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getMethodCodes(): Promise<MethodCodeDTO[]> {
-
-    this.Logger.info('Getting method codes');
+    this.logger.info('Getting method codes');
     let query;
     try {
       query = await this.methodCodeRepository.getMethodCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got method codes');
+    this.logger.info('Got method codes');
 
     return query;
   }

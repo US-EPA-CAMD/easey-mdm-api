@@ -10,19 +10,18 @@ export class MatsMethodParamCodeService {
   constructor(
     @InjectRepository(MatsMethodParamCodeRepository)
     private readonly repository: MatsMethodParamCodeRepository,
-    private readonly Logger: Logger
+    private readonly logger: Logger,
   ) {}
 
   async getMatsMethodParamCodes(): Promise<MatsMethodParamCodeDTO[]> {
-
-    this.Logger.info('Getting all mat method param codes');
+    this.logger.info('Getting all mat method param codes');
     let query;
     try {
       query = await this.repository.getMatsMethodParamCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got all mat method param codes');
+    this.logger.info('Got all mat method param codes');
 
     return query;
   }
