@@ -4,7 +4,8 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiQuery,
-  ApiSecurity
+  ApiSecurity,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller, Query } from '@nestjs/common';
 
@@ -20,6 +21,7 @@ export class AccountTypesController {
 
   @Get()
   @ApiOkResponse({
+    type: AccountTypeDTO,
     description: 'Retrieved All Valid Account Types',
   })
   @ApiBadRequestResponse({
@@ -34,6 +36,7 @@ export class AccountTypesController {
     required: false,
     explode: false,
   })
+  @ApiExtraModels(AccountTypeDTO)
   getAllAccountTypes(
     @Query() accountTypeParamsDTO: AccountTypeParamsDTO,
   ): Promise<AccountTypeDTO[]> {

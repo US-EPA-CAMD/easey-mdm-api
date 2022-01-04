@@ -4,6 +4,7 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiSecurity,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
@@ -20,6 +21,7 @@ export class TransactionTypesController {
 
   @Get()
   @ApiOkResponse({
+    type: TransactionTypeDTO,
     description: 'Retrieved All Valid Transaction Types',
   })
   @ApiBadRequestResponse({
@@ -28,6 +30,7 @@ export class TransactionTypesController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
+  @ApiExtraModels(TransactionTypeDTO)
   getAllTransactionTypes(): Promise<TransactionTypeDTO[]> {
     return this.transactionTypesService.getAllTransactionTypes();
   }

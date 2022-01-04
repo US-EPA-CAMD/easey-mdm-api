@@ -1,11 +1,11 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Logger } from '@us-epa-camd/easey-common/logger';
 
 import { FindManyOptions } from 'typeorm';
 import { StatesRepository } from './states.repository';
 import { StateMap } from '../maps/state.map';
 import { StateDTO } from '../dto/state.dto';
-import { Logger } from '@us-epa-camd/easey-common/logger';
 
 @Injectable()
 export class StatesService {
@@ -31,6 +31,6 @@ export class StatesService {
     }
     this.logger.info('Got span scale codes');
 
-    return query;
+    return this.stateMap.many(query);
   }
 }

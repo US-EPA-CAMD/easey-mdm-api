@@ -1,5 +1,6 @@
 import {
   ApiBadRequestResponse,
+  ApiExtraModels,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiSecurity,
@@ -18,6 +19,7 @@ export class FuelTypesController {
 
   @Get()
   @ApiOkResponse({
+    type: FuelTypeDTO,
     description: 'Retrieved ALL Valid Fuel Types',
   })
   @ApiBadRequestResponse({
@@ -26,6 +28,7 @@ export class FuelTypesController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
+  @ApiExtraModels(FuelTypeDTO)
   getAllFuelTypes(): Promise<FuelTypeDTO[]> {
     return this.fuelTypesService.getAllFuelTypes();
   }
