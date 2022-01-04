@@ -1,5 +1,6 @@
 import {
   ApiBadRequestResponse,
+  ApiExtraModels,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiQuery,
@@ -20,6 +21,7 @@ export class ProgramsController {
 
   @Get()
   @ApiOkResponse({
+    type: ProgramDTO,
     description: 'Retrieved ALL Valid Programs',
   })
   @ApiBadRequestResponse({
@@ -34,6 +36,7 @@ export class ProgramsController {
     required: false,
     explode: false,
   })
+  @ApiExtraModels(ProgramDTO)
   getAllPrograms(
     @Query() programParamsDTO: ProgramParamsDTO,
   ): Promise<ProgramDTO[]> {

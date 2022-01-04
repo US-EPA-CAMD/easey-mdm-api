@@ -4,6 +4,7 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiSecurity,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
@@ -29,6 +30,7 @@ export class SourceCategoriesController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
+  @ApiExtraModels(SourceCategoryDTO)
   getAllSourceCategories(): Promise<SourceCategoryDTO[]> {
     return this.sourceCategoriesService.getAllSourceCategories();
   }

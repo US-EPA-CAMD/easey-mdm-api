@@ -4,6 +4,7 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiSecurity,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
@@ -18,6 +19,7 @@ export class UnitTypesController {
 
   @Get()
   @ApiOkResponse({
+    type: UnitTypeDTO,
     description: 'Retrieved All Valid Unit Types',
   })
   @ApiBadRequestResponse({
@@ -26,6 +28,7 @@ export class UnitTypesController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
+  @ApiExtraModels(UnitTypeDTO)
   getAllUnitTypes(): Promise<UnitTypeDTO[]> {
     return this.unitTypesService.getAllUnitTypes();
   }

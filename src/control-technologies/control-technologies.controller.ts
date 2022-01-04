@@ -3,7 +3,8 @@ import {
   ApiOkResponse,
   ApiBadRequestResponse,
   ApiNotFoundResponse,
-  ApiSecurity
+  ApiSecurity,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
@@ -14,10 +15,13 @@ import { ControlTechnologiesService } from './control-technologies.service';
 @ApiSecurity('APIKey')
 @ApiTags('Control Technologies')
 export class ControlTechnologiesController {
-  constructor(private readonly controlTechnologiesService: ControlTechnologiesService) {}
+  constructor(
+    private readonly controlTechnologiesService: ControlTechnologiesService,
+  ) {}
 
   @Get()
   @ApiOkResponse({
+    type: ControlTechnologyDTO,
     description: 'Retrieved All Valid Control Technologies',
   })
   @ApiBadRequestResponse({
@@ -26,6 +30,7 @@ export class ControlTechnologiesController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
+  @ApiExtraModels(ControlTechnologyDTO)
   getAllControlTechnologies(): Promise<ControlTechnologyDTO[]> {
     return this.controlTechnologiesService.getAllControlTechnologies();
   }
