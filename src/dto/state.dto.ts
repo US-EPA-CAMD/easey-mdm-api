@@ -5,7 +5,7 @@ export class StateDTO {
   @ApiProperty({
     description: propertyMetadata.stateCode.description,
     example: propertyMetadata.stateCode.example,
-    name: propertyMetadata.state.fieldLabels.value,
+    name: propertyMetadata.stateCode.fieldLabels.value,
   })
   stateCode: string;
 
