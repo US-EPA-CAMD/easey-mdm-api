@@ -5,6 +5,7 @@ import {
   ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
+import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
 import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
 import { RelationshipsService } from './relationships.service';
 
@@ -13,6 +14,7 @@ import { RelationshipsService } from './relationships.service';
 @ApiTags('Relationships')
 export class RelationshipsController {
   constructor(private readonly service: RelationshipsService) {}
+
   @Get('formulas')
   @ApiOkResponse({
     isArray: true,
@@ -24,5 +26,18 @@ export class RelationshipsController {
   })
   getFormulaRelationships() {
     return this.service.getFormulaRelationships();
+  }
+
+  @Get('spans')
+  @ApiOkResponse({
+    isArray: true,
+    type: SpansRelationshipsDTO,
+    description: 'Retrieves span master data relationships.',
+  })
+  @ApiBadGatewayResponse({
+    description: 'Invalid Request',
+  })
+  getSpanRelationships(): Promise<SpansRelationshipsDTO[]> {
+    return this.service.getSpanRelationships();
   }
 }
