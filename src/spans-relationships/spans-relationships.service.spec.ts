@@ -32,7 +32,7 @@ describe('SpansRelationshipsService', () => {
 
   describe('getSpansRelationships', () => {
     it('calls the getSpansRelationships method in SpansRelationshipsRepository and returns span master data relationships', async () => {
-      const result = await service.getSpanRelationships();
+      const result = await service.getSpansRelationships();
       expect(result).toEqual([]);
       expect(repository.getSpansRelationships).toHaveBeenCalled();
     });

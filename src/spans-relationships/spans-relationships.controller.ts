@@ -23,7 +23,7 @@ export class SpansRelationshipsController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  getSpanRelationships(): Promise<SpansRelationshipsDTO[]> {
-    return this.service.getSpanRelationships();
+  getSpansRelationships(): Promise<SpansRelationshipsDTO[]> {
+    return this.service.getSpansRelationships();
   }
 }

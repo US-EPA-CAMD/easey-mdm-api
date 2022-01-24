@@ -12,7 +12,7 @@ export class SpansRelationshipsService {
     private readonly logger: Logger,
   ) {}
 
-  async getSpanRelationships(): Promise<SpansRelationshipsDTO[]> {
+  async getSpansRelationships(): Promise<SpansRelationshipsDTO[]> {
     this.logger.info('Getting span master data relationships.');
     let query;
     try {

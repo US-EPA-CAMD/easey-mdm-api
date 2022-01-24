@@ -41,6 +41,7 @@ import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { CrossChecksModule } from './cross-checks/cross-checks.module';
 import { SpansRelationshipsModule } from './spans-relationships/spans-relationships.module';
+import { DefaultsRelationshipsModule } from './defaults-relationships/defaults-relationships.module';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
       {
         path: '/spans',
         module: SpansRelationshipsModule,
+      },
+      {
+        path: '/defaults',
+        module: DefaultsRelationshipsModule,
       },
     ],
   },

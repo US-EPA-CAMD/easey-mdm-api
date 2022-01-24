@@ -3,7 +3,7 @@ import { SpansRelationshipsController } from './spans-relationships.controller';
 import { SpansRelationshipsService } from './spans-relationships.service';
 
 const mockSpansRelationshipsService = () => ({
-  getSpanRelationships: jest.fn(() => []),
+  getSpansRelationships: jest.fn(() => []),
 });
 
 describe('SpansRelationshipsController', () => {
@@ -32,10 +32,10 @@ describe('SpansRelationshipsController', () => {
     expect(service).toBeDefined();
   });
 
-  describe('getSpanRelationships', () => {
+  describe('getSpansRelationships', () => {
     it('should call the SpansRelationshipsService and return a list of span master data relationships', () => {
-      expect(controller.getSpanRelationships()).toEqual([]);
-      expect(service.getSpanRelationships).toHaveBeenCalled();
+      expect(controller.getSpansRelationships()).toEqual([]);
+      expect(service.getSpansRelationships).toHaveBeenCalled();
     });
   });
 });

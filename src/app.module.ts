@@ -51,6 +51,7 @@ import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { CrossChecksModule } from './cross-checks/cross-checks.module';
 import { SpansRelationshipsModule } from './spans-relationships/spans-relationships.module';
+import { DefaultsRelationshipsModule } from './defaults-relationships/defaults-relationships.module';
 
 @Module({
   imports: [
@@ -105,6 +106,7 @@ import { SpansRelationshipsModule } from './spans-relationships/spans-relationsh
     MaterialCodeModule,
     ShapeCodeModule,
     SpansRelationshipsModule,
+    DefaultsRelationshipsModule,
   ],
 })
 export class AppModule {}
