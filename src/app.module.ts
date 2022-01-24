@@ -50,6 +50,7 @@ import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { CrossChecksModule } from './cross-checks/cross-checks.module';
+import { RelationshipsModule } from './relationships/relationships.module';
 
 @Module({
   imports: [
@@ -103,6 +104,7 @@ import { CrossChecksModule } from './cross-checks/cross-checks.module';
     QualTypeCodeModule,
     MaterialCodeModule,
     ShapeCodeModule,
+    RelationshipsModule,
   ],
 })
 export class AppModule {}
