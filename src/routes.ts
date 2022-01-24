@@ -40,23 +40,9 @@ import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { CrossChecksModule } from './cross-checks/cross-checks.module';
-import { SpansRelationshipsModule } from './spans-relationships/spans-relationships.module';
-import { DefaultsRelationshipsModule } from './defaults-relationships/defaults-relationships.module';
+import { RelationshipsModule } from './relationships/relationships.module';
 
 const routes: Routes = [
-  {
-    path: '/relationships',
-    children: [
-      {
-        path: '/spans',
-        module: SpansRelationshipsModule,
-      },
-      {
-        path: '/defaults',
-        module: DefaultsRelationshipsModule,
-      },
-    ],
-  },
   {
     path: '/cross-checks',
     module: CrossChecksModule,
@@ -216,6 +202,10 @@ const routes: Routes = [
   {
     path: '/shape-codes',
     module: ShapeCodeModule,
+  },
+  {
+    path: '/relationships',
+    module: RelationshipsModule,
   },
 ];
 export default routes;
