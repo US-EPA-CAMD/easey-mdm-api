@@ -6,10 +6,10 @@ export class FormulaRelationshipsRepository extends Repository<
   FormulaRelationships
 > {
   async getFormulaRelationships(): Promise<FormulaRelationships[]> {
-    const query = this.createQueryBuilder('vwfr').select(
+    const query = this.createQueryBuilder('vwfr').select([
       'vwfr.parameterCode',
       'vwfr.formulaCode',
-    );
+    ]);
 
     return query.getMany();
   }

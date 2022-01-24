@@ -3,12 +3,12 @@ import { ViewColumn, ViewEntity } from 'typeorm';
 @ViewEntity({ name: 'camdecmpswks.vw_formula_master_data_relationships' })
 export class FormulaRelationships {
   @ViewColumn({
-    name: 'parameterCode',
+    name: 'paremeter_code',
   })
   parameterCode: 'string';
 
   @ViewColumn({
-    name: 'formulaCode',
+    name: 'formula_code',
   })
   formulaCode: 'string';
 }
