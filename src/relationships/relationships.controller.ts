@@ -8,6 +8,7 @@ import {
 import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
 import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
 import { RelationshipsService } from './relationships.service';
+import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -39,5 +40,18 @@ export class RelationshipsController {
   })
   getSpanRelationships(): Promise<SpansRelationshipsDTO[]> {
     return this.service.getSpanRelationships();
+  }
+
+  @Get('defaults')
+  @ApiOkResponse({
+    isArray: true,
+    type: DefaultsRelationshipsDTO,
+    description: 'Retrieves default master data relationships.',
+  })
+  @ApiBadGatewayResponse({
+    description: 'Invalid Request',
+  })
+  getDefaultsRelationships(): Promise<DefaultsRelationshipsDTO[]> {
+    return this.service.getDefaultsRelationships();
   }
 }

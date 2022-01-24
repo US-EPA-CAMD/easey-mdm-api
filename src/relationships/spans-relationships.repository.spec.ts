@@ -39,7 +39,7 @@ describe('SpansRelationshipsRepository', () => {
   });
 
   describe('getSpansRelationships', () => {
-    it('calls createQueryBuilder and gets all WAF method codes from the repository', async () => {
+    it('calls createQueryBuilder and gets all span master data relationships from the repository', async () => {
       let result = await spansRelationshipsRepository.getSpansRelationships();
 
       expect(queryBuilder.getMany).toHaveBeenCalled();

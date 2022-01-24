@@ -5,6 +5,8 @@ import { FormulaRelationshipsRepository } from './formula-relationships.reposito
 import { Logger } from '@us-epa-camd/easey-common/logger';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
+import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
+import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
 
 @Injectable()
 export class RelationshipsService {
@@ -12,6 +14,7 @@ export class RelationshipsService {
     @InjectRepository(FormulaRelationshipsRepository)
     private readonly fRRepository: FormulaRelationshipsRepository,
     private readonly sRRepository: SpansRelationshipsRepository,
+    private readonly dRRepository: DefaultsRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -31,5 +34,17 @@ export class RelationshipsService {
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }
+  }
+
+  async getDefaultsRelationships(): Promise<DefaultsRelationshipsDTO[]> {
+    this.logger.info('Getting default master data relationships.');
+    let query;
+    try {
+      query = await this.dRRepository.getDefaultsRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+    this.logger.info('Got default master data relationships');
+    return query;
   }
 }
