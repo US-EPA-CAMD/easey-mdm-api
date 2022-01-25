@@ -6,7 +6,7 @@ export class MatsMethodsRelationshipsRepository extends Repository<
   MatsMethodsRelationships
 > {
   async getMatsMethodsRelationships(): Promise<MatsMethodsRelationships[]> {
-    const query = await this.createQueryBuilder('mmr').select([
+    const query = this.createQueryBuilder('mmr').select([
       'mmr.parameterCode',
       'mmr.methodCode',
     ]);

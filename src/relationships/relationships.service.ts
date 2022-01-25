@@ -11,7 +11,6 @@ import { FormulaRelationshipsRepository } from './formula-relationships.reposito
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
-import { MatsMethodsRelationships } from 'src/entities/vw-mats-methods-master-data-relationships.entity';
 @Injectable()
 export class RelationshipsService {
   constructor(

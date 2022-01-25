@@ -9,7 +9,7 @@ import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
 import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
 import { RelationshipsService } from './relationships.service';
 import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
-import { MatsMethodsRelationshipsDTO } from 'src/dto/mats-methods-relationships.dto';
+import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
