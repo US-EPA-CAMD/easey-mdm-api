@@ -1,6 +1,6 @@
 import { ViewColumn, ViewEntity } from 'typeorm';
 
-@ViewEntity({ name: 'camdecmpswks.vw_matsmethods_master_data_relationships' })
+@ViewEntity({ name: 'camdecmpsmd.vw_matsmethods_master_data_relationships' })
 export class MatsMethodsRelationships {
   @ViewColumn({
     name: 'parameter_code',
