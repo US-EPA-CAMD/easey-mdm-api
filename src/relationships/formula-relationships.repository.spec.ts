@@ -39,7 +39,7 @@ describe('FormulaRelationshipsRepository', () => {
   });
 
   describe('getFormulaRelationships', () => {
-    it('calls createQueryBuilder and gets all WAF method codes from the repository', async () => {
+    it('calls createQueryBuilder and gets all formula master data relationships codes from the repository', async () => {
       let result = await formulaRelationshipsRepository.getFormulaRelationships();
 
       expect(queryBuilder.getMany).toHaveBeenCalled();

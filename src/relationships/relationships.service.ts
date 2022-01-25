@@ -1,13 +1,16 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
-import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { Logger } from '@us-epa-camd/easey-common/logger';
-import { SpansRelationshipsRepository } from './spans-relationships.repository';
+
+import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
 import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
 import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
-import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
+import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
 
+import { FormulaRelationshipsRepository } from './formula-relationships.repository';
+import { SpansRelationshipsRepository } from './spans-relationships.repository';
+import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
+import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -15,6 +18,7 @@ export class RelationshipsService {
     private readonly fRRepository: FormulaRelationshipsRepository,
     private readonly sRRepository: SpansRelationshipsRepository,
     private readonly dRRepository: DefaultsRelationshipsRepository,
+    private readonly mMRRepository: MatsMethodsRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -45,6 +49,18 @@ export class RelationshipsService {
       this.logger.error(InternalServerErrorException, e.message);
     }
     this.logger.info('Got default master data relationships');
+    return query;
+  }
+
+  async getMatsMethodsRelationships(): Promise<MatsMethodsRelationshipsDTO[]> {
+    this.logger.info('Getting mats-methods master data relationships');
+    let query;
+    try {
+      query = await this.mMRRepository.getMatsMethodsRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+
     return query;
   }
 }

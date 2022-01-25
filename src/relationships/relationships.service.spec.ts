@@ -4,6 +4,7 @@ import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { RelationshipsService } from './relationships.service';
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
+import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest.fn(() => []),
@@ -20,11 +21,17 @@ const mockDefaultsRelationshipsRepository = () => ({
   findOne: jest.fn(),
 });
 
+const mockMatsMethodsRelationshipsRepository = () => ({
+  getMatsMethodsRelationships: jest.fn(() => []),
+  findOne: jest.fn(),
+});
+
 describe('RelationshipsService', () => {
   let service: RelationshipsService;
   let fRRepository: FormulaRelationshipsRepository;
   let sRRepository: SpansRelationshipsRepository;
   let dRRepository: DefaultsRelationshipsRepository;
+  let mMRRepository: MatsMethodsRelationshipsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -43,6 +50,10 @@ describe('RelationshipsService', () => {
           provide: DefaultsRelationshipsRepository,
           useFactory: mockDefaultsRelationshipsRepository,
         },
+        {
+          provide: MatsMethodsRelationshipsRepository,
+          useFactory: mockMatsMethodsRelationshipsRepository,
+        },
       ],
     }).compile();
 
@@ -55,6 +66,9 @@ describe('RelationshipsService', () => {
     );
     dRRepository = module.get<DefaultsRelationshipsRepository>(
       DefaultsRelationshipsRepository,
+    );
+    mMRRepository = module.get<MatsMethodsRelationshipsRepository>(
+      MatsMethodsRelationshipsRepository,
     );
   });
 
@@ -79,6 +93,14 @@ describe('RelationshipsService', () => {
       const result = await service.getDefaultsRelationships();
       expect(result).toEqual([]);
       expect(dRRepository.getDefaultsRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getMatsMethodsRelationships', () => {
+    it('calls the getDefaultsRelationships method and returns mats-methods master data relationships', async () => {
+      const result = await service.getMatsMethodsRelationships();
+      expect(result).toEqual([]);
+      expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalled();
     });
   });
 });

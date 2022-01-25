@@ -39,7 +39,7 @@ describe('DefaultsRelationshipsRepository', () => {
   });
 
   describe('getDefaultsRelationships', () => {
-    it('calls createQueryBuilder and gets all default master data relationships from the repository', async () => {
+    it('calls createQueryBuilder and gets all defaults master data relationships from the repository', async () => {
       let result = await defaultsRelationshipsRepository.getDefaultsRelationships();
 
       expect(queryBuilder.getMany).toHaveBeenCalled();

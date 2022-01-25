@@ -9,6 +9,7 @@ import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
 import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
 import { RelationshipsService } from './relationships.service';
 import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
+import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -53,5 +54,15 @@ export class RelationshipsController {
   })
   getDefaultsRelationships(): Promise<DefaultsRelationshipsDTO[]> {
     return this.service.getDefaultsRelationships();
+  }
+
+  @Get('mats-methods')
+  @ApiOkResponse({
+    isArray: true,
+    type: MatsMethodsRelationshipsDTO,
+    description: 'Retrieves mats-methods master data relationhsips',
+  })
+  getMatsMethodsRelationships(): Promise<MatsMethodsRelationshipsDTO[]> {
+    return this.service.getMatsMethodsRelationships();
   }
 }

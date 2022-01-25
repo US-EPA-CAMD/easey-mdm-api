@@ -1,11 +1,12 @@
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
 import { RelationshipsService } from './relationships.service';
 import { RelationshipsController } from './relationships.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
+import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { DefaultsRelationshipsRepository } from './defaults-relationships.reposi
       FormulaRelationshipsRepository,
       SpansRelationshipsRepository,
       DefaultsRelationshipsRepository,
+      MatsMethodsRelationshipsRepository,
     ]),
     HttpModule,
   ],
