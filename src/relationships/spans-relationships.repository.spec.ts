@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { SelectQueryBuilder } from 'typeorm';
 
-import { SpansRelationships } from '../entities/spans-relationships.entity';
+import { SpansRelationships } from '../entities/vw-spans-master-data-relationships.entity';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
 
