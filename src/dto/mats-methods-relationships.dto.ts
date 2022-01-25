@@ -1,4 +1,4 @@
 export class MatsMethodsRelationshipsDTO {
-  parameterCode: string;
-  methodCdoe: string;
+  supplementalMATSParameterCode: string;
+  supplementalMATSMonitoringMethodCode: string;
 }
