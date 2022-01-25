@@ -1,7 +1,7 @@
 import { ViewColumn, ViewEntity } from 'typeorm';
 
 @ViewEntity({
-  name: 'camdecmpswks.vw_defaults_master_data_relationships',
+  name: 'camdecmpsmd.vw_defaults_master_data_relationships',
 })
 export class DefaultsRelationships {
   @ViewColumn({ name: 'parameter_code' })

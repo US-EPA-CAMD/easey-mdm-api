@@ -1,7 +1,7 @@
 import { ViewColumn, ViewEntity } from 'typeorm';
 
 @ViewEntity({
-  name: 'camdecmpswks.vw_span_master_data_relationships',
+  name: 'camdecmpsmd.vw_span_master_data_relationships',
 })
 export class SpansRelationships {
   @ViewColumn({ name: 'component_type_code' })
