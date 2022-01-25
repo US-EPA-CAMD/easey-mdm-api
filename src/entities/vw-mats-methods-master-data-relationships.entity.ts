@@ -5,10 +5,10 @@ export class MatsMethodsRelationships {
   @ViewColumn({
     name: 'parameter_code',
   })
-  parameterCode: string;
+  supplementalMATSParameterCode: string;
 
   @ViewColumn({
     name: 'method_code',
   })
-  methodCode: string;
+  supplementalMATSMonitoringMethodCode: string;
 }

@@ -165,4 +165,12 @@ describe('RelationshipsService', () => {
       expect(mRRepository.getMethodsRelationships).toHaveBeenCalledTimes(2);
     });
   });
+
+  describe('getMatsMethodsRelationships', () => {
+    it('calls the getDefaultsRelationships method and returns mats-methods master data relationships', async () => {
+      const result = await service.getMatsMethodsRelationships();
+      expect(result).toEqual([]);
+      expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalled();
+    });
+  });
 });

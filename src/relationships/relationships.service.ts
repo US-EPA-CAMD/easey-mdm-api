@@ -13,7 +13,6 @@ import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
-
 @Injectable()
 export class RelationshipsService {
   constructor(

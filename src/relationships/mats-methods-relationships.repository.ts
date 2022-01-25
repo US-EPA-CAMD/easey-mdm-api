@@ -7,9 +7,8 @@ export class MatsMethodsRelationshipsRepository extends Repository<
 > {
   async getMatsMethodsRelationships(): Promise<MatsMethodsRelationships[]> {
     const query = this.createQueryBuilder('mmr').select([
-      'mmr.parameterCode',
-      'mmr.methodCode',
-      // adding this comment here gets the unit test coverage to 100% (?)
+      'mmr.supplementalMATSParameterCode',
+      'mmr.supplementalMATSMonitoringMethodCode',
     ]);
 
     return query.getMany();
