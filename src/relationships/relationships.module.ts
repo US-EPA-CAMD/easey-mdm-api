@@ -7,6 +7,7 @@ import { FormulaRelationshipsRepository } from './formula-relationships.reposito
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
+import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships
       SpansRelationshipsRepository,
       DefaultsRelationshipsRepository,
       MatsMethodsRelationshipsRepository,
+      MethodsRelationshipsRepository,
     ]),
     HttpModule,
   ],

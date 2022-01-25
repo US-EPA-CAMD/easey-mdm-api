@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { SelectQueryBuilder } from 'typeorm';
 
-import { DefaultsRelationships } from '../entities/defaults-relationships.entity';
+import { DefaultsRelationships } from '../entities/vw-defaults-master-data-relationships.entity';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
 import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
 
