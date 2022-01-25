@@ -10,6 +10,7 @@ import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
 import { RelationshipsService } from './relationships.service';
 import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
 import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
+import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -39,8 +40,8 @@ export class RelationshipsController {
   @ApiBadGatewayResponse({
     description: 'Invalid Request',
   })
-  getSpanRelationships(): Promise<SpansRelationshipsDTO[]> {
-    return this.service.getSpanRelationships();
+  getSpansRelationships(): Promise<SpansRelationshipsDTO[]> {
+    return this.service.getSpansRelationships();
   }
 
   @Get('defaults')
@@ -64,5 +65,15 @@ export class RelationshipsController {
   })
   getMatsMethodsRelationships(): Promise<MatsMethodsRelationshipsDTO[]> {
     return this.service.getMatsMethodsRelationships();
+  }
+
+  @Get('methods')
+  @ApiOkResponse({
+    isArray: true,
+    type: MethodsRelationshipsDTO,
+    description: 'Retrieves methods master data relationhsips',
+  })
+  getMethodsRelationships(): Promise<MethodsRelationshipsDTO[]> {
+    return this.service.getMethodsRelationships();
   }
 }

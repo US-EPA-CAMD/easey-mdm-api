@@ -3,7 +3,11 @@ import { RelationshipsController } from './relationships.controller';
 import { RelationshipsService } from './relationships.service';
 
 const mockSpansRelationshipsService = () => ({
-  getSpanRelationships: jest.fn(() => []),
+  getSpansRelationships: jest.fn(() => []),
+  getFormulaRelationships: jest.fn(() => []),
+  getDefaultsRelationships: jest.fn(() => []),
+  getMatsMethodsRelationships: jest.fn(() => []),
+  getMethodsRelationships: jest.fn(() => []),
 });
 
 describe('RelationshipsController', () => {
@@ -30,10 +34,38 @@ describe('RelationshipsController', () => {
     expect(service).toBeDefined();
   });
 
-  describe('getSpanRelationships', () => {
+  describe('getSpansRelationships', () => {
     it('should call the RelationshipsService and return a list of span master data relationships', () => {
-      expect(controller.getSpanRelationships()).toEqual([]);
-      expect(service.getSpanRelationships).toHaveBeenCalled();
+      expect(controller.getSpansRelationships()).toEqual([]);
+      expect(service.getSpansRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getFormulaRelationships', () => {
+    it('should call the RelationshipsService and return a list of formula master data relationships', () => {
+      expect(controller.getFormulaRelationships()).toEqual([]);
+      expect(service.getFormulaRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getDefaultsRelationships', () => {
+    it('should call the RelationshipsService and return a list of defaults master data relationships', () => {
+      expect(controller.getDefaultsRelationships()).toEqual([]);
+      expect(service.getDefaultsRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getMatsMethodsRelationships', () => {
+    it('should call the RelationshipsService and return a list of mats methods master data relationships', () => {
+      expect(controller.getMatsMethodsRelationships()).toEqual([]);
+      expect(service.getMatsMethodsRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getMethodsRelationships', () => {
+    it('should call the RelationshipsService and return a list of methods master data relationships', () => {
+      expect(controller.getMethodsRelationships()).toEqual([]);
+      expect(service.getMethodsRelationships).toHaveBeenCalled();
     });
   });
 });

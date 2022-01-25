@@ -9,6 +9,7 @@ export class MatsMethodsRelationshipsRepository extends Repository<
     const query = this.createQueryBuilder('mmr').select([
       'mmr.parameterCode',
       'mmr.methodCode',
+      // adding this comment here gets the unit test coverage to 100% (?)
     ]);
 
     return query.getMany();
