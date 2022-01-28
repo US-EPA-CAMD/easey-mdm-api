@@ -8,11 +8,11 @@ export class SpansRelationships {
   componentTypeCode: string;
 
   @ViewColumn({ name: 'unit_of_measure_code' })
-  spanScaleCode: string;
+  spanUnitsOfMeasureCode: string;
 
   @ViewColumn({ name: 'span_scale_code' })
-  spanMethodCode: string;
+  spanScaleCode: string;
 
   @ViewColumn({ name: 'span_method_code' })
-  spanUnitsOfMeasureCode: string;
+  spanMethodCode: string;
 }
