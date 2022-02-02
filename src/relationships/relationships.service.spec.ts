@@ -1,12 +1,14 @@
+import { BadGatewayException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { LoggerModule } from '@us-epa-camd/easey-common/logger';
-import { SpansRelationshipsRepository } from './spans-relationships.repository';
+
 import { RelationshipsService } from './relationships.service';
+import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
-import { BadGatewayException } from '@nestjs/common';
+import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest
@@ -62,6 +64,17 @@ const mockMethodsRelationshipsRepository = () => ({
   findOne: jest.fn(),
 });
 
+const mockLoadsRelationshipsRepository = () => ({
+  getLoadsRelationships: jest
+    .fn()
+    .mockReturnValueOnce([])
+    .mockRejectedValueOnce(() => {
+      throw new BadGatewayException();
+    }),
+
+  findOne: jest.fn(),
+});
+
 describe('RelationshipsService', () => {
   let service: RelationshipsService;
   let fRRepository: FormulaRelationshipsRepository;
@@ -69,6 +82,7 @@ describe('RelationshipsService', () => {
   let dRRepository: DefaultsRelationshipsRepository;
   let mMRRepository: MatsMethodsRelationshipsRepository;
   let mRRepository: MethodsRelationshipsRepository;
+  let lRRepository: LoadsRelationshipsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -95,6 +109,10 @@ describe('RelationshipsService', () => {
           provide: MethodsRelationshipsRepository,
           useFactory: mockMethodsRelationshipsRepository,
         },
+        {
+          provide: LoadsRelationshipsRepository,
+          useFactory: mockLoadsRelationshipsRepository,
+        },
       ],
     }).compile();
 
@@ -114,6 +132,9 @@ describe('RelationshipsService', () => {
     );
     mRRepository = module.get<MethodsRelationshipsRepository>(
       MethodsRelationshipsRepository,
+    );
+    lRRepository = module.get<LoadsRelationshipsRepository>(
+      LoadsRelationshipsRepository,
     );
   });
 
@@ -171,6 +192,14 @@ describe('RelationshipsService', () => {
       const result = await service.getMatsMethodsRelationships();
       expect(result).toEqual([]);
       expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getLoadsRelationships', () => {
+    it('calls the getDefaultsRelationships method and returns mats-methods master data relationships', async () => {
+      const result = await service.getLoadsRelationships();
+      expect(result).toEqual([]);
+      expect(lRRepository.getLoadsRelationships).toHaveBeenCalled();
     });
   });
 });

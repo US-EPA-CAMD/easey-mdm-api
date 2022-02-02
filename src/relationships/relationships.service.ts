@@ -7,12 +7,14 @@ import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
 import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
 import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
 import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
+import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
 
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
 import { DefaultsRelationshipsRepository } from './defaults-relationships.repository';
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
+import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -22,6 +24,7 @@ export class RelationshipsService {
     private readonly dRRepository: DefaultsRelationshipsRepository,
     private readonly mMRRepository: MatsMethodsRelationshipsRepository,
     private readonly mRRepository: MethodsRelationshipsRepository,
+    private readonly lRRepository: LoadsRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -72,6 +75,18 @@ export class RelationshipsService {
     let query;
     try {
       query = await this.mRRepository.getMethodsRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+
+    return query;
+  }
+
+  async getLoadsRelationships(): Promise<LoadsRelationshipsDTO[]> {
+    this.logger.info('Getting loads master data relationships');
+    let query;
+    try {
+      query = await this.lRRepository.getLoadsRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }

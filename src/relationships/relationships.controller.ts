@@ -11,6 +11,7 @@ import { RelationshipsService } from './relationships.service';
 import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
 import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
 import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
+import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -75,5 +76,15 @@ export class RelationshipsController {
   })
   getMethodsRelationships(): Promise<MethodsRelationshipsDTO[]> {
     return this.service.getMethodsRelationships();
+  }
+
+  @Get('loads')
+  @ApiOkResponse({
+    isArray: true,
+    type: LoadsRelationshipsDTO,
+    description: 'Retrieves methods master data relationhsips',
+  })
+  getLoadsRelationships(): Promise<LoadsRelationshipsDTO[]> {
+    return this.service.getLoadsRelationships();
   }
 }
