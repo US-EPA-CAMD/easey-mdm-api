@@ -10,6 +10,7 @@ import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
+import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest
@@ -87,6 +88,17 @@ const mockQualLeeRelationshipsRepository = () => ({
   findOne: jest.fn(),
 });
 
+const mockUnitControlRelationshipsRepository = () => ({
+  getUnitControlRelationships: jest
+    .fn()
+    .mockReturnValueOnce([])
+    .mockRejectedValueOnce(() => {
+      throw new BadGatewayException();
+    }),
+
+  findOne: jest.fn(),
+});
+
 describe('RelationshipsService', () => {
   let service: RelationshipsService;
   let fRRepository: FormulaRelationshipsRepository;
@@ -96,6 +108,7 @@ describe('RelationshipsService', () => {
   let mRRepository: MethodsRelationshipsRepository;
   let lRRepository: LoadsRelationshipsRepository;
   let qlRRepository: QualLeeRelationshipsRepository;
+  let ucRRepository: UnitControlRelationshipsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -130,6 +143,10 @@ describe('RelationshipsService', () => {
           provide: QualLeeRelationshipsRepository,
           useFactory: mockQualLeeRelationshipsRepository,
         },
+        {
+          provide: UnitControlRelationshipsRepository,
+          useFactory: mockUnitControlRelationshipsRepository,
+        },
       ],
     }).compile();
 
@@ -155,6 +172,9 @@ describe('RelationshipsService', () => {
     );
     qlRRepository = module.get<QualLeeRelationshipsRepository>(
       QualLeeRelationshipsRepository,
+    );
+    ucRRepository = module.get<UnitControlRelationshipsRepository>(
+      UnitControlRelationshipsRepository,
     );
   });
 
@@ -236,6 +256,18 @@ describe('RelationshipsService', () => {
       expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalled();
       const fail = await service.getQualLeeRelationships();
       expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('getUnitControlRelationships', () => {
+    it('calls the getUnitControlRelationships method and returns unit control master data relationships', async () => {
+      const result = await service.getUnitControlRelationships();
+      expect(result).toEqual([]);
+      expect(ucRRepository.getUnitControlRelationships).toHaveBeenCalled();
+      const fail = await service.getUnitControlRelationships();
+      expect(ucRRepository.getUnitControlRelationships).toHaveBeenCalledTimes(
+        2,
+      );
     });
   });
 });
