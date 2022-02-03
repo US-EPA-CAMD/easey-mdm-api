@@ -9,6 +9,7 @@ import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.d
 import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
 import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
 import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
+import { UnitControlRelationshipsDTO } from '../dto/unit-control-relationships.dto';
 
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
@@ -17,6 +18,7 @@ import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
+import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -28,6 +30,7 @@ export class RelationshipsService {
     private readonly mRRepository: MethodsRelationshipsRepository,
     private readonly lRRepository: LoadsRelationshipsRepository,
     private readonly qlRRepository: QualLeeRelationshipsRepository,
+    private readonly ucRRepository: UnitControlRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -102,6 +105,18 @@ export class RelationshipsService {
     let query;
     try {
       query = await this.qlRRepository.getQualLeeRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+
+    return query;
+  }
+
+  async getUnitControlRelationships(): Promise<UnitControlRelationshipsDTO[]> {
+    this.logger.info('Getting unit control master data relationships');
+    let query;
+    try {
+      query = await this.ucRRepository.getUnitControlRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }
