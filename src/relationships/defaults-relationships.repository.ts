@@ -13,6 +13,7 @@ export class DefaultsRelationshipsRepository extends Repository<
       'dr.defaultPurposeCode',
       'dr.fuelCode',
       'dr.defaultSourceCode',
+      // adding this comment fixes weird bug with unit test coverage
     ]);
 
     return query.getMany();

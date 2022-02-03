@@ -8,6 +8,8 @@ const mockSpansRelationshipsService = () => ({
   getDefaultsRelationships: jest.fn(() => []),
   getMatsMethodsRelationships: jest.fn(() => []),
   getMethodsRelationships: jest.fn(() => []),
+  getLoadsRelationships: jest.fn(() => []),
+  getQualLeeRelationships: jest.fn(() => []),
 });
 
 describe('RelationshipsController', () => {
@@ -66,6 +68,20 @@ describe('RelationshipsController', () => {
     it('should call the RelationshipsService and return a list of methods master data relationships', () => {
       expect(controller.getMethodsRelationships()).toEqual([]);
       expect(service.getMethodsRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getLoadsRelationships', () => {
+    it('should call the RelationshipsService and return a list of loads master data relationships', () => {
+      expect(controller.getLoadsRelationships()).toEqual([]);
+      expect(service.getLoadsRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getQualLeeRelationships', () => {
+    it('should call the RelationshipsService and return a list of LEE qualifications master data relationships', () => {
+      expect(controller.getQualLeeRelationships()).toEqual([]);
+      expect(service.getQualLeeRelationships).toHaveBeenCalled();
     });
   });
 });

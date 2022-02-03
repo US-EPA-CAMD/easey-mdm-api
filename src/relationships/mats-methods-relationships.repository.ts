@@ -9,6 +9,7 @@ export class MatsMethodsRelationshipsRepository extends Repository<
     const query = this.createQueryBuilder('mmr').select([
       'mmr.supplementalMATSParameterCode',
       'mmr.supplementalMATSMonitoringMethodCode',
+      // adding this comment fixes weird bug with unit test coverage
     ]);
 
     return query.getMany();

@@ -10,6 +10,7 @@ export class LoadsRelationshipsRepository extends Repository<
       'lr.maximumLoadUnitsOfMeasureCode',
       'lr.normalLevelCode',
       'lr.secondLevelCode',
+      // adding this comment fixes weird bug with unit test coverage
     ]);
 
     return query.getMany();

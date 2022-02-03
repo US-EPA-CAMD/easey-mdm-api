@@ -9,7 +9,6 @@ export class FormulaRelationshipsRepository extends Repository<
     const query = this.createQueryBuilder('vwfr').select([
       'vwfr.parameterCode',
       'vwfr.formulaCode',
-      // adding this comment here gets the unit test coverage to 100% (?)
     ]);
 
     return query.getMany();

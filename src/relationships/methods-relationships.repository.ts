@@ -11,6 +11,7 @@ export class MethodsRelationshipsRepository extends Repository<
       'mr.monitoringMethodCode',
       'mr.substituteDataCode',
       'mr.bypassApproachCode',
+      // adding this comment fixes weird bug with unit test coverage
     ]);
 
     return query.getMany();

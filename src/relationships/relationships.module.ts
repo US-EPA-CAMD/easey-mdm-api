@@ -9,6 +9,7 @@ import { DefaultsRelationshipsRepository } from './defaults-relationships.reposi
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
+import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { LoadsRelationshipsRepository } from './loads-relationships.repository';
       MatsMethodsRelationshipsRepository,
       MethodsRelationshipsRepository,
       LoadsRelationshipsRepository,
+      QualLeeRelationshipsRepository,
     ]),
     HttpModule,
   ],
