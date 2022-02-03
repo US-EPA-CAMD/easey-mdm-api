@@ -9,6 +9,7 @@ import { DefaultsRelationshipsRepository } from './defaults-relationships.reposi
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
+import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest
@@ -75,6 +76,17 @@ const mockLoadsRelationshipsRepository = () => ({
   findOne: jest.fn(),
 });
 
+const mockQualLeeRelationshipsRepository = () => ({
+  getQualLeeRelationships: jest
+    .fn()
+    .mockReturnValueOnce([])
+    .mockRejectedValueOnce(() => {
+      throw new BadGatewayException();
+    }),
+
+  findOne: jest.fn(),
+});
+
 describe('RelationshipsService', () => {
   let service: RelationshipsService;
   let fRRepository: FormulaRelationshipsRepository;
@@ -83,6 +95,7 @@ describe('RelationshipsService', () => {
   let mMRRepository: MatsMethodsRelationshipsRepository;
   let mRRepository: MethodsRelationshipsRepository;
   let lRRepository: LoadsRelationshipsRepository;
+  let qlRRepository: QualLeeRelationshipsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -113,6 +126,10 @@ describe('RelationshipsService', () => {
           provide: LoadsRelationshipsRepository,
           useFactory: mockLoadsRelationshipsRepository,
         },
+        {
+          provide: QualLeeRelationshipsRepository,
+          useFactory: mockQualLeeRelationshipsRepository,
+        },
       ],
     }).compile();
 
@@ -135,6 +152,9 @@ describe('RelationshipsService', () => {
     );
     lRRepository = module.get<LoadsRelationshipsRepository>(
       LoadsRelationshipsRepository,
+    );
+    qlRRepository = module.get<QualLeeRelationshipsRepository>(
+      QualLeeRelationshipsRepository,
     );
   });
 
@@ -188,18 +208,34 @@ describe('RelationshipsService', () => {
   });
 
   describe('getMatsMethodsRelationships', () => {
-    it('calls the getDefaultsRelationships method and returns mats-methods master data relationships', async () => {
+    it('calls the getMatsMethodsRelationships method and returns mats-methods master data relationships', async () => {
       const result = await service.getMatsMethodsRelationships();
       expect(result).toEqual([]);
       expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalled();
+      const fail = await service.getMatsMethodsRelationships();
+      expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalledTimes(
+        2,
+      );
     });
   });
 
   describe('getLoadsRelationships', () => {
-    it('calls the getDefaultsRelationships method and returns mats-methods master data relationships', async () => {
+    it('calls the getLoadsRelationships method and returns loads master data relationships', async () => {
       const result = await service.getLoadsRelationships();
       expect(result).toEqual([]);
       expect(lRRepository.getLoadsRelationships).toHaveBeenCalled();
+      const fail = await service.getLoadsRelationships();
+      expect(lRRepository.getLoadsRelationships).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('getQualLeeRelationships', () => {
+    it('calls the getQualLeeRelationships method and returns LEE qualifications master data relationships', async () => {
+      const result = await service.getQualLeeRelationships();
+      expect(result).toEqual([]);
+      expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalled();
+      const fail = await service.getQualLeeRelationships();
+      expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalledTimes(2);
     });
   });
 });

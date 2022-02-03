@@ -8,6 +8,7 @@ import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
 import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
 import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
 import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
+import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
 
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
@@ -15,6 +16,7 @@ import { DefaultsRelationshipsRepository } from './defaults-relationships.reposi
 import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships.repository';
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
+import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -25,6 +27,7 @@ export class RelationshipsService {
     private readonly mMRRepository: MatsMethodsRelationshipsRepository,
     private readonly mRRepository: MethodsRelationshipsRepository,
     private readonly lRRepository: LoadsRelationshipsRepository,
+    private readonly qlRRepository: QualLeeRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -87,6 +90,18 @@ export class RelationshipsService {
     let query;
     try {
       query = await this.lRRepository.getLoadsRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+
+    return query;
+  }
+
+  async getQualLeeRelationships(): Promise<QualLeeRelationshipsDTO[]> {
+    this.logger.info('Getting LEE qualifications master data relationships');
+    let query;
+    try {
+      query = await this.qlRRepository.getQualLeeRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }

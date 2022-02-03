@@ -12,6 +12,7 @@ import { DefaultsRelationshipsDTO } from '../dto/defaults-relationships.dto';
 import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.dto';
 import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
 import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
+import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -86,5 +87,15 @@ export class RelationshipsController {
   })
   getLoadsRelationships(): Promise<LoadsRelationshipsDTO[]> {
     return this.service.getLoadsRelationships();
+  }
+
+  @Get('lee-qualifications')
+  @ApiOkResponse({
+    isArray: true,
+    type: QualLeeRelationshipsDTO,
+    description: 'Retrieves LEE qualifications master data relationhsips',
+  })
+  getQualLeeRelationships(): Promise<QualLeeRelationshipsDTO[]> {
+    return this.service.getQualLeeRelationships();
   }
 }

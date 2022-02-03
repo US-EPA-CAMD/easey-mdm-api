@@ -11,6 +11,7 @@ export class SpansRelationshipsRepository extends Repository<
       'sr.spanScaleCode',
       'sr.spanMethodCode',
       'sr.spanUnitsOfMeasureCode',
+      // adding this comment fixes weird bug with unit test coverage
     ]);
 
     return query.getMany();
