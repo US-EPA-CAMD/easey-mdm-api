@@ -10,6 +10,7 @@ import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
+import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest
@@ -87,6 +88,17 @@ const mockQualLeeRelationshipsRepository = () => ({
   findOne: jest.fn(),
 });
 
+const mockSystemFuelFlowRelationshipsRepository = () => ({
+  getSystemFuelFlowRelationships: jest
+    .fn()
+    .mockReturnValueOnce([])
+    .mockRejectedValueOnce(() => {
+      throw new BadGatewayException();
+    }),
+
+  findOne: jest.fn(),
+});
+
 describe('RelationshipsService', () => {
   let service: RelationshipsService;
   let fRRepository: FormulaRelationshipsRepository;
@@ -96,6 +108,7 @@ describe('RelationshipsService', () => {
   let mRRepository: MethodsRelationshipsRepository;
   let lRRepository: LoadsRelationshipsRepository;
   let qlRRepository: QualLeeRelationshipsRepository;
+  let sffRRepository: SystemFuelFlowRelationshipsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -130,6 +143,10 @@ describe('RelationshipsService', () => {
           provide: QualLeeRelationshipsRepository,
           useFactory: mockQualLeeRelationshipsRepository,
         },
+        {
+          provide: SystemFuelFlowRelationshipsRepository,
+          useFactory: mockSystemFuelFlowRelationshipsRepository,
+        },
       ],
     }).compile();
 
@@ -155,6 +172,9 @@ describe('RelationshipsService', () => {
     );
     qlRRepository = module.get<QualLeeRelationshipsRepository>(
       QualLeeRelationshipsRepository,
+    );
+    sffRRepository = module.get<SystemFuelFlowRelationshipsRepository>(
+      SystemFuelFlowRelationshipsRepository,
     );
   });
 
@@ -236,6 +256,18 @@ describe('RelationshipsService', () => {
       expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalled();
       const fail = await service.getQualLeeRelationships();
       expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('getSystemFuelFlowRelationships', () => {
+    it('calls the getSystemFuelFlowRelationships method and returns system fuel flow master data relationships', async () => {
+      const result = await service.getSystemFuelFlowRelationships();
+      expect(result).toEqual([]);
+      expect(sffRRepository.getSystemFuelFlowRelationships).toHaveBeenCalled();
+      const fail = await service.getSystemFuelFlowRelationships();
+      expect(
+        sffRRepository.getSystemFuelFlowRelationships,
+      ).toHaveBeenCalledTimes(2);
     });
   });
 });
