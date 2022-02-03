@@ -101,7 +101,7 @@ export class RelationshipsController {
     return this.service.getQualLeeRelationships();
   }
 
-  @Get('system-fuel')
+  @Get('system-fuels')
   @ApiOkResponse({
     isArray: true,
     type: SystemFuelFlowRelationshipsDTO,
