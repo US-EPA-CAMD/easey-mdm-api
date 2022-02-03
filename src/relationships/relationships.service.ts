@@ -10,6 +10,7 @@ import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
 import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
 import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
 import { SystemFuelFlowRelationshipsDTO } from '../dto/sytem-fuel-flow-relationships.dto';
+import { UnitControlRelationshipsDTO } from '../dto/unit-control-relationships.dto';
 
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
@@ -19,6 +20,7 @@ import { MethodsRelationshipsRepository } from './methods-relationships.reposito
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
 import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
+import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -31,6 +33,7 @@ export class RelationshipsService {
     private readonly lRRepository: LoadsRelationshipsRepository,
     private readonly qlRRepository: QualLeeRelationshipsRepository,
     private readonly sffRRepository: SystemFuelFlowRelationshipsRepository,
+    private readonly ucRRepository: UnitControlRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -119,6 +122,18 @@ export class RelationshipsService {
     let query;
     try {
       query = await this.sffRRepository.getSystemFuelFlowRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+
+    return query;
+  }
+
+  async getUnitControlRelationships(): Promise<UnitControlRelationshipsDTO[]> {
+    this.logger.info('Getting unit control master data relationships');
+    let query;
+    try {
+      query = await this.ucRRepository.getUnitControlRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }

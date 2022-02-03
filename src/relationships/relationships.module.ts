@@ -11,6 +11,7 @@ import { MethodsRelationshipsRepository } from './methods-relationships.reposito
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
 import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
+import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relati
       LoadsRelationshipsRepository,
       QualLeeRelationshipsRepository,
       SystemFuelFlowRelationshipsRepository,
+      UnitControlRelationshipsRepository,
     ]),
     HttpModule,
   ],

@@ -11,6 +11,7 @@ import { MethodsRelationshipsRepository } from './methods-relationships.reposito
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
 import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
+import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest
@@ -99,6 +100,17 @@ const mockSystemFuelFlowRelationshipsRepository = () => ({
   findOne: jest.fn(),
 });
 
+const mockUnitControlRelationshipsRepository = () => ({
+  getUnitControlRelationships: jest
+    .fn()
+    .mockReturnValueOnce([])
+    .mockRejectedValueOnce(() => {
+      throw new BadGatewayException();
+    }),
+
+  findOne: jest.fn(),
+});
+
 describe('RelationshipsService', () => {
   let service: RelationshipsService;
   let fRRepository: FormulaRelationshipsRepository;
@@ -109,6 +121,7 @@ describe('RelationshipsService', () => {
   let lRRepository: LoadsRelationshipsRepository;
   let qlRRepository: QualLeeRelationshipsRepository;
   let sffRRepository: SystemFuelFlowRelationshipsRepository;
+  let ucRRepository: UnitControlRelationshipsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -147,6 +160,10 @@ describe('RelationshipsService', () => {
           provide: SystemFuelFlowRelationshipsRepository,
           useFactory: mockSystemFuelFlowRelationshipsRepository,
         },
+        {
+          provide: UnitControlRelationshipsRepository,
+          useFactory: mockUnitControlRelationshipsRepository,
+        },
       ],
     }).compile();
 
@@ -175,6 +192,9 @@ describe('RelationshipsService', () => {
     );
     sffRRepository = module.get<SystemFuelFlowRelationshipsRepository>(
       SystemFuelFlowRelationshipsRepository,
+    );
+    ucRRepository = module.get<UnitControlRelationshipsRepository>(
+      UnitControlRelationshipsRepository,
     );
   });
 
@@ -268,6 +288,18 @@ describe('RelationshipsService', () => {
       expect(
         sffRRepository.getSystemFuelFlowRelationships,
       ).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('getUnitControlRelationships', () => {
+    it('calls the getUnitControlRelationships method and returns unit control master data relationships', async () => {
+      const result = await service.getUnitControlRelationships();
+      expect(result).toEqual([]);
+      expect(ucRRepository.getUnitControlRelationships).toHaveBeenCalled();
+      const fail = await service.getUnitControlRelationships();
+      expect(ucRRepository.getUnitControlRelationships).toHaveBeenCalledTimes(
+        2,
+      );
     });
   });
 });

@@ -14,6 +14,7 @@ import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
 import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
 import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
 import { SystemFuelFlowRelationshipsDTO } from '../dto/sytem-fuel-flow-relationships.dto';
+import { UnitControlRelationshipsDTO } from '../dto/unit-control-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -108,5 +109,15 @@ export class RelationshipsController {
   })
   getSystemFuelFlowRelationships(): Promise<SystemFuelFlowRelationshipsDTO[]> {
     return this.service.getSystemFuelFlowRelationships();
+  }
+
+  @Get('unit-controls')
+  @ApiOkResponse({
+    isArray: true,
+    type: UnitControlRelationshipsDTO,
+    description: 'Retrieves LEE qualifications master data relationhsips',
+  })
+  getUnitControlRelationships(): Promise<UnitControlRelationshipsDTO[]> {
+    return this.service.getUnitControlRelationships();
   }
 }
