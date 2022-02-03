@@ -10,6 +10,7 @@ import { MatsMethodsRelationshipsRepository } from './mats-methods-relationships
 import { MethodsRelationshipsRepository } from './methods-relationships.repository';
 import { LoadsRelationshipsRepository } from './loads-relationships.repository';
 import { QualLeeRelationshipsRepository } from './qual-lee-relationships.repository';
+import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
 import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 
 @Module({
@@ -22,6 +23,7 @@ import { UnitControlRelationshipsRepository } from './unit-control-relationships
       MethodsRelationshipsRepository,
       LoadsRelationshipsRepository,
       QualLeeRelationshipsRepository,
+      SystemFuelFlowRelationshipsRepository,
       UnitControlRelationshipsRepository,
     ]),
     HttpModule,

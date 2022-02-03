@@ -13,6 +13,7 @@ import { MatsMethodsRelationshipsDTO } from '../dto/mats-methods-relationships.d
 import { MethodsRelationshipsDTO } from '../dto/methods-relationships.dto';
 import { LoadsRelationshipsDTO } from '../dto/loads-relationships.dto';
 import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
+import { SystemFuelFlowRelationshipsDTO } from '../dto/sytem-fuel-flow-relationships.dto';
 import { UnitControlRelationshipsDTO } from '../dto/unit-control-relationships.dto';
 
 @Controller()
@@ -98,6 +99,16 @@ export class RelationshipsController {
   })
   getQualLeeRelationships(): Promise<QualLeeRelationshipsDTO[]> {
     return this.service.getQualLeeRelationships();
+  }
+
+  @Get('system-fuels')
+  @ApiOkResponse({
+    isArray: true,
+    type: SystemFuelFlowRelationshipsDTO,
+    description: 'Retrieves system fuel flow master data relationhsips',
+  })
+  getSystemFuelFlowRelationships(): Promise<SystemFuelFlowRelationshipsDTO[]> {
+    return this.service.getSystemFuelFlowRelationships();
   }
 
   @Get('unit-controls')
