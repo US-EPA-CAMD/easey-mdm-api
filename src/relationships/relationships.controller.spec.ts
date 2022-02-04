@@ -12,6 +12,7 @@ const mockSpansRelationshipsService = () => ({
   getQualLeeRelationships: jest.fn(() => []),
   getSystemFuelFlowRelationships: jest.fn(() => []),
   getUnitControlRelationships: jest.fn(() => []),
+  getUnitFuelRelationships: jest.fn(() => []),
 });
 
 describe('RelationshipsController', () => {
@@ -98,6 +99,13 @@ describe('RelationshipsController', () => {
     it('should call the RelationshipsService and return a list of unit control master data relationships', () => {
       expect(controller.getUnitControlRelationships()).toEqual([]);
       expect(service.getUnitControlRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getUnitFuelRelationships', () => {
+    it('should call the RelationshipsService and return a list of unit fuel master data relationships', () => {
+      expect(controller.getUnitFuelRelationships()).toEqual([]);
+      expect(service.getUnitFuelRelationships).toHaveBeenCalled();
     });
   });
 });
