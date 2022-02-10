@@ -16,6 +16,7 @@ import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
 import { SystemFuelFlowRelationshipsDTO } from '../dto/sytem-fuel-flow-relationships.dto';
 import { UnitControlRelationshipsDTO } from '../dto/unit-control-relationships.dto';
 import { UnitFuelRelationshipsDTO } from '../dto/unit-fuel-relationships.dto';
+import { SystemComponentRelationshipsDTO } from '../dto/systems-component-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -130,5 +131,15 @@ export class RelationshipsController {
   })
   getUnitFuelRelationships(): Promise<UnitFuelRelationshipsDTO[]> {
     return this.service.getUnitFuelRelationships();
+  }
+
+  @Get('system-components')
+  @ApiOkResponse({
+    isArray: true,
+    type: SystemComponentRelationshipsDTO,
+    description: 'Retrieves system component master data relationships',
+  })
+  getSystemComponentRelationships() {
+    return this.service.getSystemComponentRelationships();
   }
 }

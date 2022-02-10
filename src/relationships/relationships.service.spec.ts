@@ -13,6 +13,7 @@ import { QualLeeRelationshipsRepository } from './qual-lee-relationships.reposit
 import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
 import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repository';
+import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest
@@ -123,6 +124,17 @@ const mockUnitFuelRelationshipsRepository = () => ({
   findOne: jest.fn(),
 });
 
+const mockSystemComponentRelationshipsRepository = () => ({
+  getSystemComponentRelationships: jest
+    .fn()
+    .mockReturnValueOnce([])
+    .mockRejectedValueOnce(() => {
+      throw new BadGatewayException();
+    }),
+
+  findOne: jest.fn(),
+});
+
 describe('RelationshipsService', () => {
   let service: RelationshipsService;
   let fRRepository: FormulaRelationshipsRepository;
@@ -135,6 +147,7 @@ describe('RelationshipsService', () => {
   let sffRRepository: SystemFuelFlowRelationshipsRepository;
   let ucRRepository: UnitControlRelationshipsRepository;
   let ufRRepository: UnitFuelRelationshipsRepository;
+  let scRRepository: SystemComponentRelationshipsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -181,6 +194,10 @@ describe('RelationshipsService', () => {
           provide: UnitFuelRelationshipsRepository,
           useFactory: mockUnitFuelRelationshipsRepository,
         },
+        {
+          provide: SystemComponentRelationshipsRepository,
+          useFactory: mockSystemComponentRelationshipsRepository,
+        },
       ],
     }).compile();
 
@@ -215,6 +232,9 @@ describe('RelationshipsService', () => {
     );
     ufRRepository = module.get<UnitFuelRelationshipsRepository>(
       UnitFuelRelationshipsRepository,
+    );
+    scRRepository = module.get<SystemComponentRelationshipsRepository>(
+      SystemComponentRelationshipsRepository,
     );
   });
 
@@ -330,6 +350,18 @@ describe('RelationshipsService', () => {
       expect(ufRRepository.getUnitFuelRelationships).toHaveBeenCalled();
       const fail = await service.getUnitFuelRelationships();
       expect(ufRRepository.getUnitFuelRelationships).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('getSystemComponentRelationships', () => {
+    it('calls the getSystemComponentRelationships method and returns system component master data relationships', async () => {
+      const result = await service.getSystemComponentRelationships();
+      expect(result).toEqual([]);
+      expect(scRRepository.getSystemComponentRelationships).toHaveBeenCalled();
+      const fail = await service.getSystemComponentRelationships();
+      expect(
+        scRRepository.getSystemComponentRelationships,
+      ).toHaveBeenCalledTimes(2);
     });
   });
 });

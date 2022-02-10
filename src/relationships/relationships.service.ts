@@ -12,6 +12,7 @@ import { QualLeeRelationshipsDTO } from '../dto/qual-lee-relationships.dto';
 import { SystemFuelFlowRelationshipsDTO } from '../dto/sytem-fuel-flow-relationships.dto';
 import { UnitControlRelationshipsDTO } from '../dto/unit-control-relationships.dto';
 import { UnitFuelRelationshipsDTO } from '../dto/unit-fuel-relationships.dto';
+import { SystemComponentRelationshipsDTO } from '../dto/systems-component-relationships.dto';
 
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
@@ -23,6 +24,7 @@ import { QualLeeRelationshipsRepository } from './qual-lee-relationships.reposit
 import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
 import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repository';
+import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -37,6 +39,7 @@ export class RelationshipsService {
     private readonly sffRRepository: SystemFuelFlowRelationshipsRepository,
     private readonly ucRRepository: UnitControlRelationshipsRepository,
     private readonly ufRRepository: UnitFuelRelationshipsRepository,
+    private readonly scRRepository: SystemComponentRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -149,6 +152,20 @@ export class RelationshipsService {
     let query;
     try {
       query = await this.ufRRepository.getUnitFuelRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+
+    return query;
+  }
+
+  async getSystemComponentRelationships(): Promise<
+    SystemComponentRelationshipsDTO[]
+  > {
+    this.logger.info('Getting system component master data relationships');
+    let query;
+    try {
+      query = await this.scRRepository.getSystemComponentRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }

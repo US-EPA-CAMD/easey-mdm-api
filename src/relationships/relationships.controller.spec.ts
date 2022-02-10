@@ -13,6 +13,7 @@ const mockSpansRelationshipsService = () => ({
   getSystemFuelFlowRelationships: jest.fn(() => []),
   getUnitControlRelationships: jest.fn(() => []),
   getUnitFuelRelationships: jest.fn(() => []),
+  getSystemComponentRelationships: jest.fn(() => []),
 });
 
 describe('RelationshipsController', () => {
@@ -106,6 +107,13 @@ describe('RelationshipsController', () => {
     it('should call the RelationshipsService and return a list of unit fuel master data relationships', () => {
       expect(controller.getUnitFuelRelationships()).toEqual([]);
       expect(service.getUnitFuelRelationships).toHaveBeenCalled();
+    });
+  });
+
+  describe('getSytemComponentRelationships', () => {
+    it('should call the RelationshipsService and return a list of unit fuel master data relationships', () => {
+      expect(controller.getSystemComponentRelationships()).toEqual([]);
+      expect(service.getSystemComponentRelationships).toHaveBeenCalled();
     });
   });
 });
