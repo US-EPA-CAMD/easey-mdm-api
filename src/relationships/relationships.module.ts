@@ -13,6 +13,7 @@ import { QualLeeRelationshipsRepository } from './qual-lee-relationships.reposit
 import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relationships.repository';
 import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repository';
+import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repos
       SystemFuelFlowRelationshipsRepository,
       UnitControlRelationshipsRepository,
       UnitFuelRelationshipsRepository,
+      SystemComponentRelationshipsRepository,
     ]),
     HttpModule,
   ],
