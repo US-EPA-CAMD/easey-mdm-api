@@ -1,4 +1,4 @@
 export class UnitControlRelationshipsDTO {
-  parameterCode: string;
+  controlEquipParamCode: string;
   controlCode: string;
 }

@@ -7,7 +7,7 @@ export class UnitControlRelationshipsRepository extends Repository<
 > {
   async getUnitControlRelationships(): Promise<UnitControlRelationships[]> {
     const query = this.createQueryBuilder('ucr').select([
-      'ucr.parameterCode',
+      'ucr.controlEquipParamCode',
       'ucr.controlCode',
     ]);
 
