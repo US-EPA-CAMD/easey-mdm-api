@@ -4,7 +4,7 @@ import { ViewColumn, ViewEntity } from 'typeorm';
   name: 'camdecmpsmd.vw_unitcontrol_master_data_relationships',
 })
 export class UnitControlRelationships {
-  @ViewColumn({ name: 'parameter_code' })
+  @ViewColumn({ name: 'controlequipparamcode' })
   controlEquipParamCode: string;
 
   @ViewColumn({ name: 'control_code' })
