@@ -5,7 +5,7 @@ import { ViewColumn, ViewEntity } from 'typeorm';
 })
 export class UnitControlRelationships {
   @ViewColumn({ name: 'parameter_code' })
-  parameterCode: string;
+  controlEquipParamCode: string;
 
   @ViewColumn({ name: 'control_code' })
   controlCode: string;
