@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { DefaultSourceCodeRepository } from './default-source-code.repository';
 import { DefaultSourceCodeService } from './default-source-code.service';
 
@@ -13,6 +14,7 @@ describe('DefaultSourceCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         DefaultSourceCodeService,
         {

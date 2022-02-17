@@ -28,8 +28,8 @@ describe('OperatingLevelCodeController', () => {
   });
 
   describe('getOperatingLevelCodes', () => {
-    it('should call the OperatingLevelCodeService and return a list of operating level codes', () => {
-      expect(controller.getOperatingLevelCodes()).toEqual([]);
+    it('should call the OperatingLevelCodeService and return a list of operating level codes', async () => {
+      expect(await controller.getOperatingLevelCodes()).toEqual([]);
       expect(service.getOperatingLevelCodes).toHaveBeenCalled();
     });
   });

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { ParameterCodeRepository } from './parameter-code.repository';
 import { ParameterCodeService } from './parameter-code.service';
 
@@ -11,7 +12,8 @@ describe('ParameterCodeService', () => {
   let repository: ParameterCodeRepository;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module: TestingModule = await Test.createTestingModule({     
+      imports: [LoggerModule],
       providers: [
         ParameterCodeService,
         {

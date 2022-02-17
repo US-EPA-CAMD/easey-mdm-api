@@ -4,6 +4,7 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiSecurity,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
@@ -18,6 +19,7 @@ export class StatesController {
 
   @Get()
   @ApiOkResponse({
+    type: StateDTO,
     description: 'Retrieved All States',
   })
   @ApiBadRequestResponse({
@@ -26,6 +28,7 @@ export class StatesController {
   @ApiNotFoundResponse({
     description: 'Resource Not Found',
   })
+  @ApiExtraModels(StateDTO)
   getAllStates(): Promise<StateDTO[]> {
     return this.statesService.getAllStates();
   }

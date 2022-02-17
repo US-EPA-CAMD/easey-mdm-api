@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BypassApproachCodeService } from './bypass-approach-code.service';
 import { BypassApproachCodeRepository } from './bypass-approach-code.repository';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockBypassApproachCodeRepository = () => ({
   getBypassApproachCodes: jest.fn(),
@@ -12,6 +13,7 @@ describe('BypassApproachCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         BypassApproachCodeService,
         {

@@ -9,18 +9,18 @@ export class AnalyzerRangeCodeService {
   constructor(
     @InjectRepository(AnalyzerRangeCodeRepository)
     private readonly repository: AnalyzerRangeCodeRepository,
-    private Logger: Logger,
+    private readonly logger: Logger,
   ) {}
 
   async getAnalyzerRangeCodes(): Promise<AnalyzerRangeCodeDTO[]> {
-    this.Logger.info('Getting analyzer range codes');
+    this.logger.info('Getting analyzer range codes');
     let query;
     try {
       query = await this.repository.getAnalyzerRangeCodes();
     } catch (e) {
-      this.Logger.error(InternalServerErrorException, e.message);
+      this.logger.error(InternalServerErrorException, e.message);
     }
-    this.Logger.info('Got analyzer range codes');
+    this.logger.info('Got analyzer range codes');
     return query;
   }
 }

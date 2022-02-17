@@ -21,7 +21,9 @@ export class CrossChecksService {
     parameterCode: string,
     substituteDataCode: string,
   ): Promise<ParameterMethodSubDataDTO[]> {
-    this.logger.info('Getting parameter code, method code, substitute data code relationships');
+    this.logger.info(
+      'Getting parameter code, method code, substitute data code relationships',
+    );
 
     // const results = await this.repository.find({
     //   where: {
@@ -30,7 +32,9 @@ export class CrossChecksService {
     //   }
     // });
 
-    this.logger.info('Retrieved parameter code, method code, substitute data code relationships');
-    return new ParameterMethodSubDataDTO[0];//this.map.many(results);
+    this.logger.info(
+      'Retrieved parameter code, method code, substitute data code relationships',
+    );
+    return new ParameterMethodSubDataDTO[0](); //this.map.many(results);
   }
 }

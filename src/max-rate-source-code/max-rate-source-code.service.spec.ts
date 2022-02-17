@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { MaxRateSourceCodeRepository } from './max-rate-source-code.repository';
 import { MaxRateSourceCodeService } from './max-rate-source-code.service';
 
@@ -13,6 +14,7 @@ describe('MaxRateSourceCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         MaxRateSourceCodeService,
         {

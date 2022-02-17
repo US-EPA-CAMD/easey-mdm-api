@@ -5,6 +5,7 @@ import { ControlTechnologyRepository } from './control-code.repository';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
 import { ControlTechnology } from '../entities/control-code.entity';
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockControlTechnologiesRepository = () => ({
   getAllControlTechnologies: jest.fn(),
@@ -16,6 +17,7 @@ describe('-- Control Technologies Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         ControlTechnologiesService,
         {

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { MatsMethodParamCodeRepository } from './mats-method-param-code.repository';
 import { MatsMethodParamCodeService } from './mats-method-param-code.service';
 
@@ -12,6 +13,7 @@ describe('MatsMethodParamCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         MatsMethodParamCodeService,
         {

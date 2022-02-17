@@ -5,6 +5,7 @@ import { SourceCategoryRepository } from './source-category-code.repository';
 import { SourceCategoryMap } from '../maps/source-category.map';
 import { SourceCategory } from '../entities/source-category-code.entity';
 import { SourceCategoryDTO } from '../dto/source-category.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockSourceCategoryRepository = () => ({
   find: jest.fn(),
@@ -16,6 +17,7 @@ describe('-- Source Categories Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         SourceCategoriesService,
         {

@@ -5,6 +5,7 @@ import { TransactionTypeRepository } from './transaction-type-code.repository';
 import { TransactionTypeMap } from '../maps/transaction-type.map';
 import { TransactionType } from '../entities/transaction-type-code.entity';
 import { TransactionTypeDTO } from '../dto/transaction-type.dto';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockTransactionTypeRepository = () => ({
   find: jest.fn(),
@@ -16,6 +17,7 @@ describe('-- Transaction Types Service --', () => {
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         TransactionTypesService,
         {

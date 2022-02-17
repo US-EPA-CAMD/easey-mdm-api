@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { DefaultPurposeCodeController } from './default-purpose-code.controller';
 import { DefaultPurposeCodeService } from './default-purpose-code.service';
 
@@ -12,6 +13,7 @@ describe('DefaultPurposeCodeController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       controllers: [DefaultPurposeCodeController],
       providers: [
         {
@@ -31,7 +33,7 @@ describe('DefaultPurposeCodeController', () => {
 
   describe('getDefaultPurposeCodes', () => {
     it('should call the DefaultPurposeCodeService and return a list of default purpose codes', async () => {
-      expect(controller.getDefaultPurposeCodes()).toEqual([]);
+      expect(await controller.getDefaultPurposeCodes()).toEqual([]);
       expect(
         defaultPurposeCodeService.getDefaultPurposeCodes,
       ).toHaveBeenCalled();

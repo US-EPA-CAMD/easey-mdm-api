@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MatsMethodCodeService } from './mats-method-code.service';
 import { MatsMethodCodeRepository } from './mats-method-code.repository';
+import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 const mockMatsMethodCodeRepository = () => ({
   getMatsMethodCodes: jest.fn(() => []),
@@ -12,6 +13,7 @@ describe('MatsMethodCodeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         MatsMethodCodeService,
         {

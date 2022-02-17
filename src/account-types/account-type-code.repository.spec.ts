@@ -1,10 +1,11 @@
 import { Test } from '@nestjs/testing';
 import { SelectQueryBuilder } from 'typeorm';
+import { AccountTypeCode } from '@us-epa-camd/easey-common/enums';
+
 import { AccountTypeRepository } from './account-type-code.repository';
 import { AccountType } from '../entities/account-type-code.entity';
 import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
-import { AccountTypes } from '../enums/account-type.enum';
 
 const mockQueryBuilder = () => ({
   andWhere: jest.fn(),
@@ -47,7 +48,7 @@ describe('AccountTypeRepository', () => {
   describe('getAllAccountTypes', () => {
     it('calls createQueryBuilder and gets all accountTypes from the repository', async () => {
       let filters: AccountTypeParamsDTO = {
-        exclude: [AccountTypes.CASURR],
+        exclude: [AccountTypeCode.CASURR],
       };
       let result = await accountTypeRepository.getAllAccountTypes(filters);
       expect(queryBuilder.getMany).toHaveBeenCalled();

@@ -29,7 +29,7 @@ describe('FuelIndicatorCodeController', () => {
 
   describe('getFuelIndicatorCodes', () => {
     it('should call the FuelIndicatorCodeService and return a list of fuel indicator codes', async () => {
-      expect(controller.getFuelIndicatorCodes()).toEqual([]);
+      expect(await controller.getFuelIndicatorCodes()).toEqual([]);
       expect(service.getFuelIndicatorCodes).toHaveBeenCalled();
     });
   });

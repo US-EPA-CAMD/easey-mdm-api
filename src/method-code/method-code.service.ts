@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Logger } from '@us-epa-camd/easey-common/logger';
 import { MethodCodeDTO } from '../dto/method-code.dto';
 import { MethodCodeRepository } from './method-code.repository';
 
@@ -8,9 +9,19 @@ export class MethodCodeService {
   constructor(
     @InjectRepository(MethodCodeRepository)
     private readonly methodCodeRepository: MethodCodeRepository,
+    private readonly logger: Logger,
   ) {}
 
   async getMethodCodes(): Promise<MethodCodeDTO[]> {
-    return await this.methodCodeRepository.getMethodCodes();
+    this.logger.info('Getting method codes');
+    let query;
+    try {
+      query = await this.methodCodeRepository.getMethodCodes();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+    this.logger.info('Got method codes');
+
+    return query;
   }
 }

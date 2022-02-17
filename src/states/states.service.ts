@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Logger } from '@us-epa-camd/easey-common/logger';
 
 import { FindManyOptions } from 'typeorm';
 import { StatesRepository } from './states.repository';
@@ -12,6 +13,7 @@ export class StatesService {
     @InjectRepository(StatesRepository)
     private readonly stateRepository: StatesRepository,
     private readonly stateMap: StateMap,
+    private readonly logger: Logger,
   ) {}
 
   async getAllStates(): Promise<StateDTO[]> {
@@ -20,7 +22,15 @@ export class StatesService {
       order: { stateCode: 'ASC' },
     };
 
-    const query = await this.stateRepository.find(findOpts);
+    this.logger.info('Getting all states');
+    let query;
+    try {
+      query = await this.stateRepository.find(findOpts);
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+    this.logger.info('Got span scale codes');
+
     return this.stateMap.many(query);
   }
 }
