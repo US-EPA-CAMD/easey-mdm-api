@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
+import { RouterModule } from 'nest-router';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RouterModule } from 'nest-router';
+
+import { dbConfig } from '@us-epa-camd/easey-common/config';
 import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { CorsOptionsModule } from '@us-epa-camd/easey-common/cors-options';
 
-import { TypeOrmConfigService } from './config/typeorm.config';
-import dbConfig from './config/db.config';
-import appConfig from './config/app.config';
 import routes from './routes';
-
+import appConfig from './config/app.config';
+import { TypeOrmConfigService } from './config/typeorm.config';
 import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
 import { FuelTypesModule } from './fuel-types/fuel-types.module';
