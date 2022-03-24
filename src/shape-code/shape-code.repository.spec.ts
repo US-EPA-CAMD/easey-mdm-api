@@ -30,7 +30,7 @@ describe('ShapeCodeRepository', () => {
 
     repository.createQueryBuilder = jest.fn().mockReturnValue(queryBuilder);
     queryBuilder.select.mockReturnValue(queryBuilder);
-    queryBuilder.getMany.mockReturnValue(ShapeCodeDTO);
+    queryBuilder.getMany.mockReturnValue(new ShapeCodeDTO());
   });
 
   describe('getShapeCodes', () => {

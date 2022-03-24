@@ -29,7 +29,8 @@ describe('SpanMethodCodeController', () => {
 
   describe('getAnalyzerRangeCodes', () => {
     it('should call the SpanMethodCodeService and return a list of span method codes', async () => {
-      expect(controller.getSpanMethodCodes()).toEqual([]);
+      const result = await controller.getSpanMethodCodes();
+      expect(result).toEqual([]);
       expect(service.getSpanMethodCodes).toHaveBeenCalled();
     });
   });
