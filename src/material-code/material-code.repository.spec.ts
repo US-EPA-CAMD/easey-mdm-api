@@ -30,7 +30,7 @@ describe('MaterialCodeRepository', () => {
 
     repository.createQueryBuilder = jest.fn().mockReturnValue(queryBuilder);
     queryBuilder.select.mockReturnValue(queryBuilder);
-    queryBuilder.getMany.mockReturnValue(MaterialCodeDTO);
+    queryBuilder.getMany.mockReturnValue(new MaterialCodeDTO());
   });
 
   describe('getMaterialCodes', () => {
