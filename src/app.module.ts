@@ -12,7 +12,7 @@ import routes from './routes';
 
 import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
-import { FuelTypesModule } from './fuel-types/fuel-types.module';
+import { FuelTypesModule } from './fuel-type/fuel-type.module';
 import { ProgramsModule } from './programs/programs.module';
 import { AccountTypesModule } from './account-types/account-types.module';
 import { StatesModule } from './states/states.module';

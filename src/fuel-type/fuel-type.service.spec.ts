@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 
-import { FuelTypesService } from './fuel-types.service';
+import { FuelTypesService } from './fuel-type.service';
 import { FuelTypeRepository } from './fuel-type-code.repository';
 import { FuelTypeMap } from '../maps/fuel-type.map';
 import { FuelType } from '../entities/fuel-type-code.entity';
