@@ -50,6 +50,7 @@ import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { RelationshipsModule } from './relationships/relationships.module';
+import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module';
 
 @Module({
   imports: [
@@ -103,6 +104,7 @@ import { RelationshipsModule } from './relationships/relationships.module';
     MaterialCodeModule,
     ShapeCodeModule,
     RelationshipsModule,
+    TestReasonCodeModule,
   ],
 })
 export class AppModule {}

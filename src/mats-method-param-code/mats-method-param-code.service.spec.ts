@@ -39,7 +39,4 @@ describe('MatsMethodParamCodeService', () => {
       expect(repository.getMatsMethodParamCodes).toHaveBeenCalled();
     });
   });
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
 });

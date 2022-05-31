@@ -40,6 +40,7 @@ import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { RelationshipsModule } from './relationships/relationships.module';
+import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module';
 
 const routes: Routes = [
   {
@@ -201,6 +202,10 @@ const routes: Routes = [
   {
     path: '/relationships',
     module: RelationshipsModule,
+  },
+  {
+    path: '/test-reason-codes',
+    module: TestReasonCodeModule,
   },
 ];
 export default routes;
