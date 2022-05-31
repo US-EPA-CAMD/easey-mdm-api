@@ -1,7 +1,7 @@
 import { Routes } from 'nest-router';
 
 import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
-import { FuelTypesModule } from './fuel-type/fuel-type.module';
+import { FuelTypesModule } from './fuel-type-code/fuel-type.module';
 import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ProgramsModule } from './programs/programs.module';
 import { AccountTypesModule } from './account-types/account-types.module';
