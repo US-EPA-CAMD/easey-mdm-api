@@ -2,24 +2,24 @@ import { Test } from '@nestjs/testing';
 
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
 import { FuelTypeMap } from '../maps/fuel-type.map';
-import { FuelTypesController } from './fuel-types.controller';
+import { FuelTypeController } from './fuel-type.controller';
 import { FuelTypeRepository } from './fuel-type-code.repository';
-import { FuelTypesService } from './fuel-types.service';
+import { FuelTypesService } from './fuel-type.service';
 import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('-- Fuel Types Controller --', () => {
-  let fuelTypesController: FuelTypesController;
-  let fuelTypesService: FuelTypesService;
+  let controller: FuelTypeController;
+  let service: FuelTypesService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [LoggerModule],
-      controllers: [FuelTypesController],
+      controllers: [FuelTypeController],
       providers: [FuelTypesService, FuelTypeMap, FuelTypeRepository],
     }).compile();
 
-    fuelTypesController = module.get(FuelTypesController);
-    fuelTypesService = module.get(FuelTypesService);
+    controller = module.get(FuelTypeController);
+    service = module.get(FuelTypesService);
   });
 
   afterEach(() => {
@@ -29,10 +29,8 @@ describe('-- Fuel Types Controller --', () => {
   describe('* getAllFuelTypes', () => {
     it('should call the service and return a list of all valid fuel types', async () => {
       const expectedResult: FuelTypeDTO[] = [];
-      jest
-        .spyOn(fuelTypesService, 'getAllFuelTypes')
-        .mockResolvedValue(expectedResult);
-      expect(await fuelTypesController.getAllFuelTypes()).toBe(expectedResult);
+      jest.spyOn(service, 'getAllFuelTypes').mockResolvedValue(expectedResult);
+      expect(await controller.getAllFuelTypes()).toBe(expectedResult);
     });
   });
 });

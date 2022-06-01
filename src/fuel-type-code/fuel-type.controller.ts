@@ -9,12 +9,12 @@ import {
 import { Controller, Get } from '@nestjs/common';
 
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
-import { FuelTypesService } from './fuel-types.service';
+import { FuelTypesService } from './fuel-type.service';
 
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Fuel Types')
-export class FuelTypesController {
+export class FuelTypeController {
   constructor(private readonly fuelTypesService: FuelTypesService) {}
 
   @Get()

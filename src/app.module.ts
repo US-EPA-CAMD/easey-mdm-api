@@ -12,7 +12,7 @@ import appConfig from './config/app.config';
 import { TypeOrmConfigService } from './config/typeorm.config';
 import { UnitTypesModule } from './unit-types/unit-types.module';
 import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
-import { FuelTypesModule } from './fuel-types/fuel-types.module';
+import { FuelTypesModule } from './fuel-type-code/fuel-type.module';
 import { ProgramsModule } from './programs/programs.module';
 import { AccountTypesModule } from './account-types/account-types.module';
 import { StatesModule } from './states/states.module';
@@ -51,6 +51,7 @@ import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { RelationshipsModule } from './relationships/relationships.module';
 import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module';
+import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
 
 @Module({
   imports: [
@@ -105,6 +106,7 @@ import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module
     ShapeCodeModule,
     RelationshipsModule,
     TestReasonCodeModule,
+    TestTypeCodeModule,
   ],
 })
 export class AppModule {}
