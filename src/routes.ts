@@ -42,6 +42,7 @@ import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { RelationshipsModule } from './relationships/relationships.module';
 import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module';
 import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
+import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
 
 const routes: Routes = [
   {
@@ -211,6 +212,10 @@ const routes: Routes = [
   {
     path: '/test-type-codes',
     module: TestTypeCodeModule,
+  },
+  {
+    path: '/reporting-periods',
+    module: ReportingPeriodModule,
   },
 ];
 export default routes;
