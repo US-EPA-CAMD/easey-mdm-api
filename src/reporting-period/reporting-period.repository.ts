@@ -7,7 +7,6 @@ export class ReportingPeriodRepository extends Repository<ReportingPeriod> {
     const today = new Date(Date.now());
     const currentYear = today.getFullYear();
     const currentQuarter = Math.floor(today.getMonth() / 3 + 1);
-
     const periodAbbreviation = `${currentYear} Q${currentQuarter}`;
 
     const query = this.createQueryBuilder('rp')
