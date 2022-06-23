@@ -8,11 +8,12 @@ export class ReportingPeriodRepository extends Repository<ReportingPeriod> {
     const currentYear = today.getFullYear();
     const currentQuarter = Math.floor(today.getMonth() / 3 + 1);
 
+    const periodAbbreviation = `${currentYear} Q${currentQuarter}`;
+
     const query = this.createQueryBuilder('rp')
       .select()
-      .where('rp.calendarYear <= :currentYear', { currentYear })
-      .andWhere('rp.quarter <= :currentQuarter', {
-        currentQuarter,
+      .where('rp.period_abbreviation <= :periodAbbreviation', {
+        periodAbbreviation,
       });
 
     return query.getMany();
