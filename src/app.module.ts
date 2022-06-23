@@ -52,6 +52,7 @@ import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { RelationshipsModule } from './relationships/relationships.module';
 import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module';
 import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
+import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
 
 @Module({
   imports: [
@@ -107,6 +108,7 @@ import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
     RelationshipsModule,
     TestReasonCodeModule,
     TestTypeCodeModule,
+    ReportingPeriodModule,
   ],
 })
 export class AppModule {}
