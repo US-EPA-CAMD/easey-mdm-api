@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodRepository } from './reporting-period.repository';
 import { ReportingPeriodService } from './reporting-period.service';
 
 const mockReportingPeriodRepository = () => ({
-  getQualLeeTestTypeCodes: jest.fn(() => []),
-  findOne: jest.fn(),
+  find: jest.fn().mockResolvedValue([]),
 });
 
 describe('ReportingPeriodService', () => {
@@ -30,5 +30,12 @@ describe('ReportingPeriodService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  describe('getReportingPeriods', () => {
+    it('should return reporting period up until current year and current quarter', async () => {
+      const result = await service.getReportingPeriods();
+      expect(result).toEqual([]);
+    });
   });
 });
