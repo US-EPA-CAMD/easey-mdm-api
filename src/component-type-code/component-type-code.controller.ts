@@ -1,5 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiOkResponse, ApiTags, ApiSecurity } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiSecurity,
+} from '@nestjs/swagger';
 import { ComponentTypeCodeService } from './component-type-code.service';
 import { ComponentTypeCodeDTO } from '../dto/component-type-code.dto';
 

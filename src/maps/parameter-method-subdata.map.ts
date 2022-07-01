@@ -5,8 +5,13 @@ import { ParameterMethodSubData } from './../entities/vw-parameter-method-subdat
 import { ParameterMethodSubDataDTO } from './../dto/parameter-method-subdata.dto';
 
 @Injectable()
-export class ParameterMethodSubDataMap extends BaseMap<ParameterMethodSubData, ParameterMethodSubDataDTO> {
-  public async one(entity: ParameterMethodSubData): Promise<ParameterMethodSubDataDTO> {
+export class ParameterMethodSubDataMap extends BaseMap<
+  ParameterMethodSubData,
+  ParameterMethodSubDataDTO
+> {
+  public async one(
+    entity: ParameterMethodSubData,
+  ): Promise<ParameterMethodSubDataDTO> {
     return {
       methodCode: entity.methodCode,
       parameterCode: entity.parameterCode,

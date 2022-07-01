@@ -12,7 +12,7 @@ describe('ParameterCodeService', () => {
   let repository: ParameterCodeRepository;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({     
+    const module: TestingModule = await Test.createTestingModule({
       imports: [LoggerModule],
       providers: [
         ParameterCodeService,

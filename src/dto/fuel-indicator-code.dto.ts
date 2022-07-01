@@ -1,4 +1,4 @@
 export class FuelIndicatorCodeDTO {
-    fuelIndicatorCode: string;
-    fuelIndicatorCodeDescription: string;
+  fuelIndicatorCode: string;
+  fuelIndicatorCodeDescription: string;
 }
