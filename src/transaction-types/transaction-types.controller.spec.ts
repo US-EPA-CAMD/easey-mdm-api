@@ -15,7 +15,11 @@ describe('-- Transaction Types Controller --', () => {
     const module = await Test.createTestingModule({
       imports: [LoggerModule],
       controllers: [TransactionTypesController],
-      providers: [TransactionTypesService, TransactionTypeMap, TransactionTypeRepository],
+      providers: [
+        TransactionTypesService,
+        TransactionTypeMap,
+        TransactionTypeRepository,
+      ],
     }).compile();
 
     transactionTypesController = module.get(TransactionTypesController);
@@ -32,7 +36,9 @@ describe('-- Transaction Types Controller --', () => {
       jest
         .spyOn(transactionTypesService, 'getAllTransactionTypes')
         .mockResolvedValue(expectedResult);
-      expect(await transactionTypesController.getAllTransactionTypes()).toBe(expectedResult);
+      expect(await transactionTypesController.getAllTransactionTypes()).toBe(
+        expectedResult,
+      );
     });
   });
 });

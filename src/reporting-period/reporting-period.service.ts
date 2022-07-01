@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { LessThanOrEqual } from 'typeorm';
+import { LessThan } from 'typeorm';
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodRepository } from './reporting-period.repository';
 
@@ -13,8 +13,8 @@ export class ReportingPeriodService {
     const currentQuarter = Math.floor(today.getMonth() / 3 + 1);
     const periodAbbreviation = `${currentYear} Q${currentQuarter}`;
 
-    return await this.repository.find({
-      where: { periodAbbreviation: LessThanOrEqual(periodAbbreviation) },
+    return this.repository.find({
+      where: { periodAbbreviation: LessThan(periodAbbreviation) },
     });
   }
 }

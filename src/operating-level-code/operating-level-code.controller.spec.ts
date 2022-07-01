@@ -29,7 +29,7 @@ describe('OperatingLevelCodeController', () => {
 
   describe('getOperatingLevelCodes', () => {
     it('should call the OperatingLevelCodeService and return a list of operating level codes', async () => {
-      const result = await controller.getOperatingLevelCodes()      
+      const result = await controller.getOperatingLevelCodes();
       expect(result).toEqual([]);
       expect(service.getOperatingLevelCodes).toHaveBeenCalled();
     });
