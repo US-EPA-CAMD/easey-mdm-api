@@ -4,7 +4,7 @@ import { AcquisitionMethodCodeService } from './acquisition-method-code.service'
 import { AcquisitionMethodCodeRepository } from './acquisition-method-code.repository';
 import { AcquisitionMethodCodeMap } from '../maps/acquistion-method-code.map';
 import { HttpModule } from '@nestjs/axios';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('AcquisitionMethodCodeService', () => {
@@ -38,6 +38,7 @@ describe('AcquisitionMethodCodeService', () => {
   });
 
   it('should be defined', () => {
+    expect(repository).toBeDefined();
     expect(service).toBeDefined();
   });
 });
