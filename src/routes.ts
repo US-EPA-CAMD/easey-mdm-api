@@ -43,6 +43,7 @@ import { RelationshipsModule } from './relationships/relationships.module';
 import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module';
 import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
 import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
+import { GasTypeCodeModule } from './gas-type-code/gas-type-code.module';
 import { TestResultCodeModule } from './test-result-code/test-result-code.module';
 
 const routes: Routes = [
@@ -217,6 +218,10 @@ const routes: Routes = [
   {
     path: '/reporting-periods',
     module: ReportingPeriodModule,
+  },
+  {
+    path: '/gas-type-codes',
+    module: GasTypeCodeModule,
   },
   {
     path: '/test-result-codes',
