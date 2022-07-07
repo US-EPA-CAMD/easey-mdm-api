@@ -48,44 +48,73 @@ import { TestResultCodeModule } from './test-result-code/test-result-code.module
 
 const routes: Routes = [
   {
+    path: '/account-types',
+    module: AccountTypesModule,
+  },
+  {
+    path: '/acquisiton-method-codes',
+    module: AcquisitionMethodCodeModule,
+  },
+  {
+    path: '/analyzer-range-codes',
+    module: AnalyzerRangeCodeModule,
+  },
+  {
+    path: '/basis-codes',
+    module: BasisCodeModule,
+  },
+  {
+    path: '/bypass-approach-codes',
+    module: BypassApproachCodeModule,
+  },
+
+  {
+    path: '/component-type-codes',
+    module: ComponentTypeCodeModule,
+  },
+  {
+    path: '/control-equip-param-codes',
+    module: ControlEquipParamCodeModule,
+  },
+  {
     path: '/control-technologies',
     module: ControlTechnologiesModule,
+  },
+  {
+    path: '/default-purpose-codes',
+    module: DefaultPurposeCodeModule,
+  },
+  {
+    path: '/default-source-codes',
+    module: DefaultSourceCodeModule,
+  },
+  {
+    path: '/dem-method-codes',
+    module: DemMethodCodeModule,
+  },
+  {
+    path: '/equation-codes',
+    module: EquationCodeModule,
+  },
+  {
+    path: '/fuel-codes',
+    module: FuelCodeModule,
+  },
+  {
+    path: '/fuel-indicator-codes',
+    module: FuelIndicatorCodeModule,
   },
   {
     path: '/fuel-types',
     module: FuelTypesModule,
   },
   {
-    path: '/unit-types',
-    module: UnitTypesModule,
+    path: '/gas-type-codes',
+    module: GasTypeCodeModule,
   },
   {
-    path: '/programs',
-    module: ProgramsModule,
-  },
-  {
-    path: '/account-types',
-    module: AccountTypesModule,
-  },
-  {
-    path: '/states',
-    module: StatesModule,
-  },
-  {
-    path: '/sub-data-codes',
-    module: SubDataCodeModule,
-  },
-  {
-    path: '/bypass-approach-codes',
-    module: BypassApproachCodeModule,
-  },
-  {
-    path: '/parameter-codes',
-    module: ParameterCodeModule,
-  },
-  {
-    path: '/method-codes',
-    module: MethodCodeModule,
+    path: '/material-codes',
+    module: MaterialCodeModule,
   },
   {
     path: '/mats-method-codes',
@@ -96,92 +125,29 @@ const routes: Routes = [
     module: MatsMethodParamCodeModule,
   },
   {
-    path: '/transaction-types',
-    module: TransactionTypesModule,
-  },
-  {
-    path: '/analyzer-range-codes',
-    module: AnalyzerRangeCodeModule,
-  },
-  {
     path: '/max-rate-source-codes',
     module: MaxRateSourceCodeModule,
   },
+
   {
-    path: '/units-of-measure-codes',
-    module: UnitsOfMeasureCodeModule,
-  },
-  {
-    path: '/acquisiton-method-codes',
-    module: AcquisitionMethodCodeModule,
-  },
-  {
-    path: '/component-type-codes',
-    module: ComponentTypeCodeModule,
-  },
-  {
-    path: '/system-designation-codes',
-    module: SystemDesignationCodeModule,
-  },
-  {
-    path: '/system-type-codes',
-    module: SystemTypeCodeModule,
-  },
-  {
-    path: '/basis-codes',
-    module: BasisCodeModule,
-  },
-  {
-    path: '/source-categories',
-    module: SourceCategoriesModule,
-  },
-  {
-    path: '/span-scale-codes',
-    module: SpanScaleCodeModule,
-  },
-  {
-    path: '/span-method-codes',
-    module: SpanMethodCodeModule,
+    path: '/method-codes',
+    module: MethodCodeModule,
   },
   {
     path: '/operating-condition-codes',
     module: OperatingConditionCodeModule,
   },
   {
-    path: '/default-source-codes',
-    module: DefaultSourceCodeModule,
-  },
-  {
     path: '/operating-level-codes',
     module: OperatingLevelCodeModule,
   },
   {
-    path: '/equation-codes',
-    module: EquationCodeModule,
+    path: '/parameter-codes',
+    module: ParameterCodeModule,
   },
   {
-    path: '/default-purpose-codes',
-    module: DefaultPurposeCodeModule,
-  },
-  {
-    path: '/fuel-codes',
-    module: FuelCodeModule,
-  },
-  {
-    path: '/waf-method-codes',
-    module: WafMethodCodeModule,
-  },
-  {
-    path: '/fuel-indicator-codes',
-    module: FuelIndicatorCodeModule,
-  },
-  {
-    path: '/dem-method-codes',
-    module: DemMethodCodeModule,
-  },
-  {
-    path: '/control-equip-param-codes',
-    module: ControlEquipParamCodeModule,
+    path: '/programs',
+    module: ProgramsModule,
   },
   {
     path: '/qual-data-type-codes',
@@ -196,36 +162,73 @@ const routes: Routes = [
     module: QualTypeCodeModule,
   },
   {
-    path: '/material-codes',
-    module: MaterialCodeModule,
-  },
-  {
-    path: '/shape-codes',
-    module: ShapeCodeModule,
-  },
-  {
     path: '/relationships',
     module: RelationshipsModule,
-  },
-  {
-    path: '/test-reason-codes',
-    module: TestReasonCodeModule,
-  },
-  {
-    path: '/test-type-codes',
-    module: TestTypeCodeModule,
   },
   {
     path: '/reporting-periods',
     module: ReportingPeriodModule,
   },
   {
-    path: '/gas-type-codes',
-    module: GasTypeCodeModule,
+    path: '/shape-codes',
+    module: ShapeCodeModule,
+  },
+  {
+    path: '/source-categories',
+    module: SourceCategoriesModule,
+  },
+  {
+    path: '/span-method-codes',
+    module: SpanMethodCodeModule,
+  },
+  {
+    path: '/span-scale-codes',
+    module: SpanScaleCodeModule,
+  },
+  {
+    path: '/states',
+    module: StatesModule,
+  },
+  {
+    path: '/sub-data-codes',
+    module: SubDataCodeModule,
+  },
+  {
+    path: '/system-designation-codes',
+    module: SystemDesignationCodeModule,
+  },
+  {
+    path: '/system-type-codes',
+    module: SystemTypeCodeModule,
+  },
+  {
+    path: '/test-reason-codes',
+    module: TestReasonCodeModule,
   },
   {
     path: '/test-result-codes',
     module: TestResultCodeModule,
   },
+  {
+    path: '/test-type-codes',
+    module: TestTypeCodeModule,
+  },
+  {
+    path: '/transaction-types',
+    module: TransactionTypesModule,
+  },  
+  {
+    path: '/unit-types',
+    module: UnitTypesModule,
+  },
+  {
+    path: '/units-of-measure-codes',
+    module: UnitsOfMeasureCodeModule,
+  },  
+  {
+    path: '/waf-method-codes',
+    module: WafMethodCodeModule,
+  },
 ];
+
 export default routes;
