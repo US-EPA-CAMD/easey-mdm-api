@@ -54,6 +54,7 @@ import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module
 import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
 import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
 import { GasTypeCodeModule } from './gas-type-code/gas-type-code.module';
+import { TestResultCodeModule } from './test-result-code/test-result-code.module';
 
 @Module({
   imports: [
@@ -111,6 +112,7 @@ import { GasTypeCodeModule } from './gas-type-code/gas-type-code.module';
     TestTypeCodeModule,
     ReportingPeriodModule,
     GasTypeCodeModule,
+    TestResultCodeModule,
   ],
 })
 export class AppModule {}
