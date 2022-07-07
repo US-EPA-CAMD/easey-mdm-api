@@ -13,8 +13,6 @@ export class TestResultCodeService {
   ) {}
 
   async getTestResultCodes(): Promise<TestResultCodeDTO[]> {
-    const result = await this.repository.find();
-
-    return result;
+    return await this.repository.find();
   }
 }

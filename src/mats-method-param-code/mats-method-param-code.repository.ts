@@ -6,7 +6,7 @@ export class MatsMethodParamCodeRepository extends Repository<
   MatsMethodParamCode
 > {
   async getMatsMethodParamCodes(): Promise<MatsMethodParamCode[]> {
-    const query = await this.createQueryBuilder('mmpc').select([
+    const query = this.createQueryBuilder('mmpc').select([
       'mmpc.matsMethodParamCode',
       'mmpc.matsMethodParamCodeDescription',
     ]);

@@ -7,7 +7,7 @@ export class BypassApproachCodeRepository extends Repository<
   BypassApproachCode
 > {
   async getBypassApproachCodes(): Promise<BypassApproachCode[]> {
-    const query = await this.createQueryBuilder('bac').select([
+    const query = this.createQueryBuilder('bac').select([
       'bac.bypassApproachCode',
       'bac.bypassApproachCodeDescription',
     ]);

@@ -216,7 +216,7 @@ const routes: Routes = [
   {
     path: '/transaction-types',
     module: TransactionTypesModule,
-  },  
+  },
   {
     path: '/unit-types',
     module: UnitTypesModule,
@@ -224,7 +224,7 @@ const routes: Routes = [
   {
     path: '/units-of-measure-codes',
     module: UnitsOfMeasureCodeModule,
-  },  
+  },
   {
     path: '/waf-method-codes',
     module: WafMethodCodeModule,
