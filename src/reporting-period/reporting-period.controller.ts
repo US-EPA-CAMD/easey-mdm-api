@@ -10,7 +10,7 @@ import { ReportingPeriodService } from './reporting-period.service';
 
 @Controller()
 @ApiSecurity('APIKey')
-@ApiTags('Reporting Period')
+@ApiTags('Reporting Periods')
 export class ReportingPeriodController {
   constructor(private readonly service: ReportingPeriodService) {}
 
