@@ -28,8 +28,8 @@ describe('TestReasonCodeController', () => {
   });
 
   describe('getTestReasonCodes', () => {
-    it('should call the TestReasonCodeService and return a list of test reason codes', () => {
-      expect(controller.getTestReasonCodes()).toEqual([]);
+    it('should call the TestReasonCodeService and return a list of test reason codes', async () => {
+      expect(await controller.getTestReasonCodes()).toEqual([]);
       expect(service.getTestReasonCodes).toHaveBeenCalled();
     });
   });
