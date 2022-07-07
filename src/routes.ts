@@ -225,4 +225,5 @@ const routes: Routes = [
     module: WafMethodCodeModule,
   },
 ];
+
 export default routes;
