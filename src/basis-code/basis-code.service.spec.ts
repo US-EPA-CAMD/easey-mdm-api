@@ -7,7 +7,7 @@ import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('BasisCodeService', () => {
   let mockBasisCodeRepository = () => ({
-    getBasisCodes: jest.fn(),
+    getBasisCodes: jest.fn(() => []),
   });
   let service: BasisCodeService;
   let repository: BasisCodeRepository;
@@ -16,6 +16,12 @@ describe('BasisCodeService', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [LoggerModule],
       providers: [
+        {
+          provide: LoggerModule,
+          useValue: {
+            info: jest.fn(),
+          },
+        },
         BasisCodeService,
         {
           provide: BasisCodeRepository,
@@ -29,7 +35,11 @@ describe('BasisCodeService', () => {
     repository = module.get<BasisCodeRepository>(BasisCodeRepository);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  describe('getControlEquipParamCodes', () => {
+    it('should call the ControlEquipParamCodeRepository.getControlEquipParamCodes() and return a list of control equipment parameter codes', async () => {
+      const result = await service.getBasisCodes();
+      expect(result).toEqual([]);
+      expect(repository.getBasisCodes).toHaveBeenCalled();
+    });
   });
 });
