@@ -6,15 +6,23 @@ import { SystemDesignationCodeRepository } from './system-designation-code.repos
 import { SystemDesignationCodeMap } from '../maps/system-designation-code.map';
 import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
+const mockSystemDesignationCodeService = () => ({
+  getSystemDesignationCodes: jest.fn(() => []),
+});
+
 describe('SystemDesignationCodeController', () => {
   let controller: SystemDesignationCodeController;
+  let service: SystemDesignationCodeService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [LoggerModule],
       controllers: [SystemDesignationCodeController],
       providers: [
-        SystemDesignationCodeService,
+        {
+          provide: SystemDesignationCodeService,
+          useFactory: mockSystemDesignationCodeService,
+        },
         SystemDesignationCodeRepository,
         SystemDesignationCodeMap,
       ],
@@ -23,9 +31,16 @@ describe('SystemDesignationCodeController', () => {
     controller = module.get<SystemDesignationCodeController>(
       SystemDesignationCodeController,
     );
+
+    service = module.get<SystemDesignationCodeService>(
+      SystemDesignationCodeService,
+    );
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('getSystemDesignationCodes', () => {
+    it('should call the SystemDesignationCodeService and return a list of system designation codes', async () => {
+      expect(await controller.getSystemDesignationCodes()).toEqual([]);
+      expect(service.getSystemDesignationCodes).toHaveBeenCalled();
+    });
   });
 });
