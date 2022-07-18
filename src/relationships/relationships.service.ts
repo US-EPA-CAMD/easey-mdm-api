@@ -45,20 +45,26 @@ export class RelationshipsService {
 
   async getFormulaRelationships(): Promise<FormulaRelationshipsDTO[]> {
     this.logger.info('Getting formula master data relationships.');
+    let query;
     try {
-      return await this.fRRepository.getFormulaRelationships();
+      query = await this.fRRepository.getFormulaRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }
+
+    return query;
   }
 
   async getSpansRelationships(): Promise<SpansRelationshipsDTO[]> {
     this.logger.info('Getting span master data relationships.');
+    let query;
     try {
-      return await this.sRRepository.getSpansRelationships();
+      query = await this.sRRepository.getSpansRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }
+
+    return query;
   }
 
   async getDefaultsRelationships(): Promise<DefaultsRelationshipsDTO[]> {

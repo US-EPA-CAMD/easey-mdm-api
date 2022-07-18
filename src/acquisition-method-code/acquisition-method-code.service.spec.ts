@@ -9,7 +9,7 @@ import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
 describe('AcquisitionMethodCodeService', () => {
   let mockAquisitionMethodCodeRepository = () => ({
-    getAcquisitionMethodCodes: jest.fn(),
+    getAcquisitionMethodCodes: jest.fn(() => []),
   });
 
   let service: AcquisitionMethodCodeService;
@@ -40,5 +40,13 @@ describe('AcquisitionMethodCodeService', () => {
   it('should be defined', () => {
     expect(repository).toBeDefined();
     expect(service).toBeDefined();
+  });
+
+  describe('getAcquisitionMethodCodes', () => {
+    it('should call the AcquisitionMethodCodeRepository.getAcquisitionMethodCodes() and return a list of acquisition method codes', async () => {
+      const result = await service.getAcquisitionMethodCodes();
+      expect(result).toEqual([]);
+      expect(repository.getAcquisitionMethodCodes).toHaveBeenCalled();
+    });
   });
 });

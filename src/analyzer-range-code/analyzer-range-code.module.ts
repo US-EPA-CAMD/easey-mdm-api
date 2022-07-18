@@ -3,7 +3,6 @@ import { AnalyzerRangeCodeService } from './analyzer-range-code.service';
 import { AnalyzerRangeCodeController } from './analyzer-range-code.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AnalyzerRangeCodeRepository } from './analyzer-range-code.repository';
-import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 import { ConfigService } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 

@@ -5,10 +5,11 @@ import { SystemDesignationCodeRepository } from './system-designation-code.repos
 import { SystemDesignationCodeMap } from '../maps/system-designation-code.map';
 import { LoggerModule } from '@us-epa-camd/easey-common/logger';
 
+const mockSystemDesignationCodeRepository = () => ({
+  getSystemDesignationCodes: jest.fn(() => []),
+});
+
 describe('SystemDesignationCodeService', () => {
-  let mockSystemDesignationCodeRepository = () => ({
-    getSystemDesignationCodes: jest.fn(),
-  });
   let service: SystemDesignationCodeService;
   let repository: SystemDesignationCodeRepository;
 
@@ -33,7 +34,11 @@ describe('SystemDesignationCodeService', () => {
     );
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  describe('getSystemDesignationCodes', () => {
+    it('should call the SystemDesignationCodeRepository.getSystemDesignationCodes() and return a list of control equipment parameter codes', async () => {
+      const result = await service.getSystemDesignationCodes();
+      expect(result).toEqual([]);
+      expect(repository.getSystemDesignationCodes).toHaveBeenCalled();
+    });
   });
 });

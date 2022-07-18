@@ -4,7 +4,7 @@ import { ParameterCode } from '../entities/parameter-code.entity';
 @EntityRepository(ParameterCode)
 export class ParameterCodeRepository extends Repository<ParameterCode> {
   async getParameterCodes(): Promise<ParameterCode[]> {
-    const query = await this.createQueryBuilder('pc').select([
+    const query = this.createQueryBuilder('pc').select([
       'pc.parameterCode',
       'pc.parameterCodeDescription',
     ]);
