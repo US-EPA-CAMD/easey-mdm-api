@@ -14,6 +14,7 @@ import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relati
 import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repository';
 import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
+import { TestSummaryRelationshipsRepository } from './test-summary-relationships.repository';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { SystemComponentRelationshipsRepository } from './system-component-relat
       UnitControlRelationshipsRepository,
       UnitFuelRelationshipsRepository,
       SystemComponentRelationshipsRepository,
+      TestSummaryRelationshipsRepository,
     ]),
     HttpModule,
   ],

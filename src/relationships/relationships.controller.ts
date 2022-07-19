@@ -17,6 +17,7 @@ import { SystemFuelFlowRelationshipsDTO } from '../dto/sytem-fuel-flow-relations
 import { UnitControlRelationshipsDTO } from '../dto/unit-control-relationships.dto';
 import { UnitFuelRelationshipsDTO } from '../dto/unit-fuel-relationships.dto';
 import { SystemComponentRelationshipsDTO } from '../dto/systems-component-relationships.dto';
+import { TestSummaryRelationshipsDTO } from '../dto/test-summary-relationships.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -141,5 +142,15 @@ export class RelationshipsController {
   })
   getSystemComponentRelationships() {
     return this.service.getSystemComponentRelationships();
+  }
+
+  @Get('test-summary')
+  @ApiOkResponse({
+    isArray: true,
+    type: TestSummaryRelationshipsDTO,
+    description: 'Retrieves test summary master data relationhsips',
+  })
+  getTestSummaryRelationships(): Promise<TestSummaryRelationshipsDTO[]> {
+    return this.service.getTestSummaryRelationships();
   }
 }
