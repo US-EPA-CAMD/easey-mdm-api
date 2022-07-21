@@ -23,7 +23,7 @@ export class TestTypeGroupCodesController {
   @ApiBadRequestResponse({
     description: 'Invalid Request',
   })
-  async getTestTypeCodes(): Promise<TestTypeGroupCodeDTO[]> {
+  async getTestTypeGroupCodes(): Promise<TestTypeGroupCodeDTO[]> {
     return this.service.getTestTypeGroupCodes();
   }
 }

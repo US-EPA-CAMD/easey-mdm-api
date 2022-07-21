@@ -6,7 +6,7 @@ import { TestTypeGroupCodesService } from './test-type-group-codes.service';
 const testTypeGroupCodeDTO = new TestTypeGroupCodeDTO();
 
 const mockService = () => ({
-  getGasTypeCodes: jest.fn().mockResolvedValue([testTypeGroupCodeDTO]),
+  getTestTypeGroupCodes: jest.fn().mockResolvedValue([testTypeGroupCodeDTO]),
 });
 
 describe('TestTypeGroupCodesController', () => {
@@ -30,7 +30,11 @@ describe('TestTypeGroupCodesController', () => {
     service = module.get<TestTypeGroupCodesService>(TestTypeGroupCodesService);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('getTestTypeGroupCodes', () => {
+    it('should call the service.getTestTypeGroupCodes and return a list of test type group codes', async () => {
+      const result = await controller.getTestTypeGroupCodes();
+      expect(result).toEqual([testTypeGroupCodeDTO]);
+      expect(service.getTestTypeGroupCodes).toHaveBeenCalled();
+    });
   });
 });

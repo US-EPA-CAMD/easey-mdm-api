@@ -28,8 +28,8 @@ describe('GasTypeCodeController', () => {
     service = module.get<GasTypeCodeService>(GasTypeCodeService);
   });
 
-  describe('getQualTypeCodes', () => {
-    it('should call the QualTypeCodeService and return a list of qual data type codes', async () => {
+  describe('getGasTypeCodes', () => {
+    it('should call the service.getGasTypeCodes and return a list of gas type codes', async () => {
       const result = await controller.getGasTypeCodes();
       expect(result).toEqual([gasTypeCodeDTO]);
       expect(service.getGasTypeCodes).toHaveBeenCalled();
