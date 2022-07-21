@@ -18,4 +18,11 @@ export class TestTypeCode extends BaseEntity {
     name: 'test_type_cd_description',
   })
   testTypeCodeDescription: string;
+
+  @Column({
+    type: 'varchar',
+    length: 7,
+    name: 'group_cd',
+  })
+  groupCode: string;
 }
