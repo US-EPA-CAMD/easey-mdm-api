@@ -144,7 +144,7 @@ export class RelationshipsController {
     return this.service.getSystemComponentRelationships();
   }
 
-  @Get('test-summary')
+  @Get('test-summaries')
   @ApiOkResponse({
     isArray: true,
     type: TestSummaryRelationshipsDTO,
