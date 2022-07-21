@@ -25,6 +25,8 @@ import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relati
 import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repository';
 import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
+import { TestSummaryRelationshipsDTO } from '../dto/test-summary-relationships.dto';
+import { TestSummaryRelationshipsRepository } from './test-summary-relationships.repository';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -40,6 +42,7 @@ export class RelationshipsService {
     private readonly ucRRepository: UnitControlRelationshipsRepository,
     private readonly ufRRepository: UnitFuelRelationshipsRepository,
     private readonly scRRepository: SystemComponentRelationshipsRepository,
+    private readonly tsRRepository: TestSummaryRelationshipsRepository,
     private readonly logger: Logger,
   ) {}
 
@@ -172,6 +175,18 @@ export class RelationshipsService {
     let query;
     try {
       query = await this.scRRepository.getSystemComponentRelationships();
+    } catch (e) {
+      this.logger.error(InternalServerErrorException, e.message);
+    }
+
+    return query;
+  }
+
+  async getTestSummaryRelationships(): Promise<TestSummaryRelationshipsDTO[]> {
+    this.logger.info('Getting test summary master data relationships.');
+    let query;
+    try {
+      query = await this.tsRRepository.getTestSummaryRelationships();
     } catch (e) {
       this.logger.error(InternalServerErrorException, e.message);
     }
