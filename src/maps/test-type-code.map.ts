@@ -10,6 +10,7 @@ export class TestTypeCodeMap extends BaseMap<TestTypeCode, TestTypeCodeDTO> {
     return {
       testTypeCode: entity.testTypeCode,
       testTypeCodeDescription: entity.testTypeCodeDescription,
+      testTypeGroupCode: entity.testTypeGroupCode,
     };
   }
 }
