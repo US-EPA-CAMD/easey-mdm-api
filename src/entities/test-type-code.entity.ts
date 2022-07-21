@@ -24,5 +24,5 @@ export class TestTypeCode extends BaseEntity {
     length: 7,
     name: 'group_cd',
   })
-  groupCode: string;
+  testTypeGroupCode: string;
 }
