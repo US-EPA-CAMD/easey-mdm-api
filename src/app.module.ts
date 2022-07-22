@@ -117,7 +117,6 @@ import { GasLevelCodeModule } from './gas-level-code/gas-level-code.module';
     TestResultCodeModule,
     TestTypeGroupCodesModule,
     GasLevelCodeModule,
-
   ],
 })
 export class AppModule {}
