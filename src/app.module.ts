@@ -55,6 +55,7 @@ import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
 import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
 import { GasTypeCodeModule } from './gas-type-code/gas-type-code.module';
 import { TestResultCodeModule } from './test-result-code/test-result-code.module';
+import { GasLevelCodeModule } from './gas-level-code/gas-level-code.module';
 
 @Module({
   imports: [
@@ -113,6 +114,7 @@ import { TestResultCodeModule } from './test-result-code/test-result-code.module
     ReportingPeriodModule,
     GasTypeCodeModule,
     TestResultCodeModule,
+    GasLevelCodeModule,
   ],
 })
 export class AppModule {}
