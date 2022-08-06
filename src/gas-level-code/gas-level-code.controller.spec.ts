@@ -8,7 +8,12 @@ describe('GasLevelCodeController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [GasLevelCodeController],
-      providers: [GasLevelCodeService],
+      providers: [
+        {
+          provide: GasLevelCodeService,
+          useFactory: () => ({}),
+        },
+      ],
     }).compile();
 
     controller = module.get<GasLevelCodeController>(GasLevelCodeController);

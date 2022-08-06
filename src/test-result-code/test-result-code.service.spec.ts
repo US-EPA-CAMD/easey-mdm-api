@@ -27,10 +27,6 @@ describe('TestResultCodeService', () => {
     repository = module.get<TestResultCodeRepository>(TestResultCodeRepository);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-
   describe('getTestResultCodes', () => {
     it('calls the TestResultCodeRepository and returns test-result-codes', async () => {
       const result = await service.getTestResultCodes();

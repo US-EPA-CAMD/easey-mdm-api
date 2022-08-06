@@ -14,6 +14,7 @@ import { SystemFuelFlowRelationshipsRepository } from './system-fuel-flow-relati
 import { UnitControlRelationshipsRepository } from './unit-control-relationships.repository';
 import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repository';
 import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
+import { TestSummaryRelationshipsRepository } from './test-summary-relationships.repository';
 
 const mockFormulaRelationshipsRepository = () => ({
   getFormulaRelationships: jest
@@ -197,6 +198,10 @@ describe('RelationshipsService', () => {
         {
           provide: SystemComponentRelationshipsRepository,
           useFactory: mockSystemComponentRelationshipsRepository,
+        },
+        {
+          provide: TestSummaryRelationshipsRepository,
+          useFactory: () => ({}),
         },
       ],
     }).compile();
