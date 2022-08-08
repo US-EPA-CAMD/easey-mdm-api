@@ -47,6 +47,7 @@ import { GasTypeCodeModule } from './gas-type-code/gas-type-code.module';
 import { TestResultCodeModule } from './test-result-code/test-result-code.module';
 import { TestTypeGroupCodesModule } from './test-type-group-codes/test-type-group-codes.module';
 import { GasLevelCodeModule } from './gas-level-code/gas-level-code.module';
+import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-code.module';
 
 const routes: Routes = [
   {
@@ -238,6 +239,10 @@ const routes: Routes = [
   {
     path: '/gas-level-codes',
     module: GasLevelCodeModule,
+  },
+  {
+    path: '/rata-frequency-codes',
+    module: RataFrequencyCodeModule,
   },
 ];
 

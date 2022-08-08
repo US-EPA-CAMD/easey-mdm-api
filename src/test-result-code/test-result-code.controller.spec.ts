@@ -29,10 +29,6 @@ describe('TestResultCodeController', () => {
     testResultCodeService = module.get(TestResultCodeService);
   });
 
-  it('should be defined', () => {
-    expect(testResultCodeController).toBeDefined();
-  });
-
   describe('getTestResultCodes', () => {
     it('should call the TestResultCodeService and return a list of test-result-codes', async () => {
       expect(testResultCodeController.getTestResultCodes()).toEqual([]);
