@@ -58,6 +58,7 @@ import { TestResultCodeModule } from './test-result-code/test-result-code.module
 import { TestTypeGroupCodesModule } from './test-type-group-codes/test-type-group-codes.module';
 import { GasLevelCodeModule } from './gas-level-code/gas-level-code.module';
 import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-code.module';
+import { ApsCodeModule } from './aps-code/aps-code.module';
 
 @Module({
   imports: [
@@ -119,6 +120,7 @@ import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-co
     TestTypeGroupCodesModule,
     GasLevelCodeModule,
     RataFrequencyCodeModule,
+    ApsCodeModule,
   ],
 })
 export class AppModule {}
