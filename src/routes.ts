@@ -49,6 +49,7 @@ import { TestTypeGroupCodesModule } from './test-type-group-codes/test-type-grou
 import { GasLevelCodeModule } from './gas-level-code/gas-level-code.module';
 import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-code.module';
 import { ApsCodeModule } from './aps-code/aps-code.module';
+import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
 
 const routes: Routes = [
   {
@@ -248,6 +249,10 @@ const routes: Routes = [
   {
     path: '/aps-codes',
     module: ApsCodeModule,
+  },
+  {
+    path: '/reference-method-codes',
+    module: ReferenceMethodCodeModule,
   },
 ];
 
