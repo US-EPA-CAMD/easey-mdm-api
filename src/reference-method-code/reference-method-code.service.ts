@@ -7,6 +7,6 @@ export class ReferenceMethodCodeService {
   constructor(private readonly repository: ReferenceMethodCodeRepository) {}
 
   async getReferenceMethodCodes(): Promise<ReferenceMethodCodeDTO[]> {
-    return await this.repository.find();
+    return this.repository.find();
   }
 }
