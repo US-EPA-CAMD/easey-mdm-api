@@ -50,6 +50,7 @@ import { GasLevelCodeModule } from './gas-level-code/gas-level-code.module';
 import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-code.module';
 import { ApsCodeModule } from './aps-code/aps-code.module';
 import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
+import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
 
 const routes: Routes = [
   {
@@ -253,6 +254,10 @@ const routes: Routes = [
   {
     path: '/reference-method-codes',
     module: ReferenceMethodCodeModule,
+  },
+  {
+    path: '/run-status-codes',
+    module: RunStatusCodeModule,
   },
 ];
 
