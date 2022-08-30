@@ -5,7 +5,6 @@ import {
   ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
-import { RunStatusCodeDTO } from '../dto/run-status-code.dto';
 import { RunStatusCodeService } from './run-status-code.service';
 
 
