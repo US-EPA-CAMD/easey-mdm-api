@@ -2,6 +2,8 @@ name: Develop Branch Workflow
 
 on:
   workflow_dispatch:
+    input:
+      name: Develop Branch Workflow
   push:
     branches: [ develop ]
     paths-ignore:

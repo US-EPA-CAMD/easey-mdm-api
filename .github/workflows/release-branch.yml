@@ -2,8 +2,15 @@ name: Release Branch Workflow
 
 on:
   workflow_dispatch:
+    input:
+      name: Release Branch Workflow
   push:
     branches: [ release/* ]
+    paths-ignore:
+    - '**/*.md'
+    - 'LICENSE'
+    - '.github/**'
+    - '.gitignore'    
 
 jobs:
   Build-Test-Package:
