@@ -2,7 +2,7 @@ name: Develop Branch Workflow
 
 on:
   workflow_dispatch:
-    branches: [ develop ]
+    ref: refs/heads/develop
   push:
     branches: [ develop ]
     paths-ignore:
