@@ -2,11 +2,7 @@ name: Release Branch Workflow
 
 on:
   workflow_dispatch:
-    input:
-      name:
-        type: string
-        required: false
-        default: 'Release'
+    branches: [ release/* ]
   push:
     branches: [ release/* ]
     paths-ignore:
