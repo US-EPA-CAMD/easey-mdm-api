@@ -1,6 +1,12 @@
 name: Develop Branch Workflow
 
 on:
+  workflow_dispatch:
+    input:
+      name:
+        type: string
+        required: false
+        default: 'Develop'
   push:
     branches: [ develop ]
     paths-ignore:
@@ -8,7 +14,7 @@ on:
     - 'LICENSE'
     - '.github/**'
     - '.gitignore'
-    
+
 jobs:
   Build-Test-Deploy:
     runs-on: ubuntu-latest
