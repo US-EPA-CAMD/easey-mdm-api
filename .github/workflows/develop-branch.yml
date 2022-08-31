@@ -8,7 +8,9 @@ on:
     - 'LICENSE'
     - '.github/**'
     - '.gitignore'
-    
+  workflow_dispatch:
+    branches: [ develop ]
+
 jobs:
   Build-Test-Deploy:
     runs-on: ubuntu-latest
