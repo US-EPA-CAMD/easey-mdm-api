@@ -2,11 +2,7 @@ name: Develop Branch Workflow
 
 on:
   workflow_dispatch:
-    input:
-      name:
-        type: string
-        required: false
-        default: 'Develop'
+    branches: [ develop ]
   push:
     branches: [ develop ]
     paths-ignore:
