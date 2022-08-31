@@ -2,7 +2,6 @@ name: Release Branch Workflow
 
 on:
   workflow_dispatch:
-    ref: refs/heads/release/*
   push:
     branches: [ release/* ]
     paths-ignore:
