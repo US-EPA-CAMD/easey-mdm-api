@@ -3,7 +3,10 @@ name: Develop Branch Workflow
 on:
   workflow_dispatch:
     input:
-      name: Develop Branch Workflow
+      name:
+        type: string
+        required: false
+        default: 'Develop'
   push:
     branches: [ develop ]
     paths-ignore:
