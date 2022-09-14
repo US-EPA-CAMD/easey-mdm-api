@@ -3,11 +3,11 @@ name: Develop Branch Workflow
 on:
   workflow_dispatch:
   push:
-    branches: [ develop ]
+    branches: [develop]
     paths-ignore:
-    - '**/*.md'
-    - 'LICENSE'
-    - '.gitignore'
+      - '**/*.md'
+      - 'LICENSE'
+      - '.gitignore'
 
 jobs:
   Build-Test-Deploy:
@@ -45,7 +45,7 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}          
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Install cf cli
         run: devops/scripts/install-cf-cli.sh
       - name: Login to cloud.gov
@@ -55,5 +55,10 @@ jobs:
           CF_PASSWORD: ${{ secrets.CF_DEV_DEPLOYMENT_SVC_PWD }}
       - name: Init Application
         run: devops/scripts/cf-app-init.sh
+      - name: Configure Env Vars (secrets)
+        run: |
+          cf set-env $APP_NAME EASEY_MDM_API_SECRET_TOKEN $API_SECRET_TOKEN
+        env:
+          API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
       - name: Deploy
         run: devops/scripts/deploy.sh

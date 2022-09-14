@@ -1,4 +1,9 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { Logger } from '@us-epa-camd/easey-common/logger';
 import { DemMethodCodeDTO } from '../dto/dem-method-code.dto';
 import { DemMethodCodeRepository } from './dem-method-code.repository';
@@ -16,7 +21,7 @@ export class DemMethodCodeService {
     try {
       query = await this.repository.getDemMethodCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got dem method codes');
 

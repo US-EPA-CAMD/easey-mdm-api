@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Logger } from '@us-epa-camd/easey-common/logger';
 
@@ -27,6 +31,7 @@ import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repos
 import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
 import { TestSummaryRelationshipsDTO } from '../dto/test-summary-relationships.dto';
 import { TestSummaryRelationshipsRepository } from './test-summary-relationships.repository';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 @Injectable()
 export class RelationshipsService {
   constructor(
@@ -52,7 +57,7 @@ export class RelationshipsService {
     try {
       query = await this.fRRepository.getFormulaRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -64,7 +69,7 @@ export class RelationshipsService {
     try {
       query = await this.sRRepository.getSpansRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -76,7 +81,7 @@ export class RelationshipsService {
     try {
       query = await this.dRRepository.getDefaultsRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got default master data relationships');
     return query;
@@ -88,7 +93,7 @@ export class RelationshipsService {
     try {
       query = await this.mMRRepository.getMatsMethodsRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -100,7 +105,7 @@ export class RelationshipsService {
     try {
       query = await this.mRRepository.getMethodsRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -112,7 +117,7 @@ export class RelationshipsService {
     try {
       query = await this.lRRepository.getLoadsRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -124,7 +129,7 @@ export class RelationshipsService {
     try {
       query = await this.qlRRepository.getQualLeeRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -138,7 +143,7 @@ export class RelationshipsService {
     try {
       query = await this.sffRRepository.getSystemFuelFlowRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -150,7 +155,7 @@ export class RelationshipsService {
     try {
       query = await this.ucRRepository.getUnitControlRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -162,7 +167,7 @@ export class RelationshipsService {
     try {
       query = await this.ufRRepository.getUnitFuelRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -176,7 +181,7 @@ export class RelationshipsService {
     try {
       query = await this.scRRepository.getSystemComponentRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
@@ -188,7 +193,7 @@ export class RelationshipsService {
     try {
       query = await this.tsRRepository.getTestSummaryRelationships();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     return query;
