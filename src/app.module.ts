@@ -63,6 +63,7 @@ import { ApsCodeModule } from './aps-code/aps-code.module';
 import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
 import { HeatInputOilModule } from './heat-input-oil/heat-input-oil.module';
+import { PressureMeasureCodeModule } from './pressure-measure-code/pressure-measure-code.module';
 
 @Module({
   imports: [
@@ -129,6 +130,7 @@ import { HeatInputOilModule } from './heat-input-oil/heat-input-oil.module';
     ReferenceMethodCodeModule,
     RunStatusCodeModule,
     HeatInputOilModule,
+    PressureMeasureCodeModule,
   ],
 })
 export class AppModule {}

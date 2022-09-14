@@ -53,6 +53,7 @@ import { ReferenceMethodCodeModule } from './reference-method-code/reference-met
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
 import { TestBasisCodeModule } from './test-basis-code/test-basis-code.module';
 import { HeatInputOilModule } from './heat-input-oil/heat-input-oil.module';
+import { PressureMeasureCodeModule } from './pressure-measure-code/pressure-measure-code.module';
 
 const routes: Routes = [
   {
@@ -268,6 +269,10 @@ const routes: Routes = [
   {
     path: '/heat-input-oil',
     module: HeatInputOilModule,
+  },
+  {
+    path: '/pressure-measure-code',
+    module: PressureMeasureCodeModule,
   },
 ];
 
