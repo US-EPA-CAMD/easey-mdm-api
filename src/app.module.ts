@@ -62,6 +62,7 @@ import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-co
 import { ApsCodeModule } from './aps-code/aps-code.module';
 import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
+import { HeatInputOilModule } from './heat-input-oil/heat-input-oil.module';
 
 @Module({
   imports: [
@@ -127,6 +128,7 @@ import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
     ApsCodeModule,
     ReferenceMethodCodeModule,
     RunStatusCodeModule,
+    HeatInputOilModule,
   ],
 })
 export class AppModule {}

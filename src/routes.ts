@@ -52,6 +52,7 @@ import { ApsCodeModule } from './aps-code/aps-code.module';
 import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
 import { TestBasisCodeModule } from './test-basis-code/test-basis-code.module';
+import { HeatInputOilModule } from './heat-input-oil/heat-input-oil.module';
 
 const routes: Routes = [
   {
@@ -263,6 +264,10 @@ const routes: Routes = [
   {
     path: '/run-status-codes',
     module: RunStatusCodeModule,
+  },
+  {
+    path: '/heat-input-oil',
+    module: HeatInputOilModule,
   },
 ];
 
