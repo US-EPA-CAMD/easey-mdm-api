@@ -1,8 +1,13 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SystemDesignationCodeRepository } from './system-designation-code.repository';
 import { SystemDesignationCodeDTO } from '../dto/system-designation-code.dto';
 import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 @Injectable()
 export class SystemDesignationCodeService {
@@ -18,7 +23,7 @@ export class SystemDesignationCodeService {
     try {
       query = await this.repository.getSystemDesignationCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got system designation codes');
 

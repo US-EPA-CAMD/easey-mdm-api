@@ -1,8 +1,13 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QualDataTypeCodeRepository } from './qual-data-type-code.repository';
 import { QualDataTypeCodeDTO } from '../dto/qual-data-type-code.dto';
 import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 @Injectable()
 export class QualDataTypeCodeService {
@@ -18,7 +23,7 @@ export class QualDataTypeCodeService {
     try {
       query = await this.repository.getQualDataTypeCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got qual data type codes');
 
