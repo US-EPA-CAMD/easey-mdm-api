@@ -51,6 +51,7 @@ import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-co
 import { ApsCodeModule } from './aps-code/aps-code.module';
 import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
+import { ProbeTypeCodeModule } from './probe-type-code/probe-type-code.module';
 
 const routes: Routes = [
   {
@@ -162,6 +163,10 @@ const routes: Routes = [
   {
     path: '/qual-lee-test-type-codes',
     module: QualLeeTestTypeCodeModule,
+  },
+  {
+    path: '/probe-type-codes',
+    module: ProbeTypeCodeModule,
   },
   {
     path: '/qual-type-codes',

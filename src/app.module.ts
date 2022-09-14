@@ -46,6 +46,7 @@ import { DemMethodCodeModule } from './dem-method-code/dem-method-code.module';
 import { ControlEquipParamCodeModule } from './control-equip-param-code/control-equip-param-code.module';
 import { QualDataTypeCodeModule } from './qual-data-type-code/qual-data-type-code.module';
 import { QualLeeTestTypeCodeModule } from './qual-lee-test-type-code/qual-lee-test-type-code.module';
+import { ProbeTypeCodeModule } from './probe-type-code/probe-type-code.module';
 import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
@@ -61,6 +62,7 @@ import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-co
 import { ApsCodeModule } from './aps-code/aps-code.module';
 import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
+
 
 @Module({
   imports: [
@@ -110,13 +112,14 @@ import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
     ControlEquipParamCodeModule,
     QualDataTypeCodeModule,
     QualLeeTestTypeCodeModule,
+    ProbeTypeCodeModule,
     QualTypeCodeModule,
     MaterialCodeModule,
     ShapeCodeModule,
     RelationshipsModule,
     TestReasonCodeModule,
     TestTypeCodeModule,
-    ReportingPeriodModule,
+    ReportingPeriodModule,  
     GasTypeCodeModule,
     TestResultCodeModule,
     TestTypeGroupCodesModule,
