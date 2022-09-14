@@ -1,6 +1,11 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypeMap } from '../maps/account-type.map';
@@ -24,7 +29,7 @@ export class AccountTypesService {
     try {
       query = await this.repository.getAllAccountTypes(accountTypeParamsDTO);
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got all account types');
     return this.map.many(query);
