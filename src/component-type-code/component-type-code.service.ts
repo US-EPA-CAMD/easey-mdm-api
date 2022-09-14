@@ -1,8 +1,13 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ComponentTypeCodeRepository } from './component-type-code.repository';
 import { ComponentTypeCodeDTO } from '../dto/component-type-code.dto';
 import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 @Injectable()
 export class ComponentTypeCodeService {
@@ -18,7 +23,7 @@ export class ComponentTypeCodeService {
     try {
       query = await this.repository.getComponentTypeCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got component type codes');
     return query;
