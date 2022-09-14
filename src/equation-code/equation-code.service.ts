@@ -1,5 +1,10 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { Logger } from '@us-epa-camd/easey-common/logger';
 import { EquationCodeDTO } from '../dto/equation-code.dto';
 import { EquationCodeRepository } from './equation-code.repository';
@@ -18,7 +23,7 @@ export class EquationCodeService {
     try {
       query = await this.repository.getEquationCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got equation codes');
     return query;

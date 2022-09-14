@@ -1,4 +1,9 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { Logger } from '@us-epa-camd/easey-common/logger';
 import { ControlEquipParamCodeDTO } from '../dto/control-equip-param-code.dto';
 import { ControlEquipParamCodeRepository } from './control-equip-param-code.repository';
@@ -16,7 +21,7 @@ export class ControlEquipParamCodeService {
     try {
       query = await this.repository.getControlEquipParamCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Getting control equip param codes');
     return query;
