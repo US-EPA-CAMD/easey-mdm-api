@@ -1,27 +1,24 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { HeatInputOilDTO } from 'src/dto/heat-input-oil.dto';
 import { HeatInputOilRepository } from './heat-input-oil.repository';
+import { HttpStatus } from '@nestjs/common/enums';
 
 @Injectable()
 export class HeatInputOilService {
   constructor(
     @InjectRepository(HeatInputOilRepository)
     private readonly repository: HeatInputOilRepository,
-    private readonly logger: Logger,
   ) {}
 
   async getHeatInputOils(): Promise<HeatInputOilDTO[]> {
-    this.logger.info('Getting oil heat input info');
     let query;
     try {
       query = await this.repository.getHeatInputOils();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    this.logger.info('Got oil heat input info');
 
     return query;
   }
