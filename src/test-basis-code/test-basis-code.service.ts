@@ -1,27 +1,24 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { TestBasisCodeDTO } from 'src/dto/test-basis-code.dto';
 import { TestBasisCodeRepository } from './test-basis-code.repository';
+import { HttpStatus } from '@nestjs/common/enums';
 
 @Injectable()
 export class TestBasisCodeService {
   constructor(
     @InjectRepository(TestBasisCodeRepository)
     private readonly repository: TestBasisCodeRepository,
-    private readonly logger: Logger,
   ) {}
 
   async getTestBasisCodes(): Promise<TestBasisCodeDTO[]> {
-    this.logger.info('Getting test basis codes');
     let query;
     try {
       query = await this.repository.getTestBasisCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    this.logger.info('Got test basis codes');
 
     return query;
   }
