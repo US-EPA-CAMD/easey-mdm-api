@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
-import { GatewayGuard } from '@us-epa-camd/easey-common/guards/gateway.guard';
 import {
   applySwagger,
   applyMiddleware,
@@ -15,8 +14,6 @@ export async function bootstrap() {
   applySwagger(app);
 
   const configService = app.get(ConfigService);
-  app.useGlobalGuards(new GatewayGuard(configService));
-
   const appPath = configService.get<string>('app.path');
   const appPort = configService.get<number>('app.port');
 
