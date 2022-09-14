@@ -1,3 +1,4 @@
+import { NumericColumnTransformer } from '@us-epa-camd/easey-common/transforms';
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({
@@ -18,4 +19,12 @@ export class TestTypeGroupCode extends BaseEntity {
     name: 'test_type_group_cd_description',
   })
   testTypeGroupCodeDescription: string;
+
+  @Column({
+    type: 'numeric',
+    transformer: new NumericColumnTransformer(),
+    nullable: false,
+    name: 'child_depth',
+  })
+  childDepth: number;
 }

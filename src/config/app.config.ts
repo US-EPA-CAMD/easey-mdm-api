@@ -13,7 +13,7 @@ if (host === 'localhost') {
 }
 
 export default registerAs('app', () => ({
-  name: 'master-data-api',
+  name: 'mdm-api',
   title: process.env.EASEY_MDM_API_TITLE || 'Master Data Management',
   path,
   host,
