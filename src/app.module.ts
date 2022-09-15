@@ -51,6 +51,7 @@ import { QualTypeCodeModule } from './qual-type-code/qual-type-code.module';
 import { MaterialCodeModule } from './material-code/material-code.module';
 import { ShapeCodeModule } from './shape-code/shape-code.module';
 import { RelationshipsModule } from './relationships/relationships.module';
+import { TestBasisCodeModule } from './test-basis-code/test-basis-code.module';
 import { TestReasonCodeModule } from './test-reason-code/test-reason-code.module';
 import { TestTypeCodeModule } from './test-type-code/test-type-code.module';
 import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
@@ -117,6 +118,7 @@ import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
     MaterialCodeModule,
     ShapeCodeModule,
     RelationshipsModule,
+    TestBasisCodeModule,
     TestReasonCodeModule,
     TestTypeCodeModule,
     ReportingPeriodModule,  
