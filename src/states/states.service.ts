@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Logger } from '@us-epa-camd/easey-common/logger';
 
@@ -6,6 +10,7 @@ import { FindManyOptions } from 'typeorm';
 import { StatesRepository } from './states.repository';
 import { StateMap } from '../maps/state.map';
 import { StateDTO } from '../dto/state.dto';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 @Injectable()
 export class StatesService {
@@ -27,7 +32,7 @@ export class StatesService {
     try {
       query = await this.stateRepository.find(findOpts);
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got span scale codes');
 

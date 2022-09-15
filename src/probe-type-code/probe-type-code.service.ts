@@ -1,21 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ProbeTypeCodeRepository } from './probe-type-code.repository';
+import { QualTypeCodeDTO } from '../dto/qual-type-code.dto';
 import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
-import { TestBasisCodeDTO } from 'src/dto/test-basis-code.dto';
-import { TestBasisCodeRepository } from './test-basis-code.repository';
 import { HttpStatus } from '@nestjs/common/enums';
 
 @Injectable()
-export class TestBasisCodeService {
+export class ProbeTypeCodeService {
   constructor(
-    @InjectRepository(TestBasisCodeRepository)
-    private readonly repository: TestBasisCodeRepository,
+    @InjectRepository(ProbeTypeCodeRepository)
+    private readonly repository: ProbeTypeCodeRepository,
   ) {}
 
-  async getTestBasisCodes(): Promise<TestBasisCodeDTO[]> {
+  async getProbeTypeCodes(): Promise<QualTypeCodeDTO[]> {
     let query;
     try {
-      query = await this.repository.getTestBasisCodes();
+      query = await this.repository.getProbeTypeCodes();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }

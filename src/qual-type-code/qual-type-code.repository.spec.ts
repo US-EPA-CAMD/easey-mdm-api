@@ -36,7 +36,7 @@ describe('QualTypeCodeRepository', () => {
       .mockReturnValue(queryBuilder);
 
     queryBuilder.select.mockReturnValue(queryBuilder);
-    queryBuilder.getMany.mockReturnValue(QualTypeCodeDTO);
+    queryBuilder.getMany.mockReturnValue(qualTypeCodeDTO);
   });
 
   describe('getQualTypeCodes', () => {
