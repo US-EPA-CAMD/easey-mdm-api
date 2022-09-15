@@ -18,7 +18,7 @@ export class PressureMeasureCodeController {
   @ApiOkResponse({
     isArray: true,
     type: PressureMeasureCodeDTO,
-    description: 'Retrieves all pressure measure type codes',
+    description: 'Retrieves all pressure measure codes',
   })
   @ApiBadRequestResponse({
     description: 'Invalid Request',
