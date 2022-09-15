@@ -10,7 +10,7 @@ import { TestClaimCodeDTO } from '../dto/test-claim-code.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
-@ApiTags('Qualification Type Codes')
+@ApiTags('Test Claim Codes')
 export class TestClaimCodeController {
   constructor(private readonly service: TestClaimCodeService) {}
 
@@ -18,7 +18,7 @@ export class TestClaimCodeController {
   @ApiOkResponse({
     isArray: true,
     type: TestClaimCodeDTO,
-    description: 'Retrieves all probe type codes.',
+    description: 'Retrieves all test claim codes.',
   })
   @ApiBadRequestResponse({
     description: 'Invalid Request',

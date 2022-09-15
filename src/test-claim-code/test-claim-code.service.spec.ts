@@ -29,7 +29,7 @@ describe('TestClaimCodeService', () => {
   });
 
   describe('getTestClaimCodes', () => {
-    it('calls the TestClaimCodeRepository and returns probe type codes', async () => {
+    it('calls the TestClaimCodeRepository and returns test claim codes', async () => {
       const result = await service.getTestClaimCodes();
       expect(result).toEqual([]);
       expect(repository.getTestClaimCodes).toHaveBeenCalled();
