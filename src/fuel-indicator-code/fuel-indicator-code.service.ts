@@ -1,4 +1,9 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { Logger } from '@us-epa-camd/easey-common/logger';
 import { FuelIndicatorCode } from '../entities/fuel-indicator-code.entity';
 import { FuelIndicatorCodeRepository } from './fuel-indicator-code.repository';
@@ -16,7 +21,7 @@ export class FuelIndicatorCodeService {
     try {
       query = await this.repository.getFuelIndicatorCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got fuel indicator codes');
 

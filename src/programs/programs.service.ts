@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { ProgramRepository } from './program-code.repository';
@@ -6,6 +10,7 @@ import { ProgramMap } from '../maps/program.map';
 import { ProgramDTO } from '../dto/program.dto';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
 import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 @Injectable()
 export class ProgramsService {
@@ -24,7 +29,7 @@ export class ProgramsService {
     try {
       query = await this.repository.getAllPrograms(programParamsDTO);
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Getting all programs');
 

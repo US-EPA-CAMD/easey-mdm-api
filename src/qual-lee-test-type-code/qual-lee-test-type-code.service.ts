@@ -1,8 +1,13 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QualLeeTestTypeCodeRepository } from './qual-lee-test-type-code.repository';
 import { QualLeeTestTypeCodeDTO } from '../dto/qual-lee-test-type-code.dto';
 import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 @Injectable()
 export class QualLeeTestTypeCodeService {
@@ -18,7 +23,7 @@ export class QualLeeTestTypeCodeService {
     try {
       query = await this.repository.getQualLeeTestTypeCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     this.logger.info('Got qual lee test type codes');
 
