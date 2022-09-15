@@ -8,7 +8,7 @@ export class TestClaimCode extends BaseEntity {
     nullable: false,
     name: 'test_claim_type_cd',
   })
-  qualTypeCode: string;
+  testClaimCode: string;
 
   @Column({
     type: 'varchar',
@@ -16,5 +16,5 @@ export class TestClaimCode extends BaseEntity {
     nullable: false,
     name: 'test_claim_cd_description',
   })
-  qualTypeCodeDescription: string;
+  testClaimCodeDescription: string;
 }
