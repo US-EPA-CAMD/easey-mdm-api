@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({ name: 'camdecmpsmd.qual_type_code' })
+@Entity({ name: 'camdecmpsmd.probe_type_code' })
 export class ProbeTypeCode extends BaseEntity {
   @PrimaryColumn({
     type: 'varchar',
@@ -8,7 +8,7 @@ export class ProbeTypeCode extends BaseEntity {
     nullable: false,
     name: 'probe_type_cd',
   })
-  qualTypeCode: string;
+  probeTypeCode: string;
 
   @Column({
     type: 'varchar',
@@ -16,5 +16,5 @@ export class ProbeTypeCode extends BaseEntity {
     nullable: false,
     name: 'probe_type_cd_description',
   })
-  qualTypeCodeDescription: string;
+  probeTypeCodeDescription: string;
 }

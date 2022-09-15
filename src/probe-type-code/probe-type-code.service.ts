@@ -1,26 +1,24 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProbeTypeCodeRepository } from './probe-type-code.repository';
-import { QualTypeCodeDTO } from '../dto/qual-type-code.dto';
-import { Logger } from '@us-epa-camd/easey-common/logger';
+import { ProbeTypeCodeDTO } from '../dto/probe-type-code.dto';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
+import { HttpStatus } from '@nestjs/common/enums';
 
 @Injectable()
 export class ProbeTypeCodeService {
   constructor(
     @InjectRepository(ProbeTypeCodeRepository)
     private readonly repository: ProbeTypeCodeRepository,
-    private readonly logger: Logger,
   ) {}
 
-  async getProbeTypeCodes(): Promise<QualTypeCodeDTO[]> {
-    this.logger.info('Getting probe type codes');
+  async getProbeTypeCodes(): Promise<ProbeTypeCodeDTO[]> {
     let query;
     try {
       query = await this.repository.getProbeTypeCodes();
     } catch (e) {
-      this.logger.error(InternalServerErrorException, e.message);
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    this.logger.info('Getting probe type codes');
 
     return query;
   }
