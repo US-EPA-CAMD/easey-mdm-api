@@ -64,6 +64,7 @@ import { RataFrequencyCodeModule } from './rata-frequency-code/rata-frequency-co
 import { ApsCodeModule } from './aps-code/aps-code.module';
 import { ReferenceMethodCodeModule } from './reference-method-code/reference-method-code.module';
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
+import { PressureMeasureCodeModule } from './pressure-measure-code/pressure-measure-code.module';
 
 
 @Module({
@@ -132,6 +133,7 @@ import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
     ApsCodeModule,
     ReferenceMethodCodeModule,
     RunStatusCodeModule,
+    PressureMeasureCodeModule,
   ],
 })
 export class AppModule {}
