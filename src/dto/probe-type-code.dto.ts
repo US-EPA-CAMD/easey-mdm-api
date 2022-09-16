@@ -1,4 +1,4 @@
 export class ProbeTypeCodeDTO {
-    qualTypeCode: string;
-    qualTypeCodeDescription: string;
+    probeTypeCode: string;
+    probeTypeCodeDescription: string;
   }

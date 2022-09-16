@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProbeTypeCodeRepository } from './probe-type-code.repository';
-import { QualTypeCodeDTO } from '../dto/qual-type-code.dto';
+import { ProbeTypeCodeDTO } from '../dto/probe-type-code.dto';
 import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { HttpStatus } from '@nestjs/common/enums';
 
@@ -12,7 +12,7 @@ export class ProbeTypeCodeService {
     private readonly repository: ProbeTypeCodeRepository,
   ) {}
 
-  async getProbeTypeCodes(): Promise<QualTypeCodeDTO[]> {
+  async getProbeTypeCodes(): Promise<ProbeTypeCodeDTO[]> {
     let query;
     try {
       query = await this.repository.getProbeTypeCodes();

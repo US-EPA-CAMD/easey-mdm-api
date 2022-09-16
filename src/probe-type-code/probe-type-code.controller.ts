@@ -10,7 +10,7 @@ import { ProbeTypeCodeDTO } from '../dto/probe-type-code.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
-@ApiTags('Qualification Type Codes')
+@ApiTags('Probe Type Codes')
 export class ProbeTypeCodeController {
   constructor(private readonly service: ProbeTypeCodeService) {}
 
