@@ -18,7 +18,7 @@ export class TestBasisCodeController {
   @ApiOkResponse({
     isArray: true,
     type: TestBasisCodeDTO,
-    description: 'Retrieves all test basis type codes',
+    description: 'Retrieves all test basis codes',
   })
   @ApiBadRequestResponse({
     description: 'Invalid Request',
