@@ -6,7 +6,7 @@ export class TestClaimCode extends BaseEntity {
     type: 'varchar',
     length: 7,
     nullable: false,
-    name: 'test_claim_type_cd',
+    name: 'test_claim_cd',
   })
   testClaimCode: string;
 
