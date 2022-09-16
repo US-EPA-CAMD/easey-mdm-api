@@ -53,6 +53,7 @@ import { ReferenceMethodCodeModule } from './reference-method-code/reference-met
 import { RunStatusCodeModule } from './run-status-code/run-status-code.module';
 import { ProbeTypeCodeModule } from './probe-type-code/probe-type-code.module';
 import { TestBasisCodeModule } from './test-basis-code/test-basis-code.module';
+import { TestClaimCodeModule } from './test-claim-code/test-claim-code.module';
 import { PressureMeasureCodeModule } from './pressure-measure-code/pressure-measure-code.module';
 
 const routes: Routes = [
@@ -217,6 +218,10 @@ const routes: Routes = [
   {
     path: '/test-basis-codes',
     module: TestBasisCodeModule,
+  },
+  {
+    path: '/test-claim-codes',
+    module: TestClaimCodeModule,
   },
   {
     path: '/test-reason-codes',
