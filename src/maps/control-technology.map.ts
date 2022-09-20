@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
 import { BaseMap } from '@us-epa-camd/easey-common/maps';
 
-import { ControlTechnology } from '../entities/control-code.entity';
+import { ControlTechnology } from '../entities/control-technology.entity';
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 
 @Injectable()
@@ -10,15 +9,16 @@ export class ControlTechnologyMap extends BaseMap<
   ControlTechnology,
   ControlTechnologyDTO
 > {
-  public async one(entity: ControlTechnology): Promise<any> {
+  public async one(entity: ControlTechnology): Promise<ControlTechnologyDTO> {
     return {
-      [propertyMetadata.controlCode.fieldLabels.value]: entity.controlCode,
-      [propertyMetadata.controlDescription.fieldLabels.value]:
+      controlCode:
+        entity.controlCode,
+      controlDescription:
         entity.controlDescription,
-      [propertyMetadata.controlEquipParamCode.fieldLabels.value]:
+      controlEquipParamCode:
         entity.controlEquipParamCode,
-      [propertyMetadata.controlEquipParamDescription.fieldLabels.value]:
-        entity.controlEquipParam?.controlEquipParamDescription || null,
+      controlEquipParamDescription:
+        entity.controlEquipParam?.controlEquipParamDescription,
     };
   }
 }
