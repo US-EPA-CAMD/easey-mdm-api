@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsOptional } from 'class-validator';
-import { AccountTypeCode } from '@us-epa-camd/easey-common/enums';
 import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import { AccountTypeCode } from '@us-epa-camd/easey-common/enums';
 
 export class AccountTypeParamsDTO {
   @IsOptional()

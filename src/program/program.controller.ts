@@ -1,0 +1,27 @@
+import {
+  ApiTags,
+  ApiOkResponse,
+  ApiSecurity,
+} from '@nestjs/swagger';
+import { Get, Controller, Query } from '@nestjs/common';
+
+import { ProgramDTO } from '../dto/program.dto';
+import { ProgramService } from './program.service';
+import { ProgramParamsDTO } from '../dto/program.params.dto';
+
+@Controller()
+@ApiSecurity('APIKey')
+@ApiTags('Program Codes')
+export class ProgramController {
+  constructor(private readonly service: ProgramService) {}
+
+  @Get()
+  @ApiOkResponse({
+    isArray: true,
+    type: ProgramDTO,
+    description: 'Returns a list of Program Codes',
+  })
+  getProgramCodes(@Query() params: ProgramParamsDTO): Promise<ProgramDTO[]> {
+    return this.service.getProgramCodes(params);
+  }
+}

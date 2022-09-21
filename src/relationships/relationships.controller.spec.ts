@@ -1,8 +1,9 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { RelationshipsController } from './relationships.controller';
-import { RelationshipsService } from './relationships.service';
+import { Test } from '@nestjs/testing';
 
-const mockSpansRelationshipsService = () => ({
+import { RelationshipsService } from './relationships.service';
+import { RelationshipsController } from './relationships.controller';
+
+const mockRelationshipsService = () => ({
   getSpansRelationships: jest.fn(() => []),
   getFormulaRelationships: jest.fn(() => []),
   getDefaultsRelationships: jest.fn(() => []),
@@ -14,106 +15,286 @@ const mockSpansRelationshipsService = () => ({
   getUnitControlRelationships: jest.fn(() => []),
   getUnitFuelRelationships: jest.fn(() => []),
   getSystemComponentRelationships: jest.fn(() => []),
+  getTestSummaryRelationships: jest.fn(() => []),
 });
 
 describe('RelationshipsController', () => {
-  let controller: RelationshipsController;
   let service: RelationshipsService;
+  let controller: RelationshipsController;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
       controllers: [RelationshipsController],
       providers: [
         {
           provide: RelationshipsService,
-          useFactory: mockSpansRelationshipsService,
+          useFactory: mockRelationshipsService,
         },
       ],
     }).compile();
 
-    controller = module.get<RelationshipsController>(RelationshipsController);
-    service = module.get<RelationshipsService>(RelationshipsService);
+    service = module.get(RelationshipsService);
+    controller = module.get(RelationshipsController);
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
     expect(service).toBeDefined();
+    expect(controller).toBeDefined();
   });
 
   describe('getSpansRelationships', () => {
-    it('should call the RelationshipsService and return a list of span master data relationships', () => {
-      expect(controller.getSpansRelationships()).toEqual([]);
-      expect(service.getSpansRelationships).toHaveBeenCalled();
+    
+    it('should return a list of Span master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getSpansRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getSpansRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getFormulaRelationships', () => {
-    it('should call the RelationshipsService and return a list of formula master data relationships', () => {
-      expect(controller.getFormulaRelationships()).toEqual([]);
-      expect(service.getFormulaRelationships).toHaveBeenCalled();
+
+    it('should return a list of Formula master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getFormulaRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getFormulaRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getDefaultsRelationships', () => {
-    it('should call the RelationshipsService and return a list of defaults master data relationships', () => {
-      expect(controller.getDefaultsRelationships()).toEqual([]);
-      expect(service.getDefaultsRelationships).toHaveBeenCalled();
+
+    it('should return a list of Default master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getDefaultsRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getDefaultsRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getMatsMethodsRelationships', () => {
-    it('should call the RelationshipsService and return a list of mats methods master data relationships', () => {
-      expect(controller.getMatsMethodsRelationships()).toEqual([]);
-      expect(service.getMatsMethodsRelationships).toHaveBeenCalled();
+
+    it('should return a list of MATS Method master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getMatsMethodsRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getMatsMethodsRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getMethodsRelationships', () => {
-    it('should call the RelationshipsService and return a list of methods master data relationships', () => {
-      expect(controller.getMethodsRelationships()).toEqual([]);
-      expect(service.getMethodsRelationships).toHaveBeenCalled();
+
+    it('should return a list of Method master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getMethodsRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getMethodsRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getLoadsRelationships', () => {
-    it('should call the RelationshipsService and return a list of loads master data relationships', () => {
-      expect(controller.getLoadsRelationships()).toEqual([]);
-      expect(service.getLoadsRelationships).toHaveBeenCalled();
+
+    it('should return a list of Load master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getLoadsRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getLoadsRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getQualLeeRelationships', () => {
-    it('should call the RelationshipsService and return a list of LEE qualifications master data relationships', () => {
-      expect(controller.getQualLeeRelationships()).toEqual([]);
-      expect(service.getQualLeeRelationships).toHaveBeenCalled();
+
+    it('should return a list of LEE Qualification master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getQualLeeRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getQualLeeRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getSystemFuelFlowRelationships', () => {
-    it('should call the RelationshipsService and return a list of system fuel flow master data relationships', () => {
-      expect(controller.getSystemFuelFlowRelationships()).toEqual([]);
-      expect(service.getSystemFuelFlowRelationships).toHaveBeenCalled();
+
+    it('should return a list of System Fuel Flow master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getSystemFuelFlowRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getSystemFuelFlowRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getUnitControlRelationships', () => {
-    it('should call the RelationshipsService and return a list of unit control master data relationships', () => {
-      expect(controller.getUnitControlRelationships()).toEqual([]);
-      expect(service.getUnitControlRelationships).toHaveBeenCalled();
+
+    it('should return a list of Unit Control master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getUnitControlRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getUnitControlRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getUnitFuelRelationships', () => {
-    it('should call the RelationshipsService and return a list of unit fuel master data relationships', () => {
-      expect(controller.getUnitFuelRelationships()).toEqual([]);
-      expect(service.getUnitFuelRelationships).toHaveBeenCalled();
+
+    it('should return a list of Unit Fuel master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getUnitFuelRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getUnitFuelRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
   });
 
   describe('getSytemComponentRelationships', () => {
-    it('should call the RelationshipsService and return a list of unit fuel master data relationships', () => {
-      expect(controller.getSystemComponentRelationships()).toEqual([]);
-      expect(service.getSystemComponentRelationships).toHaveBeenCalled();
+
+    it('should return a list of Sytem Component master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getSystemComponentRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getSystemComponentRelationships()
+      ).toBe(
+        expectedResult
+      );
     });
+
+  });
+
+  describe('getTestSummaryRelationships', () => {
+
+    it('should return a list of Test Summary master data relationships', async () => {
+      const expectedResult = [];
+
+      jest.spyOn(
+        service,
+        'getTestSummaryRelationships'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getTestSummaryRelationships()
+      ).toBe(
+        expectedResult
+      );
+    });
+
   });
 });
