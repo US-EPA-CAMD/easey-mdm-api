@@ -9,7 +9,7 @@ import {
 
 import { DataTable } from './datatable.entity';
 
-@Entity({ name: 'camdecmpsaux.dataset' })
+@Entity({ name: 'camdaux.dataset' })
 export class DataSet extends BaseEntity {
   @PrimaryColumn({
     name: 'dataset_cd',
