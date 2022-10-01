@@ -10,19 +10,19 @@ import { UnitTypeModule } from './unit-type/unit-type.module';
 
 const routes: Routes = [
   {
-    path: '/account-types',
+    path: '/account-type-codes',
     module: AccountTypeModule,
   },
   {
-    path: '/control-technologies',
+    path: '/control-codes',
     module: ControlTechnologyModule,
   },
   {
-    path: '/fuel-types',
+    path: '/fuel-type-codes',
     module: FuelTypeModule,
   },
   {
-    path: '/programs',
+    path: '/program-codes',
     module: ProgramModule,
   },
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     module: ReportingPeriodModule,
   },
   {
-    path: '/unit-types',
+    path: '/unit-type-codes',
     module: UnitTypeModule,
   },
   //THIS PATH MUST ALWAYS BE LAST
