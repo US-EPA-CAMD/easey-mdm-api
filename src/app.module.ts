@@ -10,17 +10,14 @@ import { CorsOptionsModule } from '@us-epa-camd/easey-common/cors-options';
 import routes from './routes';
 import appConfig from './config/app.config';
 import { TypeOrmConfigService } from './config/typeorm.config';
-import { UnitTypesModule } from './unit-types/unit-types.module';
-import { ControlTechnologiesModule } from './control-technologies/control-technologies.module';
-import { FuelTypesModule } from './fuel-type-code/fuel-type.module';
-import { ProgramsModule } from './programs/programs.module';
-import { AccountTypesModule } from './account-types/account-types.module';
-import { StatesModule } from './states/states.module';
-import { ParameterCodeModule } from './parameter-code/parameter-code.module';
-import { TransactionTypesModule } from './transaction-types/transaction-types.module';
-import { SourceCategoriesModule } from './source-categories/source-categories.module';
-import { ControlEquipParamCodeModule } from './control-equip-param-code/control-equip-param-code.module';
+
+import { CodeTableModule } from './code-table/code-table.module';
+import { AccountTypeModule } from './account-type/account-type.module';
+import { ControlTechnologyModule } from './control-technology/control-technology.module';
+import { FuelTypeModule } from './fuel-type/fuel-type.module';
+import { ProgramModule } from './program/program.module';
 import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
+import { UnitTypeModule } from './unit-type/unit-type.module';
 
 @Module({
   imports: [
@@ -32,19 +29,16 @@ import { ReportingPeriodModule } from './reporting-period/reporting-period.modul
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
-    LoggerModule,
+    AccountTypeModule,
+    ControlTechnologyModule,
     CorsOptionsModule,
-    ControlTechnologiesModule,
-    FuelTypesModule,
-    UnitTypesModule,
-    ProgramsModule,
-    AccountTypesModule,
-    StatesModule,
-    ParameterCodeModule,
-    TransactionTypesModule,
-    SourceCategoriesModule,
-    ControlEquipParamCodeModule,
+    FuelTypeModule,
+    LoggerModule,
+    ProgramModule,
     ReportingPeriodModule,
+    UnitTypeModule,
+    //THIS MODULE MUST ALWAYS BE LAST
+    CodeTableModule,
   ],
 })
 export class AppModule {}

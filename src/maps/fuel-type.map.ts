@@ -1,20 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
 import { BaseMap } from '@us-epa-camd/easey-common/maps';
 
-import { FuelType } from '../entities/fuel-type-code.entity';
+import { FuelType } from '../entities/fuel-type.entity';
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
 
 @Injectable()
 export class FuelTypeMap extends BaseMap<FuelType, FuelTypeDTO> {
-  public async one(entity: FuelType): Promise<any> {
+  public async one(entity: FuelType): Promise<FuelTypeDTO> {
     return {
-      [propertyMetadata.fuelTypeCode.fieldLabels.value]: entity.fuelTypeCode,
-      [propertyMetadata.fuelTypeDescription.fieldLabels.value]:
+      fuelTypeCode:
+        entity.fuelTypeCode,
+      fuelTypeDescription:
         entity.fuelTypeDescription,
-      [propertyMetadata.fuelGroupCode.fieldLabels.value]: entity.fuelGroupCode,
-      [propertyMetadata.fuelGroupDescription.fieldLabels.value]:
-        entity.fuelGroup.fuelGroupDescription,
+      fuelGroupCode:
+        entity.fuelGroupCode,
+      fuelGroupDescription:
+        entity.fuelGroup?.fuelGroupDescription,
     };
   }
 }
