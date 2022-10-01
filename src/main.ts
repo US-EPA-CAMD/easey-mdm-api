@@ -23,7 +23,6 @@ export async function bootstrap() {
 
   if (enableDebug) {
     console.log('config: ', configService.get('app'));
-    console.log('s3Config: ', configService.get('s3Config'));
     console.log(
       `Application is running on: ${await app.getUrl()}/${appPath}/swagger`,
     );

@@ -11,7 +11,7 @@ import { CodeTableRepository } from './code-table.repository';
 
 @Injectable()
 export class CodeTableService {
-  private readonly templateCode = 'Master Data';
+  private readonly templateCode = 'MDM';
 
   constructor(
     @InjectRepository(CodeTableRepository)

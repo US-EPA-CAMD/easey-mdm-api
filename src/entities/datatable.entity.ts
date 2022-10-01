@@ -11,7 +11,7 @@ import {
 import { DataSet } from './dataset.entity';
 import { DataColumn } from './datacolumn.entity';
 
-@Entity({ name: 'camdecmpsaux.datatable' })
+@Entity({ name: 'camdaux.datatable' })
 export class DataTable extends BaseEntity {
   @PrimaryGeneratedColumn({
     name: 'datatable_id',

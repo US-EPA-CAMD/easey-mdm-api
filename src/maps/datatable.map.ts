@@ -22,7 +22,6 @@ export class DataTableMap extends BaseMap<DataTable, DataTableDTO> {
     return {
       tableOrder: entity.tableOrder,
       displayName: entity.displayName,
-      sqlStatement: entity.sqlStatement,
       noResultsMessage: entity.noResultsMessage,
       columns: columns,
     };

@@ -9,7 +9,7 @@ import {
 
 import { DataTable } from './datatable.entity';
 
-@Entity({ name: 'camdecmpsaux.datacolumn' })
+@Entity({ name: 'camdaux.datacolumn' })
 export class DataColumn extends BaseEntity {
   @PrimaryGeneratedColumn({
     name: 'datacolumn_id',
