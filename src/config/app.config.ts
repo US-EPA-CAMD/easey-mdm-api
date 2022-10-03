@@ -23,6 +23,10 @@ export default registerAs('app', () => ({
   title: getConfigValue(
     'EASEY_MDM_API_TITLE', 'Master Data Management',
   ),
+  description: getConfigValue(
+    'EASEY_MDM_API_DESCRIPTION',
+    '',
+  ),
   apiHost: getConfigValue(
     'EASEY_API_GATEWAY_HOST', 'api.epa.gov/easey/dev',
   ),
@@ -43,6 +47,9 @@ export default registerAs('app', () => ({
   ),
   published: getConfigValue(
     'EASEY_MDM_API_PUBLISHED', 'local',
+  ),
+  secretToken: getConfigValue(
+    'EASEY_MDM_API_SECRET_TOKEN',
   ),
   enableSecretToken: getConfigValueBoolean(
     'EASEY_MDM_API_ENABLE_SECRET_TOKEN',
