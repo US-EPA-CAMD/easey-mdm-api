@@ -1,10 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
 import {
-  ApiBadGatewayResponse,
+  ApiTags,
   ApiOkResponse,
   ApiSecurity,
-  ApiTags,
 } from '@nestjs/swagger';
+import { Get, Controller } from '@nestjs/common';
+
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodService } from './reporting-period.service';
 
@@ -12,16 +12,15 @@ import { ReportingPeriodService } from './reporting-period.service';
 @ApiSecurity('APIKey')
 @ApiTags('Reporting Periods')
 export class ReportingPeriodController {
-  constructor(private readonly service: ReportingPeriodService) {}
+  constructor(
+    private readonly service: ReportingPeriodService
+  ) {}
 
   @Get()
   @ApiOkResponse({
     isArray: true,
     type: ReportingPeriodDTO,
-    description: 'Retrieves all Reporting Periods',
-  })
-  @ApiBadGatewayResponse({
-    description: 'Invalid Request',
+    description: 'Returns a list of Reporting Periods',
   })
   getReportingPeriods(): Promise<ReportingPeriodDTO[]> {
     return this.service.getReportingPeriods();

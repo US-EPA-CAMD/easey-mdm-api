@@ -23,16 +23,15 @@ import { TestSummaryRelationshipsDTO } from '../dto/test-summary-relationships.d
 @ApiSecurity('APIKey')
 @ApiTags('Relationships')
 export class RelationshipsController {
-  constructor(private readonly service: RelationshipsService) {}
+  constructor(
+    private readonly service: RelationshipsService
+  ) {}
 
   @Get('formulas')
   @ApiOkResponse({
     isArray: true,
     type: FormulaRelationshipsDTO,
-    description: 'Retrieves all Formula Relationships Data Codes',
-  })
-  @ApiBadGatewayResponse({
-    description: 'Invalid Request',
+    description: 'Returns a list of related Master Data codes for Formulas',
   })
   getFormulaRelationships() {
     return this.service.getFormulaRelationships();
@@ -42,10 +41,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: SpansRelationshipsDTO,
-    description: 'Retrieves span master data relationships.',
-  })
-  @ApiBadGatewayResponse({
-    description: 'Invalid Request',
+    description: 'Returns a list of related Master Data codes for Spans',
   })
   getSpansRelationships(): Promise<SpansRelationshipsDTO[]> {
     return this.service.getSpansRelationships();
@@ -55,10 +51,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: DefaultsRelationshipsDTO,
-    description: 'Retrieves default master data relationships.',
-  })
-  @ApiBadGatewayResponse({
-    description: 'Invalid Request',
+    description: 'Returns a list of related Master Data codes for Defaults',
   })
   getDefaultsRelationships(): Promise<DefaultsRelationshipsDTO[]> {
     return this.service.getDefaultsRelationships();
@@ -68,7 +61,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: MatsMethodsRelationshipsDTO,
-    description: 'Retrieves mats-methods master data relationhsips',
+    description: 'Returns a list of related Master Data codes for MATS Methods',
   })
   getMatsMethodsRelationships(): Promise<MatsMethodsRelationshipsDTO[]> {
     return this.service.getMatsMethodsRelationships();
@@ -78,7 +71,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: MethodsRelationshipsDTO,
-    description: 'Retrieves methods master data relationhsips',
+    description: 'Returns a list of related Master Data codes for Methods',
   })
   getMethodsRelationships(): Promise<MethodsRelationshipsDTO[]> {
     return this.service.getMethodsRelationships();
@@ -88,7 +81,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: LoadsRelationshipsDTO,
-    description: 'Retrieves methods master data relationhsips',
+    description: 'Returns a list of related Master Data codes for Loads',
   })
   getLoadsRelationships(): Promise<LoadsRelationshipsDTO[]> {
     return this.service.getLoadsRelationships();
@@ -98,17 +91,17 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: QualLeeRelationshipsDTO,
-    description: 'Retrieves LEE qualifications master data relationhsips',
+    description: 'Returns a list of related Master Data codes for LEE Qualifications',
   })
   getQualLeeRelationships(): Promise<QualLeeRelationshipsDTO[]> {
     return this.service.getQualLeeRelationships();
   }
 
-  @Get('system-fuels')
+  @Get('system-fuel-flows')
   @ApiOkResponse({
     isArray: true,
     type: SystemFuelFlowRelationshipsDTO,
-    description: 'Retrieves system fuel flow master data relationhsips',
+    description: 'Returns a list of related Master Data codes for System Fuel Flows',
   })
   getSystemFuelFlowRelationships(): Promise<SystemFuelFlowRelationshipsDTO[]> {
     return this.service.getSystemFuelFlowRelationships();
@@ -118,7 +111,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: UnitControlRelationshipsDTO,
-    description: 'Retrieves unit controls master data relationhsips',
+    description: 'Returns a list of related Master Data codes for Unit Controls',
   })
   getUnitControlRelationships(): Promise<UnitControlRelationshipsDTO[]> {
     return this.service.getUnitControlRelationships();
@@ -128,7 +121,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: UnitFuelRelationshipsDTO,
-    description: 'Retrieves unit fuels master data relationhsips',
+    description: 'Returns a list of related Master Data codes for Unit Fuels',
   })
   getUnitFuelRelationships(): Promise<UnitFuelRelationshipsDTO[]> {
     return this.service.getUnitFuelRelationships();
@@ -138,7 +131,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: SystemComponentRelationshipsDTO,
-    description: 'Retrieves system component master data relationships',
+    description: 'Returns a list of related Master Data codes for System Components',
   })
   getSystemComponentRelationships() {
     return this.service.getSystemComponentRelationships();
@@ -148,7 +141,7 @@ export class RelationshipsController {
   @ApiOkResponse({
     isArray: true,
     type: TestSummaryRelationshipsDTO,
-    description: 'Retrieves test summary master data relationhsips',
+    description: 'Returns a list of related Master Data codes for Test Summary',
   })
   getTestSummaryRelationships(): Promise<TestSummaryRelationshipsDTO[]> {
     return this.service.getTestSummaryRelationships();

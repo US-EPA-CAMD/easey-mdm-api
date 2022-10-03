@@ -1,6 +1,6 @@
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { RelationshipsService } from './relationships.service';
 import { RelationshipsController } from './relationships.controller';
 import { FormulaRelationshipsRepository } from './formula-relationships.repository';
@@ -32,7 +32,6 @@ import { TestSummaryRelationshipsRepository } from './test-summary-relationships
       SystemComponentRelationshipsRepository,
       TestSummaryRelationshipsRepository,
     ]),
-    HttpModule,
   ],
   controllers: [RelationshipsController],
   providers: [RelationshipsService],

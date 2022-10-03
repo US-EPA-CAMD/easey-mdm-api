@@ -1,6 +1,4 @@
-import { BadGatewayException } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
-import { LoggerModule } from '@us-epa-camd/easey-common/logger';
+import { Test } from '@nestjs/testing';
 
 import { RelationshipsService } from './relationships.service';
 import { SpansRelationshipsRepository } from './spans-relationships.repository';
@@ -16,357 +14,252 @@ import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repos
 import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
 import { TestSummaryRelationshipsRepository } from './test-summary-relationships.repository';
 
-const mockFormulaRelationshipsRepository = () => ({
-  getFormulaRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-  findOne: jest.fn(),
+const mockRepository = () => ({
+  find: jest.fn(),
 });
 
-const mockSpansRelationshipsRepository = () => ({
-  getSpansRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockDefaultsRelationshipsRepository = () => ({
-  getDefaultsRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockMatsMethodsRelationshipsRepository = () => ({
-  getMatsMethodsRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockMethodsRelationshipsRepository = () => ({
-  getMethodsRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockLoadsRelationshipsRepository = () => ({
-  getLoadsRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockQualLeeRelationshipsRepository = () => ({
-  getQualLeeRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockSystemFuelFlowRelationshipsRepository = () => ({
-  getSystemFuelFlowRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockUnitControlRelationshipsRepository = () => ({
-  getUnitControlRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockUnitFuelRelationshipsRepository = () => ({
-  getUnitFuelRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-const mockSystemComponentRelationshipsRepository = () => ({
-  getSystemComponentRelationships: jest
-    .fn()
-    .mockReturnValueOnce([])
-    .mockRejectedValueOnce(() => {
-      throw new BadGatewayException();
-    }),
-
-  findOne: jest.fn(),
-});
-
-describe('RelationshipsService', () => {
+describe('RelationshipService', () => {
+  let frRepository: any;
+  let srRepository: any;
+  let drRepository: any;
+  let mmrRepository: any;
+  let mrRepository: any;
+  let lrRepository: any;
+  let qlrRepository: any;
+  let sffrRepository: any;
+  let ucrRepository: any;
+  let ufrRepository: any;
+  let scrRepository: any;
+  let tsrRepository: any;
   let service: RelationshipsService;
-  let fRRepository: FormulaRelationshipsRepository;
-  let sRRepository: SpansRelationshipsRepository;
-  let dRRepository: DefaultsRelationshipsRepository;
-  let mMRRepository: MatsMethodsRelationshipsRepository;
-  let mRRepository: MethodsRelationshipsRepository;
-  let lRRepository: LoadsRelationshipsRepository;
-  let qlRRepository: QualLeeRelationshipsRepository;
-  let sffRRepository: SystemFuelFlowRelationshipsRepository;
-  let ucRRepository: UnitControlRelationshipsRepository;
-  let ufRRepository: UnitFuelRelationshipsRepository;
-  let scRRepository: SystemComponentRelationshipsRepository;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      imports: [LoggerModule],
+    const module = await Test.createTestingModule({
       providers: [
         RelationshipsService,
         {
           provide: FormulaRelationshipsRepository,
-          useFactory: mockFormulaRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: SpansRelationshipsRepository,
-          useFactory: mockSpansRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: DefaultsRelationshipsRepository,
-          useFactory: mockDefaultsRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: MatsMethodsRelationshipsRepository,
-          useFactory: mockMatsMethodsRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: MethodsRelationshipsRepository,
-          useFactory: mockMethodsRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: LoadsRelationshipsRepository,
-          useFactory: mockLoadsRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: QualLeeRelationshipsRepository,
-          useFactory: mockQualLeeRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: SystemFuelFlowRelationshipsRepository,
-          useFactory: mockSystemFuelFlowRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: UnitControlRelationshipsRepository,
-          useFactory: mockUnitControlRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: UnitFuelRelationshipsRepository,
-          useFactory: mockUnitFuelRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: SystemComponentRelationshipsRepository,
-          useFactory: mockSystemComponentRelationshipsRepository,
+          useFactory: mockRepository,
         },
         {
           provide: TestSummaryRelationshipsRepository,
-          useFactory: () => ({}),
+          useFactory: mockRepository,
         },
       ],
     }).compile();
 
-    service = module.get<RelationshipsService>(RelationshipsService);
+    service = module.get(RelationshipsService);
+    frRepository = module.get(FormulaRelationshipsRepository);
+    srRepository = module.get(SpansRelationshipsRepository);
+    drRepository = module.get(DefaultsRelationshipsRepository);
+    mmrRepository = module.get(MatsMethodsRelationshipsRepository);
+    mrRepository = module.get(MethodsRelationshipsRepository);
+    lrRepository = module.get(LoadsRelationshipsRepository);
+    qlrRepository = module.get(QualLeeRelationshipsRepository);
+    sffrRepository = module.get(SystemFuelFlowRelationshipsRepository);
+    ucrRepository = module.get(UnitControlRelationshipsRepository);
+    ufrRepository = module.get(UnitFuelRelationshipsRepository);
+    scrRepository = module.get(SystemComponentRelationshipsRepository);
+    tsrRepository = module.get(TestSummaryRelationshipsRepository);
+  });
 
-    fRRepository = module.get<FormulaRelationshipsRepository>(
-      FormulaRelationshipsRepository,
-    );
-    sRRepository = module.get<SpansRelationshipsRepository>(
-      SpansRelationshipsRepository,
-    );
-    dRRepository = module.get<DefaultsRelationshipsRepository>(
-      DefaultsRelationshipsRepository,
-    );
-    mMRRepository = module.get<MatsMethodsRelationshipsRepository>(
-      MatsMethodsRelationshipsRepository,
-    );
-    mRRepository = module.get<MethodsRelationshipsRepository>(
-      MethodsRelationshipsRepository,
-    );
-    lRRepository = module.get<LoadsRelationshipsRepository>(
-      LoadsRelationshipsRepository,
-    );
-    qlRRepository = module.get<QualLeeRelationshipsRepository>(
-      QualLeeRelationshipsRepository,
-    );
-    sffRRepository = module.get<SystemFuelFlowRelationshipsRepository>(
-      SystemFuelFlowRelationshipsRepository,
-    );
-    ucRRepository = module.get<UnitControlRelationshipsRepository>(
-      UnitControlRelationshipsRepository,
-    );
-    ufRRepository = module.get<UnitFuelRelationshipsRepository>(
-      UnitFuelRelationshipsRepository,
-    );
-    scRRepository = module.get<SystemComponentRelationshipsRepository>(
-      SystemComponentRelationshipsRepository,
-    );
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+    expect(frRepository).toBeDefined();
+    expect(srRepository).toBeDefined();
+    expect(drRepository).toBeDefined();
+    expect(mmrRepository).toBeDefined();
+    expect(mrRepository).toBeDefined();
+    expect(lrRepository).toBeDefined();
+    expect(qlrRepository).toBeDefined();
+    expect(sffrRepository).toBeDefined();
+    expect(ucrRepository).toBeDefined();
+    expect(ufrRepository).toBeDefined();
+    expect(scrRepository).toBeDefined();
+    expect(tsrRepository).toBeDefined();
   });
 
   describe('getFormulaRelationships', () => {
-    it('calls the getFormulaRelationships method and returns formula master data relationships', async () => {
-      const result = await service.getFormulaRelationships();
-      expect(result).toEqual([]);
-      expect(fRRepository.getFormulaRelationships).toHaveBeenCalled();
-      const fail = await service.getFormulaRelationships();
+
+    it('should return a list of Formula Master Data relationships', async () => {
+      frRepository.find.mockResolvedValue([]);
+      const results = await service.getFormulaRelationships();
+
+      expect(frRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getSpansRelationships', () => {
-    it('calls the getSpansRelationships method and returns span master data relationships', async () => {
-      const result = await service.getSpansRelationships();
-      expect(result).toEqual([]);
-      expect(sRRepository.getSpansRelationships).toHaveBeenCalled();
-      const fail = await service.getSpansRelationships();
+
+    it('should return a list of Span Master Data relationships', async () => {
+      srRepository.find.mockResolvedValue([]);
+      const results = await service.getSpansRelationships();
+
+      expect(srRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getDefaultsRelationships', () => {
-    it('calls the getDefaultsRelationships method and returns defaults master data relationships', async () => {
-      const result = await service.getDefaultsRelationships();
-      expect(result).toEqual([]);
-      expect(dRRepository.getDefaultsRelationships).toHaveBeenCalled();
-      const fail = await service.getDefaultsRelationships();
-    });
-  });
 
-  describe('getMatsMethodsRelationships', () => {
-    it('calls the getMatsMethodsRelationships method and returns mats-methods master data relationships', async () => {
-      const result = await service.getMatsMethodsRelationships();
-      expect(result).toEqual([]);
-      expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalled();
-      const fail = await service.getMatsMethodsRelationships();
-      expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalledTimes(
-        2,
-      );
+    it('should return a list of Default Master Data relationships', async () => {
+      drRepository.find.mockResolvedValue([]);
+      const results = await service.getDefaultsRelationships();
+
+      expect(drRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getMethodsRelationships', () => {
-    it('calls the getMethodsRelationships method and returns mats-methods master data relationships', async () => {
-      const result = await service.getMethodsRelationships();
-      expect(result).toEqual([]);
-      expect(mRRepository.getMethodsRelationships).toHaveBeenCalled();
-      const fail = await service.getMethodsRelationships();
-      expect(mRRepository.getMethodsRelationships).toHaveBeenCalledTimes(2);
+
+    it('should return a list of Method Master Data relationships', async () => {
+      mrRepository.find.mockResolvedValue([]);
+      const results = await service.getMethodsRelationships();
+
+      expect(mrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getMatsMethodsRelationships', () => {
-    it('calls the getMatsMethodsRelationships method and returns mats-methods master data relationships', async () => {
-      const result = await service.getMatsMethodsRelationships();
-      expect(result).toEqual([]);
-      expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalled();
-      const fail = await service.getMatsMethodsRelationships();
-      expect(mMRRepository.getMatsMethodsRelationships).toHaveBeenCalledTimes(
-        2,
-      );
+
+    it('should return a list of MATS Method Master Data relationships', async () => {
+      mmrRepository.find.mockResolvedValue([]);
+      const results = await service.getMatsMethodsRelationships();
+
+      expect(mmrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getLoadsRelationships', () => {
-    it('calls the getLoadsRelationships method and returns loads master data relationships', async () => {
-      const result = await service.getLoadsRelationships();
-      expect(result).toEqual([]);
-      expect(lRRepository.getLoadsRelationships).toHaveBeenCalled();
-      const fail = await service.getLoadsRelationships();
-      expect(lRRepository.getLoadsRelationships).toHaveBeenCalledTimes(2);
+
+    it('should return a list of Load Master Data relationships', async () => {
+      lrRepository.find.mockResolvedValue([]);
+      const results = await service.getLoadsRelationships();
+
+      expect(lrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getQualLeeRelationships', () => {
-    it('calls the getQualLeeRelationships method and returns LEE qualifications master data relationships', async () => {
-      const result = await service.getQualLeeRelationships();
-      expect(result).toEqual([]);
-      expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalled();
-      const fail = await service.getQualLeeRelationships();
-      expect(qlRRepository.getQualLeeRelationships).toHaveBeenCalledTimes(2);
+
+    it('should return a list of LEE Qualification Master Data relationships', async () => {
+      qlrRepository.find.mockResolvedValue([]);
+      const results = await service.getQualLeeRelationships();
+
+      expect(qlrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getSystemFuelFlowRelationships', () => {
-    it('calls the getSystemFuelFlowRelationships method and returns system fuel flow master data relationships', async () => {
-      const result = await service.getSystemFuelFlowRelationships();
-      expect(result).toEqual([]);
-      expect(sffRRepository.getSystemFuelFlowRelationships).toHaveBeenCalled();
-      const fail = await service.getSystemFuelFlowRelationships();
-      expect(
-        sffRRepository.getSystemFuelFlowRelationships,
-      ).toHaveBeenCalledTimes(2);
+
+    it('should return a list of SystemFuelFlow Master Data relationships', async () => {
+      sffrRepository.find.mockResolvedValue([]);
+      const results = await service.getSystemFuelFlowRelationships();
+
+      expect(sffrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getUnitControlRelationships', () => {
-    it('calls the getUnitControlRelationships method and returns unit control master data relationships', async () => {
-      const result = await service.getUnitControlRelationships();
-      expect(result).toEqual([]);
-      expect(ucRRepository.getUnitControlRelationships).toHaveBeenCalled();
-      const fail = await service.getUnitControlRelationships();
-      expect(ucRRepository.getUnitControlRelationships).toHaveBeenCalledTimes(
-        2,
-      );
+
+    it('should return a list of Unit Control Master Data relationships', async () => {
+      ucrRepository.find.mockResolvedValue([]);
+      const results = await service.getUnitControlRelationships();
+
+      expect(ucrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getUnitFuelRelationships', () => {
-    it('calls the getUnitFuelRelationships method and returns unit fuel master data relationships', async () => {
-      const result = await service.getUnitFuelRelationships();
-      expect(result).toEqual([]);
-      expect(ufRRepository.getUnitFuelRelationships).toHaveBeenCalled();
-      const fail = await service.getUnitFuelRelationships();
-      expect(ufRRepository.getUnitFuelRelationships).toHaveBeenCalledTimes(2);
+
+    it('should return a list of Unit Fuel Master Data relationships', async () => {
+      ufrRepository.find.mockResolvedValue([]);
+      const results = await service.getUnitFuelRelationships();
+
+      expect(ufrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
   });
 
   describe('getSystemComponentRelationships', () => {
-    it('calls the getSystemComponentRelationships method and returns system component master data relationships', async () => {
-      const result = await service.getSystemComponentRelationships();
-      expect(result).toEqual([]);
-      expect(scRRepository.getSystemComponentRelationships).toHaveBeenCalled();
-      const fail = await service.getSystemComponentRelationships();
-      expect(
-        scRRepository.getSystemComponentRelationships,
-      ).toHaveBeenCalledTimes(2);
+
+    it('should return a list of System Component Master Data relationships', async () => {
+      scrRepository.find.mockResolvedValue([]);
+      const results = await service.getSystemComponentRelationships();
+
+      expect(scrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
+
+  });
+
+  describe('getTestSummaryRelationships', () => {
+
+    it('should return a list of Test Summary Master Data relationships', async () => {
+      tsrRepository.find.mockResolvedValue([]);
+      const results = await service.getTestSummaryRelationships();
+
+      expect(tsrRepository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
+    });
+
   });
 });

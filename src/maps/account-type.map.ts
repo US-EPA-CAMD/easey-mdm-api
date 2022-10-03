@@ -1,22 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
 import { BaseMap } from '@us-epa-camd/easey-common/maps';
 
-import { AccountType } from '../entities/account-type-code.entity';
+import { AccountType } from '../entities/account-type.entity';
 import { AccountTypeDTO } from '../dto/account-type.dto';
 
 @Injectable()
 export class AccountTypeMap extends BaseMap<AccountType, AccountTypeDTO> {
-  public async one(entity: AccountType): Promise<any> {
+  public async one(entity: AccountType): Promise<AccountTypeDTO> {
     return {
-      [propertyMetadata.accountTypeCode.fieldLabels.value]:
+      accountTypeCode:
         entity.accountTypeCode,
-      [propertyMetadata.accountTypeDescription.fieldLabels.value]:
+      accountTypeDescription:
         entity.accountTypeDescription,
-      [propertyMetadata.accountTypeGroupCode.fieldLabels.value]:
+      accountTypeGroupCode:
         entity.accountTypeGroupCode,
-      [propertyMetadata.accountTypeGroupDescription.fieldLabels.value]:
-        entity.accountTypeGroup.accountTypeGroupDescription,
+      accountTypeGroupDescription:
+        entity.accountTypeGroup?.accountTypeGroupDescription,
     };
   }
 }

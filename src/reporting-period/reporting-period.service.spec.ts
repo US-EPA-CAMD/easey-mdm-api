@@ -1,41 +1,46 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
+import { Test } from '@nestjs/testing';
+
 import { ReportingPeriodRepository } from './reporting-period.repository';
 import { ReportingPeriodService } from './reporting-period.service';
+import { ReportingPeriodMap } from '../maps/reporting-period.map';
 
-const mockReportingPeriodRepository = () => ({
-  find: jest.fn().mockResolvedValue([]),
+const mockRepository = () => ({
+  find: jest.fn(),
 });
 
 describe('ReportingPeriodService', () => {
+  let repository: any;
   let service: ReportingPeriodService;
-  let repository: ReportingPeriodRepository;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
+        ReportingPeriodMap,
         ReportingPeriodService,
         {
           provide: ReportingPeriodRepository,
-          useFactory: mockReportingPeriodRepository,
+          useFactory: mockRepository,
         },
       ],
     }).compile();
 
-    service = module.get<ReportingPeriodService>(ReportingPeriodService);
-    repository = module.get<ReportingPeriodRepository>(
-      ReportingPeriodRepository,
-    );
+    service = module.get(ReportingPeriodService);
+    repository = module.get(ReportingPeriodRepository);
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-  });
+    expect(repository).toBeDefined();
+  });  
 
   describe('getReportingPeriods', () => {
-    it('should return reporting period up until current year and current quarter', async () => {
-      const result = await service.getReportingPeriods();
-      expect(result).toEqual([]);
+
+    it('should return a list of reporting periods', async () => {
+      repository.find.mockResolvedValue([]);
+      const results = await service.getReportingPeriods();
+
+      expect(repository.find).toHaveBeenCalled();
+      expect(results).toEqual([]);
     });
   });
 });
