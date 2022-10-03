@@ -11,19 +11,19 @@ import { RelationshipsModule } from './relationships/relationships.module';
 
 const routes: Routes = [
   {
-    path: '/account-types',
+    path: '/account-type-codes',
     module: AccountTypeModule,
   },
   {
-    path: '/control-technologies',
+    path: '/control-codes',
     module: ControlTechnologyModule,
   },
   {
-    path: '/fuel-types',
+    path: '/fuel-type-codes',
     module: FuelTypeModule,
   },
   {
-    path: '/programs',
+    path: '/program-codes',
     module: ProgramModule,
   },
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
     module: ReportingPeriodModule,
   },
   {
-    path: '/unit-types',
+    path: '/unit-type-codes',
     module: UnitTypeModule,
   },
   // CODE TABLE MODULE MUST ALWAYS BE AFTER ALL OTHERS

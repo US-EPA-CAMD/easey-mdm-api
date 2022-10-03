@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Checkout devops repo
         uses: actions/checkout@v2
         with:
@@ -48,6 +46,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ARTIFACTS_STORAGE_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ARTIFACTS_STORAGE_SECRET_ACCESS_KEY }}
+
   Test-Deployment:
     needs: Build-Test-Package
     runs-on: ubuntu-latest
@@ -57,8 +56,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Checkout devops repo
         uses: actions/checkout@v2
         with:
@@ -83,10 +80,9 @@ jobs:
       - name: Init Application
         run: devops/scripts/cf-app-init.sh
       - name: Configure Env Vars (secrets)
-        run: |
-          cf set-env $APP_NAME EASEY_MDM_API_SECRET_TOKEN $API_SECRET_TOKEN
+        run: scripts/environment-variables-secrets.sh
         env:
-          API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
+          MDM_API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
       - name: Deploy
         run: devops/scripts/deploy.sh
 
@@ -99,8 +95,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Checkout devops repo
         uses: actions/checkout@v2
         with:
@@ -125,10 +119,9 @@ jobs:
       - name: Init Application
         run: devops/scripts/cf-app-init.sh
       - name: Configure Env Vars (secrets)
-        run: |
-          cf set-env $APP_NAME EASEY_MDM_API_SECRET_TOKEN $API_SECRET_TOKEN
+        run: scripts/environment-variables-secrets.sh
         env:
-          API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
+          MDM_API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
       - name: Deploy
         run: devops/scripts/deploy.sh
 
@@ -141,8 +134,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Checkout devops repo
         uses: actions/checkout@v2
         with:
@@ -167,10 +158,9 @@ jobs:
       - name: Init Application
         run: devops/scripts/cf-app-init.sh
       - name: Configure Env Vars (secrets)
-        run: |
-          cf set-env $APP_NAME EASEY_MDM_API_SECRET_TOKEN $API_SECRET_TOKEN
+        run: scripts/environment-variables-secrets.sh
         env:
-          API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
+          MDM_API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
       - name: Deploy
         run: devops/scripts/deploy.sh
 
@@ -183,8 +173,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Checkout devops repo
         uses: actions/checkout@v2
         with:
@@ -209,9 +197,8 @@ jobs:
       - name: Init Application
         run: devops/scripts/cf-app-init.sh
       - name: Configure Env Vars (secrets)
-        run: |
-          cf set-env $APP_NAME EASEY_MDM_API_SECRET_TOKEN $API_SECRET_TOKEN
+        run: scripts/environment-variables-secrets.sh
         env:
-          API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
+          MDM_API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
       - name: Deploy
         run: devops/scripts/deploy.sh

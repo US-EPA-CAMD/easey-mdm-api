@@ -10,7 +10,7 @@ import { ControlTechnologyService } from './control-technology.service';
 
 @Controller()
 @ApiSecurity('APIKey')
-@ApiTags('Control Technologies')
+@ApiTags('Control Codes')
 export class ControlTechnologyController {
   constructor(
     private readonly service: ControlTechnologyService,
@@ -20,7 +20,7 @@ export class ControlTechnologyController {
   @ApiOkResponse({
     isArray: true,
     type: ControlTechnologyDTO,
-    description: 'Returns list of Control Technologies',
+    description: 'Returns list of Control codes',
   })
   getControlTechnologies(): Promise<ControlTechnologyDTO[]> {
     return this.service.getControlTechnologies();
