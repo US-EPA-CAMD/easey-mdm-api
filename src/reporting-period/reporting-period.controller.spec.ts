@@ -1,39 +1,56 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
-import { ReportingPeriodController } from './reporting-period.controller';
-import { ReportingPeriodService } from './reporting-period.service';
+import { Test } from '@nestjs/testing';
 
-const mockReportingPeriodService = () => ({
-  getReportingPeriods: jest.fn(() => [new ReportingPeriodDTO()]),
-});
+import { ReportingPeriodController } from './reporting-period.controller';
+import { ReportingPeriodRepository } from './reporting-period.repository';
+import { ReportingPeriodService } from './reporting-period.service';
+import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
+import { ReportingPeriodMap } from '../maps/reporting-period.map';
 
 describe('ReportingPeriodController', () => {
-  let controller: ReportingPeriodController;
   let service: ReportingPeriodService;
+  let controller: ReportingPeriodController;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
       controllers: [ReportingPeriodController],
       providers: [
-        {
-          provide: ReportingPeriodService,
-          useFactory: mockReportingPeriodService,
-        },
+        ReportingPeriodMap,
+        ReportingPeriodService,
+        ReportingPeriodRepository
       ],
     }).compile();
 
-    controller = module.get<ReportingPeriodController>(
-      ReportingPeriodController,
-    );
-    service = module.get<ReportingPeriodService>(ReportingPeriodService);
+    controller = module.get(ReportingPeriodController);
+    service = module.get(ReportingPeriodService);
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+    expect(controller).toBeDefined();
   });
 
   describe('getReportingPeriods', () => {
-    it('should call the ReportingPeriodService and return a list of reporting periods', () => {
-      expect(controller.getReportingPeriods()).toEqual([
-        new ReportingPeriodDTO(),
-      ]);
-      expect(service.getReportingPeriods).toHaveBeenCalled();
+
+    it('should return a list of reporting periods', async () => {
+      const expectedResult: ReportingPeriodDTO[] = [];
+
+      jest.spyOn(
+        service,
+        'getReportingPeriods'
+      ).mockResolvedValue(
+        expectedResult
+      );
+
+      expect(
+        await controller.getReportingPeriods()
+      ).toBe(
+        expectedResult,
+      );
     });
+
   });
 });

@@ -8,14 +8,22 @@ export class ReportingPeriodMap extends BaseMap<
 > {
   async one(entity: ReportingPeriod): Promise<ReportingPeriodDTO> {
     return {
-      id: entity.id,
-      calendarYear: entity.calendarYear,
-      quarter: entity.quarter,
-      beginDate: entity.beginDate,
-      endDate: entity.endDate,
-      periodDescription: entity.periodDescription,
-      periodAbbreviation: entity.periodAbbreviation,
-      archiveInd: entity.archiveInd,
+      id:
+        entity.id,
+      calendarYear:
+        entity.calendarYear,
+      quarter:
+        entity.quarter,
+      beginDate:
+        entity.beginDate,
+      endDate:
+        entity.endDate,
+      periodDescription:
+        entity.periodDescription,
+      periodAbbreviation:
+        entity.periodAbbreviation,
+      archiveInd:
+        entity.archiveInd,
     };
   }
 }

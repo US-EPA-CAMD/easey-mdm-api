@@ -1,10 +1,8 @@
 import {
   HttpStatus,
   Injectable,
-  InternalServerErrorException,
 } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Logger } from '@us-epa-camd/easey-common/logger';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 import { FormulaRelationshipsDTO } from '../dto/formula-relationships.dto';
 import { SpansRelationshipsDTO } from '../dto/spans-relationships.dto';
@@ -31,12 +29,11 @@ import { UnitFuelRelationshipsRepository } from './unit-fuel-relationships.repos
 import { SystemComponentRelationshipsRepository } from './system-component-relationships.repository';
 import { TestSummaryRelationshipsDTO } from '../dto/test-summary-relationships.dto';
 import { TestSummaryRelationshipsRepository } from './test-summary-relationships.repository';
-import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
+
 @Injectable()
 export class RelationshipsService {
   constructor(
-    @InjectRepository(FormulaRelationshipsRepository)
-    private readonly fRRepository: FormulaRelationshipsRepository,
+    private readonly fMRepository: FormulaRelationshipsRepository,
     private readonly sRRepository: SpansRelationshipsRepository,
     private readonly dRRepository: DefaultsRelationshipsRepository,
     private readonly mMRRepository: MatsMethodsRelationshipsRepository,
@@ -48,154 +45,105 @@ export class RelationshipsService {
     private readonly ufRRepository: UnitFuelRelationshipsRepository,
     private readonly scRRepository: SystemComponentRelationshipsRepository,
     private readonly tsRRepository: TestSummaryRelationshipsRepository,
-    private readonly logger: Logger,
   ) {}
 
   async getFormulaRelationships(): Promise<FormulaRelationshipsDTO[]> {
-    this.logger.info('Getting formula master data relationships.');
-    let query;
     try {
-      query = await this.fRRepository.getFormulaRelationships();
+      return await this.fMRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getSpansRelationships(): Promise<SpansRelationshipsDTO[]> {
-    this.logger.info('Getting span master data relationships.');
-    let query;
     try {
-      query = await this.sRRepository.getSpansRelationships();
+      return await this.sRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getDefaultsRelationships(): Promise<DefaultsRelationshipsDTO[]> {
-    this.logger.info('Getting default master data relationships.');
-    let query;
     try {
-      query = await this.dRRepository.getDefaultsRelationships();
+      return await this.dRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    this.logger.info('Got default master data relationships');
-    return query;
   }
 
   async getMatsMethodsRelationships(): Promise<MatsMethodsRelationshipsDTO[]> {
-    this.logger.info('Getting mats-methods master data relationships');
-    let query;
     try {
-      query = await this.mMRRepository.getMatsMethodsRelationships();
+      return await this.mMRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getMethodsRelationships(): Promise<MethodsRelationshipsDTO[]> {
-    this.logger.info('Getting methods master data relationships');
-    let query;
     try {
-      query = await this.mRRepository.getMethodsRelationships();
+      return await this.mRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getLoadsRelationships(): Promise<LoadsRelationshipsDTO[]> {
-    this.logger.info('Getting loads master data relationships');
-    let query;
     try {
-      query = await this.lRRepository.getLoadsRelationships();
+      return await this.lRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getQualLeeRelationships(): Promise<QualLeeRelationshipsDTO[]> {
-    this.logger.info('Getting LEE qualifications master data relationships');
-    let query;
     try {
-      query = await this.qlRRepository.getQualLeeRelationships();
+      return await this.qlRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getSystemFuelFlowRelationships(): Promise<
     SystemFuelFlowRelationshipsDTO[]
   > {
-    this.logger.info('Getting system fuel flow master data relationships');
-    let query;
     try {
-      query = await this.sffRRepository.getSystemFuelFlowRelationships();
+      return await this.sffRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getUnitControlRelationships(): Promise<UnitControlRelationshipsDTO[]> {
-    this.logger.info('Getting unit control master data relationships');
-    let query;
     try {
-      query = await this.ucRRepository.getUnitControlRelationships();
+      return await this.ucRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getUnitFuelRelationships(): Promise<UnitFuelRelationshipsDTO[]> {
-    this.logger.info('Getting unit fuel master data relationships');
-    let query;
     try {
-      query = await this.ufRRepository.getUnitFuelRelationships();
+      return await this.ufRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getSystemComponentRelationships(): Promise<
     SystemComponentRelationshipsDTO[]
   > {
-    this.logger.info('Getting system component master data relationships');
-    let query;
     try {
-      query = await this.scRRepository.getSystemComponentRelationships();
+      return await this.scRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 
   async getTestSummaryRelationships(): Promise<TestSummaryRelationshipsDTO[]> {
-    this.logger.info('Getting test summary master data relationships.');
-    let query;
     try {
-      query = await this.tsRRepository.getTestSummaryRelationships();
+      return await this.tsRRepository.find();
     } catch (e) {
       throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return query;
   }
 }

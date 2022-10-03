@@ -1,22 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
 import { BaseMap } from '@us-epa-camd/easey-common/maps';
 
-import { UnitType } from '../entities/unit-type-code.entity';
+import { UnitType } from '../entities/unit-type.entity';
 import { UnitTypeDTO } from '../dto/unit-type.dto';
 
 @Injectable()
 export class UnitTypeMap extends BaseMap<UnitType, UnitTypeDTO> {
-  public async one(entity: UnitType): Promise<any> {
+  public async one(entity: UnitType): Promise<UnitTypeDTO> {
     return {
-      [propertyMetadata.unitTypeCode.fieldLabels.value]: entity.unitTypeCode,
-      [propertyMetadata.unitTypeDescription.fieldLabels.value]:
+      unitTypeCode:
+        entity.unitTypeCode,
+      unitTypeDescription:
         entity.unitTypeDescription,
-      [propertyMetadata.sortOrder.fieldLabels.value]: entity.sortOrder,
-      [propertyMetadata.unitTypeGroupCode.fieldLabels.value]:
+      unitTypeGroupCode:
         entity.unitTypeGroupCode,
-      [propertyMetadata.unitTypeGroupDescription.fieldLabels.value]:
-        entity.unitTypeGroup.unitTypeGroupDescription,
+      unitTypeGroupDescription:
+        entity.unitTypeGroup?.unitTypeGroupDescription,
+      sortOrder:
+        entity.sortOrder,
     };
   }
 }

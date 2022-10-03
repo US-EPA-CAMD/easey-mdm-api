@@ -1,38 +1,39 @@
 import { Injectable } from '@nestjs/common';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
 import { BaseMap } from '@us-epa-camd/easey-common/maps';
 
-import { Program } from '../entities/program-code.entity';
+import { Program } from '../entities/program.entity';
 import { ProgramDTO } from '../dto/program.dto';
 
 @Injectable()
 export class ProgramMap extends BaseMap<Program, ProgramDTO> {
-  public async one(entity: Program): Promise<any> {
+  public async one(entity: Program): Promise<ProgramDTO> {
     return {
-      [propertyMetadata.programCode.fieldLabels.value]: entity.programCode,
-      [propertyMetadata.programDescription.fieldLabels.value]:
+      programCode:
+        entity.programCode,
+      programDescription:
         entity.programDescription,
-      [propertyMetadata.compParameterCode.fieldLabels.value]:
-        entity.compParameterCode,
-      [propertyMetadata.programGroupCode.fieldLabels.value]:
+      compParameter:
+        entity.compParameter,
+      programGroupCode:
         entity.programGroupCode,
-      [propertyMetadata.programGroupDescription.fieldLabels.value]:
-        entity.programGroup?.programGroupDescription || null,
-      [propertyMetadata.ozoneIndicator.fieldLabels
-        .value]: !!+entity.ozoneIndicator,
-      [propertyMetadata.annualIndicator.fieldLabels
-        .value]: !+entity.ozoneIndicator,
-      [propertyMetadata.emissionsUIFilter.fieldLabels
-        .value]: !!+entity.emissionsUIFilter,
-      [propertyMetadata.allowanceUIFilter.fieldLabels
-        .value]: !!+entity.allowanceUIFilter,
-      [propertyMetadata.complianceUIFilter.fieldLabels
-        .value]: !!+entity.complianceUIFilter,
-      [propertyMetadata.retiredIndicator.fieldLabels.value]:
+      programGroupDescription:
+        entity.programGroup?.programGroupDescription,
+      ozoneIndicator:
+        !!+entity.ozoneIndicator,
+      annualIndicator:
+        !+entity.ozoneIndicator,
+      emissionsUIFilter:
+        !!+entity.emissionsUIFilter,
+      allowanceUIFilter:
+        !!+entity.allowanceUIFilter,
+      complianceUIFilter:
+        !!+entity.complianceUIFilter,
+      retiredIndicator:
         !!entity.tradingEndDate && entity.tradingEndDate <= new Date(),
-      [propertyMetadata.tradingEndDate.fieldLabels.value]:
+      tradingEndDate:
         entity.tradingEndDate &&
-        entity.tradingEndDate.toISOString().split('T')[0],
+        entity.tradingEndDate.toISOString()
+        .split('T')[0],
     };
   }
 }
