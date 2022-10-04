@@ -1,11 +1,12 @@
 #THIS FILE SHOULD CONTAIN DEV SETTINGS AND CI/CD WORKFLOW WILL CHANGE SETTINGS BASED ON ENV
-name: mdm-api
-title: Master Data Management
-path: master-data-mgmt
-port: 8080
-memory: 1024
 disk: 1024
+memory: 1024
 instances: 1
-environment: development
+name: mdm-api
 host: api-easey-dev.app.cloud.gov
+port: 8080
+path: master-data-mgmt
+title: Master Data Management
+description: 
+environment: development
 apiHost: api.epa.gov/easey/dev
