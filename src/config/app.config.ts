@@ -57,7 +57,5 @@ export default registerAs('app', () => ({
   enableDebug: getConfigValueBoolean(
     'EASEY_MDM_API_ENABLE_DEBUG',
   ),
-  apiHost: getConfigValue(
-    'EASEY_API_GATEWAY_HOST', 'api.epa.gov/easey/dev',
-  ),
+  apiHost: apiHost,
 }));
