@@ -44,27 +44,30 @@ The Master Data API uses a number of environment variables to properly configure
 | host | EASEY_MDM_API_HOST | localhost | Configurable
 | port | EASEY_MDM_API_PORT | 8050 | Configurable |
 | path | EASEY_MDM_API_PATH | master-data-mgmt | Configurable |
-| uri | N/A | N/A | Determined by host, port, & path |
 | title | EASEY_MDM_API_TITLE | Master Data Management | Configurable |
 | description | EASEY_MDM_API_DESCRIPTION | ??? | Configurable |
-| apiHost | EASEY_API_GATEWAY_HOST | api.epa.gov/easey/dev | Configurable |
 | env | EASEY_MDM_API_ENV | local-dev | Configurable |
-| enableCors | EASEY_MDM_API_ENABLE_CORS | true | Configurable |
 | enableApiKey | EASEY_MDM_API_ENABLE_API_KEY | false | Configurable |
+| secretToken | EASEY_MDM_API_SECRET_TOKEN | *** | Dynamically set by CI/CD workflow |
+| enableSecretToken | EASEY_MDM_API_ENABLE_SECRET_TOKEN | false | Configurable |
+| enableCors | EASEY_MDM_API_ENABLE_CORS | true | Configurable |
 | enableGlobalValidationPipes | EASEY_MDM_API_ENABLE_GLOBAL_VALIDATION_PIPE | true | Configurable |
 | version | EASEY_MDM_API_VERSION | v0.0.0 | Dynamically set by CI/CD workflow |
 | published | EASEY_MDM_API_PUBLISHED | local | Dynamically set by CI/CD workflow |
-| perPageLimit | EASEY_MDM_API_PAGINATION_MAX_PER_PAGE | 500 | Configurable |
-| secretToken | EASEY_MDM_API_SECRET_TOKEN | N/A | Dynamically set by CI/CD workflow |
-| enableSecretToken | EASEY_MDM_API_ENABLE_SECRET_TOKEN | false | Configurable |
 | enableDebug | EASEY_MDM_API_ENABLE_DEBUG | false | Configurable |
+| perPageLimit | EASEY_MDM_API_PAGINATION_MAX_PER_PAGE | 500 | Configurable |
+| apiHost | EASEY_API_GATEWAY_HOST | api.epa.gov/easey/dev | Configurable |
 
 ## Environment Variables File
 Database credentials are injected into the cloud.gov environments as part of the CI/CD deployment process therefore they do not need to be configured. However, when running locally for local development the following environment variables are required to be configured using a local .env file in the root of the project. **PLEASE DO NOT commit the .env file to source control.**
 
-- EASEY_MDM_API_ENABLE_DEBUG=true
-- EASEY_MDM_API_ENABLE_API_KEY=false
-- EASEY_MDM_API_ENABLE_SECRET_TOKEN=false
+- EASEY_MDM_API_ENABLE_DEBUG=true|false
+- EASEY_MDM_API_ENABLE_API_KEY=true|false
+  - IF ABOVE IS TRUE THEN SET
+    - EASEY_MDM_API_KEY={ask project dev/tech lead}
+- EASEY_MDM_API_ENABLE_SECRET_TOKEN=true|false
+  - IF ABOVE IS TRUE THEN SET
+    - EASEY_MDM_API_SECRET_TOKEN={ask project dev/tech lead}
 
 **Please refer to our [Getting Started](https://github.com/US-EPA-CAMD/devops/blob/master/GETTING-STARTED.md) instructions on how to configure the following environment variables & connect to the database.**
 - EASEY_DB_HOST
@@ -103,7 +106,7 @@ $ yarn start
 
 ## API Endpoints
 Please refer to the Master Data Management API Swagger Documentation for descriptions of the endpoints.<br>
-[Dev Environment](https://api.epa.gov/easey/dev/master-data-mgmt/swagger/) | [Test Environment](https://api.epa.gov/easey/test/master-data-mgmt/swagger/) | [Beta Environment](https://api.epa.gov/easey/beta/master-data-mgmt/swagger/) | [Staging Environment](https://api.epa.gov/easey/staging/master-data-mgmt/swagger/)
+[Dev Environment](https://api.epa.gov/easey/dev/master-data-mgmt/swagger/) | [Test Environment](https://api.epa.gov/easey/test/master-data-mgmt/swagger/) | [Performance Environment](https://api.epa.gov/easey/perf/master-data-mgmt/swagger/) | [Beta Environment](https://api.epa.gov/easey/beta/master-data-mgmt/swagger/) | [Staging Environment](https://api.epa.gov/easey/staging/master-data-mgmt/swagger/)
 
 ## License & Contributing
 This project is licensed under the MIT License. We encourage you to read this project’s [License](LICENSE), [Contributing Guidelines](CONTRIBUTING.md), and [Code of Conduct](CODE-OF-CONDUCT.md).

@@ -7,15 +7,17 @@ import {
 
 require('dotenv').config();
 
-const path = getConfigValue('EASEY_MDM_API_PATH', 'master-data-mgmt');
 const host = getConfigValue('EASEY_MDM_API_HOST', 'localhost');
 const port = getConfigValueNumber('EASEY_MDM_API_PORT', 8050);
+const path = getConfigValue('EASEY_MDM_API_PATH', 'master-data-mgmt');
 
 let uri = `https://${host}/${path}`;
 
 if (host === 'localhost') {
   uri = `http://localhost:${port}/${path}`;
 }
+
+const apiHost = getConfigValue('EASEY_API_GATEWAY_HOST', 'api.epa.gov/easey/dev');
 
 export default registerAs('app', () => ({
   name: 'mdm-api',
@@ -27,17 +29,20 @@ export default registerAs('app', () => ({
     'EASEY_MDM_API_DESCRIPTION',
     '',
   ),
-  apiHost: getConfigValue(
-    'EASEY_API_GATEWAY_HOST', 'api.epa.gov/easey/dev',
-  ),
   env: getConfigValue(
     'EASEY_MDM_API_ENV', 'local-dev',
   ),
-  enableCors: getConfigValueBoolean(
-    'EASEY_MDM_API_ENABLE_CORS', true,
-  ),
   enableApiKey: getConfigValueBoolean(
     'EASEY_MDM_API_ENABLE_API_KEY',
+  ),
+  secretToken: getConfigValue(
+    'EASEY_MDM_API_SECRET_TOKEN',
+  ),
+  enableSecretToken: getConfigValueBoolean(
+    'EASEY_MDM_API_ENABLE_SECRET_TOKEN',
+  ),
+  enableCors: getConfigValueBoolean(
+    'EASEY_MDM_API_ENABLE_CORS', true,
   ),
   enableGlobalValidationPipes: getConfigValueBoolean(
     'EASEY_MDM_API_ENABLE_GLOBAL_VALIDATION_PIPE', true,
@@ -48,14 +53,11 @@ export default registerAs('app', () => ({
   published: getConfigValue(
     'EASEY_MDM_API_PUBLISHED', 'local',
   ),
-  secretToken: getConfigValue(
-    'EASEY_MDM_API_SECRET_TOKEN',
-  ),
-  enableSecretToken: getConfigValueBoolean(
-    'EASEY_MDM_API_ENABLE_SECRET_TOKEN',
-  ),
   // ENABLES DEBUG CONSOLE LOGS
   enableDebug: getConfigValueBoolean(
     'EASEY_MDM_API_ENABLE_DEBUG',
+  ),
+  apiHost: getConfigValue(
+    'EASEY_API_GATEWAY_HOST', 'api.epa.gov/easey/dev',
   ),
 }));
