@@ -1,8 +1,5 @@
-import { LessThan } from 'typeorm';
-import {
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common';
+import { LessThanOrEqual } from 'typeorm';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
@@ -26,7 +23,7 @@ export class ReportingPeriodService {
       const periodAbbreviation = `${currentYear} Q${currentQuarter}`;
 
       const results = await this.repository.find({
-        where: { periodAbbreviation: LessThan(periodAbbreviation) },
+        where: { periodAbbreviation: LessThanOrEqual(periodAbbreviation) },
       });
       return this.map.many(results);
     } catch (e) {
