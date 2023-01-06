@@ -1,20 +1,15 @@
-import {
-  ApiTags,
-  ApiOkResponse,
-  ApiSecurity,
-} from '@nestjs/swagger';
-import { Get, Controller } from '@nestjs/common';
+import { ApiTags, ApiOkResponse, ApiSecurity, ApiQuery } from '@nestjs/swagger';
+import { Get, Controller, Query } from '@nestjs/common';
 
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodService } from './reporting-period.service';
+import { ReportingPeriodParamsDTO } from '../dto/reporting-period.params.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Reporting Periods')
 export class ReportingPeriodController {
-  constructor(
-    private readonly service: ReportingPeriodService
-  ) {}
+  constructor(private readonly service: ReportingPeriodService) {}
 
   @Get()
   @ApiOkResponse({
@@ -22,7 +17,9 @@ export class ReportingPeriodController {
     type: ReportingPeriodDTO,
     description: 'Returns a list of Reporting Periods',
   })
-  getReportingPeriods(): Promise<ReportingPeriodDTO[]> {
-    return this.service.getReportingPeriods();
+  getReportingPeriods(
+    @Query() params: ReportingPeriodParamsDTO,
+  ): Promise<ReportingPeriodDTO[]> {
+    return this.service.getReportingPeriods(params.export);
   }
 }
