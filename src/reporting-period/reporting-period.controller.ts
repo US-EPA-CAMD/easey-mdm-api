@@ -1,4 +1,4 @@
-import { ApiTags, ApiOkResponse, ApiSecurity, ApiQuery } from '@nestjs/swagger';
+import { ApiTags, ApiOkResponse, ApiSecurity } from '@nestjs/swagger';
 import { Get, Controller, Query } from '@nestjs/common';
 
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
