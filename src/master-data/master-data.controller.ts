@@ -25,17 +25,15 @@ export class MasterDataController {
     description: 'Returns a list of valid Master Data code tables available',
   })
   listCodeTables(): Promise<DataSetDTO[]> {
-    console.log('List Master Data');
     return this.service.listDataSets(this.groupCode);
   }
 
-  @Get(':name')
+  @Get(':dataSetCode')
   @ApiOkResponse({
     isArray: true,
     description: 'Returns a list of Master Data codes & descriptions for the name provided',
   })
-  getCodeTable(@Param('name') name: string): Promise<any[]> {
-    console.log('Get Master Data: ', name);
-    return this.service.getDataSet(name, this.groupCode);
+  getCodeTable(@Param('dataSetCode') dataSetCode: string): Promise<any[]> {
+    return this.service.getDataSet(dataSetCode, this.groupCode);
   }
 }

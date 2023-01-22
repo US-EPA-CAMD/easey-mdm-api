@@ -30,17 +30,15 @@ export class RelationshipsController {
     description: 'Returns a list of valid Master Data relationships available',
   })
   listRelationships(): Promise<DataSetDTO[]> {
-    console.log('List Relationships');
     return this.service.listDataSets(this.groupCode);
   }
 
-  @Get(':name')
+  @Get(':dataSetCode')
   @ApiOkResponse({
     isArray: true,
     description: 'Returns relationship data for the name provided',
   })
-  getRelationships(@Param('name') name: string): Promise<any[]> {
-    console.log('Get Relationships: ', name);
-    return this.service.getDataSet(name, this.groupCode);
+  getRelationships(@Param('dataSetCode') dataSetCode: string): Promise<any[]> {
+    return this.service.getDataSet(dataSetCode, this.groupCode);
   }
 }

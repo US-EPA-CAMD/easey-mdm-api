@@ -19,13 +19,11 @@ export class DataSetService {
   ) {}
 
   async listDataSets(groupCode: string): Promise<DataSetDTO[]> {
-    console.log('groupCode: ', groupCode);
     const results = await this.repository.getDataSets(groupCode);
     return this.map.many(results);
   }
 
   async getDataSet(dataSetCode: string, groupCode: string): Promise<any[]> {
-    console.log(`dataSetCode: ${dataSetCode}, groupCode: ${groupCode}`);
     const queryColumns = [];
     const dataSet = await this.repository.getDataSet(dataSetCode);
 
