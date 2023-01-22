@@ -46,7 +46,7 @@ describe('ReportingPeriodController', () => {
       );
 
       expect(
-        await controller.getReportingPeriods()
+        await controller.getReportingPeriods({})
       ).toBe(
         expectedResult,
       );

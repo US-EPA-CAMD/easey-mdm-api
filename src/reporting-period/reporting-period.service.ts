@@ -1,4 +1,4 @@
-import { LessThanOrEqual } from 'typeorm';
+import { LessThan, LessThanOrEqual } from 'typeorm';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
@@ -15,7 +15,7 @@ export class ReportingPeriodService {
     private readonly map: ReportingPeriodMap,
   ) {}
 
-  async getReportingPeriods(): Promise<ReportingPeriodDTO[]> {
+  async getReportingPeriods(isExport?: boolean): Promise<ReportingPeriodDTO[]> {
     try {
       const today = new Date(Date.now());
       const currentYear = today.getFullYear();
@@ -23,7 +23,11 @@ export class ReportingPeriodService {
       const periodAbbreviation = `${currentYear} Q${currentQuarter}`;
 
       const results = await this.repository.find({
-        where: { periodAbbreviation: LessThanOrEqual(periodAbbreviation) },
+        where: {
+          periodAbbreviation: isExport
+            ? LessThan(periodAbbreviation)
+            : LessThanOrEqual(periodAbbreviation),
+        },
       });
       return this.map.many(results);
     } catch (e) {
