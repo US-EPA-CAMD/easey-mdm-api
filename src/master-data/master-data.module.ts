@@ -1,16 +1,19 @@
 import { Module } from '@nestjs/common';
 
+import { MasterDataController } from './master-data.controller';
 import { DataSetService } from '../dataset/dataset.service';
 import { DataSetModule } from '../dataset/dataset.module';
 import { DataColumnMap } from '../maps/datacolumn.map';
 import { DataTableMap } from '../maps/datatable.map';
 import { DataSetMap } from '../maps/dataset.map';
 
-import { RelationshipsController } from './relationships.controller';
-
 @Module({
-  imports: [DataSetModule],
-  controllers: [RelationshipsController],
+  imports: [
+    DataSetModule,
+  ],
+  controllers: [
+    MasterDataController,
+  ],
   providers: [
     DataSetMap,
     DataTableMap,
@@ -19,4 +22,4 @@ import { RelationshipsController } from './relationships.controller';
   ],
   exports: [],
 })
-export class RelationshipsModule {}
+export class MasterDataModule {}

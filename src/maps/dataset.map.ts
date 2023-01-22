@@ -20,7 +20,7 @@ export class DataSetMap extends BaseMap<DataSet, DataSetDTO> {
 
     return {
       dataSetCode: entity.code,
-      templateCode: entity.templateCode,
+      groupCode: entity.groupCode,
       displayName: entity.displayName,
       noResultsMessage: entity.noResultsMessage,
       tables,
