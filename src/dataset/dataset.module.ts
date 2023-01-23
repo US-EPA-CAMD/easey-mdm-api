@@ -20,6 +20,7 @@ import { DataSetMap } from '../maps/dataset.map';
   ],
   exports: [
     TypeOrmModule,
+    DataSetService,
   ],
 })
 export class DataSetModule {}

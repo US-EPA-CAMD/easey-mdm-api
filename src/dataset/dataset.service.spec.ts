@@ -19,23 +19,22 @@ const dataset = new DataSet();
 dataset.code = 'TEST';
 dataset.displayName = 'Test';
 dataset.groupCode = 'TEST';
-dataset.tables = [];
 const dataTable = new DataTable();
 dataTable.dataSetCode = 'TEST';
 dataTable.displayName = 'Test';
 dataTable.sqlStatement = 'SELECT * FROM SCHEMA.TABLE';
-dataTable.columns = [];
 const dataColumn = new DataColumn();
 dataColumn.name = 'column_one';
 dataColumn.alias = 'columnOne';
 dataColumn.displayName = 'Column One';
+dataTable.columns = [];
 dataTable.columns.push(dataColumn);
+dataset.tables = [];
 dataset.tables.push(dataTable);
 
 describe('DataSetService', () => {
   let repository: any;
   let service: DataSetService;
-  let map: DataSetMap;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -51,7 +50,6 @@ describe('DataSetService', () => {
       ],
     }).compile();
 
-    map = module.get(DataSetMap);
     service = module.get(DataSetService);
     repository = module.get(DataSetRepository);
   });

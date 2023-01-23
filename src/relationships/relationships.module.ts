@@ -9,8 +9,12 @@ import { DataSetMap } from '../maps/dataset.map';
 import { RelationshipsController } from './relationships.controller';
 
 @Module({
-  imports: [DataSetModule],
-  controllers: [RelationshipsController],
+  imports: [
+    DataSetModule
+  ],
+  controllers: [
+    RelationshipsController
+  ],
   providers: [
     DataSetMap,
     DataTableMap,
