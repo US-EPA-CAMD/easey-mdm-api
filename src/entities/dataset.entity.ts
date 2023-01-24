@@ -17,9 +17,9 @@ export class DataSet extends BaseEntity {
   code: string;
 
   @Column({
-    name: 'template_cd',
+    name: 'group_cd',
   })
-  templateCode: string;
+  groupCode: string;
 
   @Column({
     name: 'display_name',

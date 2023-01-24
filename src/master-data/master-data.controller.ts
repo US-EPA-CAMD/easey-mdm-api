@@ -1,44 +1,39 @@
 import {
-  Get,
-  Param,
-  Controller,
-} from '@nestjs/common';
-
-import {
+  ApiTags,
   ApiOkResponse,
   ApiSecurity,
-  ApiTags,
 } from '@nestjs/swagger';
+import { Get, Controller, Param } from '@nestjs/common';
 
 import { DataSetDTO } from '../dto/dataset.dto';
 import { DataSetService } from '../dataset/dataset.service';
 
 @Controller()
 @ApiSecurity('APIKey')
-@ApiTags('Relationships')
-export class RelationshipsController {
-  private groupCode = 'MDMREL';
+@ApiTags('Codes & Descriptions')
+export class MasterDataController {
+  private groupCode = 'MDM';
 
   constructor(
-    private readonly service: DataSetService,
+    private readonly service: DataSetService
   ) {}
 
   @Get()
   @ApiOkResponse({
     isArray: true,
     type: DataSetDTO,
-    description: 'Returns a list of valid Master Data relationships available',
+    description: 'Returns a list of valid Master Data code tables available',
   })
-  listRelationships(): Promise<DataSetDTO[]> {
+  listCodeTables(): Promise<DataSetDTO[]> {
     return this.service.listDataSets(this.groupCode);
   }
 
   @Get(':dataSetCode')
   @ApiOkResponse({
     isArray: true,
-    description: 'Returns relationship data for the name provided',
+    description: 'Returns a list of Master Data codes & descriptions for the name provided',
   })
-  getRelationships(@Param('dataSetCode') dataSetCode: string): Promise<any[]> {
+  getCodeTable(@Param('dataSetCode') dataSetCode: string): Promise<any[]> {
     return this.service.getDataSet(dataSetCode, this.groupCode);
   }
 }

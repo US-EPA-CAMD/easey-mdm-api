@@ -1,32 +1,32 @@
 import { Test } from '@nestjs/testing';
 
-import { CodeTableService } from './code-table.service';
-import { CodeTableController } from './code-table.controller';
-import { CodeTableRepository } from './code-table.repository';
+import { DataSetService } from '../dataset/dataset.service';
+import { MasterDataController } from './master-data.controller';
+import { DataSetRepository } from '../dataset/dataset.repository';
 
 import { DataColumnMap } from '../maps/datacolumn.map';
 import { DataTableMap } from '../maps/datatable.map';
 import { DataSetMap } from '../maps/dataset.map';
 import { DataSetDTO } from '../dto/dataset.dto';
 
-describe('CodeTableController', () => {
-  let service: CodeTableService;
-  let controller: CodeTableController;
+describe('MasterDataController', () => {
+  let service: DataSetService;
+  let controller: MasterDataController;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      controllers: [CodeTableController],
+      controllers: [MasterDataController],
       providers: [
         DataSetMap,
         DataTableMap,
         DataColumnMap,
-        CodeTableService,
-        CodeTableRepository
+        DataSetService,
+        DataSetRepository
       ],
     }).compile();
 
-    service = module.get(CodeTableService);
-    controller = module.get(CodeTableController);
+    service = module.get(DataSetService);
+    controller = module.get(MasterDataController);
   });
 
   afterEach(() => {
@@ -40,12 +40,12 @@ describe('CodeTableController', () => {
 
   describe('listCodeTables', () => {
     
-    it('should return a list of available Master data datasets', async () => {
+    it('should return a list of valid Master Data code tables available', async () => {
       const expectedResult: DataSetDTO[] = [];
 
       jest.spyOn(
         service,
-        'listCodeTables'
+        'listDataSets'
       ).mockResolvedValue(
         expectedResult
       );
@@ -61,12 +61,12 @@ describe('CodeTableController', () => {
 
   describe('getCodeTable', () => {
     
-    it('should return a list of codes based on the path', async () => {
+    it('should return a list of Master Data codes & descriptions for the name provided', async () => {
       const expectedResult: any[] = [];
 
       jest.spyOn(
         service,
-        'getCodeTable'
+        'getDataSet'
       ).mockResolvedValue(
         expectedResult
       );
@@ -77,6 +77,5 @@ describe('CodeTableController', () => {
         expectedResult
       );
     });
-
   });
 });
