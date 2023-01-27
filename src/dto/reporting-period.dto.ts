@@ -1,48 +1,68 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
 
 export class ReportingPeriodDTO {
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.id,
+      DataDictionary.properties.id?.metadata.reportingPeriod,
+    )
+  )
   id: number;
 
-  @ApiProperty({
-    description: propertyMetadata.year.description,
-    example: propertyMetadata.year.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.calendarYear,
+      DataDictionary.properties.calendarYear?.metadata.reportingPeriod,
+    )
+  )
   calendarYear: number;
 
-  @ApiProperty({
-    description: propertyMetadata.quarter.description,
-    example: propertyMetadata.quarter.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.quarter,
+      DataDictionary.properties.quarter?.metadata.reportingPeriod,
+    )
+  )
   quarter: number;
 
-  @ApiProperty({
-    description: propertyMetadata.beginDate.description,
-    example: propertyMetadata.beginDate.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.beginDate,
+      DataDictionary.properties.beginDate?.metadata.reportingPeriod,
+    )
+  )
   beginDate: Date;
 
-  @ApiProperty({
-    description: propertyMetadata.endDate.description,
-    example: propertyMetadata.endDate.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.endDate,
+      DataDictionary.properties.endDate?.metadata.reportingPeriod,
+    )
+  )
   endDate: Date;
 
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.periodDescription,
+      DataDictionary.properties.periodDescription?.metadata.reportingPeriod,
+    )
+  )
   periodDescription: string;
 
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.periodAbbreviation,
+      DataDictionary.properties.periodAbbreviation?.metadata.reportingPeriod,
+    )
+  )
   periodAbbreviation: string;
 
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.archiveInd,
+      DataDictionary.properties.archiveInd?.metadata.reportingPeriod,
+    )
+  )
   archiveInd: number;
 }

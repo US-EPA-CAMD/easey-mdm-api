@@ -1,28 +1,36 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
 
 export class AccountTypeDTO {
-  @ApiProperty({
-    description: propertyMetadata.accountTypeCode.description,
-    example: propertyMetadata.accountTypeCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.accountTypeCode,
+      DataDictionary.properties.accountTypeCode?.metadata.accountType,
+    )
+  )
   accountTypeCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.accountTypeDescription.description,
-    example: propertyMetadata.accountTypeDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.accountTypeDescription,
+      DataDictionary.properties.accountTypeDescription?.metadata.accountType,
+    )
+  )
   accountTypeDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.accountTypeGroupCode.description,
-    example: propertyMetadata.accountTypeGroupCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.accountTypeGroupCode,
+      DataDictionary.properties.accountTypeGroupCode?.metadata.accountType,
+    )
+  )
   accountTypeGroupCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.accountTypeGroupDescription.description,
-    example: propertyMetadata.accountTypeGroupDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.accountTypeGroupDescription,
+      DataDictionary.properties.accountTypeGroupDescription?.metadata.accountType,
+    )
+  )
   accountTypeGroupDescription: string;
 }

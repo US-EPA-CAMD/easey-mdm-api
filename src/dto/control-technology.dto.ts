@@ -1,28 +1,36 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
 
 export class ControlTechnologyDTO {
-  @ApiProperty({
-    description: propertyMetadata.controlCode.description,
-    example: propertyMetadata.controlCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.controlCode,
+      DataDictionary.properties.controlCode?.metadata.controlTechnology,
+    )
+  )
   controlCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.controlDescription.description,
-    example: propertyMetadata.controlDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.controlDescription,
+      DataDictionary.properties.controlDescription?.metadata.controlTechnology,
+    )
+  )
   controlDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.controlEquipParamCode.description,
-    example: propertyMetadata.controlEquipParamCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.controlEquipParamCode,
+      DataDictionary.properties.controlEquipParamCode?.metadata.controlTechnology,
+    )
+  )
   controlEquipParamCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.controlEquipParamDescription.description,
-    example: propertyMetadata.controlEquipParamDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.controlEquipParamDescription,
+      DataDictionary.properties.controlEquipParamDescription?.metadata.controlTechnology,
+    )
+  )
   controlEquipParamDescription: string;
 }

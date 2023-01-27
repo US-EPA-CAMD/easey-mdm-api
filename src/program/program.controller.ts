@@ -2,6 +2,7 @@ import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
+  ApiOperation,
 } from '@nestjs/swagger';
 import { Get, Controller, Query } from '@nestjs/common';
 
@@ -19,7 +20,10 @@ export class ProgramController {
   @ApiOkResponse({
     isArray: true,
     type: ProgramDTO,
-    description: 'Returns a list of Program Codes',
+    description: 'Data retrieved successfully',
+  })
+  @ApiOperation({
+    description: "Returns a list of Program codes & descriptions."
   })
   getProgramCodes(@Query() params: ProgramParamsDTO): Promise<ProgramDTO[]> {
     return this.service.getProgramCodes(params);

@@ -1,34 +1,44 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
 
 export class UnitTypeDTO {
-  @ApiProperty({
-    description: propertyMetadata.unitTypeCode.description,
-    example: propertyMetadata.unitTypeCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.unitTypeCode,
+      DataDictionary.properties.unitTypeCode?.metadata.unitType,
+    )
+  )
   unitTypeCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.unitTypeDescription.description,
-    example: propertyMetadata.unitTypeDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.unitTypeDescription,
+      DataDictionary.properties.unitTypeDescription?.metadata.unitType,
+    )
+  )
   unitTypeDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.unitTypeGroupCode.description,
-    example: propertyMetadata.unitTypeGroupCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.unitTypeGroupCode,
+      DataDictionary.properties.unitTypeGroupCode?.metadata.unitType,
+    )
+  )
   unitTypeGroupCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.unitTypeGroupDescription.description,
-    example: propertyMetadata.unitTypeGroupDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.unitTypeGroupDescription,
+      DataDictionary.properties.unitTypeGroupDescription?.metadata.unitType,
+    )
+  )
   unitTypeGroupDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.sortOrder.description,
-    example: propertyMetadata.sortOrder.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      DataDictionary.properties.sortOrder,
+      DataDictionary.properties.sortOrder?.metadata.unitType,
+    )
+  )
   sortOrder: string;  
 }

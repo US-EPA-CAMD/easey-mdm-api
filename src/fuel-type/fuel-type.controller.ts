@@ -1,5 +1,6 @@
 import {
   ApiOkResponse,
+  ApiOperation,
   ApiSecurity,
   ApiTags,
 } from '@nestjs/swagger';
@@ -20,7 +21,10 @@ export class FuelTypeController {
   @ApiOkResponse({
     isArray: true,
     type: FuelTypeDTO,
-    description: 'Returns a list of Fuel Type Codes',
+    description: 'Data retrieved successfully',
+  })
+  @ApiOperation({
+    description: "Returns a list of Fuel Type codes & descriptions."
   })
   getFuelTypeCodes(): Promise<FuelTypeDTO[]> {
     return this.service.getFuelTypeCodes();

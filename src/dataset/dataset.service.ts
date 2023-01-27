@@ -29,10 +29,10 @@ export class DataSetService {
 
     if (dataSet === null || dataSet === undefined) {
       if (groupCode === 'MDMREL') {
-        throw new LoggingException(`/relationships/${dataSetCode} is not a valid Master Data relationships path. Please refer to the list of available relationships using the /relationshsips/list method.`, HttpStatus.BAD_REQUEST);
+        throw new LoggingException(`/relationships/${dataSetCode} is not a valid Master Data relationships path. Please refer to the list of available relationships using the /master-data-mgmt/relationships/list method.`, HttpStatus.BAD_REQUEST);
       }
 
-      throw new LoggingException(`/${dataSetCode} is not a valid Master Data path. Please refer to the list of available paths using the /list method.`, HttpStatus.BAD_REQUEST);
+      throw new LoggingException(`/${dataSetCode} is not a valid Master Data path. Please refer to the list of available paths using the /master-data-mgmt/list method.`, HttpStatus.BAD_REQUEST);
     }
 
     queryColumns.push(
