@@ -1,76 +1,64 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class ProgramDTO {
-  @ApiProperty({
-    description: propertyMetadata.programCode.description,
-    example: propertyMetadata.programCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.CODE,
+      OverrideKeys.PROGRAM,
+  ))
   programCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.programDescription.description,
-    example: propertyMetadata.programDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.PROGRAM,
+  ))
   programDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.compParameterCode.description,
-    example: propertyMetadata.compParameterCode.example,
-  })
+  @ApiProperty()
   compParameter: string;
 
-  @ApiProperty({
-    description: propertyMetadata.programGroupCode.description,
-    example: propertyMetadata.programGroupCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.GROUP_CODE,
+      OverrideKeys.PROGRAM,
+  ))
   programGroupCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.programGroupDescription.description,
-    example: propertyMetadata.programGroupDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.GROUP_DESCRIPTION,
+      OverrideKeys.PROGRAM,
+  ))
   programGroupDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.ozoneIndicator.description,
-    example: propertyMetadata.ozoneIndicator.example,
-  })
+  @ApiProperty()
   ozoneIndicator: boolean;
 
-  @ApiProperty({
-    description: propertyMetadata.annualIndicator.description,
-    example: propertyMetadata.annualIndicator.example,
-  })
+  @ApiProperty()
   annualIndicator: boolean;
 
-  @ApiProperty({
-    description: propertyMetadata.emissionsUIFilter.description,
-    example: propertyMetadata.emissionsUIFilter.example,
-  })
+  @ApiProperty()
   emissionsUIFilter: boolean;
 
-  @ApiProperty({
-    description: propertyMetadata.allowanceUIFilter.description,
-    example: propertyMetadata.allowanceUIFilter.example,
-  })
+  @ApiProperty()
   allowanceUIFilter: boolean;
 
-  @ApiProperty({
-    description: propertyMetadata.complianceUIFilter.description,
-    example: propertyMetadata.complianceUIFilter.example,
-  })
+  @ApiProperty()
   complianceUIFilter: boolean;
 
-  @ApiProperty({
-    description: propertyMetadata.retiredIndicator.description,
-    example: propertyMetadata.retiredIndicator.example,
-  })
+  @ApiProperty()
   retiredIndicator: boolean;
 
-  @ApiProperty({
-    description: propertyMetadata.tradingEndDate.description,
-    example: propertyMetadata.tradingEndDate.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.END_DATE,
+      OverrideKeys.PROGRAM,
+  ))
   tradingEndDate: string;
 }

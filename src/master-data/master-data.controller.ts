@@ -1,9 +1,22 @@
 import {
+  Get,
+  Controller,
+  Param
+} from '@nestjs/common';
+
+import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
+  ApiOperation,
+  ApiParam,
 } from '@nestjs/swagger';
-import { Get, Controller, Param } from '@nestjs/common';
+
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 import { DataSetDTO } from '../dto/dataset.dto';
 import { DataSetService } from '../dataset/dataset.service';
@@ -18,11 +31,14 @@ export class MasterDataController {
     private readonly service: DataSetService
   ) {}
 
-  @Get()
+  @Get('list')
   @ApiOkResponse({
     isArray: true,
     type: DataSetDTO,
-    description: 'Returns a list of valid Master Data code tables available',
+    description: 'Data retrieved successfully',
+  })
+  @ApiOperation({
+    description: "Returns a list of Master Data code tables available."
   })
   listCodeTables(): Promise<DataSetDTO[]> {
     return this.service.listDataSets(this.groupCode);
@@ -31,9 +47,21 @@ export class MasterDataController {
   @Get(':dataSetCode')
   @ApiOkResponse({
     isArray: true,
-    description: 'Returns a list of Master Data codes & descriptions for the name provided',
+    description: 'Data retrieved successfully',
   })
-  getCodeTable(@Param('dataSetCode') dataSetCode: string): Promise<any[]> {
+  @ApiOperation({
+    description: "Returns a list of Master Data codes & descriptions for the dataset provided."
+  })
+  @ApiParam({
+    name: 'dataSetCode',
+    ...DataDictionary.getMetadata(
+      PropertyKeys.CODE,
+      OverrideKeys.MASTER_DATA,
+      true,
+  )})
+  getCodeTable(
+    @Param('dataSetCode') dataSetCode: string
+  ): Promise<any[]> {
     return this.service.getDataSet(dataSetCode, this.groupCode);
   }
 }

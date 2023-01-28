@@ -3,6 +3,7 @@ import {
   ApiOkResponse,
   ApiQuery,
   ApiSecurity,
+  ApiOperation,
 } from '@nestjs/swagger';
 import { Get, Controller, Query } from '@nestjs/common';
 
@@ -22,13 +23,16 @@ export class AccountTypeController {
   @ApiOkResponse({
     isArray: true,
     type: AccountTypeDTO,
-    description: 'Returns a list of Account Type Codes',
+    description: 'Data retrieved successfully',
   })
   @ApiQuery({
     style: 'pipeDelimited',
     name: 'exclude',
     required: false,
     explode: false,
+  })
+  @ApiOperation({
+    description: "Returns a list of Account Type codes & descriptions."
   })
   getAccountTypeCodes(
     @Query() params: AccountTypeParamsDTO,

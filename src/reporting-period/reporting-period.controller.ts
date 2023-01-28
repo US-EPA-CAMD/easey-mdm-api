@@ -1,5 +1,15 @@
-import { ApiTags, ApiOkResponse, ApiSecurity } from '@nestjs/swagger';
-import { Get, Controller, Query } from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOkResponse,
+  ApiSecurity,
+  ApiOperation,
+} from '@nestjs/swagger';
+
+import {
+  Get,
+  Controller,
+  Query,
+} from '@nestjs/common';
 
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodService } from './reporting-period.service';
@@ -15,7 +25,10 @@ export class ReportingPeriodController {
   @ApiOkResponse({
     isArray: true,
     type: ReportingPeriodDTO,
-    description: 'Returns a list of Reporting Periods',
+    description: 'Data retrieved successfully',
+  })
+  @ApiOperation({
+    description: "Returns a list of Reporting Periods."
   })
   getReportingPeriods(
     @Query() params: ReportingPeriodParamsDTO,

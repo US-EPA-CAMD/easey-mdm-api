@@ -2,6 +2,7 @@ import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
+  ApiOperation,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
@@ -20,7 +21,10 @@ export class ControlTechnologyController {
   @ApiOkResponse({
     isArray: true,
     type: ControlTechnologyDTO,
-    description: 'Returns list of Control codes',
+    description: 'Data retrieved successfully',
+  })
+  @ApiOperation({
+    description: "Returns list of Control codes & descriptions."
   })
   getControlTechnologies(): Promise<ControlTechnologyDTO[]> {
     return this.service.getControlTechnologies();

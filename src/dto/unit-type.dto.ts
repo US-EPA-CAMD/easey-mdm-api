@@ -1,34 +1,43 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class UnitTypeDTO {
-  @ApiProperty({
-    description: propertyMetadata.unitTypeCode.description,
-    example: propertyMetadata.unitTypeCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.CODE,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.unitTypeDescription.description,
-    example: propertyMetadata.unitTypeDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.unitTypeGroupCode.description,
-    example: propertyMetadata.unitTypeGroupCode.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.GROUP_CODE,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeGroupCode: string;
 
-  @ApiProperty({
-    description: propertyMetadata.unitTypeGroupDescription.description,
-    example: propertyMetadata.unitTypeGroupDescription.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.GROUP_DESCRIPTION,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeGroupDescription: string;
 
-  @ApiProperty({
-    description: propertyMetadata.sortOrder.description,
-    example: propertyMetadata.sortOrder.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.ORDER,
+      OverrideKeys.UNIT_TYPE,
+  ))
   sortOrder: string;  
 }
