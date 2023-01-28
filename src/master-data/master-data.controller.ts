@@ -10,6 +10,7 @@ import {
   ApiSecurity,
   ApiOperation,
   ApiParam,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 
 import {
@@ -24,6 +25,7 @@ import { DataSetService } from '../dataset/dataset.service';
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Codes & Descriptions')
+@ApiExtraModels(DataSetDTO)
 export class MasterDataController {
   private groupCode = 'MDM';
 
@@ -34,17 +36,16 @@ export class MasterDataController {
   @Get('list')
   @ApiOkResponse({
     isArray: true,
-    type: DataSetDTO,
     description: 'Data retrieved successfully',
   })
   @ApiOperation({
     description: "Returns a list of Master Data code tables available."
   })
-  listCodeTables(): Promise<DataSetDTO[]> {
-    return this.service.listDataSets(this.groupCode);
+  listCodeTables() {
+    return this.service.listDataSetsByGroup(this.groupCode);
   }
 
-  @Get(':dataSetCode')
+  @Get(':code')
   @ApiOkResponse({
     isArray: true,
     description: 'Data retrieved successfully',
@@ -53,14 +54,14 @@ export class MasterDataController {
     description: "Returns a list of Master Data codes & descriptions for the dataset provided."
   })
   @ApiParam({
-    name: 'dataSetCode',
+    name: 'code',
     ...DataDictionary.getMetadata(
       PropertyKeys.CODE,
       OverrideKeys.MASTER_DATA,
       true,
   )})
   getCodeTable(
-    @Param('dataSetCode') dataSetCode: string
+    @Param('code') dataSetCode: string
   ): Promise<any[]> {
     return this.service.getDataSet(dataSetCode, this.groupCode);
   }

@@ -18,15 +18,6 @@ export class DataSetRepository extends Repository<DataSet> {
     .getOne();
   }
 
-  async getDataSets(groupCode: string): Promise<DataSet[]> {
-    return this.createQueryBuilder('ds')
-    .innerJoinAndSelect('ds.tables', 'tbl')
-    .innerJoinAndSelect('tbl.columns', 'c')
-    .where('ds.groupCode = :groupCode', { groupCode })
-    .orderBy('tbl.tableOrder, c.columnOrder')
-    .getMany();
-  }
-
   async getDataSetResults(query: string): Promise<any[]> {
     return this.query(query);
   }
