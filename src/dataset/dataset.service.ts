@@ -5,8 +5,6 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
-import { DataSetDTO } from '../dto/dataset.dto';
-import { DataSetMap } from '../maps/dataset.map';
 import { DataSetRepository } from './dataset.repository';
 
 @Injectable()
@@ -15,12 +13,19 @@ export class DataSetService {
   constructor(
     @InjectRepository(DataSetRepository)
     private readonly repository: DataSetRepository,
-    private readonly map: DataSetMap,
   ) {}
 
-  async listDataSets(groupCode: string): Promise<DataSetDTO[]> {
-    const results = await this.repository.getDataSets(groupCode);
-    return this.map.many(results);
+  async listDataSetsByGroup(groupCode: string) {
+    const results = await this.repository.find({
+      where: { groupCode },
+    });
+
+    return results.map(e => {
+      return {
+        code: e.code,
+        name: e.displayName,
+      };
+    });
   }
 
   async getDataSet(dataSetCode: string, groupCode: string): Promise<any[]> {
