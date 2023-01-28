@@ -1,45 +1,41 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
+
 import { DataTableDTO } from './datatable.dto';
 
 export class DataSetDTO {
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.dataSetCode,
-      DataDictionary.properties.dataSetCode?.metadata.dataSet,
-    )
-  )
+      PropertyKeys.CODE,
+      OverrideKeys.DATASET,
+  ))
   dataSetCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.groupCode,
-      DataDictionary.properties.groupCode?.metadata.dataSet,
-    )
-  )
+      PropertyKeys.GROUP_CODE,
+      OverrideKeys.DATASET,
+  ))
   groupCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.displayName,
-      DataDictionary.properties.displayName?.metadata.dataSet,
-    )
-  )
+      PropertyKeys.DISPLAY_NAME,
+      OverrideKeys.DATASET,
+  ))
   displayName: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.noResultsMessage,
-      DataDictionary.properties.noResultsMessage?.metadata.dataSet,
-    )
-  )
+      PropertyKeys.NO_RESULT_MSG,
+      OverrideKeys.DATASET,
+  ))
   noResultsMessage: string;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.tables,
-      DataDictionary.properties.tables?.metadata.dataSet,
-    )
-  )
+  @ApiProperty()
   tables: DataTableDTO[];
 }

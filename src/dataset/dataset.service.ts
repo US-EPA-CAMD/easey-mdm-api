@@ -25,7 +25,7 @@ export class DataSetService {
 
   async getDataSet(dataSetCode: string, groupCode: string): Promise<any[]> {
     const queryColumns = [];
-    const dataSet = await this.repository.getDataSet(dataSetCode);
+    const dataSet = await this.repository.getDataSet(dataSetCode, groupCode);
 
     if (dataSet === null || dataSet === undefined) {
       if (groupCode === 'MDMREL') {

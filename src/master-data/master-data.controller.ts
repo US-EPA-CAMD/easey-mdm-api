@@ -1,14 +1,25 @@
 import {
+  Get,
+  Controller,
+  Param
+} from '@nestjs/common';
+
+import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
   ApiOperation,
   ApiParam,
 } from '@nestjs/swagger';
-import { Get, Controller, Param } from '@nestjs/common';
+
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
+
 import { DataSetDTO } from '../dto/dataset.dto';
 import { DataSetService } from '../dataset/dataset.service';
-import { DataDictionary } from '@us-epa-camd/easey-common/data-dictionary';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -44,11 +55,13 @@ export class MasterDataController {
   @ApiParam({
     name: 'dataSetCode',
     ...DataDictionary.getMetadata(
-      DataDictionary.properties.dataSetCode,
-      DataDictionary.properties.dataSetCode?.metadata.masterData,      
-    )
-  })
-  getCodeTable(@Param('dataSetCode') dataSetCode: string): Promise<any[]> {
+      PropertyKeys.CODE,
+      OverrideKeys.MASTER_DATA,
+      true,
+  )})
+  getCodeTable(
+    @Param('dataSetCode') dataSetCode: string
+  ): Promise<any[]> {
     return this.service.getDataSet(dataSetCode, this.groupCode);
   }
 }

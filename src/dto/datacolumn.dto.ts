@@ -1,36 +1,36 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class DataColumnDTO {
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.columnOrder,
-      DataDictionary.properties.columnOrder?.metadata.dataColumn,
-    )
-  )
+      PropertyKeys.ORDER,
+      OverrideKeys.DATACOLUMN,
+  ))
   columnOrder: number;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.name,
-      DataDictionary.properties.name?.metadata.dataColumn,
-    )
-  )
+      PropertyKeys.NAME,
+      OverrideKeys.DATACOLUMN,
+  ))
   name: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.alias,
-      DataDictionary.properties.alias?.metadata.dataColumn,
-    )
-  )
+      PropertyKeys.ALIAS,
+      OverrideKeys.DATACOLUMN,
+  ))
   alias: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.displayName,
-      DataDictionary.properties.displayName?.metadata.dataColumn,
-    )
-  )
+      PropertyKeys.DISPLAY_NAME,
+      OverrideKeys.DATACOLUMN,
+  ))
   displayName: string;
 }

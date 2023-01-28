@@ -1,36 +1,36 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class FuelTypeDTO {
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.fuelTypeCode,
-      DataDictionary.properties.fuelTypeCode?.metadata.fuelType,
-    )
-  )
+      PropertyKeys.CODE,
+      OverrideKeys.FUEL_TYPE,
+  ))
   fuelTypeCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.fuelTypeDescription,
-      DataDictionary.properties.fuelTypeDescription?.metadata.fuelType,
-    )
-  )
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.FUEL_TYPE,
+  ))
   fuelTypeDescription: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.fuelGroupCode,
-      DataDictionary.properties.fuelGroupCode?.metadata.fuelType,
-    )
-  )
+      PropertyKeys.GROUP_CODE,
+      OverrideKeys.FUEL_TYPE,
+  ))
   fuelGroupCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.fuelGroupDescription,
-      DataDictionary.properties.fuelGroupDescription?.metadata.fuelType,
-    )
-  )
+      PropertyKeys.GROUP_DESCRIPTION,
+      OverrideKeys.FUEL_TYPE,
+  ))
   fuelGroupDescription: string;
 }

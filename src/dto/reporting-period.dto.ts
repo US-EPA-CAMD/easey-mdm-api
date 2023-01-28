@@ -1,68 +1,60 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class ReportingPeriodDTO {
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.id,
-      DataDictionary.properties.id?.metadata.reportingPeriod,
-    )
-  )
+      PropertyKeys.ID,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   id: number;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.calendarYear,
-      DataDictionary.properties.calendarYear?.metadata.reportingPeriod,
-    )
-  )
+      PropertyKeys.YEAR,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   calendarYear: number;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.quarter,
-      DataDictionary.properties.quarter?.metadata.reportingPeriod,
-    )
-  )
+      PropertyKeys.QUARTER,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   quarter: number;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.beginDate,
-      DataDictionary.properties.beginDate?.metadata.reportingPeriod,
-    )
-  )
+      PropertyKeys.BEGIN_DATE,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   beginDate: Date;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.endDate,
-      DataDictionary.properties.endDate?.metadata.reportingPeriod,
-    )
-  )
+      PropertyKeys.END_DATE,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   endDate: Date;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.periodDescription,
-      DataDictionary.properties.periodDescription?.metadata.reportingPeriod,
-    )
-  )
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   periodDescription: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.periodAbbreviation,
-      DataDictionary.properties.periodAbbreviation?.metadata.reportingPeriod,
-    )
-  )
+      PropertyKeys.ABBREVIATION,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   periodAbbreviation: string;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.archiveInd,
-      DataDictionary.properties.archiveInd?.metadata.reportingPeriod,
-    )
-  )
+  @ApiProperty()
   archiveInd: number;
 }

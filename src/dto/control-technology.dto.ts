@@ -1,36 +1,36 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class ControlTechnologyDTO {
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.controlCode,
-      DataDictionary.properties.controlCode?.metadata.controlTechnology,
-    )
-  )
+      PropertyKeys.CODE,
+      OverrideKeys.CONTROL_TECH,
+  ))
   controlCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.controlDescription,
-      DataDictionary.properties.controlDescription?.metadata.controlTechnology,
-    )
-  )
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.CONTROL_TECH,
+  ))
   controlDescription: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.controlEquipParamCode,
-      DataDictionary.properties.controlEquipParamCode?.metadata.controlTechnology,
-    )
-  )
+      PropertyKeys.CODE,
+      OverrideKeys.CE_PARAM,
+  ))
   controlEquipParamCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.controlEquipParamDescription,
-      DataDictionary.properties.controlEquipParamDescription?.metadata.controlTechnology,
-    )
-  )
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.CE_PARAM,
+  ))
   controlEquipParamDescription: string;
 }

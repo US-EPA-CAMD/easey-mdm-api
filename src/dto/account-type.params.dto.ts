@@ -1,8 +1,12 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Transform } from 'class-transformer';
 import { IsOptional } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
 import { AccountTypeCode } from '@us-epa-camd/easey-common/enums';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class AccountTypeParamsDTO {
   @IsOptional()
@@ -10,9 +14,9 @@ export class AccountTypeParamsDTO {
   @ApiProperty({
     enum: AccountTypeCode,
     ...DataDictionary.getMetadata(
-      DataDictionary.properties.exclude,
-      DataDictionary.properties.exclude?.metadata.accountType,
-    ),
-  })
+      PropertyKeys.EXCLUDE,
+      OverrideKeys.ACCOUNT_TYPE,
+      true,
+  )})
   exclude?: AccountTypeCode[];
 }

@@ -1,100 +1,64 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class ProgramDTO {
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.programCode,
-      DataDictionary.properties.programCode?.metadata.program,
-    )
-  )
+      PropertyKeys.CODE,
+      OverrideKeys.PROGRAM,
+  ))
   programCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.programDescription,
-      DataDictionary.properties.programDescription?.metadata.program,
-    )
-  )
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.PROGRAM,
+  ))
   programDescription: string;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.compParameter,
-      DataDictionary.properties.compParameter?.metadata.program,
-    )
-  )
+  @ApiProperty()
   compParameter: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.programGroupCode,
-      DataDictionary.properties.programGroupCode?.metadata.program,
-    )
-  )
+      PropertyKeys.GROUP_CODE,
+      OverrideKeys.PROGRAM,
+  ))
   programGroupCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.programGroupDescription,
-      DataDictionary.properties.programGroupDescription?.metadata.program,
-    )
-  )
+      PropertyKeys.GROUP_DESCRIPTION,
+      OverrideKeys.PROGRAM,
+  ))
   programGroupDescription: string;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.ozoneIndicator,
-      DataDictionary.properties.ozoneIndicator?.metadata.program,
-    )
-  )
+  @ApiProperty()
   ozoneIndicator: boolean;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.annualIndicator,
-      DataDictionary.properties.annualIndicator?.metadata.program,
-    )
-  )
+  @ApiProperty()
   annualIndicator: boolean;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.emissionsUIFilter,
-      DataDictionary.properties.emissionsUIFilter?.metadata.program,
-    )
-  )
+  @ApiProperty()
   emissionsUIFilter: boolean;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.allowanceUIFilter,
-      DataDictionary.properties.allowanceUIFilter?.metadata.program,
-    )
-  )
+  @ApiProperty()
   allowanceUIFilter: boolean;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.complianceUIFilter,
-      DataDictionary.properties.complianceUIFilter?.metadata.program,
-    )
-  )
+  @ApiProperty()
   complianceUIFilter: boolean;
 
-  @ApiProperty(
-    DataDictionary.getMetadata(
-      DataDictionary.properties.retiredIndicator,
-      DataDictionary.properties.retiredIndicator?.metadata.program,
-    )
-  )
+  @ApiProperty()
   retiredIndicator: boolean;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.tradingEndDate,
-      DataDictionary.properties.tradingEndDate?.metadata.program,
-    )
-  )
+      PropertyKeys.END_DATE,
+      OverrideKeys.PROGRAM,
+  ))
   tradingEndDate: string;
 }

@@ -1,44 +1,43 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { DataDictionary  } from '@us-epa-camd/easey-common/data-dictionary';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class UnitTypeDTO {
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.unitTypeCode,
-      DataDictionary.properties.unitTypeCode?.metadata.unitType,
-    )
-  )
+      PropertyKeys.CODE,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.unitTypeDescription,
-      DataDictionary.properties.unitTypeDescription?.metadata.unitType,
-    )
-  )
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeDescription: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.unitTypeGroupCode,
-      DataDictionary.properties.unitTypeGroupCode?.metadata.unitType,
-    )
-  )
+      PropertyKeys.GROUP_CODE,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeGroupCode: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.unitTypeGroupDescription,
-      DataDictionary.properties.unitTypeGroupDescription?.metadata.unitType,
-    )
-  )
+      PropertyKeys.GROUP_DESCRIPTION,
+      OverrideKeys.UNIT_TYPE,
+  ))
   unitTypeGroupDescription: string;
 
   @ApiProperty(
     DataDictionary.getMetadata(
-      DataDictionary.properties.sortOrder,
-      DataDictionary.properties.sortOrder?.metadata.unitType,
-    )
-  )
+      PropertyKeys.ORDER,
+      OverrideKeys.UNIT_TYPE,
+  ))
   sortOrder: string;  
 }

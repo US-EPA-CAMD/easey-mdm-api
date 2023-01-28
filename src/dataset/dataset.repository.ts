@@ -5,11 +5,15 @@ import { DataSet } from '../entities/dataset.entity';
 @EntityRepository(DataSet)
 export class DataSetRepository extends Repository<DataSet> {
   
-  async getDataSet(dataSetCode: string): Promise<DataSet> {
+  async getDataSet(
+    dataSetCode: string,
+    groupCode: string
+  ): Promise<DataSet> {
     return this.createQueryBuilder('ds')
     .innerJoinAndSelect('ds.tables', 'tbl')
     .innerJoinAndSelect('tbl.columns', 'c')
     .where('ds.code = :dataSetCode', { dataSetCode })
+    .andWhere('ds.groupCode = :groupCode', { groupCode })
     .orderBy('tbl.tableOrder, c.columnOrder')
     .getOne();
   }
