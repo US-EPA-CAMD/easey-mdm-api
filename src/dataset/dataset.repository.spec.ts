@@ -1,25 +1,25 @@
 import { Test } from '@nestjs/testing';
 import { SelectQueryBuilder } from 'typeorm';
 
-import { CodeTableRepository } from './code-table.repository';
+import { DataSetRepository } from './dataset.repository';
 
 const mockQueryBuilder = () => ({
   innerJoinAndSelect: jest.fn(),
   where: jest.fn(),
   andWhere: jest.fn(),
   orderBy: jest.fn(),
-  getOne: jest.fn(),
   getMany: jest.fn(),
+  getOne: jest.fn(),
 });
 
-describe('CodeTableRepository', () => {
+describe('DataSetRepository', () => {
   let queryBuilder: any;
-  let repository: CodeTableRepository;
+  let repository: DataSetRepository;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        CodeTableRepository,
+        DataSetRepository,
         {
           provide: SelectQueryBuilder,
           useFactory: mockQueryBuilder
@@ -27,12 +27,8 @@ describe('CodeTableRepository', () => {
       ],
     }).compile();
 
-    repository = module.get(CodeTableRepository);
+    repository = module.get(DataSetRepository);
     queryBuilder = module.get(SelectQueryBuilder);
-
-    repository.query = jest
-      .fn()
-      .mockReturnValue([]);
 
     repository.createQueryBuilder = jest
       .fn()
@@ -42,8 +38,8 @@ describe('CodeTableRepository', () => {
     queryBuilder.where.mockReturnValue(queryBuilder);
     queryBuilder.andWhere.mockReturnValue(queryBuilder);
     queryBuilder.orderBy.mockReturnValue(queryBuilder);
-    queryBuilder.getOne.mockReturnValue({});
     queryBuilder.getMany.mockReturnValue([]);
+    queryBuilder.getOne.mockReturnValue({});
   });
 
   it('should be defined', () => {
@@ -51,37 +47,28 @@ describe('CodeTableRepository', () => {
     expect(queryBuilder).toBeDefined();
   });
 
-  describe('getDataSets', () => {
-
-    it('should return a list of datasets based on the arguments', async () => {
-      const results = await repository.getDataSets('Master Data');
-      expect(queryBuilder.innerJoinAndSelect).toHaveBeenCalled();
-      expect(queryBuilder.where).toHaveBeenCalled();
-      expect(queryBuilder.orderBy).toHaveBeenCalled();
-      expect(queryBuilder.getMany).toHaveBeenCalled();
-      expect(results).toEqual([]);
-    });
-
-  });  
-
   describe('getDataSet', () => {
 
-    it('should return a dataset based on the arguments', async () => {
-      const results = await repository.getDataSet('', '');
+    it('should return a dataset', async () => {
+      const result = await repository.getDataSet('', '');
       expect(queryBuilder.innerJoinAndSelect).toHaveBeenCalled();
       expect(queryBuilder.where).toHaveBeenCalled();
       expect(queryBuilder.andWhere).toHaveBeenCalled();
       expect(queryBuilder.orderBy).toHaveBeenCalled();
       expect(queryBuilder.getOne).toHaveBeenCalled();
-      expect(results).toEqual({});
+      expect(result).toEqual({});
     });
 
-  });
+  });  
 
-  describe('getCodeTable', () => {
+  describe('getDataSets', () => {
 
-    it('should execute the query provided', async () => {
-      const results = await repository.getCodeTable('');
+    it('should return a list of datasets', async () => {
+      const results = await repository.getDataSets('');
+      expect(queryBuilder.innerJoinAndSelect).toHaveBeenCalled();
+      expect(queryBuilder.where).toHaveBeenCalled();
+      expect(queryBuilder.orderBy).toHaveBeenCalled();
+      expect(queryBuilder.getMany).toHaveBeenCalled();
       expect(results).toEqual([]);
     });
 

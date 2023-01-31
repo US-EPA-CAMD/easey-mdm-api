@@ -27,7 +27,7 @@ export default registerAs('app', () => ({
   ),
   description: getConfigValue(
     'EASEY_MDM_API_DESCRIPTION',
-    '',
+    'Provides reference codes, descriptions, & relationship data for CAMD applications',
   ),
   env: getConfigValue(
     'EASEY_MDM_API_ENV', 'local-dev',

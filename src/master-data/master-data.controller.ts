@@ -24,13 +24,13 @@ import { DataSetService } from '../dataset/dataset.service';
 
 @Controller()
 @ApiSecurity('APIKey')
-@ApiTags('Relationships')
+@ApiTags('Codes & Descriptions')
 @ApiExtraModels(DataSetDTO)
-export class RelationshipsController {
-  private groupCode = 'MDMREL';
+export class MasterDataController {
+  private groupCode = 'MDM';
 
   constructor(
-    private readonly service: DataSetService,
+    private readonly service: DataSetService
   ) {}
 
   @Get('list')
@@ -39,9 +39,9 @@ export class RelationshipsController {
     description: 'Data retrieved successfully',
   })
   @ApiOperation({
-    description: "Returns a list of Master Data relationships available."
+    description: "Returns a list of Master Data code tables available."
   })
-  listRelationships() {
+  listCodeTables() {
     return this.service.listDataSetsByGroup(this.groupCode);
   }
 
@@ -51,16 +51,16 @@ export class RelationshipsController {
     description: 'Data retrieved successfully',
   })
   @ApiOperation({
-    description: "Returns a list of Master Data relationships for the dataset provided."
+    description: "Returns a list of Master Data codes & descriptions for the dataset provided."
   })
   @ApiParam({
     name: 'code',
     ...DataDictionary.getMetadata(
       PropertyKeys.CODE,
-      OverrideKeys.RELATIONSHIPS,
+      OverrideKeys.MASTER_DATA,
       true,
   )})
-  getRelationships(
+  getCodeTable(
     @Param('code') dataSetCode: string
   ): Promise<any[]> {
     return this.service.getDataSet(dataSetCode, this.groupCode);

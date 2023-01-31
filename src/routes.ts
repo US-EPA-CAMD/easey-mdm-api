@@ -6,7 +6,7 @@ import { FuelTypeModule } from './fuel-type/fuel-type.module';
 import { ProgramModule } from './program/program.module';
 import { ReportingPeriodModule } from './reporting-period/reporting-period.module';
 import { UnitTypeModule } from './unit-type/unit-type.module';
-import { CodeTableModule } from './code-table/code-table.module';
+import { MasterDataModule } from './master-data/master-data.module';
 import { RelationshipsModule } from './relationships/relationships.module';
 
 const routes: Routes = [
@@ -34,15 +34,15 @@ const routes: Routes = [
     path: '/unit-type-codes',
     module: UnitTypeModule,
   },
-  // CODE TABLE MODULE MUST ALWAYS BE AFTER ALL OTHERS
-  // EXCEPT RELATIONSHIPS IN ORDER FOR ROUTES TO PROPERLY WORK
-  {
-    path: '/',
-    module: CodeTableModule,
-  },
   {
     path: '/relationships',
     module: RelationshipsModule,
+  },
+  // MASTER DATA MODULE MUST ALWAYS BE AFTER ALL OTHERS
+  // IN ORDER FOR ROUTES TO PROPERLY WORK
+  {
+    path: '/',
+    module: MasterDataModule,
   },
 ];
 

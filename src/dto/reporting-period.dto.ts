@@ -1,48 +1,60 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { propertyMetadata } from '@us-epa-camd/easey-common/constants';
+import {
+  DataDictionary,
+  OverrideKeys,
+  PropertyKeys
+} from '@us-epa-camd/easey-common/data-dictionary';
 
 export class ReportingPeriodDTO {
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.ID,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   id: number;
 
-  @ApiProperty({
-    description: propertyMetadata.year.description,
-    example: propertyMetadata.year.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.YEAR,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   calendarYear: number;
 
-  @ApiProperty({
-    description: propertyMetadata.quarter.description,
-    example: propertyMetadata.quarter.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.QUARTER,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   quarter: number;
 
-  @ApiProperty({
-    description: propertyMetadata.beginDate.description,
-    example: propertyMetadata.beginDate.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.BEGIN_DATE,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   beginDate: Date;
 
-  @ApiProperty({
-    description: propertyMetadata.endDate.description,
-    example: propertyMetadata.endDate.example,
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.END_DATE,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   endDate: Date;
 
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.DESCRIPTION,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   periodDescription: string;
 
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty(
+    DataDictionary.getMetadata(
+      PropertyKeys.ABBREVIATION,
+      OverrideKeys.REPORTING_PERIOD,
+  ))
   periodAbbreviation: string;
 
-  @ApiProperty({
-    description: 'ADD TO DATA DICTIONARY',
-  })
+  @ApiProperty()
   archiveInd: number;
 }

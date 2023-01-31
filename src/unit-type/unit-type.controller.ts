@@ -2,6 +2,7 @@ import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
+  ApiOperation,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
@@ -20,7 +21,10 @@ export class UnitTypeController {
   @ApiOkResponse({
     isArray: true,
     type: UnitTypeDTO,
-    description: 'Returns a list of Unit Type Codes',
+    description: 'Data retrieved successfully',
+  })
+  @ApiOperation({
+    description: "Returns a list of Unit Type codes & descriptions."
   })
   getUnitTypeCodes(): Promise<UnitTypeDTO[]> {
     return this.service.getUnitTypeCodes();

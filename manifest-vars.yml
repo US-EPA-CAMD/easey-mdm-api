@@ -7,6 +7,6 @@ host: api-easey-dev.app.cloud.gov
 port: 8080
 path: master-data-mgmt
 title: Master Data Management
-description: 
+description: Provides reference codes, descriptions, & relationship data for CAMD applications
 environment: development
 apiHost: api.epa.gov/easey/dev
