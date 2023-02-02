@@ -41,11 +41,11 @@ describe('RelationshipsController', () => {
   describe('listRelationships', () => {
     
     it('should return a list of valid Master Data relationships available', async () => {
-      const expectedResult: DataSetDTO[] = [];
+      const expectedResult: any[] = [];
 
       jest.spyOn(
         service,
-        'listDataSets'
+        'listDataSetsByGroup'
       ).mockResolvedValue(
         expectedResult
       );
