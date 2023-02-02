@@ -60,17 +60,4 @@ describe('DataSetRepository', () => {
     });
 
   });  
-
-  describe('getDataSets', () => {
-
-    it('should return a list of datasets', async () => {
-      const results = await repository.getDataSets('');
-      expect(queryBuilder.innerJoinAndSelect).toHaveBeenCalled();
-      expect(queryBuilder.where).toHaveBeenCalled();
-      expect(queryBuilder.orderBy).toHaveBeenCalled();
-      expect(queryBuilder.getMany).toHaveBeenCalled();
-      expect(results).toEqual([]);
-    });
-
-  });
 });

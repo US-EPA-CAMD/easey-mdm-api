@@ -10,8 +10,8 @@ import { DataTable } from '../entities/datatable.entity';
 import { DataColumn } from '../entities/datacolumn.entity';
 
 const mockRepository = () => ({
+  find: jest.fn(),
   getDataSet: jest.fn(),
-  getDataSets: jest.fn(),
   getDataSetResults: jest.fn(),
 });
 
@@ -62,10 +62,10 @@ describe('DataSetService', () => {
   describe('listDataSets', () => {
 
     it('should return a list of datasets', async () => {
-      repository.getDataSets.mockResolvedValue([]);
-      const results = await service.listDataSets('');
+      repository.find.mockResolvedValue([]);
+      const results = await service.listDataSetsByGroup('');
 
-      expect(repository.getDataSets).toHaveBeenCalled();
+      expect(repository.find).toHaveBeenCalled();
       expect(results).toEqual([]);
     });
 
