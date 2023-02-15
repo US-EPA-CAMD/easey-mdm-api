@@ -378,6 +378,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@golevelup/ts-jest@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@golevelup/ts-jest/-/ts-jest-0.3.4.tgz#b1da56344136f9d4ebce03676c099b5214bb7c29"
+  integrity sha512-UXas4+20gNmYfVR7DTJ9iRppy00o0ElqQrRQyn9cF3Gq90iM1Xx1lKvipTEe5NniHDD9FiMZNweOfB+9ebZRZA==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -1151,11 +1156,12 @@
     "@typescript-eslint/types" "5.1.0"
     eslint-visitor-keys "^3.0.0"
 
-"@us-epa-camd/easey-common@14.0.1":
-  version "14.0.1"
-  resolved "https://npm.pkg.github.com/download/@US-EPA-CAMD/easey-common/14.0.1/a17a3428370d6b837f00bde069fee94f35c9bb67#a17a3428370d6b837f00bde069fee94f35c9bb67"
-  integrity sha512-L0i06QR9prH0cHSCLbswd+w/cV8qFMNKHmHEgFwVsGfm8zoHew/OhWWUm4vQgH6N/+a8jys3d8YPBh0mHlg7VQ==
+"@us-epa-camd/easey-common@14.2.2":
+  version "14.2.2"
+  resolved "https://npm.pkg.github.com/download/@US-EPA-CAMD/easey-common/14.2.2/5693038fecfc42f9236880652ca0ddd962bde099#5693038fecfc42f9236880652ca0ddd962bde099"
+  integrity sha512-oN6nQigrJu7T83OM8jliBAveaL4U1ZzTJP/1B6KQxn3HwOBfqFaNsEIHbKdpNEe85rhMXF7zD9o+5iCOzU9HMg==
   dependencies:
+    "@golevelup/ts-jest" "^0.3.4"
     "@nestjs/axios" "0.0.3"
     "@nestjs/common" "^8.1.1"
     "@nestjs/config" "^1.0.2"
@@ -2258,9 +2264,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.284:
-  version "1.4.295"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.295.tgz#911d5df67542bf7554336142eb302c5ec90bba66"
-  integrity sha512-lEO94zqf1bDA3aepxwnWoHUjA8sZ+2owgcSZjYQy0+uOSEclJX0VieZC+r+wLpSxUHRd6gG32znTWmr+5iGzFw==
+  version "1.4.296"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.296.tgz#dbc84a25c25a432a12fbf62903cae4a87461eb8c"
+  integrity sha512-i/6Q+Y9bluDa2a0NbMvdtG5TuS/1Fr3TKK8L+7UUL9QjRS5iFJzCC3r70xjyOnLiYG8qGV4/mMpe6HuAbdJW4w==
 
 emittery@^0.8.1:
   version "0.8.1"
