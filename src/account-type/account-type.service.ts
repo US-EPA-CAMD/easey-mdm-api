@@ -1,9 +1,6 @@
-import {
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
+import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypeMap } from '../maps/account-type.map';
@@ -18,12 +15,14 @@ export class AccountTypeService {
     private readonly map: AccountTypeMap,
   ) {}
 
-  async getAccountTypeCodes(params: AccountTypeParamsDTO): Promise<AccountTypeDTO[]> {
+  async getAccountTypeCodes(
+    params: AccountTypeParamsDTO,
+  ): Promise<AccountTypeDTO[]> {
     try {
       const results = await this.repository.getAccountTypeCodes(params);
       return this.map.many(results);
     } catch (e) {
-      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new EaseyException(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }

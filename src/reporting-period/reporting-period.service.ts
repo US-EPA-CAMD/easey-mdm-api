@@ -1,7 +1,7 @@
 import { LessThan, LessThanOrEqual } from 'typeorm';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
+import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodMap } from '../maps/reporting-period.map';
@@ -31,7 +31,7 @@ export class ReportingPeriodService {
       });
       return this.map.many(results);
     } catch (e) {
-      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new EaseyException(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }

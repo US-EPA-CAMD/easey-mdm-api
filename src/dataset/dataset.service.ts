@@ -1,15 +1,11 @@
-import {
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
+import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { DataSetRepository } from './dataset.repository';
 
 @Injectable()
 export class DataSetService {
-
   constructor(
     @InjectRepository(DataSetRepository)
     private readonly repository: DataSetRepository,
@@ -34,18 +30,30 @@ export class DataSetService {
 
     if (dataSet === null || dataSet === undefined) {
       if (groupCode === 'MDMREL') {
-        throw new LoggingException(`/relationships/${dataSetCode} is not a valid Master Data relationships path. Please refer to the list of available relationships using the /master-data-mgmt/relationships/list method.`, HttpStatus.BAD_REQUEST);
+        throw new EaseyException(
+          new Error(
+            `/relationships/${dataSetCode} is not a valid Master Data relationships path. Please refer to the list of available relationships using the /master-data-mgmt/relationships/list method.`,
+          ),
+          HttpStatus.BAD_REQUEST,
+        );
       }
 
-      throw new LoggingException(`/${dataSetCode} is not a valid Master Data path. Please refer to the list of available paths using the /master-data-mgmt/list method.`, HttpStatus.BAD_REQUEST);
+      throw new EaseyException(
+        new Error(
+          `/${dataSetCode} is not a valid Master Data path. Please refer to the list of available paths using the /master-data-mgmt/list method.`,
+        ),
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
     queryColumns.push(
-      dataSet.tables[0].columns.map(col => `${col.name} AS "${col.alias}"`)
+      dataSet.tables[0].columns.map(col => `${col.name} AS "${col.alias}"`),
     );
 
-    const query = dataSet.tables[0].sqlStatement
-      .replace('*', queryColumns.join(','));
+    const query = dataSet.tables[0].sqlStatement.replace(
+      '*',
+      queryColumns.join(','),
+    );
 
     return this.repository.getDataSetResults(query);
   }
