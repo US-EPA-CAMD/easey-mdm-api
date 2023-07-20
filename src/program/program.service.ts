@@ -1,9 +1,6 @@
-import {
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
+import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { ProgramDTO } from '../dto/program.dto';
 import { ProgramMap } from '../maps/program.map';
@@ -23,7 +20,7 @@ export class ProgramService {
       const results = await this.repository.getProgramCodes(params);
       return this.map.many(results);
     } catch (e) {
-      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new EaseyException(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }
