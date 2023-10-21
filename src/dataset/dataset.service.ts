@@ -50,7 +50,7 @@ export class DataSetService {
       dataSet.tables[0].columns.map(col => `${col.name} AS "${col.alias}"`),
     );
 
-    const REGEX=/\*/;
+    const REGEX=/\*/g;
     const query = dataSet.tables[0].sqlStatement.replace(
       REGEX,
       queryColumns.join(','),
