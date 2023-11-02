@@ -10,3 +10,4 @@ title: Master Data Management
 description: Provides reference codes, descriptions, & relationship data for CAMD applications
 environment: development
 apiHost: api.epa.gov/easey/dev
+dbSvc: camd-pg-db
