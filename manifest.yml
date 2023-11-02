@@ -7,6 +7,7 @@ applications:
       - nodejs_buildpack
     env:
       OPTIMIZE_MEMORY: true
+      EASEY_DB_SERVICE: ((dbSvc))
       EASEY_MDM_API_HOST: ((host))
       EASEY_MDM_API_PORT: ((port))
       EASEY_MDM_API_PATH: ((path))
@@ -23,4 +24,5 @@ applications:
       - route: ((host))/((path))
     services:
       - camd-pg-db
+      - camd-pg15-db
       - log-drain
