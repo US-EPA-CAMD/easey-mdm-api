@@ -1,5 +1,4 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
@@ -9,7 +8,6 @@ import { ControlTechnologyRepository } from './control-technology.repository';
 @Injectable()
 export class ControlTechnologyService {
   constructor(
-    @InjectRepository(ControlTechnologyRepository)
     private readonly repository: ControlTechnologyRepository,
     private readonly map: ControlTechnologyMap,
   ) {}

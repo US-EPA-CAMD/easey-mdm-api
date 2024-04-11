@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { SelectQueryBuilder } from 'typeorm';
+import { EntityManager, SelectQueryBuilder } from 'typeorm';
 
 import { ControlTechnologyRepository } from './control-technology.repository';
 
@@ -7,7 +7,7 @@ const mockQueryBuilder = () => ({
   select: jest.fn(),
   leftJoin: jest.fn(),
   orderBy: jest.fn(),
-  getMany: jest.fn(),  
+  getMany: jest.fn(),
 });
 
 describe('ControlTechnologyRepository', () => {
@@ -18,9 +18,10 @@ describe('ControlTechnologyRepository', () => {
     const module = await Test.createTestingModule({
       providers: [
         ControlTechnologyRepository,
+        EntityManager,
         {
           provide: SelectQueryBuilder,
-          useFactory: mockQueryBuilder
+          useFactory: mockQueryBuilder,
         },
       ],
     }).compile();
@@ -28,9 +29,7 @@ describe('ControlTechnologyRepository', () => {
     repository = module.get(ControlTechnologyRepository);
     queryBuilder = module.get(SelectQueryBuilder);
 
-    repository.createQueryBuilder = jest
-      .fn()
-      .mockReturnValue(queryBuilder);
+    repository.createQueryBuilder = jest.fn().mockReturnValue(queryBuilder);
 
     queryBuilder.select.mockReturnValue(queryBuilder);
     queryBuilder.leftJoin.mockReturnValue(queryBuilder);
@@ -44,7 +43,6 @@ describe('ControlTechnologyRepository', () => {
   });
 
   describe('getControlTechnologies', () => {
-
     it('should return a list of control technologies', async () => {
       const results = await repository.getControlTechnologies();
       expect(queryBuilder.select).toHaveBeenCalled();
@@ -53,6 +51,5 @@ describe('ControlTechnologyRepository', () => {
       expect(queryBuilder.getMany).toHaveBeenCalled();
       expect(results).toEqual([]);
     });
-
   });
 });

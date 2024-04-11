@@ -1,15 +1,11 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { DataSetRepository } from './dataset.repository';
 
 @Injectable()
 export class DataSetService {
-  constructor(
-    @InjectRepository(DataSetRepository)
-    private readonly repository: DataSetRepository,
-  ) {}
+  constructor(private readonly repository: DataSetRepository) {}
 
   async listDataSetsByGroup(groupCode: string) {
     const results = await this.repository.find({
@@ -50,7 +46,7 @@ export class DataSetService {
       dataSet.tables[0].columns.map(col => `${col.name} AS "${col.alias}"`),
     );
 
-    const REGEX=/\*/g;
+    const REGEX = /\*/g;
     const query = dataSet.tables[0].sqlStatement.replace(
       REGEX,
       queryColumns.join(','),
