@@ -7,18 +7,13 @@ import { ReportingPeriodService } from './reporting-period.service';
 import { ReportingPeriodMap } from '../maps/reporting-period.map';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([ReportingPeriodRepository]),
-  ],
-  controllers: [
-    ReportingPeriodController,
-  ],
+  imports: [TypeOrmModule.forFeature([ReportingPeriodRepository])],
+  controllers: [ReportingPeriodController],
   providers: [
     ReportingPeriodMap,
+    ReportingPeriodRepository,
     ReportingPeriodService,
   ],
-  exports: [
-    TypeOrmModule,
-  ],
+  exports: [TypeOrmModule],
 })
 export class ReportingPeriodModule {}
