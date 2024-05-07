@@ -1,13 +1,12 @@
 import { Test } from '@nestjs/testing';
+import { EntityManager } from 'typeorm';
 
-import { DataSetService } from '../dataset/dataset.service';
-import { RelationshipsController } from './relationships.controller';
 import { DataSetRepository } from '../dataset/dataset.repository';
-
+import { DataSetService } from '../dataset/dataset.service';
 import { DataColumnMap } from '../maps/datacolumn.map';
-import { DataTableMap } from '../maps/datatable.map';
 import { DataSetMap } from '../maps/dataset.map';
-import { DataSetDTO } from '../dto/dataset.dto';
+import { DataTableMap } from '../maps/datatable.map';
+import { RelationshipsController } from './relationships.controller';
 
 describe('RelationshipsController', () => {
   let service: DataSetService;
@@ -21,7 +20,8 @@ describe('RelationshipsController', () => {
         DataTableMap,
         DataColumnMap,
         DataSetService,
-        DataSetRepository
+        DataSetRepository,
+        EntityManager,
       ],
     }).compile();
 
@@ -39,43 +39,24 @@ describe('RelationshipsController', () => {
   });
 
   describe('listRelationships', () => {
-    
     it('should return a list of valid Master Data relationships available', async () => {
       const expectedResult: any[] = [];
 
-      jest.spyOn(
-        service,
-        'listDataSetsByGroup'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.listRelationships()
-      ).toBe(
-        expectedResult
-      );
-    });
+      jest
+        .spyOn(service, 'listDataSetsByGroup')
+        .mockResolvedValue(expectedResult);
 
+      expect(await controller.listRelationships()).toBe(expectedResult);
+    });
   });
 
   describe('getRelationships', () => {
-    
     it('should return relationship data for the name provided', async () => {
       const expectedResult: any[] = [];
 
-      jest.spyOn(
-        service,
-        'getDataSet'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.getRelationships('')
-      ).toBe(
-        expectedResult
-      );
+      jest.spyOn(service, 'getDataSet').mockResolvedValue(expectedResult);
+
+      expect(await controller.getRelationships('')).toBe(expectedResult);
     });
   });
 });

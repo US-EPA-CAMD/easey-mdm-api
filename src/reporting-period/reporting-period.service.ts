@@ -1,7 +1,6 @@
-import { LessThan, LessThanOrEqual } from 'typeorm';
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
+import { LessThan, LessThanOrEqual } from 'typeorm';
 
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodMap } from '../maps/reporting-period.map';
@@ -10,7 +9,6 @@ import { ReportingPeriodRepository } from './reporting-period.repository';
 @Injectable()
 export class ReportingPeriodService {
   constructor(
-    @InjectRepository(ReportingPeriodRepository)
     private readonly repository: ReportingPeriodRepository,
     private readonly map: ReportingPeriodMap,
   ) {}

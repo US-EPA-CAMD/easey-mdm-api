@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { EntityManager } from 'typeorm';
 
 import { UnitTypeService } from './unit-type.service';
 import { UnitTypeController } from './unit-type.controller';
@@ -14,9 +15,10 @@ describe('UnitTypeController', () => {
     const module = await Test.createTestingModule({
       controllers: [UnitTypeController],
       providers: [
+        EntityManager,
         UnitTypeMap,
         UnitTypeService,
-        UnitTypeRepository
+        UnitTypeRepository,
       ],
     }).compile();
 
@@ -34,23 +36,12 @@ describe('UnitTypeController', () => {
   });
 
   describe('getUnitTypeCodes', () => {
-    
     it('should return a list of unit type codes', async () => {
       const expectedResult: UnitTypeDTO[] = [];
 
-      jest.spyOn(
-        service,
-        'getUnitTypeCodes'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.getUnitTypeCodes()
-      ).toBe(
-        expectedResult
-      );
-    });
+      jest.spyOn(service, 'getUnitTypeCodes').mockResolvedValue(expectedResult);
 
+      expect(await controller.getUnitTypeCodes()).toBe(expectedResult);
+    });
   });
 });

@@ -1,16 +1,14 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { AccountTypeDTO } from '../dto/account-type.dto';
+import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
 import { AccountTypeMap } from '../maps/account-type.map';
 import { AccountTypeRepository } from './account-type.repository';
-import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
 
 @Injectable()
 export class AccountTypeService {
   constructor(
-    @InjectRepository(AccountTypeRepository)
     private readonly repository: AccountTypeRepository,
     private readonly map: AccountTypeMap,
   ) {}

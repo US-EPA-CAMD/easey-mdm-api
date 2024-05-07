@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { EntityManager } from 'typeorm';
 
 import { FuelTypeService } from './fuel-type.service';
 import { FuelTypeController } from './fuel-type.controller';
@@ -14,9 +15,10 @@ describe('FuelTypeController', () => {
     const module = await Test.createTestingModule({
       controllers: [FuelTypeController],
       providers: [
+        EntityManager,
         FuelTypeMap,
         FuelTypeService,
-        FuelTypeRepository
+        FuelTypeRepository,
       ],
     }).compile();
 
@@ -34,23 +36,12 @@ describe('FuelTypeController', () => {
   });
 
   describe('getFuelTypeCodes', () => {
-    
     it('should return a list of fuel type codes', async () => {
       const expectedResult: FuelTypeDTO[] = [];
 
-      jest.spyOn(
-        service,
-        'getFuelTypeCodes'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.getFuelTypeCodes()
-      ).toBe(
-        expectedResult
-      );
-    });
+      jest.spyOn(service, 'getFuelTypeCodes').mockResolvedValue(expectedResult);
 
+      expect(await controller.getFuelTypeCodes()).toBe(expectedResult);
+    });
   });
 });

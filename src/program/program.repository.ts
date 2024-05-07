@@ -1,10 +1,15 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { EntityManager, Repository } from 'typeorm';
 
 import { Program } from '../entities/program.entity';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
 
-@EntityRepository(Program)
+@Injectable()
 export class ProgramRepository extends Repository<Program> {
+  constructor(entityManager: EntityManager) {
+    super(Program, entityManager);
+  }
+
   async getProgramCodes(params: ProgramParamsDTO): Promise<Program[]> {
     const {
       exclude,

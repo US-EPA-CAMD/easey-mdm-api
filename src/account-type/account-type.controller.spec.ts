@@ -1,5 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { AccountTypeCode } from '@us-epa-camd/easey-common/enums';
+import { EntityManager } from 'typeorm';
 
 import { AccountTypeService } from './account-type.service';
 import { AccountTypeController } from './account-type.controller';
@@ -18,7 +19,8 @@ describe('AccountTypeController', () => {
       providers: [
         AccountTypeMap,
         AccountTypeService,
-        AccountTypeRepository
+        AccountTypeRepository,
+        EntityManager,
       ],
     }).compile();
 
@@ -36,26 +38,17 @@ describe('AccountTypeController', () => {
   });
 
   describe('getAccountTypeCodes', () => {
-    
     it('should return a list of account type codes', async () => {
       const expectedResult: AccountTypeDTO[] = [];
       const params: AccountTypeParamsDTO = {
         exclude: [AccountTypeCode.GENERAL],
       };
 
-      jest.spyOn(
-        service,
-        'getAccountTypeCodes'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.getAccountTypeCodes(params)
-      ).toBe(
-        expectedResult
-      );
-    });
+      jest
+        .spyOn(service, 'getAccountTypeCodes')
+        .mockResolvedValue(expectedResult);
 
+      expect(await controller.getAccountTypeCodes(params)).toBe(expectedResult);
+    });
   });
 });
