@@ -8,19 +8,15 @@ import { DataTableMap } from '../maps/datatable.map';
 import { DataSetMap } from '../maps/dataset.map';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([DataSetRepository]),
-  ],
+  imports: [TypeOrmModule.forFeature([DataSetRepository])],
   controllers: [],
   providers: [
     DataSetMap,
+    DataSetRepository,
     DataTableMap,
     DataColumnMap,
     DataSetService,
   ],
-  exports: [
-    TypeOrmModule,
-    DataSetService,
-  ],
+  exports: [TypeOrmModule, DataSetRepository, DataSetService],
 })
 export class DataSetModule {}

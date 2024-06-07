@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { SelectQueryBuilder } from 'typeorm';
+import { EntityManager, SelectQueryBuilder } from 'typeorm';
 
 import { UnitTypeRepository } from './unit-type.repository';
 
@@ -17,10 +17,11 @@ describe('UnitTypeRepository', () => {
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        EntityManager,
         UnitTypeRepository,
         {
           provide: SelectQueryBuilder,
-          useFactory: mockQueryBuilder
+          useFactory: mockQueryBuilder,
         },
       ],
     }).compile();
@@ -28,9 +29,7 @@ describe('UnitTypeRepository', () => {
     repository = module.get(UnitTypeRepository);
     queryBuilder = module.get(SelectQueryBuilder);
 
-    repository.createQueryBuilder = jest
-      .fn()
-      .mockReturnValue(queryBuilder);
+    repository.createQueryBuilder = jest.fn().mockReturnValue(queryBuilder);
 
     queryBuilder.select.mockReturnValue(queryBuilder);
     queryBuilder.innerJoin.mockReturnValue(queryBuilder);
@@ -44,7 +43,6 @@ describe('UnitTypeRepository', () => {
   });
 
   describe('getUnitTypeCodes', () => {
-
     it('should return a list of unit type codes', async () => {
       const results = await repository.getUnitTypeCodes();
       expect(queryBuilder.select).toHaveBeenCalled();
@@ -53,6 +51,5 @@ describe('UnitTypeRepository', () => {
       expect(queryBuilder.getMany).toHaveBeenCalled();
       expect(results).toEqual([]);
     });
-
   });
 });

@@ -1,13 +1,12 @@
 import { Test } from '@nestjs/testing';
+import { EntityManager } from 'typeorm';
 
 import { DataSetService } from '../dataset/dataset.service';
 import { MasterDataController } from './master-data.controller';
 import { DataSetRepository } from '../dataset/dataset.repository';
-
 import { DataColumnMap } from '../maps/datacolumn.map';
 import { DataTableMap } from '../maps/datatable.map';
 import { DataSetMap } from '../maps/dataset.map';
-import { DataSetDTO } from '../dto/dataset.dto';
 
 describe('MasterDataController', () => {
   let service: DataSetService;
@@ -21,7 +20,8 @@ describe('MasterDataController', () => {
         DataTableMap,
         DataColumnMap,
         DataSetService,
-        DataSetRepository
+        DataSetRepository,
+        EntityManager,
       ],
     }).compile();
 
@@ -39,43 +39,24 @@ describe('MasterDataController', () => {
   });
 
   describe('listCodeTables', () => {
-    
     it('should return a list of valid Master Data code tables available', async () => {
       const expectedResult: any[] = [];
 
-      jest.spyOn(
-        service,
-        'listDataSetsByGroup'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.listCodeTables()
-      ).toBe(
-        expectedResult
-      );
-    });
+      jest
+        .spyOn(service, 'listDataSetsByGroup')
+        .mockResolvedValue(expectedResult);
 
+      expect(await controller.listCodeTables()).toBe(expectedResult);
+    });
   });
 
   describe('getCodeTable', () => {
-    
     it('should return a list of Master Data codes & descriptions for the name provided', async () => {
       const expectedResult: any[] = [];
 
-      jest.spyOn(
-        service,
-        'getDataSet'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.getCodeTable('')
-      ).toBe(
-        expectedResult
-      );
+      jest.spyOn(service, 'getDataSet').mockResolvedValue(expectedResult);
+
+      expect(await controller.getCodeTable('')).toBe(expectedResult);
     });
   });
 });

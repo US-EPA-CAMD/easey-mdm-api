@@ -1,9 +1,14 @@
-import { Repository, EntityRepository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { EntityManager, Repository } from 'typeorm';
 
 import { ControlTechnology } from '../entities/control-technology.entity';
 
-@EntityRepository(ControlTechnology)
+@Injectable()
 export class ControlTechnologyRepository extends Repository<ControlTechnology> {
+  constructor(entityManager: EntityManager) {
+    super(ControlTechnology, entityManager);
+  }
+
   async getControlTechnologies(): Promise<ControlTechnology[]> {
     const query = this.createQueryBuilder('ct')
       .select([

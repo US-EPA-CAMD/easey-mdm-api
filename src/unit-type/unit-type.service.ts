@@ -1,5 +1,4 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { UnitTypeDTO } from '../dto/unit-type.dto';
@@ -9,7 +8,6 @@ import { UnitTypeRepository } from './unit-type.repository';
 @Injectable()
 export class UnitTypeService {
   constructor(
-    @InjectRepository(UnitTypeRepository)
     private readonly repository: UnitTypeRepository,
     private readonly map: UnitTypeMap,
   ) {}

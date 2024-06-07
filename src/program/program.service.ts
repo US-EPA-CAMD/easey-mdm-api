@@ -1,5 +1,4 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { ProgramDTO } from '../dto/program.dto';
@@ -10,7 +9,6 @@ import { ProgramParamsDTO } from '../dto/program.params.dto';
 @Injectable()
 export class ProgramService {
   constructor(
-    @InjectRepository(ProgramRepository)
     private readonly repository: ProgramRepository,
     private readonly map: ProgramMap,
   ) {}

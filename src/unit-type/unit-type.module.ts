@@ -7,18 +7,9 @@ import { UnitTypeService } from './unit-type.service';
 import { UnitTypeMap } from '../maps/unit-type.map';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([UnitTypeRepository]),
-  ],
-  controllers: [
-    UnitTypeController,
-  ],
-  providers: [
-    UnitTypeMap,
-    UnitTypeService,
-  ],
-  exports: [
-    TypeOrmModule,
-  ],
+  imports: [TypeOrmModule.forFeature([UnitTypeRepository])],
+  controllers: [UnitTypeController],
+  providers: [UnitTypeMap, UnitTypeRepository, UnitTypeService],
+  exports: [TypeOrmModule],
 })
 export class UnitTypeModule {}
