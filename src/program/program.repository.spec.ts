@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { SelectQueryBuilder } from 'typeorm';
+import { EntityManager, SelectQueryBuilder } from 'typeorm';
 import { Program as ProgramCode } from '@us-epa-camd/easey-common/enums';
 
 import { ProgramRepository } from './program.repository';
@@ -10,7 +10,7 @@ const mockQueryBuilder = () => ({
   leftJoin: jest.fn(),
   andWhere: jest.fn(),
   orderBy: jest.fn(),
-  getMany: jest.fn(),  
+  getMany: jest.fn(),
 });
 
 describe('ProgramRepository', () => {
@@ -20,10 +20,11 @@ describe('ProgramRepository', () => {
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        EntityManager,
         ProgramRepository,
         {
           provide: SelectQueryBuilder,
-          useFactory: mockQueryBuilder
+          useFactory: mockQueryBuilder,
         },
       ],
     }).compile();
@@ -31,9 +32,7 @@ describe('ProgramRepository', () => {
     repository = module.get(ProgramRepository);
     queryBuilder = module.get(SelectQueryBuilder);
 
-    repository.createQueryBuilder = jest
-      .fn()
-      .mockReturnValue(queryBuilder);
+    repository.createQueryBuilder = jest.fn().mockReturnValue(queryBuilder);
 
     queryBuilder.select.mockReturnValue(queryBuilder);
     queryBuilder.leftJoin.mockReturnValue(queryBuilder);
@@ -48,7 +47,6 @@ describe('ProgramRepository', () => {
   });
 
   describe('getProgramCodes', () => {
-
     it('should return a list of inactive programs codes', async () => {
       const params: ProgramParamsDTO = {
         exclude: [ProgramCode.ARP],
@@ -82,6 +80,5 @@ describe('ProgramRepository', () => {
       expect(queryBuilder.getMany).toHaveBeenCalled();
       expect(results).toEqual([]);
     });
-
   });
 });

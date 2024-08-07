@@ -1,10 +1,11 @@
 import { Test } from '@nestjs/testing';
+import { EntityManager } from 'typeorm';
 
+import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
+import { ReportingPeriodMap } from '../maps/reporting-period.map';
 import { ReportingPeriodController } from './reporting-period.controller';
 import { ReportingPeriodRepository } from './reporting-period.repository';
 import { ReportingPeriodService } from './reporting-period.service';
-import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
-import { ReportingPeriodMap } from '../maps/reporting-period.map';
 
 describe('ReportingPeriodController', () => {
   let service: ReportingPeriodService;
@@ -14,9 +15,10 @@ describe('ReportingPeriodController', () => {
     const module = await Test.createTestingModule({
       controllers: [ReportingPeriodController],
       providers: [
+        EntityManager,
         ReportingPeriodMap,
         ReportingPeriodService,
-        ReportingPeriodRepository
+        ReportingPeriodRepository,
       ],
     }).compile();
 
@@ -34,23 +36,14 @@ describe('ReportingPeriodController', () => {
   });
 
   describe('getReportingPeriods', () => {
-
     it('should return a list of reporting periods', async () => {
       const expectedResult: ReportingPeriodDTO[] = [];
 
-      jest.spyOn(
-        service,
-        'getReportingPeriods'
-      ).mockResolvedValue(
-        expectedResult
-      );
+      jest
+        .spyOn(service, 'getReportingPeriods')
+        .mockResolvedValue(expectedResult);
 
-      expect(
-        await controller.getReportingPeriods()
-      ).toBe(
-        expectedResult,
-      );
+      expect(await controller.getReportingPeriods()).toBe(expectedResult);
     });
-
   });
 });

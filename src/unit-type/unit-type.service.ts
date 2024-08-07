@@ -12,7 +12,6 @@ import { UnitTypeRepository } from './unit-type.repository';
 @Injectable()
 export class UnitTypeService {
   constructor(
-    @InjectRepository(UnitTypeRepository)
     private readonly repository: UnitTypeRepository,
     private readonly map: UnitTypeMap,
   ) {}

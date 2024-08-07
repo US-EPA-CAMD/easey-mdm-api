@@ -1,9 +1,14 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { EntityManager, Repository } from 'typeorm';
 
 import { FuelType } from '../entities/fuel-type.entity';
 
-@EntityRepository(FuelType)
+@Injectable()
 export class FuelTypeRepository extends Repository<FuelType> {
+  constructor(entityManager: EntityManager) {
+    super(FuelType, entityManager);
+  }
+
   async getFuelTypeCodes(): Promise<FuelType[]> {
     const query = this.createQueryBuilder('ft')
       .select([

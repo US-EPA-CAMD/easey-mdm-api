@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { EntityManager } from 'typeorm';
 
 import { ControlTechnologyService } from './control-technology.service';
 import { ControlTechnologyController } from './control-technology.controller';
@@ -16,7 +17,8 @@ describe('ControlTechnologyController', () => {
       providers: [
         ControlTechnologyMap,
         ControlTechnologyService,
-        ControlTechnologyRepository
+        ControlTechnologyRepository,
+        EntityManager,
       ],
     }).compile();
 
@@ -34,23 +36,14 @@ describe('ControlTechnologyController', () => {
   });
 
   describe('getControlTechnologies', () => {
-    
     it('should return a list of control technologies', async () => {
       const expectedResult: ControlTechnologyDTO[] = [];
 
-      jest.spyOn(
-        service,
-        'getControlTechnologies'
-      ).mockResolvedValue(
-        expectedResult
-      );
+      jest
+        .spyOn(service, 'getControlTechnologies')
+        .mockResolvedValue(expectedResult);
 
-      expect(
-        await controller.getControlTechnologies()
-      ).toBe(
-        expectedResult
-      );
+      expect(await controller.getControlTechnologies()).toBe(expectedResult);
     });
-
   });
 });
