@@ -1,5 +1,4 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
 
 import { DataSetDTO } from '../dto/dataset.dto';
@@ -11,7 +10,6 @@ export class CodeTableService {
   private readonly templateCode = 'MDM';
 
   constructor(
-    @InjectRepository(CodeTableRepository)
     private readonly repository: CodeTableRepository,
     private readonly map: DataSetMap,
   ) {}

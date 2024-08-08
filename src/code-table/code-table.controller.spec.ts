@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { EntityManager } from 'typeorm';
 
 import { CodeTableService } from './code-table.service';
 import { CodeTableController } from './code-table.controller';
@@ -20,8 +21,9 @@ describe('CodeTableController', () => {
         DataSetMap,
         DataTableMap,
         DataColumnMap,
+        EntityManager,
         CodeTableService,
-        CodeTableRepository
+        CodeTableRepository,
       ],
     }).compile();
 
@@ -39,44 +41,22 @@ describe('CodeTableController', () => {
   });
 
   describe('listCodeTables', () => {
-    
     it('should return a list of available Master data datasets', async () => {
       const expectedResult: DataSetDTO[] = [];
 
-      jest.spyOn(
-        service,
-        'listCodeTables'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.listCodeTables()
-      ).toBe(
-        expectedResult
-      );
-    });
+      jest.spyOn(service, 'listCodeTables').mockResolvedValue(expectedResult);
 
+      expect(await controller.listCodeTables()).toBe(expectedResult);
+    });
   });
 
   describe('getCodeTable', () => {
-    
     it('should return a list of codes based on the path', async () => {
       const expectedResult: any[] = [];
 
-      jest.spyOn(
-        service,
-        'getCodeTable'
-      ).mockResolvedValue(
-        expectedResult
-      );
-      
-      expect(
-        await controller.getCodeTable('')
-      ).toBe(
-        expectedResult
-      );
-    });
+      jest.spyOn(service, 'getCodeTable').mockResolvedValue(expectedResult);
 
+      expect(await controller.getCodeTable('')).toBe(expectedResult);
+    });
   });
 });
