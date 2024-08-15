@@ -1,10 +1,14 @@
-import { Repository, EntityRepository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { EntityManager, Repository } from 'typeorm';
 
 import { UnitType } from '../entities/unit-type.entity';
 
-@EntityRepository(UnitType)
+@Injectable()
 export class UnitTypeRepository extends Repository<UnitType> {
-  
+  constructor(entityManager: EntityManager) {
+    super(UnitType, entityManager);
+  }
+
   async getUnitTypeCodes(): Promise<UnitType[]> {
     const query = this.createQueryBuilder('ut')
       .select([
@@ -19,5 +23,4 @@ export class UnitTypeRepository extends Repository<UnitType> {
 
     return query.getMany();
   }
-
 }

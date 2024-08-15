@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { SelectQueryBuilder } from 'typeorm';
+import { EntityManager, SelectQueryBuilder } from 'typeorm';
 
 import { CodeTableRepository } from './code-table.repository';
 
@@ -20,9 +20,10 @@ describe('CodeTableRepository', () => {
     const module = await Test.createTestingModule({
       providers: [
         CodeTableRepository,
+        EntityManager,
         {
           provide: SelectQueryBuilder,
-          useFactory: mockQueryBuilder
+          useFactory: mockQueryBuilder,
         },
       ],
     }).compile();
@@ -30,13 +31,9 @@ describe('CodeTableRepository', () => {
     repository = module.get(CodeTableRepository);
     queryBuilder = module.get(SelectQueryBuilder);
 
-    repository.query = jest
-      .fn()
-      .mockReturnValue([]);
+    repository.query = jest.fn().mockReturnValue([]);
 
-    repository.createQueryBuilder = jest
-      .fn()
-      .mockReturnValue(queryBuilder);
+    repository.createQueryBuilder = jest.fn().mockReturnValue(queryBuilder);
 
     queryBuilder.innerJoinAndSelect.mockReturnValue(queryBuilder);
     queryBuilder.where.mockReturnValue(queryBuilder);
@@ -52,7 +49,6 @@ describe('CodeTableRepository', () => {
   });
 
   describe('getDataSets', () => {
-
     it('should return a list of datasets based on the arguments', async () => {
       const results = await repository.getDataSets('Master Data');
       expect(queryBuilder.innerJoinAndSelect).toHaveBeenCalled();
@@ -61,11 +57,9 @@ describe('CodeTableRepository', () => {
       expect(queryBuilder.getMany).toHaveBeenCalled();
       expect(results).toEqual([]);
     });
-
-  });  
+  });
 
   describe('getDataSet', () => {
-
     it('should return a dataset based on the arguments', async () => {
       const results = await repository.getDataSet('', '');
       expect(queryBuilder.innerJoinAndSelect).toHaveBeenCalled();
@@ -75,15 +69,12 @@ describe('CodeTableRepository', () => {
       expect(queryBuilder.getOne).toHaveBeenCalled();
       expect(results).toEqual({});
     });
-
   });
 
   describe('getCodeTable', () => {
-
     it('should execute the query provided', async () => {
       const results = await repository.getCodeTable('');
       expect(results).toEqual([]);
     });
-
   });
 });

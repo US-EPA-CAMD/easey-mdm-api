@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { SelectQueryBuilder } from 'typeorm';
+import { EntityManager, SelectQueryBuilder } from 'typeorm';
 import { AccountTypeCode } from '@us-epa-camd/easey-common/enums';
 
 import { AccountTypeRepository } from './account-type.repository';
@@ -10,7 +10,7 @@ const mockQueryBuilder = () => ({
   innerJoin: jest.fn(),
   andWhere: jest.fn(),
   orderBy: jest.fn(),
-  getMany: jest.fn(),  
+  getMany: jest.fn(),
 });
 
 describe('AccountTypeRepository', () => {
@@ -21,9 +21,10 @@ describe('AccountTypeRepository', () => {
     const module = await Test.createTestingModule({
       providers: [
         AccountTypeRepository,
+        EntityManager,
         {
           provide: SelectQueryBuilder,
-          useFactory: mockQueryBuilder
+          useFactory: mockQueryBuilder,
         },
       ],
     }).compile();
@@ -31,9 +32,7 @@ describe('AccountTypeRepository', () => {
     repository = module.get(AccountTypeRepository);
     queryBuilder = module.get(SelectQueryBuilder);
 
-    repository.createQueryBuilder = jest
-      .fn()
-      .mockReturnValue(queryBuilder);
+    repository.createQueryBuilder = jest.fn().mockReturnValue(queryBuilder);
 
     queryBuilder.select.mockReturnValue(queryBuilder);
     queryBuilder.innerJoin.mockReturnValue(queryBuilder);
@@ -48,7 +47,6 @@ describe('AccountTypeRepository', () => {
   });
 
   describe('getAccountTypeCodes', () => {
-
     it('should return a list of account type codes', async () => {
       const params: AccountTypeParamsDTO = {
         exclude: [AccountTypeCode.GENERAL],
@@ -61,6 +59,5 @@ describe('AccountTypeRepository', () => {
       expect(queryBuilder.getMany).toHaveBeenCalled();
       expect(results).toEqual([]);
     });
-
   });
 });

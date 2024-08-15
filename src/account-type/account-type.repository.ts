@@ -1,10 +1,15 @@
-import { Repository, EntityRepository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { EntityManager, Repository } from 'typeorm';
 
 import { AccountType } from '../entities/account-type.entity';
 import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
 
-@EntityRepository(AccountType)
+@Injectable()
 export class AccountTypeRepository extends Repository<AccountType> {
+  constructor(entityManager: EntityManager) {
+    super(AccountType, entityManager);
+  }
+
   async getAccountTypeCodes(
     params: AccountTypeParamsDTO,
   ): Promise<AccountType[]> {
@@ -21,7 +26,7 @@ export class AccountTypeRepository extends Repository<AccountType> {
 
     if (exclude) {
       query.andWhere('at.accountTypeCode NOT IN (:...accountTypeCodes)', {
-        accountTypeCodes: exclude.map(i => i.toUpperCase())
+        accountTypeCodes: exclude.map(i => i.toUpperCase()),
       });
     }
 

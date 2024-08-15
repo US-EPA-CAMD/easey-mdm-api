@@ -9,20 +9,15 @@ import { DataTableMap } from '../maps/datatable.map';
 import { DataSetMap } from '../maps/dataset.map';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([CodeTableRepository]),
-  ],
-  controllers: [
-    CodeTableController,
-  ],
+  imports: [TypeOrmModule.forFeature([CodeTableRepository])],
+  controllers: [CodeTableController],
   providers: [
+    CodeTableRepository,
     DataSetMap,
     DataTableMap,
     DataColumnMap,
     CodeTableService,
   ],
-  exports: [
-    TypeOrmModule,
-  ],
+  exports: [TypeOrmModule],
 })
 export class CodeTableModule {}
