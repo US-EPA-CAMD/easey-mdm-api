@@ -1,5 +1,5 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 import { LessThan } from 'typeorm';
 
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
@@ -25,10 +25,7 @@ export class ReportingPeriodService {
       });
       return this.map.many(results);
     } catch (e) {
-      throw new EaseyException(
-        new Error(e.message),
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }
