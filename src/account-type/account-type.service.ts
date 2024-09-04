@@ -1,5 +1,5 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
@@ -20,10 +20,7 @@ export class AccountTypeService {
       const results = await this.repository.getAccountTypeCodes(params);
       return this.map.many(results);
     } catch (e) {
-      throw new EaseyException(
-        new Error(e.message),
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }

@@ -1,5 +1,5 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 import { DataSetDTO } from '../dto/dataset.dto';
 import { DataSetMap } from '../maps/dataset.map';
@@ -27,10 +27,8 @@ export class CodeTableService {
     );
 
     if (dataSet === null || dataSet === undefined) {
-      throw new EaseyException(
-        new Error(
-          `/${codeTable} is not a valid path. Please refer to the list of available code tables using the /list method.`,
-        ),
+      throw new LoggingException(
+        `/${codeTable} is not a valid path. Please refer to the list of available code tables using the /list method.`,
         HttpStatus.BAD_REQUEST,
       );
     }

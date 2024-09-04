@@ -1,5 +1,5 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { EaseyException } from '@us-epa-camd/easey-common/exceptions';
+import { LoggingException } from '@us-epa-camd/easey-common/exceptions';
 
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 import { ControlTechnologyMap } from '../maps/control-technology.map';
@@ -17,10 +17,7 @@ export class ControlTechnologyService {
       const results = await this.repository.getControlTechnologies();
       return this.map.many(results);
     } catch (e) {
-      throw new EaseyException(
-        new Error(e.message),
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
+      throw new LoggingException(e.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }
