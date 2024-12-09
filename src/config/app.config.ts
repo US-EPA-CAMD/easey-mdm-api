@@ -58,4 +58,7 @@ export default registerAs('app', () => ({
     'EASEY_MDM_API_ENABLE_DEBUG',
   ),
   apiHost: apiHost,
+  authApi: {
+    uri: getConfigValue('EASEY_AUTH_API', `https://${apiHost}/auth-mgmt`),
+  },
 }));
