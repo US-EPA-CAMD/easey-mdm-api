@@ -1,5 +1,3 @@
-import { Routes } from 'nest-router';
-
 import { AccountTypeModule } from './account-type/account-type.module';
 import { ControlTechnologyModule } from './control-technology/control-technology.module';
 import { FuelTypeModule } from './fuel-type/fuel-type.module';
@@ -9,7 +7,7 @@ import { UnitTypeModule } from './unit-type/unit-type.module';
 import { MasterDataModule } from './master-data/master-data.module';
 import { RelationshipsModule } from './relationships/relationships.module';
 
-const routes: Routes = [
+const routes = [
   {
     path: '/account-type-codes',
     module: AccountTypeModule,
