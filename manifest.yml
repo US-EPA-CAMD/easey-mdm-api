@@ -20,6 +20,7 @@ applications:
       EASEY_MDM_API_ENABLE_GLOBAL_VALIDATION_PIPE: true
       EASEY_API_GATEWAY_HOST: ((apiHost))
       TZ: America/New_York
+      EASEY_AUTH_API: https://((apiHost))/auth-mgmt
     routes:
       - route: ((host))/((path))
     services:
