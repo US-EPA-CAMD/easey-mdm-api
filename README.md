@@ -49,6 +49,7 @@ The Master Data API uses a number of environment variables to properly configure
 | env | EASEY_MDM_API_ENV | local-dev | Configurable |
 | enableApiKey | EASEY_MDM_API_ENABLE_API_KEY | false | Configurable |
 | secretToken | EASEY_MDM_API_SECRET_TOKEN | *** | Dynamically set by CI/CD workflow |
+| apiKey | EASEY_MDM_API_KEY | *** | Dynamically set by CI/CD workflow |
 | enableSecretToken | EASEY_MDM_API_ENABLE_SECRET_TOKEN | false | Configurable |
 | enableCors | EASEY_MDM_API_ENABLE_CORS | true | Configurable |
 | enableGlobalValidationPipes | EASEY_MDM_API_ENABLE_GLOBAL_VALIDATION_PIPE | true | Configurable |
