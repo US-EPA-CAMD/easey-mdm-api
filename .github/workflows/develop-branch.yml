@@ -56,5 +56,6 @@ jobs:
         run: scripts/environment-variables-secrets.sh
         env:
           MDM_API_SECRET_TOKEN: ${{ secrets.API_SECRET_TOKEN }}
+          MDM_API_KEY: ${{ secrets.API_KEY }}
       - name: Deploy
         run: devops/scripts/deploy.sh
