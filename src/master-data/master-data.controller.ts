@@ -21,6 +21,8 @@ import {
 
 import { DataSetDTO } from '../dto/dataset.dto';
 import { DataSetService } from '../dataset/dataset.service';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
+import { FuelTypeDTO } from '../dto/fuel-type.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -60,9 +62,13 @@ export class MasterDataController {
       OverrideKeys.MASTER_DATA,
       true,
   )})
-  getCodeTable(
+  async getCodeTable(
     @Param('code') dataSetCode: string
-  ): Promise<any[]> {
-    return this.service.getDataSet(dataSetCode, this.groupCode);
+  ): Promise<ArrayResponse<any>> {
+    const dataSetCodes = await this.service.getDataSet(dataSetCode, this.groupCode);
+
+    return  {
+      items: dataSetCodes
+    };
   }
 }

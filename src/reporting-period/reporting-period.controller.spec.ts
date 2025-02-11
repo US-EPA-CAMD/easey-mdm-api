@@ -43,7 +43,7 @@ describe('ReportingPeriodController', () => {
         .spyOn(service, 'getReportingPeriods')
         .mockResolvedValue(expectedResult);
 
-      expect(await controller.getReportingPeriods({})).toBe(expectedResult);
+      expect(await controller.getReportingPeriods({})).toStrictEqual({ items: expectedResult } );
     });
   });
 });

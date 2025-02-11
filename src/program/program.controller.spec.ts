@@ -38,7 +38,7 @@ describe('ProgramController', () => {
 
       jest.spyOn(service, 'getProgramCodes').mockResolvedValue(expectedResult);
 
-      expect(await controller.getProgramCodes(params)).toBe(expectedResult);
+      expect(await controller.getProgramCodes(params)).toStrictEqual({ items: expectedResult } );
     });
   });
 });
