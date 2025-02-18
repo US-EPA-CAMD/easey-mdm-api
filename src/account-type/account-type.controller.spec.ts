@@ -48,7 +48,7 @@ describe('AccountTypeController', () => {
         .spyOn(service, 'getAccountTypeCodes')
         .mockResolvedValue(expectedResult);
 
-      expect(await controller.getAccountTypeCodes(params)).toBe(expectedResult);
+      expect(await controller.getAccountTypeCodes(params)).toStrictEqual({ items: expectedResult } );
     });
   });
 });

@@ -56,7 +56,7 @@ describe('MasterDataController', () => {
 
       jest.spyOn(service, 'getDataSet').mockResolvedValue(expectedResult);
 
-      expect(await controller.getCodeTable('')).toBe(expectedResult);
+      expect(await controller.getCodeTable('')).toStrictEqual({ items: expectedResult } );
     });
   });
 });

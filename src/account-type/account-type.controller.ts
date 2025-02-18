@@ -10,6 +10,7 @@ import { Get, Controller, Query } from '@nestjs/common';
 import { AccountTypeDTO } from '../dto/account-type.dto';
 import { AccountTypeService } from './account-type.service';
 import { AccountTypeParamsDTO } from '../dto/account-type.params.dto';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -34,9 +35,13 @@ export class AccountTypeController {
   @ApiOperation({
     description: "Returns a list of Account Type codes & descriptions."
   })
-  getAccountTypeCodes(
+  async getAccountTypeCodes(
     @Query() params: AccountTypeParamsDTO,
-  ): Promise<AccountTypeDTO[]> {
-    return this.service.getAccountTypeCodes(params);
+  ): Promise<ArrayResponse<AccountTypeDTO>> {
+    const accountTypeCodes = await this.service.getAccountTypeCodes(params);
+
+    return  {
+      items: accountTypeCodes
+    };
   }
 }

@@ -41,7 +41,7 @@ describe('FuelTypeController', () => {
 
       jest.spyOn(service, 'getFuelTypeCodes').mockResolvedValue(expectedResult);
 
-      expect(await controller.getFuelTypeCodes()).toBe(expectedResult);
+      expect(await controller.getFuelTypeCodes()).toStrictEqual({ items: expectedResult } );
     });
   });
 });

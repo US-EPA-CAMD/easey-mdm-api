@@ -8,6 +8,8 @@ import { Get, Controller } from '@nestjs/common';
 
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 import { ControlTechnologyService } from './control-technology.service';
+import { AccountTypeDTO } from '../dto/account-type.dto';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -26,7 +28,11 @@ export class ControlTechnologyController {
   @ApiOperation({
     description: "Returns list of Control codes & descriptions."
   })
-  getControlTechnologies(): Promise<ControlTechnologyDTO[]> {
-    return this.service.getControlTechnologies();
+  async getControlTechnologies(): Promise<ArrayResponse<ControlTechnologyDTO>> {
+    const controlTechnologies = await this.service.getControlTechnologies();
+
+    return  {
+      items: controlTechnologies
+    };
   }
 }

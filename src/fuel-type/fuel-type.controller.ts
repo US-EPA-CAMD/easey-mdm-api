@@ -8,6 +8,8 @@ import { Controller, Get } from '@nestjs/common';
 
 import { FuelTypeDTO } from '../dto/fuel-type.dto';
 import { FuelTypeService } from './fuel-type.service';
+import { ControlTechnologyDTO } from '../dto/control-technology.dto';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -26,7 +28,11 @@ export class FuelTypeController {
   @ApiOperation({
     description: "Returns a list of Fuel Type codes & descriptions."
   })
-  getFuelTypeCodes(): Promise<FuelTypeDTO[]> {
-    return this.service.getFuelTypeCodes();
+  async getFuelTypeCodes(): Promise<ArrayResponse<FuelTypeDTO>> {
+    const fuelTypeDTOS = await this.service.getFuelTypeCodes();
+
+    return  {
+      items: fuelTypeDTOS
+    };
   }
 }

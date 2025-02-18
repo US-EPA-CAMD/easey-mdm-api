@@ -56,7 +56,7 @@ describe('RelationshipsController', () => {
 
       jest.spyOn(service, 'getDataSet').mockResolvedValue(expectedResult);
 
-      expect(await controller.getRelationships('')).toBe(expectedResult);
+      expect(await controller.getRelationships('')).toStrictEqual({ items: expectedResult } );
     });
   });
 });
