@@ -1,6 +1,7 @@
 instances: 1
 environment: testing
 host: api-easey-tst.app.cloud.gov
+apiHost: api.epa.gov/easey/test
 maxConnectionPool: 5
 idleTimeout: 5000
 connectionTimeout: 5000
