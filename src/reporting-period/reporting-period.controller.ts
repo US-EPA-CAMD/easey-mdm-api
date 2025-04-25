@@ -14,6 +14,8 @@ import {
 import { ReportingPeriodDTO } from '../dto/reporting-period.dto';
 import { ReportingPeriodService } from './reporting-period.service';
 import { ReportingPeriodParamsDTO } from '../dto/reporting-period.params.dto';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
+import { UnitTypeDTO } from '../dto/unit-type.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -30,9 +32,13 @@ export class ReportingPeriodController {
   @ApiOperation({
     description: "Returns a list of Reporting Periods."
   })
-  getReportingPeriods(
+  async getReportingPeriods(
     @Query() params: ReportingPeriodParamsDTO,
-  ): Promise<ReportingPeriodDTO[]> {
-    return this.service.getReportingPeriods(params.export);
+  ): Promise<ArrayResponse<ReportingPeriodDTO>> {
+    const reportingPeriodDTOS = await this.service.getReportingPeriods(params.export);
+
+    return  {
+      items: reportingPeriodDTOS
+    };
   }
 }

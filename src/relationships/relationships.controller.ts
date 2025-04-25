@@ -21,6 +21,8 @@ import {
 
 import { DataSetDTO } from '../dto/dataset.dto';
 import { DataSetService } from '../dataset/dataset.service';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
+import { ProgramDTO } from '../dto/program.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -60,9 +62,13 @@ export class RelationshipsController {
       OverrideKeys.RELATIONSHIPS,
       true,
   )})
-  getRelationships(
+  async getRelationships(
     @Param('code') dataSetCode: string
-  ): Promise<any[]> {
-    return this.service.getDataSet(dataSetCode, this.groupCode);
+  ): Promise<ArrayResponse<any>> {
+    const dataSets = await this.service.getDataSet(dataSetCode, this.groupCode);
+
+    return  {
+      items: dataSets
+    };
   }
 }

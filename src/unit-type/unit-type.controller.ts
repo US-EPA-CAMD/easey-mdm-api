@@ -8,6 +8,8 @@ import { Get, Controller } from '@nestjs/common';
 
 import { UnitTypeDTO } from '../dto/unit-type.dto';
 import { UnitTypeService } from './unit-type.service';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
+import { ProgramDTO } from '../dto/program.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -26,7 +28,11 @@ export class UnitTypeController {
   @ApiOperation({
     description: "Returns a list of Unit Type codes & descriptions."
   })
-  getUnitTypeCodes(): Promise<UnitTypeDTO[]> {
-    return this.service.getUnitTypeCodes();
+  async getUnitTypeCodes(): Promise<ArrayResponse<UnitTypeDTO>> {
+    const unitTypeDTOS = await this.service.getUnitTypeCodes();
+
+    return  {
+      items: unitTypeDTOS
+    };
   }
 }

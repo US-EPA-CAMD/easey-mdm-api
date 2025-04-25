@@ -9,6 +9,8 @@ import { Get, Controller, Query } from '@nestjs/common';
 import { ProgramDTO } from '../dto/program.dto';
 import { ProgramService } from './program.service';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
+import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
+import { FuelTypeDTO } from '../dto/fuel-type.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
@@ -25,7 +27,11 @@ export class ProgramController {
   @ApiOperation({
     description: "Returns a list of Program codes & descriptions."
   })
-  getProgramCodes(@Query() params: ProgramParamsDTO): Promise<ProgramDTO[]> {
-    return this.service.getProgramCodes(params);
+  async getProgramCodes(@Query() params: ProgramParamsDTO): Promise<ArrayResponse<ProgramDTO>> {
+    const programDTOS = await this.service.getProgramCodes(params);
+
+    return  {
+      items: programDTOS
+    };
   }
 }

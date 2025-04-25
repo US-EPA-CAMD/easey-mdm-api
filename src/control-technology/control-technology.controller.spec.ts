@@ -43,7 +43,7 @@ describe('ControlTechnologyController', () => {
         .spyOn(service, 'getControlTechnologies')
         .mockResolvedValue(expectedResult);
 
-      expect(await controller.getControlTechnologies()).toBe(expectedResult);
+      expect(await controller.getControlTechnologies()).toStrictEqual({ items: expectedResult } );
     });
   });
 });

@@ -41,7 +41,7 @@ describe('UnitTypeController', () => {
 
       jest.spyOn(service, 'getUnitTypeCodes').mockResolvedValue(expectedResult);
 
-      expect(await controller.getUnitTypeCodes()).toBe(expectedResult);
+      expect(await controller.getUnitTypeCodes()).toStrictEqual({ items: expectedResult } );
     });
   });
 });
