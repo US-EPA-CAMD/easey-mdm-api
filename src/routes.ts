@@ -6,8 +6,13 @@ import { ReportingPeriodModule } from './reporting-period/reporting-period.modul
 import { UnitTypeModule } from './unit-type/unit-type.module';
 import { MasterDataModule } from './master-data/master-data.module';
 import { RelationshipsModule } from './relationships/relationships.module';
+import { HealthModule } from '@us-epa-camd/easey-common/health/health.module';
 
 const routes = [
+  {
+    path: '/health',
+    module: HealthModule,
+  },
   {
     path: '/account-type-codes',
     module: AccountTypeModule,
