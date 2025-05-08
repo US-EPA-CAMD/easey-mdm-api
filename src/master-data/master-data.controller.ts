@@ -10,7 +10,7 @@ import {
   ApiSecurity,
   ApiOperation,
   ApiParam,
-  ApiExtraModels,
+  ApiExtraModels, getSchemaPath,
 } from '@nestjs/swagger';
 
 import {
@@ -22,12 +22,13 @@ import {
 import { DataSetDTO } from '../dto/dataset.dto';
 import { DataSetService } from '../dataset/dataset.service';
 import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
-import { FuelTypeDTO } from '../dto/fuel-type.dto';
+import { CodeTableDto } from '../dto/code-table.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Codes & Descriptions')
 @ApiExtraModels(DataSetDTO)
+@ApiExtraModels(CodeTableDto)
 export class MasterDataController {
   private groupCode = 'MDM';
 
@@ -37,14 +38,30 @@ export class MasterDataController {
 
   @Get('list')
   @ApiOkResponse({
-    isArray: true,
     description: 'Data retrieved successfully',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            items: {
+              type: 'array',
+              items: { $ref: getSchemaPath(CodeTableDto)},
+            }
+          },
+        },
+      },
+    },
   })
   @ApiOperation({
     description: "Returns a list of Master Data code tables available."
   })
-  listCodeTables() {
-    return this.service.listDataSetsByGroup(this.groupCode);
+  async listCodeTables() : Promise<ArrayResponse<CodeTableDto>> {
+    const codeTables = await this.service.listDataSetsByGroup(this.groupCode);
+
+    return  {
+      items: codeTables
+    };
   }
 
   @Get(':code')

@@ -46,7 +46,7 @@ describe('MasterDataController', () => {
         .spyOn(service, 'listDataSetsByGroup')
         .mockResolvedValue(expectedResult);
 
-      expect(await controller.listCodeTables()).toBe(expectedResult);
+      expect(await controller.listCodeTables()).toStrictEqual({ items: expectedResult } );
     });
   });
 
