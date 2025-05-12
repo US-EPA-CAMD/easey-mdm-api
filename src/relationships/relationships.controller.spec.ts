@@ -46,7 +46,7 @@ describe('RelationshipsController', () => {
         .spyOn(service, 'listDataSetsByGroup')
         .mockResolvedValue(expectedResult);
 
-      expect(await controller.listRelationships()).toBe(expectedResult);
+      expect(await controller.listRelationships()).toStrictEqual({ items: expectedResult } );
     });
   });
 
