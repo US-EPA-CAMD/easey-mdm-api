@@ -2,18 +2,18 @@ import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
-  ApiOperation,
+  ApiOperation, getSchemaPath, ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
 import { UnitTypeDTO } from '../dto/unit-type.dto';
 import { UnitTypeService } from './unit-type.service';
 import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
-import { ProgramDTO } from '../dto/program.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Unit Type Codes')
+@ApiExtraModels(UnitTypeDTO)
 export class UnitTypeController {
   constructor(
     private readonly service: UnitTypeService
@@ -21,9 +21,20 @@ export class UnitTypeController {
 
   @Get()
   @ApiOkResponse({
-    isArray: true,
-    type: UnitTypeDTO,
     description: 'Data retrieved successfully',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            items: {
+              type: 'array',
+              items: { $ref: getSchemaPath(UnitTypeDTO)},
+            }
+          },
+        },
+      },
+    },
   })
   @ApiOperation({
     description: "Returns a list of Unit Type codes & descriptions."
