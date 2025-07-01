@@ -25,6 +25,7 @@ import { ReportingPeriodModule } from './reporting-period/reporting-period.modul
 import { UnitTypeModule } from './unit-type/unit-type.module';
 import { MasterDataModule } from './master-data/master-data.module';
 import { RelationshipsModule } from './relationships/relationships.module';
+import { HealthModule } from '@us-epa-camd/easey-common/health/health.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { RelationshipsModule } from './relationships/relationships.module';
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
     }),
+    HealthModule,
     LoggerModule,
     CorsOptionsModule,
     AccountTypeModule,
@@ -55,6 +57,12 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(MaintenanceMiddleware)
+      .exclude(
+        {
+          path: '/health',
+          method: RequestMethod.GET,
+        },
+      )
       .forRoutes({ path: '*', method: RequestMethod.ALL });
   }
 }
