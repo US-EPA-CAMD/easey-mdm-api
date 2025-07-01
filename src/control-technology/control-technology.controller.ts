@@ -2,18 +2,18 @@ import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
-  ApiOperation,
+  ApiOperation, getSchemaPath, ApiExtraModels,
 } from '@nestjs/swagger';
 import { Get, Controller } from '@nestjs/common';
 
 import { ControlTechnologyDTO } from '../dto/control-technology.dto';
 import { ControlTechnologyService } from './control-technology.service';
-import { AccountTypeDTO } from '../dto/account-type.dto';
 import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
 
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Control Codes')
+@ApiExtraModels(ControlTechnologyDTO)
 export class ControlTechnologyController {
   constructor(
     private readonly service: ControlTechnologyService,
@@ -21,9 +21,20 @@ export class ControlTechnologyController {
 
   @Get()
   @ApiOkResponse({
-    isArray: true,
-    type: ControlTechnologyDTO,
     description: 'Data retrieved successfully',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            items: {
+              type: 'array',
+              items: { $ref: getSchemaPath(ControlTechnologyDTO)},
+            }
+          },
+        },
+      },
+    },
   })
   @ApiOperation({
     description: "Returns list of Control codes & descriptions."

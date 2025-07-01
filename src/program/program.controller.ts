@@ -2,7 +2,7 @@ import {
   ApiTags,
   ApiOkResponse,
   ApiSecurity,
-  ApiOperation,
+  ApiOperation, ApiExtraModels, getSchemaPath,
 } from '@nestjs/swagger';
 import { Get, Controller, Query } from '@nestjs/common';
 
@@ -10,19 +10,30 @@ import { ProgramDTO } from '../dto/program.dto';
 import { ProgramService } from './program.service';
 import { ProgramParamsDTO } from '../dto/program.params.dto';
 import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.interface';
-import { FuelTypeDTO } from '../dto/fuel-type.dto';
 
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Program Codes')
+@ApiExtraModels(ProgramDTO)
 export class ProgramController {
   constructor(private readonly service: ProgramService) {}
 
   @Get()
   @ApiOkResponse({
-    isArray: true,
-    type: ProgramDTO,
     description: 'Data retrieved successfully',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            items: {
+              type: 'array',
+              items: { $ref: getSchemaPath(ProgramDTO)},
+            }
+          },
+        },
+      },
+    },
   })
   @ApiOperation({
     description: "Returns a list of Program codes & descriptions."
