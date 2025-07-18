@@ -3,7 +3,7 @@ import {
   ApiOkResponse,
   ApiQuery,
   ApiSecurity,
-  ApiOperation,
+  ApiOperation, ApiExtraModels, getSchemaPath,
 } from '@nestjs/swagger';
 import { Get, Controller, Query } from '@nestjs/common';
 
@@ -15,6 +15,7 @@ import { ArrayResponse } from '@us-epa-camd/easey-common/interfaces/common.inter
 @Controller()
 @ApiSecurity('APIKey')
 @ApiTags('Account Type Codes')
+@ApiExtraModels(AccountTypeDTO)
 export class AccountTypeController {
   constructor(
     private readonly service: AccountTypeService
@@ -22,9 +23,20 @@ export class AccountTypeController {
 
   @Get()
   @ApiOkResponse({
-    isArray: true,
-    type: AccountTypeDTO,
     description: 'Data retrieved successfully',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'object',
+          properties: {
+            items: {
+              type: 'array',
+              items: { $ref: getSchemaPath(AccountTypeDTO)},
+            }
+          },
+        },
+      },
+    },
   })
   @ApiQuery({
     style: 'pipeDelimited',
