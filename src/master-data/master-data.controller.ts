@@ -66,7 +66,6 @@ export class MasterDataController {
 
   @Get(':code')
   @ApiOkResponse({
-    isArray: true,
     description: 'Data retrieved successfully',
   })
   @ApiOperation({
