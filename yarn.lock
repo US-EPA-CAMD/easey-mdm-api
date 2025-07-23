@@ -970,10 +970,10 @@
     jsonc-parser "3.3.1"
     pluralize "8.0.0"
 
-"@nestjs/swagger@^11.1.5":
-  version "11.1.5"
-  resolved "https://registry.npmjs.org/@nestjs/swagger/-/swagger-11.1.5.tgz#56136436c403690f52e60c9f997d36b9be7e7ffa"
-  integrity sha512-qVkyUSCvEmfTVWK92hsCeOQaOODlyBGkZC4ldqb4Fi0Gg8/kOWlcPJVN6i4a9edYYSdICUkGnt6UVFgi59fSrQ==
+"@nestjs/swagger@^11.1.5", "@nestjs/swagger@^11.2.0":
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-11.2.0.tgz#a1b10620a9f90c78edf897a9386dc4f3e014387e"
+  integrity sha512-5wolt8GmpNcrQv34tIPUtPoV1EeFbCetm40Ij3+M0FNNnf2RJ3FyWfuQvI8SBlcJyfaounYVTKzKHreFXsUyOg==
   dependencies:
     "@microsoft/tsdoc" "0.15.1"
     "@nestjs/mapped-types" "2.1.0"
@@ -5916,17 +5916,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-swagger-ui-dist@5.21.0:
+swagger-ui-dist@5.21.0, swagger-ui-dist@>=5.0.0:
   version "5.21.0"
   resolved "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.21.0.tgz#aed230fe6e294c9470217e67697d601e3bb8eb9d"
   integrity sha512-E0K3AB6HvQd8yQNSMR7eE5bk+323AUxjtCz/4ZNKiahOlPhPJxqn3UPIGs00cyY/dhrTDJ61L7C/a8u6zhGrZg==
-  dependencies:
-    "@scarf/scarf" "=1.4.0"
-
-swagger-ui-dist@>=5.0.0:
-  version "5.20.8"
-  resolved "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.20.8.tgz#a6f122faed750051ab92b5fbbbeb54c76c95bcd7"
-  integrity sha512-VXVhdRh5vuKVpkegw0n0wCXuFFG+pxNmXa0vDcf76r1yP2cYKqcpOE5g8l5crbtLGx+j2EiDnG4/EU5T0jyN1w==
   dependencies:
     "@scarf/scarf" "=1.4.0"
 
