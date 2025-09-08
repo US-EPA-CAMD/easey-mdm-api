@@ -18,14 +18,28 @@ export class ReportingPeriodService {
       const today = new Date(Date.now());
       const currentYear = today.getFullYear();
       const currentQuarter = Math.floor(today.getMonth() / 3 + 1);
-      const periodAbbreviation = `${currentYear} Q${currentQuarter}`;
+      const whereConditions: any = isExport
+        ? [
+            { calendarYear: LessThan(currentYear) },
+            {
+              calendarYear: currentYear,
+              quarter: LessThan(currentQuarter)
+            }
+          ]
+        : [
+            { calendarYear: LessThan(currentYear) },
+            {
+              calendarYear: currentYear,
+              quarter: LessThanOrEqual(currentQuarter)
+            }
+          ];
 
       const results = await this.repository.find({
-        where: {
-          periodAbbreviation: isExport
-            ? LessThan(periodAbbreviation)
-            : LessThanOrEqual(periodAbbreviation),
-        },
+        where: whereConditions,
+        order: {
+          calendarYear: 'DESC',
+          quarter: 'DESC'
+        }
       });
       return this.map.many(results);
     } catch (e) {
