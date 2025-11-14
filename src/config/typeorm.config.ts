@@ -32,33 +32,14 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       ? false
       : rawLogging.split(',').map(level => level.trim()) as LoggerOptions;
 
-    return {
-      type: 'postgres',
-      replication: {
-        master: {
-      applicationName: this.configService.get<string>('app.name'),
-      host: this.configService.get<string>('database.host'),
-      port: this.configService.get<number>('database.port'),
-      username: this.configService.get<string>('database.user'),
-      password: this.configService.get<string>('database.pwd'),
-      database: this.configService.get<string>('database.name'),
-      ssl: this.tlsOptions,
-        },
-        slaves: [{
-          applicationName: this.configService.get<string>('app.name'),
-          host: this.configService.get<string>('database.replicaHost'),
-          port: this.configService.get<number>('database.port'),
-          username: this.configService.get<string>('database.user'),
-          password: this.configService.get<string>('database.pwd'),
-          database: this.configService.get<string>('database.name'),
-          ssl: this.tlsOptions,
-        }],
-        defaultMode: 'slave'
-      },
+    const host = this.configService.get<string>('database.host');
+    const replicaHost = this.configService.get<string>('database.replicaHost');
+
+    // Common configuration shared between replication and single connection modes
+    const commonConfig = {
+      type: 'postgres' as const,
       entities: [__dirname + '/../**/*.entity.{js,ts}'],
       synchronize: false,
-
-      // Database specific (Postgres) settings.
       extra: {
         max: this.configService.get<number>('app.maxConnectionPool'),                                 // Max connections in pool
         idleTimeoutMillis: this.configService.get<number>('app.idleTimeout'),                         // Close idle connections
@@ -68,9 +49,47 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
         maxUses: this.configService.get<number>('app.maxUsesBeforeRecreatingConnection'), //Recreate connections after 'n' uses
       },
       logging: sqlLogging,
-      // Logs queries exceeding this limit (does not terminate, 'statement_timeout' terminates them).
       maxQueryExecutionTime: this.configService.get<number>('app.maxQueryExecutionTime'),
-
     };
+
+    // Use replication only when replica host is different from primary host
+    if (replicaHost && replicaHost !== host) {
+    return {
+      ...commonConfig,
+      replication: {
+        master: {
+      applicationName: this.configService.get<string>('app.name'),
+      host: host,
+      port: this.configService.get<number>('database.port'),
+      username: this.configService.get<string>('database.user'),
+      password: this.configService.get<string>('database.pwd'),
+      database: this.configService.get<string>('database.name'),
+      ssl: this.tlsOptions,
+        },
+        slaves: [{
+          applicationName: this.configService.get<string>('app.name'),
+          host: replicaHost,
+          port: this.configService.get<number>('database.port'),
+          username: this.configService.get<string>('database.user'),
+          password: this.configService.get<string>('database.pwd'),
+          database: this.configService.get<string>('database.name'),
+          ssl: this.tlsOptions,
+        }],
+        defaultMode: 'slave'
+      },
+    };
+    } else {
+      // Use single connection when no replica or same host
+      return {
+        ...commonConfig,
+        applicationName: this.configService.get<string>('app.name'),
+        host: host,
+        port: this.configService.get<number>('database.port'),
+        username: this.configService.get<string>('database.user'),
+        password: this.configService.get<string>('database.pwd'),
+        database: this.configService.get<string>('database.name'),
+        ssl: this.tlsOptions,
+      };
+    }
   }
 }
