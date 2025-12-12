@@ -1,3 +1,4 @@
+
 # Master Data Management API
 
 [![License](https://img.shields.io/github/license/US-EPA-CAMD/easey-mdm-api)](https://github.com/US-EPA-CAMD/easey-mdm-api/blob/develop/LICENSE)
@@ -12,6 +13,12 @@
 ## Description
 Manages master data for the EPA CAMD Business Systems. Provides referential lookup values and relational data mappings between code tables driving UI behavior to ensure data integrity.
 ​
+
+## Important: Read-Only Repository
+This API uses database read replicas and is configured as a **read-only repository**. The read replica is used whenever possible for SELECT operations to optimize performance and reduce load on the primary database server.
+
+**Note for Future Development:** When database-modifying endpoints (CREATE, UPDATE, DELETE operations) are added to this API, TypeORM automatically routes these operations to the primary database server. However, if a SELECT operation needs to retrieve data that was just modified, that SELECT operation should be manually pointed to the primary server to avoid retrieving stale data due to replication lag.
+
 ## Getting Started
 Follow these [instructions](https://github.com/US-EPA-CAMD/devops/blob/master/GETTING-STARTED.md) to get the project up and running correctly.
 
