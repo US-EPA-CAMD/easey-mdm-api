@@ -35,6 +35,8 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
     const host = this.configService.get<string>('database.host');
     const replicaHost = this.configService.get<string>('database.replicaHost');
 
+    const replicaAccessEnabled = this.configService.get<boolean>('app.enableReplicaDbAccess');
+
     // Common configuration shared between replication and single connection modes
     const commonConfig = {
       type: 'postgres' as const,
@@ -53,7 +55,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
     };
 
     // Use replication only when replica host is different from primary host
-    if (replicaHost && replicaHost !== host) {
+    if (replicaAccessEnabled && replicaHost && replicaHost !== host) {
     return {
       ...commonConfig,
       replication: {
