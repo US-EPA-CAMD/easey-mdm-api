@@ -47,6 +47,9 @@ export default registerAs('app', () => ({
   enableGlobalValidationPipes: getConfigValueBoolean(
     'EASEY_MDM_API_ENABLE_GLOBAL_VALIDATION_PIPE', true,
   ),
+  enableReplicaDbAccess: getConfigValueBoolean(
+    'EASEY_MDM_API_ENABLE_REPLICA_DB_ACCESS',
+  ),
   version: getConfigValue(
     'EASEY_MDM_API_VERSION', 'v0.0.0',
   ),
