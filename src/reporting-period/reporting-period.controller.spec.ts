@@ -45,5 +45,19 @@ describe('ReportingPeriodController', () => {
 
       expect(await controller.getReportingPeriods({})).toStrictEqual({ items: expectedResult } );
     });
+
+    it('should pass excludeCurrentQuarter when provided', async () => {
+      const expectedResult: ReportingPeriodDTO[] = [];
+
+      jest
+        .spyOn(service, 'getReportingPeriods')
+        .mockResolvedValue(expectedResult);
+
+      await controller.getReportingPeriods({
+        excludeCurrentQuarter: true,
+      });
+
+      expect(service.getReportingPeriods).toHaveBeenCalledWith(true);
+    });
   });
 });
