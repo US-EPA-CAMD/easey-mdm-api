@@ -8,5 +8,5 @@ export class ReportingPeriodParamsDTO {
   @Transform(({ value }) => {
     return [true, 'enabled', 'true'].indexOf(value) > -1;
   })
-  export?: boolean;
+  excludeCurrentQuarter?: boolean;
 }
