@@ -2,6 +2,9 @@
 package-lock.json
 data-dictionary.jason
 
+# build
+tsconfig.build.tsbuildinfo
+
 # dependencies
 /node_modules
 /npm-packages-offline-cache

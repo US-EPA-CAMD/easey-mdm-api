@@ -46,7 +46,9 @@ export class ReportingPeriodController {
   async getReportingPeriods(
     @Query() params: ReportingPeriodParamsDTO,
   ): Promise<ArrayResponse<ReportingPeriodDTO>> {
-    const reportingPeriodDTOS = await this.service.getReportingPeriods(params.export);
+    const reportingPeriodDTOS = await this.service.getReportingPeriods(
+      params.excludeCurrentQuarter,
+    );
 
     return  {
       items: reportingPeriodDTOS

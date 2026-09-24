@@ -13,12 +13,14 @@ export class ReportingPeriodService {
     private readonly map: ReportingPeriodMap,
   ) {}
 
-  async getReportingPeriods(isExport?: boolean): Promise<ReportingPeriodDTO[]> {
+  async getReportingPeriods(
+    excludeCurrentQuarter?: boolean,
+  ): Promise<ReportingPeriodDTO[]> {
     try {
       const today = new Date(Date.now());
       const currentYear = today.getFullYear();
       const currentQuarter = Math.floor(today.getMonth() / 3 + 1);
-      const whereConditions: any = isExport
+      const whereConditions: any = excludeCurrentQuarter
         ? [
             { calendarYear: LessThan(currentYear) },
             {
