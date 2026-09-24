@@ -4,7 +4,7 @@ import { NumericColumnTransformer } from '@us-epa-camd/easey-common/transforms';
 @Entity({ name: 'camdecmpsmd.reporting_period' })
 export class ReportingPeriod extends BaseEntity {
   @PrimaryColumn({
-    type: 'bigint',
+    type: 'numeric',
     name: 'rpt_period_id',
     transformer: new NumericColumnTransformer(),
   })
